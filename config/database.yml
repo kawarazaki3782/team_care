@@ -5,12 +5,13 @@
 #   gem 'sqlite3'
 #
 default: &default
-   adapter: mysql2
+  adapter: mysql2
   database: team_care
   username: root
-  password: jJc5X&<rk39Z
-  host: 192.168.33.10
+  password: gyRlLNJyl3%G
+  host: localhost
   encoding: utf8
+  socket: /var/lib/mysql/mysql.sock
 
 development:
   <<: *default
