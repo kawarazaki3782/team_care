@@ -7,6 +7,6 @@ class User < ApplicationRecord
                     uniqueness: true
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
-  validates :profile, presence: true, length: { maximum: 1000 }
-  
+  validates :profile, length: { maximum: 1000 }
+  mount_uploader :profile_image, ImageUploader
 end
