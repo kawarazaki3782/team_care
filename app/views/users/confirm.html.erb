@@ -1,0 +1,27 @@
+<% provide(:title, '確認画面') %>
+<%= form_for @user do |f| %>
+    <%= @user.profile_image.url %>
+    <%= f.hidden_field :profile_image, value: @user.profile_image %>
+    <%= @user.name %>
+    <%= f.hidden_field :name %>
+    <%= @user.email %>
+    <%= f.hidden_field :email %>
+    <%= @user.password %>
+    <%= f.hidden_field :password %>
+    <%= @user.gender %>
+    <%= f.hidden_field :gender %>
+    <%= @user.birthday %>
+    <%= f.hidden_field :birthday %>
+    <%= @user.address %>
+    <%= f.hidden_field :address %>
+    <%= @user.long_teamcare %>
+    <%= f.hidden_field :long_teamcare %>
+    <%= @user.profile %>
+    <%= f.hidden_field :profile %>
+    <div class="actions">
+      <%= f.submit '入力画面に戻る', name: 'back' %>
+    </div>
+    <div class="actions">
+      <%= f.submit 'この内容で登録' %>
+    </div>
+<% end %>
