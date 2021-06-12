@@ -16,12 +16,12 @@ ActiveRecord::Schema.define(version: 2021_06_11_000017) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.integer "gender"
+    t.string "gender"
     t.date "birthday"
     t.string "address"
     t.text "profile"
-    t.binary "profile_image"
-    t.integer "long_teamcare"
+    t.string "profile_image"
+    t.string "long_teamcare"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
