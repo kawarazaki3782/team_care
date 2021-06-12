@@ -23,11 +23,10 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
-   end
+    end
   end
-
 private
     
   def user_params
-    params.require(:user).permit(:name, :email, :profile_image, :password, :password_confirmation, :gender, :birthday, :address, :long_teamcare, :profile)
+    params.require(:user).permit(:name, :email, :profile_image, :password, :password_confirmation, :gender, :birthday, :address, :long_teamcare, :profile, :profile_image_cache)
   end

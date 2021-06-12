@@ -1,7 +1,10 @@
 <% provide(:title, '確認画面') %>
+<% if @user.profile_image? %>                                                              
+<%= image_tag @user.profile_image.url %>
+<% end %>
+
 <%= form_for @user do |f| %>
-    <%= @user.profile_image.url %>
-    <%= f.hidden_field :profile_image, value: @user.profile_image %>
+    <%= f.hidden_field :profile_image %>
     <%= @user.name %>
     <%= f.hidden_field :name %>
     <%= @user.email %>
@@ -18,6 +21,7 @@
     <%= f.hidden_field :long_teamcare %>
     <%= @user.profile %>
     <%= f.hidden_field :profile %>
+    <%= f.hidden_field :profile_image_cache %>
     <div class="actions">
       <%= f.submit '入力画面に戻る', name: 'back' %>
     </div>
