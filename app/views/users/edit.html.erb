@@ -1,0 +1,46 @@
+<% provide(:title, 'プロフィール編集') %>
+<h1 class="text-center">プロフィール編集</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model:@user, local: true, url: {action: 'verification'}, method: :post) do |f| %>
+       
+      <%= f.label :プロフィール写真 %>
+      <%= f.file_field :profile_image, accept: 'profile_image/jpeg,profile_image/gif,profile_image/png' %>
+      <%= f.hidden_field :profile_image_cache %>
+      
+      <%= f.label :ニックネーム %>
+      <%= f.text_field :name,class: 'form-control' %>
+
+      <%= f.label :メールアドレス %>
+      <%= f.email_field :email,class: 'form-control' %>
+
+      <%= f.label :パスワード %>
+      <%= f.password_field :password,class: 'form-control' %>
+
+      <%= f.label :password_confirmation, "確認のためもう一度パスワードを入力してください" %>
+      <%= f.password_field :password_confirmation,class: 'form-control' %>
+      
+      <%= f.label :性別 %>
+      <%= f.select :gender, [ ["女性","女性"], ["男性", "男性"] ], prompt: "性別を選択",class: 'form-control'%>
+
+      <div class="birth_date_field">
+      <%= f.label :生年月日 %>
+      <%= raw sprintf(f.date_select(:birthday,use_month_numbers: true,start_year: 1930,end_year: (Time.now.year - 18),default: Date.new(1989, 1, 1),date_separator: '%s'),'年 ', '月 ') + '日'%>
+      </div>
+      
+      <%= f.label :都道府県 %>
+      <%= f.select :address, [ ["東京都","東京都"], ["静岡県", "静岡県"] ], prompt: "お住まいの都道府県を選択" ,class: 'form-control'%>
+
+      
+      <%= f.label :介護 %>
+      <%= f.select :long_teamcare, [ ["介護者","介護者"], ["事業者","事業者"] ], prompt: "介護者か事業者か選択", class: 'form-control'%>
+
+      <%= f.label :自己紹介%>
+      <%= f.text_area :profile, size: "30x10"%>
+
+      <%= f.submit "確認画面へ", class: "btn btn-primary" %>
+    <% end %>
+      <p class="btn-primary text-center" a href="#" role="button">中止してマイページに戻る</p>
+  </div>
+</div>
