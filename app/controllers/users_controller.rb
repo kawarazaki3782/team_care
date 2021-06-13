@@ -18,13 +18,15 @@ class UsersController < ApplicationController
     if params[:back]
       render 'new' 
     elsif @user.save
+      log_in @user
       flash[:success] = "新規登録が完了しました"
       redirect_to @user
     else
       render 'new'
     end
     end
-  end
+  end  
+
 private
     
   def user_params
