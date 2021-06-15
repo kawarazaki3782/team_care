@@ -1,6 +1,49 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update]
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update]
+  before_action :admin_user, only: :destroy
+  
+  def verification
+    @user = User.find(params[:id])
+    @user.attributes = user_params
+
+    # 戻るときはエラーチェックしない
+    if params[:back]
+      render 'edit'
+      return
+    end
+
+    # エラーがあれば編集画面へ戻す
+    unless @user.valid?
+      render 'edit'
+      return
+    end
+
+    if params[:save]
+      if @user.save
+        # updateへリダイレクト 
+        # リダイレクトするのは、F5などでブラウザのリロードで
+        # 保存処理が二重に動かないようにするため
+        render 'update'
+      else
+        # DBへの保存に失敗
+        # 編集画面へ戻す
+        render 'edit'
+      end
+    end 
+
+  def update
+  end
+
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted"
+    redirect_to users_url
+  end
+
+  def index
+    @users = User.paginate(page: params[:page])
+  end
 
   def show
     @user = User.find(params[:id])
@@ -32,22 +75,7 @@ class UsersController < ApplicationController
   def edit
   end
 
-  def verification
-    @user = User.find(params[:id])
-    render 'edit' if @user.invalid?
-  end 
-  
-  def update
-    if params[:back]
-      render 'edit' 
-    elsif @user.update(user_params)
-      # 更新に成功した場合を扱う
-       flash[:success] = "Profile updated"
-      redirect_to @user
-    else
-      render 'edit'
-    end
-    end
+ 
 
 private
     
@@ -69,3 +97,9 @@ private
     @user = User.find(params[:id])
     redirect_to(root_url) unless current_user?(@user)
   end
+
+  # 管理者かどうか確認
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
+end

@@ -4,10 +4,11 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_with(model:@user, local: true, url: {action: 'verification'}, method: :post) do |f| %>
-       
+     <%= render 'shared/error_messages' %> 
+        
       <%= f.label :プロフィール写真 %>
       <%= f.file_field :profile_image, accept: 'profile_image/jpeg,profile_image/gif,profile_image/png' %>
-      <%= f.hidden_field :profile_image_cache %>
+      <%= f.hidden_field :profile_image_cache %> 
       
       <%= f.label :ニックネーム %>
       <%= f.text_field :name,class: 'form-control' %>

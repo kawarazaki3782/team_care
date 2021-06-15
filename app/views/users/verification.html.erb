@@ -1,9 +1,8 @@
-<% provide(:title, '確認画面') %>
-<% if @user.profile_image? %>                                                              
-<%= image_tag @user.profile_image.url %>
-<% end %>
+<% provide(:title, '編集内容の確認') %>                                                            
+<%=logger.debug "task: #{@user.inspect}" %>
+<%= image_tag @user.profile_image.thumb.url %>
 
-<%= form_for @user do |f| %>
+<%= form_with(model:@user, local: true, url: {action: 'verification'}, method: :post) do |f| %>
     <%= f.hidden_field :profile_image %>
     <%= @user.name %>
     <%= f.hidden_field :name %>
@@ -23,9 +22,9 @@
     <%= f.hidden_field :profile %>
     <%= f.hidden_field :profile_image_cache %>
     <div class="actions">
-      <%= f.submit '入力画面に戻る', name: 'back' %>
+      <%= f.submit '入力画面に戻る', name:'back' %>
     </div>
     <div class="actions">
-      <%= f.submit 'この内容で登録' %>
+      <%= f.submit 'この内容で登録',name:'save' %>
     </div>
 <% end %>

@@ -3,9 +3,12 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get  '/signup',  to: 'users#new'
   post '/signup' => 'users#confirm'
-  post '/edit_user_pathuser' => 'users#verification'
+  # post '/edit_user_pathuser' => 'users#verification'
+  post '/users/:id/edit' => 'users#verification'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   resources :users
+  get '/users_path', to: 'users#index'
+  get '/users/:userid', to: 'users#index'
 end

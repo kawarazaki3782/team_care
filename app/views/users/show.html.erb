@@ -1,6 +1,4 @@
 <% provide(:title, @user.name) %>
-
-<% if @user.profile_image? %>                                                              
-<%= image_tag @user.profile_image.url %>
-<% end %>
+                                                        
+<%= image_tag @user.profile_image.thumb.url %>
 
