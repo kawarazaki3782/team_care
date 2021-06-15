@@ -1,7 +1,6 @@
 <% provide(:title, '確認画面') %>                                                            
 <%= image_tag @user.profile_image.thumb.url %>
 
-
 <%= form_for @user do |f| %>
     <%= f.hidden_field :profile_image %>
     <%= @user.name %>

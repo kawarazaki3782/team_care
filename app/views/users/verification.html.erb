@@ -1,8 +1,8 @@
 <% provide(:title, '編集内容の確認') %>                                                            
-<%=logger.debug "task: #{@user.inspect}" %>
 <%= image_tag @user.profile_image.thumb.url %>
 
 <%= form_with(model:@user, local: true, url: {action: 'verification'}, method: :post) do |f| %>
+    <%= @user.profile_image%>
     <%= f.hidden_field :profile_image %>
     <%= @user.name %>
     <%= f.hidden_field :name %>

@@ -7,8 +7,8 @@
      <%= render 'shared/error_messages' %> 
         
       <%= f.label :プロフィール写真 %>
-      <%= f.file_field :profile_image, accept: 'profile_image/jpeg,profile_image/gif,profile_image/png' %>
-      <%= f.hidden_field :profile_image_cache %> 
+      <%= f.file_field :profile_image %>
+      <%= f.hidden_field :profile_image_cache %>
       
       <%= f.label :ニックネーム %>
       <%= f.text_field :name,class: 'form-control' %>
