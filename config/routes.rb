@@ -10,4 +10,10 @@ Rails.application.routes.draw do
   resources :users
   get '/users_path', to: 'users#index'
   get '/users/:userid', to: 'users#index'
+  resources :users do
+    member do
+      get :following, :followers
+  end
+end
+resources :relationships,   only: [:create, :destroy]
 end
