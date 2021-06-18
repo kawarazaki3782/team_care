@@ -42,6 +42,7 @@ class UsersController < ApplicationController
   def verification
     @user = User.find(params[:id])
     @user.attributes = user_params
+    logger.debug "task: #{@user.inspect}"
 
     # 戻るときはエラーチェックしない
     if params[:back]
@@ -55,20 +56,38 @@ class UsersController < ApplicationController
       return
     end
 
+  #   if params[:save]
+  #     if @user.update(user_params)
+  #       # updateへリダイレクト 
+  #       # リダイレクトするのは、F5などでブラウザのリロードで
+  #       # 保存処理が二重に動かないようにするため
+  #       redirect_to action: :update
+  #     else
+  #       # DBへの保存に失敗
+  #       # 編集画面へ戻す
+  #       render 'edit'
+  #     end
+  #   end
+  # end 
+
+    
     if params[:save]
-      logger.debug "task: #{@user.inspect}"
-      if @user.save
-        # updateへリダイレクト 
-        # リダイレクトするのは、F5などでブラウザのリロードで
-        # 保存処理が二重に動かないようにするため
+      logger.debug "task: #{@user.profile_image.inspect}"
+      if @user.profile_image !=  User.find(params[:id]).profile_image
+         @user.update(user_params)
         redirect_to action: :update
+      
+      elsif User.update_except_for_image_path(user_params)
+          #profile_image以外をupdate
+          redirect_to action: :update
       else
-        # DBへの保存に失敗
-        # 編集画面へ戻す
-        render 'edit'
+          render 'edit'
       end
     end
-  end 
+  end
+
+
+      
 
   def update
   end

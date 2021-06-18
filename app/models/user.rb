@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
                                   dependent:   :destroy
@@ -18,7 +19,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
   validates :profile, length: { maximum: 1000 }
   mount_uploader :profile_image, ImageUploader
-
+  
    # 渡された文字列のハッシュ値を返す
    def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -69,5 +70,9 @@ class User < ApplicationRecord
   # 現在のユーザーがフォローしてたらtrueを返す
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  def self.update_except_for_image_path(user_params)
+    User.where(@user).update_all(name: user_params[:name], email: user_params[:email], password_digest: user_params[:password_digest], gender: user_params[:gender], birthday: user_params[:birthday], address: user_params[:address], profile: user_params[:profile], long_teamcare: user_params[:long_teamcare], remember_digest: user_params[:remember_digest], admin: user_params[:admin])
   end
 end

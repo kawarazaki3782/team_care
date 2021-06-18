@@ -7,6 +7,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
+
+  # CarrierWave.configure do |config| 
+  #   config.remove_previously_stored_files_after_update = false 
+  # end 
  
   #サムネイルの為に画像をリサイズ
   version :thumb do 
@@ -15,6 +19,12 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :thumb50 do 
   process resize_to_fit: [100, 100] 
   end  
+
+#   def remove!
+#     unless model.keep_file
+#       super
+#     end
+#  end
 
   def default_url(*args)
     # # For Rails 3.1+ asset pipeline compatibility:
