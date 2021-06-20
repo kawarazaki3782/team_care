@@ -4,13 +4,13 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   storage :file
 
-  # def store_dir
-  #   "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  # end
+  def store_dir
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  end
 
-  # CarrierWave.configure do |config| 
-  #   config.remove_previously_stored_files_after_update = false 
-  # end 
+#   # CarrierWave.configure do |config| 
+#   #   config.remove_previously_stored_files_after_update = false 
+#   # end 
  
   #サムネイルの為に画像をリサイズ
   version :thumb do 
@@ -20,16 +20,16 @@ class ImageUploader < CarrierWave::Uploader::Base
   process resize_to_fit: [100, 100] 
   end  
 
-#   def remove!
-#     unless model.keep_file
-#       super
-#     end
-#  end
+# #   def remove!
+# #     unless model.keep_file
+# #       super
+# #     end
+# #  end
 
   def default_url(*args)
-    # # For Rails 3.1+ asset pipeline compatibility:
-    # # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
+#     # # For Rails 3.1+ asset pipeline compatibility:
+#     # # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
     "default.jpg"
-    # "/images/fallback/" + [version_name, "default.png"].compact.join('_')
+#     # "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   end
-end
+  end

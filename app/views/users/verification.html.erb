@@ -1,9 +1,10 @@
 <% provide(:title, '編集内容の確認') %>                                                            
 <%= image_tag @user.profile_image.thumb.url %>
 
-<%= form_with(model:@user, local: true, url: {action: 'verification'}, method: :post) do |f| %>
+<%= form_with(model:@user, local: true, url: {action: 'verification'}, method: :patch) do |f| %>
     <%= @user.profile_image%>
     <%= f.hidden_field :profile_image %>
+    <%= f.hidden_field :profile_image_cache %>
     <%= @user.name %>
     <%= f.hidden_field :name %>
     <%= @user.email %>
@@ -20,7 +21,7 @@
     <%= f.hidden_field :long_teamcare %>
     <%= @user.profile %>
     <%= f.hidden_field :profile %>
-    <%= f.hidden_field :profile_image_cache %>
+    <%= hidden_field_tag :"cache[profile_image]", @user.profile_image.cache_name %>
     <div class="actions">
       <%= f.submit '入力画面に戻る', name:'back' %>
     </div>
