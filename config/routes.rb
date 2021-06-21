@@ -10,10 +10,11 @@ Rails.application.routes.draw do
   resources :users
   get '/users_path', to: 'users#index'
   get '/users/:userid', to: 'users#index'
+  resources :microposts,    only: [:create, :destroy]
   resources :users do
     member do
       get :following, :followers
+    end
   end
-end
 resources :relationships,   only: [:create, :destroy]
 end
