@@ -8,6 +8,7 @@ class User < ApplicationRecord
                                   dependent:   :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :comments, dependent: :destroy
   before_save { email.downcase! }
   attr_accessor :remember_token
   validates :name,  presence: true, length: { maximum: 20 }
@@ -72,7 +73,5 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
-  def self.update_except_for_image_path(user_params)
-    User.where(@user).update_all(name: user_params[:name], email: user_params[:email], password_digest: user_params[:password_digest], gender: user_params[:gender], birthday: user_params[:birthday], address: user_params[:address], profile: user_params[:profile], long_teamcare: user_params[:long_teamcare], remember_digest: user_params[:remember_digest], admin: user_params[:admin])
-  end
+  
 end

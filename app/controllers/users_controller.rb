@@ -38,7 +38,6 @@ class UsersController < ApplicationController
   
 
   def edit
-    
   end
 
   def verification
@@ -46,18 +45,17 @@ class UsersController < ApplicationController
     @user.attributes = user_params
     @user.profile_image.cache!
     
-
     # 戻るときはエラーチェックしない
     if params[:back]
        render 'edit'
        return
     end
 
-    # # エラーがあれば編集画面へ戻す
-    # unless @user.valid?
-    #   render 'edit'
-    #   return
-    # end
+    # エラーがあれば編集画面へ戻す
+    unless @user.valid?
+      render 'edit'
+      return
+    end
 
     if params[:save]
       @user.profile_image.retrieve_from_cache! params[:cache][:profile_image]
@@ -73,25 +71,6 @@ class UsersController < ApplicationController
       end
     end
   end 
-
-    
-  #   if params[:save]
-  #     logger.debug "task: #{@user.profile_image.inspect}"
-  #     if @user.profile_image !=  User.find(params[:id]).profile_image
-  #        @user.update(user_params)
-  #       redirect_to action: :update
-      
-  #     elsif User.update_except_for_image_path(user_params)
-  #         #profile_image以外をupdate
-  #         redirect_to action: :update
-  #     else
-  #         render 'edit'
-  #     end
-  #   end
-  # end
-
-
-      
 
   def update
   end

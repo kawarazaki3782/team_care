@@ -1,0 +1,24 @@
+<h1>つぶやき投稿</h1>
+<% if logged_in? %>
+  <%= link_to "ログアウト", logout_path, method: :delete %>
+  <%= link_to "マイページへ", user_path(current_user.id) %>
+  <h2>投稿する</h2>
+  <%= form_for @micropost do |f| %>
+    <%= f.text_field :content %>
+    <%= f.submit %>
+  <% end %>
+  <hr>
+  <h2>投稿一覧</h2>
+  <% @microposts.each do |micropost| %>
+    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+    <p><a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a></p>
+    <% if current_user?(micropost.user) %>
+    <%= link_to "delete", micropost, method: :delete,
+                                       data: { confirm: "You sure?" } %>
+  <% end %>
+  <% end %>
+
+<% else %>
+  <%= link_to "ユーザー登録", signup_path, class: "btn btn-lg btn-primary" %>
+  <%= link_to "ログイン", login_path, class: "btn btn-lg btn-primary"%>
+<% end %>

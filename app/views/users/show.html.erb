@@ -1,24 +1,27 @@
 <% provide(:title, @user.name) %>
 <div class="row">
   <aside class="col-md-4">
-    <section class="user_info">  
-    </section>
+    <section class="user_info"> 
+    <h1>ユーザー詳細ページ</h1> 
     <% if @user.profile_image? %>                                                              
-    <%= image_tag @user.profile_image.url %> 
+    <%= image_tag @user.profile_image.thumb50.url %> 
     <% end %>
-    <section class="stats">
-      <%= render 'shared/stats' %>
     </section>
   </aside> 
-  <div class="col-md-8">
-  <%= render 'follow_form' if logged_in? %>                                                 
-    <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
-      <ol class="microposts">
-        <%= render @microposts %>
-      </ol>
+  <div class="col-md-8"> 
+  <h2>投稿内容</h2>
+  <% @user.microposts.each do |micropost| %>
+  <a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a>
+    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+    <% if current_user?(micropost.user) %>
+    <%= link_to "delete", micropost, method: :delete,
+                                       data: { confirm: "You sure?" } %>
+  <% end %>
+  <hr>
+  <% end %>                                          
       <%= will_paginate @microposts %>
-    <% end %>
+      <%= link_to "ユーザー一覧へ", users_path %>
+      <%= link_to "ホームへ戻る", microposts_path %>
 </div>
 </div>
 

@@ -1,6 +1,20 @@
 class MicropostsController < ApplicationController
     before_action :logged_in_user, only: [:create, :destroy]
     before_action :correct_user,   only: :destroy
+    # before_action :authenticate_user?, only: [:show, :create]
+    
+    def index
+      @microposts = Micropost.all
+      @micropost = Micropost.new
+    end
+
+
+    def show
+      @micropost = Micropost.find(params[:id])
+      @comments = @micropost.comments
+      @comment = Comment.new
+    end
+
 
     def create
         @micropost = current_user.microposts.build(micropost_params)
@@ -9,7 +23,7 @@ class MicropostsController < ApplicationController
           redirect_to root_url
         else
           @feed_items = current_user.feed.paginate(page: params[:page])
-          render 'static_pages/home'
+          redirect_to root_url
         end
     end
     
