@@ -2,13 +2,77 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info"> 
-    <h1>ユーザー詳細ページ</h1> 
+    <%= link_to "ホームへ戻る", root_path %>
+    <h1 class="text-center">マイページ</h1> 
+<div class="tab-wrap">
+    <input id="TAB-01" type="radio" onclick="location.href='/'" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">プロフィール</label>
+    <div class="tab-content">
+    </div>
+    <input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">お気入りのつぶやき</label>
+    <div class="tab-content">
+    </div>
+    <input id="TAB-03" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-03">お気入りの日記</label>
+    <div class="tab-content">
+    </div>
+</div>
+
+<div class="text-center">
+<a class="btn btn-lg btn-info" href="#" role="button">通知</a>
+</div>
+<br>
+<br>
+    <div class="text-center">
     <% if @user.profile_image? %>                                                              
-    <%= image_tag @user.profile_image.thumb50.url %> 
+    <%= image_tag @user.profile_image.url, class:'icon' %> 
+    <br>
+    <br>
+    <%= @user.name %>さん
     <% end %>
+     </div>
+    <div class="stats text-center">
+        <%= render 'shared/stats' %>
+    </div>
+     <%= render 'follow_form' if logged_in? %>
+  
+  <div class="tab-wrap2">
+    <input id="TAB-01" type="radio" name="TAB" class="tab-switch2" /><label class="tab-label2" for="TAB-01">自分のつぶやき</label>
+    <div class="tab-content2">
+    </div>
+    <input id="TAB-02" type="radio" name="TAB" class="tab-switch2" /><label class="tab-label2" for="TAB-02">自分の日記</label>
+    <div class="tab-content2">
+  </div>
     </section>
-  </aside> 
+  </aside>
+  </div> 
+
   <div class="col-md-8"> 
+  <div class="text-center">
+  <a class="btn btn-lg btn-info text-center" href="#" role="button">プロフィール編集</a>
+  </div> 
+  <ul class="list-unstyled">
+   <li class="text-center">性別:<%= @user.gender %></li>
+     <li class="text-center">誕生日:<%= @user.birthday %></li>
+     <li class="text-center">住所:<%= @user.address %><li>
+     <li class="text-center">介護の形態:<%= @user.long_teamcare %></li>
+    <li class="text-center"> 自己紹介:<%= @user.profile %></li>
+  </ul>
+
+  <div class="text-center">
+<a class="btn btn-lg btn-info" href="./index.html" role="button">ユーザーを探す</a>
+</div>
+<br>
+  <p class="heading text-center">お手紙<p>
+  <div class="text-center">
+  <a class="btn btn-lg btn-info text-center" href="#" role="button">送受信履歴</a>
+  </div> 
+  <br>
+  <p class="heading text-center">履歴<p>
+  <div class="text-center">
+  <a class="btn btn-lg btn-info text-center" href="#" role="button">下書きフォルダ</a>
+  <a class="btn btn-lg btn-info text-center" href="#" role="button">コメント履歴</a>
+  <a class="btn btn-lg btn-info text-center" href="#" role="button">リアクション履歴</a>
+  </div> 
+  
   <h2>投稿内容</h2>
   <% @user.microposts.each do |micropost| %>
   <a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a>
@@ -19,9 +83,6 @@
   <% end %>
   <hr>
   <% end %>                                          
-      <%= will_paginate @microposts %>
-      <%= link_to "ユーザー一覧へ", users_path %>
-      <%= link_to "ホームへ戻る", microposts_path %>
 </div>
 </div>
 

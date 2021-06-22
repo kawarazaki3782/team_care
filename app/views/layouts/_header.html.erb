@@ -1,29 +1,37 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "sample app", root_path, id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Help", '#' %></li>
+
         <% if logged_in? %>
-        <li><%= link_to "Users", 'users_path' %></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Account <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Profile", current_user %></li>
-              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to "Log out", logout_path, method: :delete %>
-              </li>
-            </ul>
-          </li>
+    <header class="header">
+    <div class="header＿inner inner">
+      <div class="header＿logo"><img src="/assets/logo_transparent.png" alt=""></div> 
+        <ul class="header＿nav">
+            <li><a href="/">ホーム</a></li>
+            <li><a href="">マイページ</a></li>
+            <li><a href="">つぶやき投稿</a></li>
+            <li><a href="">日記投稿</a></li>
+            <li> <%= link_to "新規登録", signup_path %></li>
+            <li> <%= link_to "ログアウト", logout_path,method: :delete %></li>
+        </ul>
+      </div>
+      </header>
         <% else %>
-          <li><%= link_to "Log in", login_path %></li>
-        <% end %>
-      </ul>
-    </nav>
-  </div>
-</header>
+    <header class="header">
+    <div class="header＿inner inner">
+      <div class="header＿logo"><img src="/assets/logo_transparent.png" alt=""></div> 
+        <ul class="header＿nav">
+            <li><a href="/">ホーム</a></li>
+            <li><a href="/about">チームケアとは</a></li>
+            <li> <%= link_to "新規登録", signup_path %></li>
+            <li> <%= link_to "ログイン", login_path %></li>
+            <li><a href="">お問い合わせ</a></li>
+        </ul>
+      <%# <div class="user_serch">
+        <p>検索</p>
+        <%= form_tag(search_path,:method => 'get') do %>
+        <%# <%= text_field_tag :search %>
+        <%# <%= submit_tag 'Search', :name => nil %>
+        <%# <% end %>
+      <%# </div>  %>
+      </div> 
+      </header>
+      <%end%>
+      

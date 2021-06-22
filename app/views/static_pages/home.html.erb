@@ -1,3 +1,4 @@
+
 <% if logged_in? %>
   <div class="row">
     <aside class="col-md-4">
@@ -14,17 +15,11 @@
     </div>
   </div>
 <% else %>
-<div class="center jumbotron">
-<h1>Welcome to the Team_Care</h1>
-
-  <h2>
-    This is the home page for the
-    <a href="#">Team_Care</a>
-    sample application.
-  </h2>
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+<div class="main">
+    <div class="main_visual">
+          <div class="main_visual_title">チームケアへようこそ</div>
+          <div class="main_visual_lead">介護の悩みを共有しよう</div>
+          <div class="main_visual_btn"><a href="/login">はじめる</a></div>
+    </div>
 </div>
-<section class="stats">
-  <%= render 'shared/stats' %>
-</section>
-<% end %>
+<%end%>

@@ -13,11 +13,10 @@ class ImageUploader < CarrierWave::Uploader::Base
 #   # end 
  
   #サムネイルの為に画像をリサイズ
-  version :thumb do 
-  process resize_to_fit: [200, 200] 
-  end 
-  version :thumb50 do 
-  process resize_to_fit: [100, 100] 
+  process resize_to_fit: [200, 200, "center"] 
+
+  version :thumb100 do 
+  process resize_to_fit: [100, 100, "center"] 
   end  
 
 # #   def remove!
