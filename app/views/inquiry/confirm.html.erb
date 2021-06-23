@@ -1,0 +1,43 @@
+<%= form_for @inquiry, :url => inquiry_thanks_path do |f| %>
+<section id="" class="contact section">
+		<div class="contact__inner inner">
+			<h2 class="section-title">お問い合わせ</h2><!-- /.section-title -->
+            </div>
+			<div class="contact__item">
+					<dl class="contact__controls">
+						<div class="contact__control">
+							<dt>
+								<label class="contact__label contact__label--required" for="your-name">お名前</label>
+							</dt>
+							<dd>
+                                <%= f.hidden_field :name %>
+                                <%= @inquiry.name %>
+							</dd>
+						</div><!-- /.contact__control -->
+						<div class="contact__control">
+							<dt>
+								<label class="contact__label contact__label--required" for="your-mail">メールアドレス</label>
+							</dt>
+							<dd>
+							   <%= f.hidden_field :email %>
+                               <%= @inquiry.email %>
+							</dd>
+						</div><!-- /.contact__control -->
+						<div class="contact__control">
+							<dt>
+								<label class="contact__label" for="your-message">お問い合わせ内容</label>
+							</dt>
+							<dd>
+							    <%= f.hidden_field :message %>
+                                <%= simple_format(@inquiry.message) %>
+							</dd>
+						</div><!-- /.contact__control -->
+					</dl><!-- /.contact__controls -->
+					</div><!-- /.contact__check -->
+					<div class="contact__submit">
+			        <%= f.submit '送信する', class: 'button-arrow-right' %>
+                   <% end %>
+				</div>
+			</div><!-- /.contact__item -->
+		</div><!-- /.contact__inner -->
+	</section><!-- /.contact -->

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'inquiry/index'
+  get 'inquiry/confirm'
+  get 'inquiry/thanks'
   get 'sessions/new'
   root 'static_pages#home'
   get  '/signup',  to: 'users#new'
@@ -27,4 +30,7 @@ Rails.application.routes.draw do
       match 'search' => 'microposts#search', via: %i[get post]
   end
 end
+  get   'inquiry'         => 'inquiry#index'     
+  post  'inquiry/confirm' => 'inquiry#confirm'   
+  post  'inquiry/thanks'  => 'inquiry#thanks'    
 end
