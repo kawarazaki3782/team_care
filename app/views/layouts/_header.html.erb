@@ -17,21 +17,18 @@
     <header class="header">
     <div class="header＿inner inner">
       <div class="header＿logo"><img src="/assets/logo_transparent.png" alt=""></div> 
+        <div class="search">
+        <%= render 'layouts/header_search' %>
+        </div>
         <ul class="header＿nav">
             <li><a href="/">ホーム</a></li>
-            <li><a href="/about">チームケアとは</a></li>
+            <li> <%= link_to "チームケアとは", about_path %></li>
             <li> <%= link_to "新規登録", signup_path %></li>
             <li> <%= link_to "ログイン", login_path %></li>
-            <li><a href="">お問い合わせ</a></li>
+            <li> <%= link_to "お問い合わせ", contact_path %></li>
         </ul>
-      <%# <div class="user_serch">
-        <p>検索</p>
-        <%= form_tag(search_path,:method => 'get') do %>
-        <%# <%= text_field_tag :search %>
-        <%# <%= submit_tag 'Search', :name => nil %>
-        <%# <% end %>
-      <%# </div>  %>
-      </div> 
-      </header>
-      <%end%>
+      </div>
+    </div>
+    </header>
+    <%end%>
       

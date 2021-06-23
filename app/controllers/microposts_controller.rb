@@ -27,6 +27,11 @@ class MicropostsController < ApplicationController
         end
     end
     
+    def search
+      #Viewのformで取得したパラメータをモデルに渡す
+      @microposts = Micropost.search(params[:search])
+    end
+
     def destroy
       @micropost.destroy
       flash[:success] = "Micropost deleted"

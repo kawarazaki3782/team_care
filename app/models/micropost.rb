@@ -16,4 +16,9 @@ def post_image_size
     errors.add(:post_image, "should be less than 5MB")
   end
 end
+
+def self.search(search)
+  return Micropost.all unless search
+  Micropost.where(["content like?", "%#{search}%"])
+end
 end

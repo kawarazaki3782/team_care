@@ -1,5 +1,5 @@
 <% provide(:title, "Log in") %>
-<h1>ログイン</h1>
+<h1 class="text-center">ログイン</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -8,20 +8,22 @@
 
       <p class="text-center">はじめての方はこちら</p>
       <p class="btn-primary text-center" a href="#" role="button">会員登録</p>
-    <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
-
+      <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+      <div class="text-left">
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
 
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
       
-       <%= f.label :remember_me, class: "checkbox inline" do %>
-        <%= f.check_box :remember_me %>
-        <span>Remember me on this computer</span>
+      <%= f.label :remember_me  do %>
+      <%= f.check_box :remember_me %>
+      <span>ログインの状態を保持する</span>
+      </div>
       <% end %>
-      
+      <div class="text-center">
       <%= f.submit "ログイン", class: "btn btn-primary" %>
+      </div>
     <% end %>
   </div>
 </div>

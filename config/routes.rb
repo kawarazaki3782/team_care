@@ -10,14 +10,21 @@ Rails.application.routes.draw do
   resources :users
   get '/users_path', to: 'users#index'
   get '/users/:userid', to: 'users#index'
+  get  '/about',   to: 'static_pages#about'
+  get  '/contact', to: 'static_pages#contact'
   resources :users do
     member do
       get :following, :followers
     end
   end
-  resources :microposts, only: [:index, :show, :create, :destroy]
+  resources :microposts, only: [:index, :show, :create, :destroy,]
   resources :microposts do
     resources :comments, only: [:create, :destroy]
   end
   resources :relationships,   only: [:create, :destroy]
+  resources :microposts do
+    collection do
+      match 'search' => 'microposts#search', via: %i[get post]
+  end
+end
 end

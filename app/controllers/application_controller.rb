@@ -1,5 +1,17 @@
 class ApplicationController < ActionController::Base
     include SessionsHelper
+    before_action :set_q
+    
+    def about
+    end
+
+    def contact 
+    end
+
+
+    def set_q
+      @q = Micropost.ransack(params[:q])
+    end
 
     private
   

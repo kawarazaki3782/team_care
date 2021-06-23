@@ -1,6 +1,5 @@
 <% provide(:title, '新規登録') %>
 <h1 class="text-center">新規登録</h1>
-
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_with(model:@user, local: true, url: {action: 'confirm'}) do |f| %>
@@ -32,15 +31,17 @@
       
       <%= f.label :都道府県 %>
       <%= f.select :address, [ ["東京都","東京都"], ["静岡県", "静岡県"] ], prompt: "お住まいの都道府県を選択" ,class: 'form-control'%>
-
-      
+      <br>
       <%= f.label :介護 %>
       <%= f.select :long_teamcare, [ ["介護者","介護者"], ["事業者","事業者"] ], prompt: "介護者か事業者か選択", class: 'form-control'%>
-
+      <br>
       <%= f.label :自己紹介%>
-      <%= f.text_area :profile, size: "30x10"%>
-
+      <br>
+      <%= f.text_area :profile, size: "60x20"%>
+      <br>
+      <div class="text-center">
       <%= f.submit "確認画面へ", class: "btn btn-primary" %>
+      </div>
     <% end %>
   </div>
 </div>

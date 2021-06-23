@@ -140,29 +140,33 @@ h6 {
 	li {
 		&:not(:first-child) {
 	   margin-left: 40px;
-	   
-	    }
+	  }
 
 	   a {
 		text-decoration: none;
 		color: #fff;
 		position: relative;
+    display: inline-block;
 
-		&.is-active {
-			&::after {
-				content: "";
-				position: absolute;
-				background: $color-active;
-				width: 100%;
-				height: 2px;
-				left: 0;
-				bottom: -8px;
-			}
-		 }
-	   }
-	}
+			&:hover {
+      -webkit-animation: zoom .3s;
+      animation: zoom .3s;
+
+      @-webkit-keyframes zoom {
+      50% {
+      -webkit-transform: scale(1.05);
+      
+      @keyframes zoom {
+      50% {
+      transform: scale(1.05);
+      }
+     }
+    }
+   }
+  }
+ }
 }
-
+}
 //////////////////////mainvisualはじめ///////////////////////////
 
 .main {
@@ -174,15 +178,29 @@ h6 {
   border-radius: 20px;
 }
 
+.main::before {
+  content: '';
+  /* ↓暗いオーバーレイを半透明で配置 */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* ↓全体を覆うように配置 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 20px;
+}
+
+
 .main_visual {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	text-align: center;
-  color: #333;
+  color: #fff;
 }
-
 
 .main_visual_title {
 	font-size: 64px;
@@ -192,14 +210,14 @@ h6 {
 
 
 .main_visual_lead {
-	font-size: 24px;
-	font-weight: 700;
+	font-size: 40px;
+	font-weight: 600;
 	margin-top: 24px;
 }
 
 .main_visual_btn {
 	margin-top: 40px;
-
+   
 	a {
 		display: inline-block;
 		width: 384px;
@@ -213,10 +231,9 @@ h6 {
 		font-size: 24px;
 		font-weight: 700;
 		border-radius: 8px;
-		box-shadow: 0px 3px 6px #00000029;;
-
   }
 }
+
 
 // -----
 // フッター
@@ -317,12 +334,28 @@ h6 {
 				color: #fff;
 				text-decoration: none;
 				transition: all 0.3s ease 0s;
-			}
+        display: inline-block;
+
+        &:hover {
+       -webkit-animation: zoom .3s;
+        animation: zoom .3s;
+
+        @-webkit-keyframes zoom {
+        50% {
+        -webkit-transform: scale(1.05);
+  
+        @keyframes zoom {
+        50% {
+        transform: scale(1.05);
+       } 
+      }
 		}
-	}
+   }
+ }
 }
-
-
+}
+}
+}
 .footer__copy {
 	text-align: center;
 	color: #fff;
@@ -375,15 +408,214 @@ h6 {
 	}
 }
 
-
-
-
-
 @mixin box_sizing {
     -moz-box-sizing:    border-box;
     -webkit-box-sizing: border-box;
     box-sizing:         border-box;
-  }
+}
+
+// -----
+// フォーム
+// -----
+.contact {
+	background: #efefef;
+}
+
+h2.section-title {
+    text-align: center;
+    /* align-items: center; */
+    padding-top: 100px;
+}
+
+.contact__inner{
+}
+
+.contact__item {
+	margin: 80px auto 0;
+	padding: 60px;
+	background: #fff;
+	width: 800px;
+	max-width: 100%;
+
+	@include mq('sp') {
+		padding: 20px;
+		margin-top: 26px;
+	}
+}
+
+.contact__controls {
+	margin: 0;
+}
+
+.contact__control {
+	margin-bottom: 60px;
+	display: flex;
+
+	@include mq('sp') {
+		display: block;
+		margin-bottom: 24px;
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	dt {
+		width: 160px;
+		padding: 6px 0 0;
+		margin: 0;
+
+		@include mq('sp') {
+			width: 100%;
+			padding-top: 0;
+		}
+	}
+
+	dd {
+		flex-grow: 1;
+		padding: 0;
+		margin: 0;
+
+		@include mq('sp') {
+			width: 100%;
+			margin-top: 8px;
+		}
+	}
+}
+
+.contact__label {
+	font-size: 16px;
+	font-weight: 700;
+
+	@include mq('sp') {
+		font-size: 16px;
+		display: inline-block;
+	}
+}
+
+.contact__label--required {
+	position: relative;
+
+	@include mq('sp') {
+		padding-right: 54px;
+	}
+
+	&::after {
+		content: "必須";
+		position: absolute;
+		background: $color-active;
+		border-radius: 4px;
+		text-align: center;
+		color: #fff;
+		font-size: 14px;
+		line-height: 1;
+		font-weight: 700;
+		padding: 4px 8px;
+		width: 44px;
+		display: block;
+		top: calc(100% + 8px);
+		left: 0;
+
+		@include mq('sp') {
+			top: 50%;
+			left: auto;
+			right: 0;
+			transform: translateY(-50%);
+		}
+	}
+}
+
+.contact__required {
+	background: $color-active;
+	border-radius: 12px;
+	text-align: center;
+	color: #fff;
+	font-size: 14px;
+	font-weight: 700;
+	padding: 1px 8px;
+	width: 46px;
+	display: block;
+	margin-top: 6px;
+}
+
+
+.contact__submit {
+	margin-top: 30px;
+	text-align: center;
+	padding-bottom: 30px;
+}
+
+.form-input {
+	width: 100%;
+	border: 1px solid #707070;
+	padding: 4px 16px;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: transparent;
+	background-image: none;
+	border-radius: 0;
+	color: inherit;
+	font-family: inherit;
+	font-size: 14px;
+	box-shadow: none;
+	height: 38px;
+
+	@include mq('sp') {
+		padding-top: 4px;
+		padding-bottom: 4px;
+	}
+}
+
+.form-select {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background: transparent url(../img/select-arrow.png) no-repeat center right 12px / 17px 14px;
+	border-radius: 0;
+	color: inherit;
+	cursor: pointer;
+	font-family: inherit;
+	font-size: 14px;
+	padding: 3px 16px;
+	width: 100%;
+	border: 1px solid #707070;
+	height: 38px;
+
+	@include mq('sp') {
+		padding-top: 3px;
+		padding-bottom: 3px;
+		background-position: center right 10px;
+	}
+
+	&::-ms-expand {
+		display: none;
+	}
+}
+
+.form-textarea {
+	width: 100%;
+	height: 240px;
+	border: 1px solid #707070;
+	resize: none;
+	padding: 10px 16px;
+	line-height: (26 / 16);
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: transparent;
+	background-image: none;
+	border-radius: 0;
+	color: inherit;
+	font-family: inherit;
+	font-size: 14px;
+	vertical-align: bottom;
+
+	@include mq('sp') {
+		height: 180px;
+	}
+}
+
 
 <%# /* miscellaneous */
 

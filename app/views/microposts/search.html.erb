@@ -1,0 +1,10 @@
+<p>検索結果: <%= @microposts.count %> 件</p>
+<ul><% @microposts.each do |micropost| %>
+  <li>
+    <%= link_to micropost.content, micropost %>
+    <%= micropost.created_at %>
+  </li>
+  <%# <%= link_to "編集",edit_micropost_path(micropost) %>
+  <%# <%= link_to "削除",micropost, method: :delete %> 
+  <% end %>
+</ul>
