@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/users_path', to: 'users#index'
   get '/users/:userid', to: 'users#index'
   get  '/about',   to: 'static_pages#about'
-  get  '/contact', to: 'static_pages#contact'
+  get  '/mypage',   to: 'static_pages#mypage'
   resources :users do
     member do
       get :following, :followers

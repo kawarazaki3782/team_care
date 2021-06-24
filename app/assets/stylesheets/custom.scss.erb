@@ -217,6 +217,7 @@ h6 {
 
 .main_visual_btn {
 	margin-top: 40px;
+	
    
 	a {
 		display: inline-block;
@@ -231,7 +232,164 @@ h6 {
 		font-size: 24px;
 		font-weight: 700;
 		border-radius: 8px;
+		cursor: pointer;
+	    outline: none;
+	    padding: 0rem 2rem;
+	    box-shadow: 2px 2px 4px gray;
+	    border: 1px solid #ccc;
   }
+}
+
+.main_visual_btn a:active {
+	transition: 0.1s;
+	transform: translate3d(0,6px,0);
+	box-shadow: none;
+}
+
+//////////////////////about はじめ///////////////////////////
+
+.about_main {
+  background: image-url('hands.jpeg') no-repeat center center / cover;
+	width: 100%;
+	height: 600px;
+	position: relative;
+  margin-bottom: 50px;
+  border-radius: 20px;
+}
+
+.breadcrumb {
+	padding: 0 10px 10px 30px;
+    margin-bottom: 20px;
+    list-style: none;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
+
+ul.breadcrumb__list {
+    display: flex;
+	padding-top: 15px;
+}
+
+li.features-item {
+    display: flex;
+}
+
+.features {
+    position: relative;
+    padding: 90px 20px;
+}
+
+.util-ttl {
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: bold;
+    text-align: center;
+}
+
+.util-ttl-inner:after {
+    content: '';
+    display: block;
+    height: 12px;
+    width: 70px;
+    background: linear-gradient(to right, #eebe64, #f3c39f);
+    border-radius: 20px;
+    margin: 20px auto 0;
+}
+
+.util-ttl:after {
+    display: block;
+    content: attr(data-title);
+    font-family: "Work Sans", sans-serif;
+    font-size: 18px;
+    letter-spacing: 0;
+    margin-top: 24px;
+    text-transform: uppercase;
+}
+
+.features-list {
+    max-width: 870px;
+    margin: 56px auto 0;
+}
+
+.features-item:nth-child(1):before {
+    content: "";
+    display: block;
+    width: 120px;
+    height: 120px;
+    flex: 0 0 120px;
+    background: url('noun_Use.png') center center/contain no-repeat;
+}
+
+.features-item-inner1{
+    flex: 0 0 calc(100% - 170px);
+    padding-left: 50px;
+    padding-top: 18px;
+}
+
+.features-item-inner2{
+    flex: 0 0 calc(100% - 170px);
+    padding-left: 50px;
+    padding-top: 11px;
+}
+
+.features-item-inner3{
+    flex: 0 0 calc(100% - 170px);
+    padding-left: 50px;
+    padding-top: 7px;
+}
+
+.features-item-ttl {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+.features-item-text {
+    line-height: 1.8;
+    margin-top: 20px;
+    text-align: justify;
+    text-justify: inter-ideograph;
+}
+
+.features-item:nth-child(2):before {
+    content: "";
+    display: block;
+    width: 120px;
+    height: 120px;
+    flex: 0 0 120px;
+    background: url('noun_outgoing.png') center center/contain no-repeat;
+}
+
+.features-item:nth-child(3):before {
+    content: "";
+    display: block;
+    width: 120px;
+    height: 120px;
+    flex: 0 0 120px;
+    background: url('noun_city hall_3955988.png') center center/contain no-repeat;
+}
+
+<%# .features-item:nth-child(4):before {
+    content: "";
+    display: block;
+    width: 120px;
+    height: 120px;
+    flex: 0 0 120px;
+    background: url(../img/futures/item04.svg) center center/contain no-repeat;
+}
+
+.features-item:nth-child(5):before {
+    content: "";
+    display: block;
+    width: 120px;
+    height: 120px;
+    flex: 0 0 120px;
+    background: url(../img/futures/item05.svg) center center/contain no-repeat;
+} %>
+
+span.important {
+    font-weight: 600;
+    color: #EC6D64;
 }
 
 
@@ -307,7 +465,8 @@ h6 {
 }
 
 .footer__nav {
-	ul {
+
+       ul {
 		display: flex;
 		flex-wrap: wrap;
 		list-style: none;
@@ -349,7 +508,7 @@ h6 {
         transform: scale(1.05);
        } 
       }
-		}
+    }
    }
  }
 }
@@ -423,7 +582,6 @@ h6 {
 
 h2.section-title {
     text-align: center;
-    /* align-items: center; */
     padding-top: 100px;
 }
 
@@ -538,7 +696,6 @@ h2.section-title {
 	margin-top: 6px;
 }
 
-
 .contact__submit {
 	margin-top: 30px;
 	text-align: center;
@@ -571,7 +728,6 @@ h2.section-title {
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	appearance: none;
-	background: transparent url(../img/select-arrow.png) no-repeat center right 12px / 17px 14px;
 	border-radius: 0;
 	color: inherit;
 	cursor: pointer;
@@ -744,7 +900,6 @@ aside {
     border-bottom: 1px solid $gray-lighter;
   }
 }
-
 /* microposts */
 
 .microposts {
