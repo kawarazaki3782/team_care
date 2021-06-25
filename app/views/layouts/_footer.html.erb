@@ -3,13 +3,13 @@
 		<div class="footer__inner inner">
 			<div class="footer__contents">
 				<div class="footer__left">
-					<div class="footer__logo"><a href=""><img src="assets/logo_transparent.png" alt="TeamCare"></a></div><!-- /.footer__logo -->
+					<div class="footer__logo"><a href="/"><img src="/assets/logo_transparent.png" alt="TeamCare"></a></div><!-- /.footer__logo -->
 				</div><!-- /.footer__left -->
 				<div class="footer__center">
 					<nav class="footer__nav">
 						<ul>
 						<li><a href="/" class="is-active">ホーム</a></li>
-            <li><a href="">マイページ</a></li>
+            <li> <%= link_to "マイページ", users_path(@user) %></li>
             <li><a href="">つぶやき投稿</a></li>
             <li><a href="">日記投稿</a></li>
             <li> <%= link_to "新規登録", signup_path %></li>
@@ -21,13 +21,13 @@
 			<div class="footer__copy">Copyright &copy; 2021 <a href="/" target="_blank">team_care</a> All rights reserved.</div><!-- /.footer__copy -->
 		</div><!-- /.footer__inner -->
 	</footer><!-- /.footer -->
-	<div class="totop"><a href="#"><img src="assets/totop.png" alt="上部へスクロール"></a></div><!-- /.totop -->
+	<div class="totop"><a href="#"><img src="/assets/totop.png" alt="上部へスクロール"></a></div><!-- /.totop -->
 <%else%>
 <footer class="footer">
 		<div class="footer__inner inner">
 			<div class="footer__contents">
 				<div class="footer__left">
-					<div class="footer__logo"><a href=""><img src="assets/logo_transparent.png" alt="TeamCare"></a></div><!-- /.footer__logo -->
+					<div class="footer__logo"><a href=""><img src="/assets/logo_transparent.png" alt="TeamCare"></a></div><!-- /.footer__logo -->
 				</div><!-- /.footer__left -->
 				<div class="footer__center">
 					<nav class="footer__nav">
@@ -43,5 +43,5 @@
 			<div class="footer__copy">Copyright &copy; 2021 <a href="/" target="_blank">team_care</a> All rights reserved.</div><!-- /.footer__copy -->
 		</div><!-- /.footer__inner -->
 	</footer><!-- /.footer -->
-	<div class="totop"><a href="#"><img src="assets/totop.png" alt="上部へスクロール"></a></div><!-- /.totop -->
+	<div class="totop"><a href="#"><img src="/assets/totop.png" alt="上部へスクロール"></a></div><!-- /.totop -->
   <%end%>

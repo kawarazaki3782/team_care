@@ -2,10 +2,10 @@
         <% if logged_in? %>
     <header class="header">
     <div class="header＿inner inner">
-      <div class="header＿logo"><img src="/assets/logo_transparent.png" alt=""></div> 
+      <div class="header＿logo"><a href="/"><img src="/assets/logo_transparent.png" alt=""></a></div> 
         <ul class="header＿nav">
             <li><a href="/">ホーム</a></li>
-            <li><a href="">マイページ</a></li>
+            <li> <%= link_to "マイページ", "/users/#{current_user.id}" %></li>
             <li><a href="">つぶやき投稿</a></li>
             <li><a href="">日記投稿</a></li>
             <li> <%= link_to "新規登録", signup_path %></li>
@@ -16,7 +16,7 @@
         <% else %>
     <header class="header">
     <div class="header＿inner inner">
-      <div class="header＿logo"><img src="/assets/logo_transparent.png" alt=""></div> 
+      <div class="header＿logo"><a href="/"><img src="/assets/logo_transparent.png" alt=""></a></div> 
         <div class="search">
         <%= render 'layouts/header_search' %>
         </div>

@@ -12,9 +12,7 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   resources :users
   get '/users_path', to: 'users#index'
-  get '/users/:userid', to: 'users#index'
   get  '/about',   to: 'static_pages#about'
-  get  '/mypage',   to: 'static_pages#mypage'
   resources :users do
     member do
       get :following, :followers
@@ -33,4 +31,5 @@ end
   get   'inquiry'         => 'inquiry#index'     
   post  'inquiry/confirm' => 'inquiry#confirm'   
   post  'inquiry/thanks'  => 'inquiry#thanks'    
+  post 'guest_login', to: "guest_sessions#create"
 end

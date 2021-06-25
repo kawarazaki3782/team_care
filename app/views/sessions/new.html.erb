@@ -1,29 +1,40 @@
 <% provide(:title, "Log in") %>
-<h1 class="text-center">ログイン</h1>
+<h2 class="login_title text-center">チームケアへようこそ<br>
+ひとりで悩まず、まずは誰かに相談しよう</h2>
 
-<div class="row">
+<div class="login row">
   <div class="col-md-6 col-md-offset-3">
-      <p class="text-center">試しに使ってみたい方はこちら</p>
-      <p class="btn-primary text-center" a href="#" role="button">簡単ログイン</p>
-
-      <p class="text-center">はじめての方はこちら</p>
-      <p class="btn-primary text-center" a href="#" role="button">会員登録</p>
-      <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
-      <div class="text-left">
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-      
-      <%= f.label :remember_me  do %>
-      <%= f.check_box :remember_me %>
-      <span>ログインの状態を保持する</span>
-      </div>
-      <% end %>
+      <div class ="login_border">
       <div class="text-center">
-      <%= f.submit "ログイン", class: "btn btn-primary" %>
+        <p class="lead">お試し利用はこちら</p>
+          <%= link_to "簡単ログイン", guest_login_path, class: 'btn_base' , method: :post %>
       </div>
-    <% end %>
-  </div>
+      <br>
+      <div class='text-center'>
+          <p class="lead">新規登録する</p>
+           <%= link_to "会員登録", signup_path, class: 'btn_base', method: :get %>
+      </div>
+      </div>
+      <br> 
+      <div class ="login_border2">
+         <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+          <p class="text-center lead">会員登録済みの方はこちら</p>
+          <dl>
+            <dt><%= f.label :email %></dt>
+            <dd><%= f.email_field :email, class: 'login_form' %></dd><br>
+          <dt><%= f.label :password %></dt>
+          <dd><%= f.password_field :password, class: 'login_form' %></dd>
+          <br>
+          <dt><%= f.label :remember_me  do %></dt>
+          <dd><%= f.check_box :remember_me %>
+          <span class="lead">ログイン状態を保持する</span></dd>
+          </dl>
+         <% end %>
+       <div class='login_btn text-center'>
+        <%= f.submit "ログイン", class: 'btn_base' %>
+       </div>
+      </div>
+        <% end %>
+    </div>
+    </div>
 </div>

@@ -5,9 +5,6 @@ class ApplicationController < ActionController::Base
     def about
     end
 
-    def contact 
-    end
-
 
     def set_q
       @q = Micropost.ransack(params[:q])

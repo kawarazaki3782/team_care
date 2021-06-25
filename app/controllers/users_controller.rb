@@ -63,16 +63,17 @@ class UsersController < ApplicationController
         # updateへリダイレクト 
         # リダイレクトするのは、F5などでブラウザのリロードで
         # 保存処理が二重に動かないようにするため
-        redirect_to action: :update
-      else
+        redirect_to :action => 'update' 
+       else
         # DBへの保存に失敗
         # 編集画面へ戻す
         render 'edit'
-      end
+       end
     end
   end 
 
   def update
+    @user = User.find(params[:id])
   end
 
   def index
@@ -102,7 +103,6 @@ class UsersController < ApplicationController
 
     def correct_user
       @user = User.find(params[:id])
-      logger.debug "task: #{@user.inspect}"
       redirect_to(root_url) unless current_user?(@user)
     end
 

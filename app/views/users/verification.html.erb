@@ -1,5 +1,5 @@
 <% provide(:title, '編集内容の確認') %>                                                            
-<%= image_tag @user.profile_image.thumb.url %>
+<%= image_tag @user.profile_image.thumb100.url, class:'icon' %>
 
 <%= form_with(model:@user, local: true, url: {action: 'verification'}, method: :patch) do |f| %>
     <%= @user.profile_image%>
