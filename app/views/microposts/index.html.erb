@@ -1,24 +1,25 @@
-<h1>つぶやき投稿</h1>
-<% if logged_in? %>
-  <%= link_to "ログアウト", logout_path, method: :delete %>
-  <%= link_to "マイページへ", user_path(current_user.id) %>
-  <h2>投稿する</h2>
-  <%= form_for @micropost do |f| %>
-    <%= f.text_field :content %>
-    <%= f.submit %>
-  <% end %>
-  <hr>
-  <h2>投稿一覧</h2>
-  <% @microposts.each do |micropost| %>
-    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
-    <p><a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a></p>
-    <% if current_user?(micropost.user) %>
-    <%= link_to "delete", micropost, method: :delete,
-                                       data: { confirm: "You sure?" } %>
-  <% end %>
-  <% end %>
+ <section id="" class="micropost_catalog section">
+	 <div class="micropost__inner inner">
+     <h2 class="section-title_post">つぶやき投稿一覧</h2>
+      <div class="timeline_area">
+                <% @microposts.each do |micropost| %>
+                <div class="timeline_posts">     
+                    <div class="timeline_image_name">
+                      <%= image_tag @user.profile_image.url, class:'icon2 user_image' %>
+                      <p class="post_name"><%= @user.name %></p>
+                      <p class="post_time"><%= micropost.created_at.strftime('%m月%d日%H:%M:%S')%><br>
+                    </div>
+                  <div class="timeline_content_show">
+                    <p class="post-text"><a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a></p> 
+                    <p class="post_delete"><% if current_user?(micropost.user) %>
+                    <%= link_to "削除", micropost, method: :delete,
+                                                    data: { confirm: "つぶやきを削除しますか?" } %></p>    
+                  </div>
+                   <% end %>   
+                </div>  
+          <% end %>
+      </div>
+   </div>
+</section>
+<%= paginate @microposts %>
 
-<% else %>
-  <%= link_to "ユーザー登録", signup_path, class: "btn btn-lg btn-primary" %>
-  <%= link_to "ログイン", login_path, class: "btn btn-lg btn-primary"%>
-<% end %>

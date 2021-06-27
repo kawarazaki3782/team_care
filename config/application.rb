@@ -18,6 +18,8 @@ module TeamCare
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     # 認証トークンをremoteフォームに埋め込む
+    config.time_zone = 'Asia/Tokyo'
     config.action_view.embed_authenticity_token_in_remote_forms = true
+    config.i18n.default_locale = :ja
   end
 end

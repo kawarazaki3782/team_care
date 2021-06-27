@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_21_043223) do
+ActiveRecord::Schema.define(version: 2021_06_25_165634) do
+
+  create_table "categories", charset: "utf8mb3", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "comments", charset: "utf8mb3", force: :cascade do |t|
     t.string "content"
@@ -28,6 +34,7 @@ ActiveRecord::Schema.define(version: 2021_06_21_043223) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "post_image"
+    t.integer "category_id"
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
   end

@@ -1,24 +1,62 @@
-<h1>つぶやき詳細ページ</h1>
-<h3><%= @micropost.user.name %></h3>
-<h3><%= @micropost.content %></h3>
+<section id="" class="micropost_show section">
+	 <div class="micropost__inner inner">
+     <h2 class="section-title_post">つぶやき詳細</h2>
+      <div class="timeline_area">
+         <div class="timeline_posts">
+           <div class="timeline_image_name">
+                <%= image_tag @user.profile_image.url, class:'icon2 user_image' %>
+                      <p class="post_name_show"><%= @user.name %></p>
+                      <p class="post_time_show"><%= @micropost.created_at.strftime('%m月%d日%H:%M:%S')%></p><br>
+           </div>
+                <div class="timeline_content">
+                  <p class="post-text"><%= @micropost.content %></p> 
+                  
+                  <p class="post_delete_show"><% if current_user?(@micropost.user) %>
+                  <%= link_to "削除", @micropost, method: :delete,
+                                                    data: { confirm: "つぶやきを削除しますか?" } %></p>    
+                </div>
+            <% end %>   
+        <div>
+      </div>  
+  </div>
+</section>
+<div class="post_category_show">
+  <h2 class="section-title_post">カテゴリー</h2>
+  <div class="post_category_show2">
+  <p class="post-category btn btn-success btn-lg"><%= @micropost.category.name %></p>
+ </div>
+</div>
+<div class="post_image_show">
+  <h2 class="section-title_post">添付画像</h2>
+  <div class="post_image_show2">
   <%= image_tag @micropost.post_image.url if @micropost.post_image? %>
-  </span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(@micropost.created_at) %> ago.
-</span>
-<h2>コメント一覧</h2>
+ </div>
+</div>
+<h2 class="section-title_post">コメント一覧</h2>
 <% @comments.each do |c| %>
-  <div>
-    <a href="/users/<%= @micropost.user.id %>"><%= c.user.name %></a>
-    <%= c.content %>
-    <hr>
+  <div class="timeline_area">
+         <div class="timeline_posts">
+           <div class="timeline_image_name">
+             <%= image_tag @user.profile_image.url, class:'icon2 user_image' %>
+             <a href="/users/<%= @micropost.user.id %>"><%= c.user.name %></a>
+             <%= localize c.created_at %>
+           </div>
+           <div class="timeline_content">
+              <p class="post-text"><%= c.content %></p>   
+              <p class="post_delete_show"><% if current_user?(@micropost.user) %>
+               <%= link_to "削除", micropost_comment_path(c.micropost.id, c.id), method: :delete,
+                                                    data: { confirm: "コメントを削除しますか?" } %></p>    
+           </div>
+         </div>
+      <% end %>
+  </div>
+<% end %>
+<%= form_for [@micropost, @comment] do |f| %>
+  <div class="post_comment_catalog"><%= f.text_field :content %>
+    <%= f.hidden_field :micropost_id, value: @micropost.id %>
+  </div>
+  <div class="post_comment_btn">
+    <%= f.submit 'コメントする' %>
   </div>
 <% end %>
 
-<%= form_for [@micropost, @comment] do |f| %>
-  <%= f.text_field :content %>
-  <%= f.hidden_field :micropost_id, value: @micropost.id %>
-  <br>
-  <%= f.submit 'コメントする' %>
-<% end %>
-<%= link_to "ホームへ戻る", microposts_path %>

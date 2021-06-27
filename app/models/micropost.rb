@@ -6,8 +6,18 @@ class Micropost < ApplicationRecord
   validates :content, presence: true, length: { maximum: 140 }
   mount_uploader :post_image, PostImageUploader
   validate :post_image_size
+  belongs_to :category, optional: true
 
+  def microposts
+    return Micropost.where(user_id: self.id)
+  end
 
+  def user
+    #インスタンスメソッドないで、selfはインスタンス自身を表す
+    return User.find_by(id: self.user_id)
+  end
+
+  
   private
 
 # アップロードされた画像のサイズをバリデーションする

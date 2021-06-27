@@ -18,10 +18,12 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  resources :microposts, only: [:index, :show, :create, :destroy,]
+  
+  resources :microposts, only: [:index, :show, :create, :destroy, :new]
   resources :microposts do
     resources :comments, only: [:create, :destroy]
   end
+  
   resources :relationships,   only: [:create, :destroy]
   resources :microposts do
     collection do
@@ -32,4 +34,6 @@ end
   post  'inquiry/confirm' => 'inquiry#confirm'   
   post  'inquiry/thanks'  => 'inquiry#thanks'    
   post 'guest_login', to: "guest_sessions#create"
+  resources :categories, except: [:show]
+  
 end

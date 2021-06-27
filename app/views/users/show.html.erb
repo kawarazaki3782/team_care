@@ -75,17 +75,6 @@
   <a class="btn btn-lg btn-info text-center" href="#" role="button">コメント履歴</a>
   <a class="btn btn-lg btn-info text-center" href="#" role="button">リアクション履歴</a>
   </div> 
-  
-  <h2>投稿内容</h2>
-  <% @user.microposts.each do |micropost| %>
-  <a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a>
-    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
-    <% if current_user?(micropost.user) %>
-    <%= link_to "delete", micropost, method: :delete,
-                                       data: { confirm: "You sure?" } %>
-  <% end %>
-  <hr>
-  <% end %>                                          
 </div>
 </div>
 
@@ -168,18 +157,7 @@
   <a class="btn btn-lg btn-info text-center" href="#" role="button">下書きフォルダ</a>
   <a class="btn btn-lg btn-info text-center" href="#" role="button">コメント履歴</a>
   <a class="btn btn-lg btn-info text-center" href="#" role="button">リアクション履歴</a>
-  </div> 
-  
-  <h2>投稿内容</h2>
-  <% @user.microposts.each do |micropost| %>
-  <a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a>
-    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
-    <% if current_user?(micropost.user) %>
-    <%= link_to "delete", micropost, method: :delete,
-                                       data: { confirm: "You sure?" } %>
-  <% end %>
-  <hr>
-  <% end %>                                          
+  </div>                                 
 </div>
 </div>
 

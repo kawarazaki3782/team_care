@@ -8,3 +8,33 @@
   <%# <%= link_to "削除",micropost, method: :delete %> 
   <% end %>
 </ul>
+
+
+<li id="micropost-<%= micropost.id %>">
+  <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
+  <span class="content">
+  <%= micropost.content %>
+  <%= image_tag micropost.post_image.url if micropost.post_image? %>
+  </span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+    <% if current_user?(micropost.user) %>
+      <%= link_to "delete", micropost, method: :delete,
+                                       data: { confirm: "You sure?" } %>
+    <% end %>
+  </span>
+  </li>
+ <h2>コメント一覧</h2>
+<% @comments.each do |c| %>
+  <div>
+    <a href="/users/<%= @micropost.user.id %>"><%= c.user.email %></a>
+    <%= c.content %>
+    <hr>
+  </div>
+<% end %>
+
+<%= form_for [@micropost, @comment] do |f| %>
+  <%= f.text_field :content %>
+  <br>
+  <%= f.submit 'コメントする' %>
+<% end %>
