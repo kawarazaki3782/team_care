@@ -35,5 +35,10 @@ end
   post  'inquiry/thanks'  => 'inquiry#thanks'    
   post 'guest_login', to: "guest_sessions#create"
   resources :categories, except: [:show]
+
+  resources :users, only: [:index, :show]
+  resources :microposts, only: [:index, :show, :create] do
+    resources :likes, only: [:create, :destroy]
+  end
   
 end

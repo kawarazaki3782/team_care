@@ -10,12 +10,23 @@
            </div>
                 <div class="timeline_content">
                   <p class="post-text"><%= @micropost.content %></p> 
-                  
+                  <div class="post_like_show">
+                    <p><i class="far fa-smile unlike-btn"></i><%= @micropost.likes.count %></p>
+                      <% if current_user.already_liked?(@micropost) %>
+                        <%= link_to micropost_like_path(@micropost), method: :delete do %>
+                        <i class="far fa-smile like-btn"></i>
+                      <% end %>
+                      <% else %>
+                        <%= link_to micropost_likes_path(@micropost), method: :post do %>
+                        <i class="far fa-smile unlike-btn"></i>
+                      <% end %>
+                      <% end %>
+                  </div>
                   <p class="post_delete_show"><% if current_user?(@micropost.user) %>
                   <%= link_to "削除", @micropost, method: :delete,
                                                     data: { confirm: "つぶやきを削除しますか?" } %></p>    
                 </div>
-            <% end %>   
+               <% end %>   
         <div>
       </div>  
   </div>
@@ -32,7 +43,23 @@
   <%= image_tag @micropost.post_image.url if @micropost.post_image? %>
  </div>
 </div>
-<h2 class="section-title_post">コメント一覧</h2>
+<div class="post_likes_show">
+  <h2 class="section-title_post">いいねしたユーザー<p><i class="far fa-smile unlike-btn"></i><%= @micropost.likes.count %></p></h2>
+  <div class="post_like_show2">
+  <% @micropost.liked_users.each do |user| %>
+      <%= user.name %>
+  <% end %>
+  </div>
+</div>
+<h2 class="section-title_post">コメント一覧<p><i class="far fa-comment comment_count"></i><%= @micropost.comments.count %></p></h2>
+<%= form_for [@micropost, @comment] do |f| %>
+  <div class="post_comment_catalog"><%= f.text_field :content %>
+    <%= f.hidden_field :micropost_id, value: @micropost.id %>
+  </div>
+  <div class="post_comment_btn">
+    <%= f.submit 'コメントする' %>
+  </div>
+<% end %>
 <% @comments.each do |c| %>
   <div class="timeline_area">
          <div class="timeline_posts">
@@ -49,14 +76,6 @@
            </div>
          </div>
       <% end %>
-  </div>
-<% end %>
-<%= form_for [@micropost, @comment] do |f| %>
-  <div class="post_comment_catalog"><%= f.text_field :content %>
-    <%= f.hidden_field :micropost_id, value: @micropost.id %>
-  </div>
-  <div class="post_comment_btn">
-    <%= f.submit 'コメントする' %>
   </div>
 <% end %>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_25_165634) do
+ActiveRecord::Schema.define(version: 2021_06_27_192553) do
 
   create_table "categories", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 2021_06_25_165634) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["micropost_id"], name: "index_comments_on_micropost_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "likes", charset: "utf8mb3", force: :cascade do |t|
+    t.bigint "micropost_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["micropost_id"], name: "index_likes_on_micropost_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "microposts", charset: "utf8mb3", force: :cascade do |t|
@@ -68,5 +77,7 @@ ActiveRecord::Schema.define(version: 2021_06_25_165634) do
 
   add_foreign_key "comments", "microposts"
   add_foreign_key "comments", "users"
+  add_foreign_key "likes", "microposts"
+  add_foreign_key "likes", "users"
   add_foreign_key "microposts", "users"
 end

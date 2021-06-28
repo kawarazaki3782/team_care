@@ -6,6 +6,7 @@ class MicropostsController < ApplicationController
     def index
       @microposts = current_user.microposts.all.page(params[:page]).per(5)
       @user = current_user
+      @like = Like.new
 
     end
 
@@ -18,6 +19,7 @@ class MicropostsController < ApplicationController
       @comments = @micropost.comments
       @comment = Comment.new
       @user = current_user
+      @like = Like.new
     end
 
     def create
