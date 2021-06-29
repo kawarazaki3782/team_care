@@ -27,3 +27,8 @@ ja:
   time:
     formats:
       default: "%Y年%m月%d日%H:%M"
+
+  activerecord:
+  errors:
+    messages:
+      record_invalid: "バリデーションに失敗しました: %{errors}"

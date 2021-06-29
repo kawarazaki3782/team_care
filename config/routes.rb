@@ -40,7 +40,13 @@ end
   resources :microposts, only: [:index, :show, :create] do
     resources :likes, only: [:create, :destroy]
   end
-  
   resources :diaries
-  
+
+  resources :diaries, only: [:index, :show, :create] do
+    resources :likes, only: [:create, :destroy]
+  end
+
+  resources :diaries do
+    resources :comments, only: [:create, :destroy]
+  end
 end

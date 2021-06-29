@@ -44,17 +44,18 @@
  </div>
 </div>
 <div class="post_likes_show">
-  <h2 class="section-title_post">いいねしたユーザー<p><i class="far fa-smile unlike-btn"></i><%= @micropost.likes.count %></p></h2>
+  <h2 class="section-title_post">いいねしたユーザー<p><i class="far fa-smile unlike-btn"></i><%= @diary.likes.count %></p></h2>
   <div class="post_like_show2">
   <% @diary.liked_users.each do |user| %>
       <%= user.name %>
   <% end %>
   </div>
 </div>
-<h2 class="section-title_post">コメント一覧<p><i class="far fa-comment comment_count"></i><%= @micropost.comments.count %></p></h2>
-<%= form_for [@diary, @comment] do |f| %>
+<h2 class="section-title_post">コメント一覧<p><i class="far fa-comment comment_count"></i><%= @diary.comments.count %></p></h2>
+
+<%= form_with [@diary, @comment] do |f| %>
   <div class="post_comment_catalog"><%= f.text_field :content %>
-    <%= f.hidden_field :micropost_id, value: @diary.id %>
+    <%= f.hidden_field :diary_id, value: @diary.id %>
   </div>
   <div class="post_comment_btn">
     <%= f.submit 'コメントする' %>
@@ -71,7 +72,7 @@
            <div class="timeline_content">
               <p class="post-text"><%= c.content %></p>   
               <p class="post_delete_show"><% if current_user?(@user) %>
-               <%= link_to "削除", micropost_comment_path(c.micropost.id, c.id), method: :delete,
+               <%= link_to "削除", diary_comment_path(c.diary.id, c.id), method: :delete,
                                                     data: { confirm: "コメントを削除しますか?" } %></p>    
            </div>
          </div>

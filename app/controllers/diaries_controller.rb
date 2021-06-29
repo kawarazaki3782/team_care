@@ -13,7 +13,7 @@ class DiariesController < ApplicationController
     def  create
       @diary = Diary.new(diary_params)
       @diary.user_id = current_user.id
-        if @diary.save!
+        if @diary.save
           flash[:success] = "日記を投稿しました。"
           redirect_to diaries_path
         else
