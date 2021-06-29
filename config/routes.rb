@@ -41,4 +41,6 @@ end
     resources :likes, only: [:create, :destroy]
   end
   
+  resources :diaries
+  
 end

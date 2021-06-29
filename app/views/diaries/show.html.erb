@@ -1,29 +1,29 @@
 <section id="" class="micropost_show section">
 	 <div class="micropost__inner inner">
-     <h2 class="section-title_post">つぶやき詳細</h2>
+     <h2 class="section-title_post">日記詳細</h2>
       <div class="timeline_area">
          <div class="timeline_posts">
            <div class="timeline_image_name">
                 <%= image_tag @user.profile_image.url, class:'icon2 user_image' %>
                       <p class="post_name_show"><%= @user.name %></p>
-                      <p class="post_time_show"><%= @micropost.created_at.strftime('%m月%d日%H:%M')%></p><br>
+                      <p class="post_time_show"><%= @diary.created_at.strftime('%m月%d日%H:%M')%></p><br>
            </div>
                 <div class="timeline_content">
-                   <p class="post-text"><%= @micropost.content %></p> 
+                   <p class="post-text"><%= @diary.content %></p> 
                     <div class="post_like_show">
-                      <p><i class="far fa-smile unlike-btn"></i><%= @micropost.likes.count %></p>
-                       <% if current_user.already_liked?(@micropost) %>
-                          <%= link_to micropost_like_path(@micropost), method: :delete do %>
+                      <p><i class="far fa-smile unlike-btn"></i><%= @diary.likes.count %></p>
+                       <% if current_user.already_liked?(@diary) %>
+                          <%= link_to micropost_like_path(@diary), method: :delete do %>
                           <i class="far fa-smile like-btn"></i>
                          <% end %>
                        <% else %>
-                         <%= link_to micropost_likes_path(@micropost), method: :post do %>
+                         <%= link_to micropost_likes_path(@diary), method: :post do %>
                          <i class="far fa-smile unlike-btn"></i>
                         <% end %>
                        <% end %>
                     </div>
-                  <p class="post_delete_show"><% if current_user?(@micropost.user) %>
-                  <%= link_to "削除", @micropost, method: :delete,
+                  <p class="post_delete_show"><% if current_user?(@diary.user) %>
+                  <%= link_to "削除", @diary, method: :delete,
                                                     data: { confirm: "つぶやきを削除しますか?" } %></p>    
                 </div>
                <% end %>   
@@ -34,28 +34,27 @@
 <div class="post_category_show">
   <h2 class="section-title_post">カテゴリー</h2>
   <div class="post_category_show2">
-  <p class="btn_base_category"><%= @micropost.category.name %></p>
-  
+  <p class="btn_base_category"><%= @diary.category.name %></p>
  </div>
 </div>
 <div class="post_image_show">
   <h2 class="section-title_post">添付画像</h2>
   <div class="post_image_show2">
-  <%= image_tag @micropost.post_image.url if @micropost.post_image? %>
+  <%= image_tag @diary.diary_image.url if @diary.diary_image? %>
  </div>
 </div>
 <div class="post_likes_show">
   <h2 class="section-title_post">いいねしたユーザー<p><i class="far fa-smile unlike-btn"></i><%= @micropost.likes.count %></p></h2>
   <div class="post_like_show2">
-  <% @micropost.liked_users.each do |user| %>
+  <% @diary.liked_users.each do |user| %>
       <%= user.name %>
   <% end %>
   </div>
 </div>
 <h2 class="section-title_post">コメント一覧<p><i class="far fa-comment comment_count"></i><%= @micropost.comments.count %></p></h2>
-<%= form_for [@micropost, @comment] do |f| %>
+<%= form_for [@diary, @comment] do |f| %>
   <div class="post_comment_catalog"><%= f.text_field :content %>
-    <%= f.hidden_field :micropost_id, value: @micropost.id %>
+    <%= f.hidden_field :micropost_id, value: @diary.id %>
   </div>
   <div class="post_comment_btn">
     <%= f.submit 'コメントする' %>
@@ -66,12 +65,12 @@
          <div class="timeline_posts">
            <div class="timeline_image_name">
              <%= image_tag @user.profile_image.url, class:'icon2 user_image' %>
-             <a href="/users/<%= @micropost.user.id %>"><%= c.user.name %></a>
+             <a href="/users/<%= @diary.user.id %>"><%= c.user.name %></a>
              <%= localize c.created_at %>
            </div>
            <div class="timeline_content">
               <p class="post-text"><%= c.content %></p>   
-              <p class="post_delete_show"><% if current_user?(@micropost.user) %>
+              <p class="post_delete_show"><% if current_user?(@user) %>
                <%= link_to "削除", micropost_comment_path(c.micropost.id, c.id), method: :delete,
                                                     data: { confirm: "コメントを削除しますか?" } %></p>    
            </div>

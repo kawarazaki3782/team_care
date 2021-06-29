@@ -1,0 +1,35 @@
+<section id="" class="micropost_show section">
+	 <div class="micropost__inner inner">
+      <h2 class="section-title_diary">日記編集画面</h2>
+        <div class="timeline_area">
+          <div class="timeline_diary">
+              <div class="timeline_frame">
+                <%= form_for(@diary, url: diary_path(@diary)) do |f| %>
+                <div class="diary_edit_title">
+                    <%= f.label :タイトル %><br>
+                    <%= f.text_field :title, autofocus: true, :placeholder =>"#{@diary.title}", class: 'form_diary_title'%>
+                </div>
+                <div class="diary_edit_text">
+                    <%= f.label :本文 %><br>
+                    <%= f.text_area :content, :placeholder =>"#{@diary.content}", class: 'form_diary_content'%>
+                </div>
+                <div class="diary_edit_category">
+                    <%= f.label :カテゴリー %><br>
+                    <%= f.text_area :category_id, :placeholder =>"#{@diary.category}", class: 'form_diary_category'%>
+                </div>
+                <div class="diary_edit_image">
+                    <%= f.label :添付画像 %><br>
+                    <%= f.file_field :diary_image %>
+                    <%= image_tag @diary.diary_image.url, class:'form_diary_image' %>
+                    <%= f.hidden_field :diary_image_cache %>
+                </div>
+               </div>
+            <div class="btn_diary_edit">    
+                <%= link_to "下書きフォルダに保存",root_path , class: "btn_base_draft text-center"%>
+                <%= f.submit "更新する" , class: "btn_base_update text-center"%>
+            </div>
+            <% end %>
+          </div>
+       </div>
+   </div>
+</section>

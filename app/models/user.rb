@@ -9,8 +9,10 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :comments, dependent: :destroy
+  has_many :diaries, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_microposts, through: :likes, source: :micropost
+  has_many :liked_diaries, through: :likes, source: :diary
   before_save { email.downcase! }
   attr_accessor :remember_token
   validates :name,  presence: true, length: { maximum: 20 }

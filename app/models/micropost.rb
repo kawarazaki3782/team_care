@@ -7,7 +7,7 @@ class Micropost < ApplicationRecord
   mount_uploader :post_image, PostImageUploader
   validate :post_image_size
   belongs_to :category, optional: true
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
 
   def microposts

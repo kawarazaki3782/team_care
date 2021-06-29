@@ -7,7 +7,7 @@
             <li><a href="/">ホーム</a></li>
             <li> <%= link_to "マイページ", "/users/#{current_user.id}" %></li>
             <li><%= link_to "つぶやき投稿", new_micropost_url %></li>
-            <li><a href="">日記投稿</a></li>
+            <li><%= link_to "日記投稿", new_diary_url %></li>
             <li> <%= link_to "新規登録", signup_path %></li>
             <li> <%= link_to "ログアウト", logout_path,method: :delete %></li>
         </ul>
