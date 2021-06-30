@@ -4,8 +4,8 @@
       <div class="timeline_area">
          <div class="timeline_posts">
            <div class="timeline_image_name">
-                <%= image_tag @user.profile_image.url, class:'icon2 user_image' %>
-                      <p class="post_name_show"><%= @user.name %></p>
+                <%= image_tag @micropost.user.profile_image.url, class:'icon2 user_image' %>
+                      <p class="post_name_show"><%= @micropost.user.name %></p>
                       <p class="post_time_show"><%= @micropost.created_at.strftime('%m月%d日%H:%M')%></p><br>
            </div>
                 <div class="timeline_content">
@@ -34,8 +34,9 @@
 <div class="post_category_show">
   <h2 class="section-title_post">カテゴリー</h2>
   <div class="post_category_show2">
-  <p class="btn_base_category"><%= @micropost.category.name %></p>
-  
+  <p class="btn_base_category">
+  <%= @micropost.category.name if @micropost.category_id?%>
+  </p>
  </div>
 </div>
 <div class="post_image_show">
@@ -54,6 +55,7 @@
 </div>
 <h2 class="section-title_post">コメント一覧<p><i class="far fa-comment comment_count"></i><%= @micropost.comments.count %></p></h2>
 <%= form_for [@micropost, @comment] do |f| %>
+
   <div class="post_comment_catalog"><%= f.text_field :content %>
     <%= f.hidden_field :micropost_id, value: @micropost.id %>
   </div>

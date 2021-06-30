@@ -1,19 +1,20 @@
 class DiariesController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
-  before_action :ensure_correct_user,   only: :destroy
+  before_action :ensure_correct_user2,   only: :destroy
 
     def  new
         @diary = Diary.new
     end
 
     def  index
+      @user = current_user
         
     end
     
     def  create
       @diary = Diary.new(diary_params)
       @diary.user_id = current_user.id
-        if @diary.save
+        if @diary.save!
           flash[:success] = "日記を投稿しました。"
           redirect_to diaries_path
         else
@@ -26,7 +27,6 @@ class DiariesController < ApplicationController
       @diary = Diary.find(params[:id])
       @comments = @diary.comments
       @comment = Comment.new
-      @user = current_user
       @like = Like.new  
     end
 
@@ -43,16 +43,24 @@ class DiariesController < ApplicationController
       end
     end
 
-    def  destory
+    def destroy
       @diary.destroy
       flash[:success] = "日記を削除しました"
-      redirect_to request.referrer || root_url
+      redirect_to root_url
     end
 
     private
     
         def diary_params
           params.require(:diary).permit(:content, :diary_image, :category_id, :user_id, :title, :diary_image_cache )
+        end
+
+        def ensure_correct_user2
+          @diary = Diary.find_by(id: params[:id])
+          if @diary.user_id != @current_user.id
+          flash[:notice] = "権限がありません"
+          redirect_to("/diaries/index")
+          end
         end
 
 end

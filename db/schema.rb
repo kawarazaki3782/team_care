@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_28_143047) do
+ActiveRecord::Schema.define(version: 2021_06_30_005046) do
 
   create_table "categories", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
@@ -21,10 +21,10 @@ ActiveRecord::Schema.define(version: 2021_06_28_143047) do
   create_table "comments", charset: "utf8mb3", force: :cascade do |t|
     t.string "content"
     t.bigint "user_id", null: false
-    t.bigint "micropost_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "diary_id", null: false
+    t.bigint "micropost_id"
+    t.bigint "diary_id"
     t.index ["diary_id"], name: "index_comments_on_diary_id"
     t.index ["micropost_id"], name: "index_comments_on_micropost_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
@@ -43,11 +43,11 @@ ActiveRecord::Schema.define(version: 2021_06_28_143047) do
   end
 
   create_table "likes", charset: "utf8mb3", force: :cascade do |t|
-    t.bigint "micropost_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "diary_id", null: false
+    t.bigint "diary_id"
+    t.bigint "micropost_id"
     t.index ["diary_id"], name: "index_likes_on_diary_id"
     t.index ["micropost_id"], name: "index_likes_on_micropost_id"
     t.index ["user_id"], name: "index_likes_on_user_id"

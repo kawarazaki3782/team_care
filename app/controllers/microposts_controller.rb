@@ -18,7 +18,6 @@ class MicropostsController < ApplicationController
       @micropost = Micropost.find(params[:id])
       @comments = @micropost.comments
       @comment = Comment.new
-      @user = current_user
       @like = Like.new
     end
 

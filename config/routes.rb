@@ -40,7 +40,7 @@ end
   resources :microposts, only: [:index, :show, :create] do
     resources :likes, only: [:create, :destroy]
   end
-  resources :diaries
+  resources :diaries, only: [:index, :show, :create, :destroy, :new]
 
   resources :diaries, only: [:index, :show, :create] do
     resources :likes, only: [:create, :destroy]
