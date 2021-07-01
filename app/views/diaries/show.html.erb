@@ -2,7 +2,7 @@
 	 <div class="micropost__inner inner">
      <h2 class="section-title_post">日記詳細</h2>
       <div class="timeline_area">
-         <div class="timeline_posts">
+         <div class="timeline_diary">
            <div class="timeline_image_name">
                 <%= image_tag @diary.user.profile_image.url, class:'icon2 user_image' %>
                       <p class="post_name_show"><%= @diary.user.name %></p>
@@ -12,7 +12,7 @@
                    <p class="post-text"><%= @diary.content %></p> 
                     <div class="post_like_show">
                       <p><i class="far fa-smile unlike-btn"></i><%= @diary.likes.count %></p>
-                       <% if current_user.already_liked?(@diary) %>
+                       <% if current_user.already_liked2?(@diary) %>
                           <%= link_to diary_like_path(@diary), method: :delete do %>
                           <i class="far fa-smile like-btn"></i>
                          <% end %>
@@ -66,7 +66,7 @@
   <div class="timeline_area">
          <div class="timeline_posts">
            <div class="timeline_image_name">
-             <%= image_tag @user.profile_image.url, class:'icon2 user_image' %>
+             <%= image_tag @diary.user.profile_image.url, class:'icon2 user_image' %>
              <a href="/users/<%= @diary.user.id %>"><%= c.user.name %></a>
              <%= localize c.created_at %>
            </div>

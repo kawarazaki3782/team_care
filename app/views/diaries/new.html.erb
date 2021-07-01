@@ -20,7 +20,7 @@
         </div>
        </div>                                          
       <div class="btn_diary text-center">
-        <%= link_to "下書きフォルダに保存",root_path , class: "btn_base_draft text-center"%>
+        <%= f.select :status, Diary.statuses.map { |k, v| [t("diary.status.#{k}"), k] }, selected: @diary.status %>
         <%= f.submit "投稿する", class: "btn_base_update text-center" %>
         <% end %>
         </div> 

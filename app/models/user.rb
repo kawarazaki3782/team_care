@@ -82,5 +82,8 @@ class User < ApplicationRecord
     self.likes.exists?(micropost_id: micropost.id)
   end
 
+  def already_liked2?(diary)
+    self.likes.exists?(diary_id: diary.id)
+  end
   
 end

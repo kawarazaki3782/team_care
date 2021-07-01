@@ -2,8 +2,7 @@ class LikesController < ApplicationController
     def create
       if params[:micropost_id].nil?
         @diary = Diary.find(params[:diary_id])
-        @like = current_user.likes.create!(id: @diary.id)
-        
+        @like = current_user.likes.create!(diary_id: @diary.id)
         redirect_back(fallback_location: root_path)
         elsif params[:diary_id].nil?
         @micropost = Micropost.find(params[:micropost_id])

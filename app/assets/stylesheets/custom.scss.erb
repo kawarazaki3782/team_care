@@ -1324,9 +1324,12 @@ h2.section-title_diary {
 }
 
 .diary_category {
-   margin: 0 auto;   
+   text-align: center;   
 }
 
+input#diary_diary_image {
+    margin: auto;
+}
 
 .diary_title {
 	border-width: 1px;
@@ -1373,20 +1376,25 @@ h2.section-title_diary {
 
 
 .form_diary_content {
-	width: 500px;
-	height: 800px;
+	width: 700px;
+	height: 500px;
 	box-shadow: 0 0 3px #3498db;
     border: 1px solid #3498db;
 }
 
-.form_diary_category {
-	
+.diary_edit_image {
+    display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .form_diary_image {
-	
+	width: 30%;
 }
 
+.diary_edit_category {
+	text-align: center;
+}
 
 .btn_base_update{
 		display: inline-block;
@@ -1452,7 +1460,38 @@ h2.section-title_diary {
     -moz-border-radius: 3px;
     border-radius: 3px;
     font-size: 16px;
-    height: 800px;
+    height: 1200px;
 	margin: 0 auto;
 	margin-bottom: 20px;
+}
+
+.btn_diary_draft {
+	text-align: center;	
+	margin-bottom: 20px;
+}
+
+//////////////////////diary 詳細///////////////////////////
+
+.timeline_diary {
+    background-color: #fff;
+    padding-top: 5px;
+    padding-bottom: 15px;
+    min-height: 50px;
+    height: auto !important;
+    height: 90px;
+    display: -ms-flexbox;
+    border-bottom: 1px solid #efe7d7;
+    border-top: 1px solid #efe7d7;
+}
+
+select#diary_status {
+    width: 300px;
+    height: 80px;
+    font-size: 50px;
+}
+
+select#diary_category_id {
+    width: 300px;
+    height: 80px;
+    font-size: 50px;
 }

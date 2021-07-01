@@ -8,6 +8,8 @@ class DiariesController < ApplicationController
 
     def  index
       @user = current_user
+      @diary = Diaries.published,current_user.microposts.all.page(params[:page]).per(5)
+      @like = Like.new
         
     end
     
@@ -25,6 +27,7 @@ class DiariesController < ApplicationController
 
     def  show
       @diary = Diary.find(params[:id])
+      require_login if @diary.draft?
       @comments = @diary.comments
       @comment = Comment.new
       @like = Like.new  
@@ -52,7 +55,7 @@ class DiariesController < ApplicationController
     private
     
         def diary_params
-          params.require(:diary).permit(:content, :diary_image, :category_id, :user_id, :title, :diary_image_cache )
+          params.require(:diary).permit(:content, :diary_image, :category_id, :user_id, :title, :diary_image_cache, :status)
         end
 
         def ensure_correct_user2
@@ -61,6 +64,10 @@ class DiariesController < ApplicationController
           flash[:notice] = "権限がありません"
           redirect_to("/diaries/index")
           end
+        end
+
+        def require_login
+          redirect_to login_path if !logged_in?
         end
 
 end

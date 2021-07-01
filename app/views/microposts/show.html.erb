@@ -67,7 +67,7 @@
   <div class="timeline_area">
          <div class="timeline_posts">
            <div class="timeline_image_name">
-             <%= image_tag @user.profile_image.url, class:'icon2 user_image' %>
+             <%= image_tag @micropost.user.profile_image.url, class:'icon2 user_image' %>
              <a href="/users/<%= @micropost.user.id %>"><%= c.user.name %></a>
              <%= localize c.created_at %>
            </div>
