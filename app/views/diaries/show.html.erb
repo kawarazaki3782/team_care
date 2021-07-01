@@ -1,16 +1,16 @@
-<section id="" class="micropost_show section">
-	 <div class="micropost__inner inner">
-     <h2 class="section-title_post">日記詳細</h2>
+<section id="" class="diary_show section">
+	 <div class="diary__inner inner">
+     <h2 class="section-title_diary">日記詳細</h2>
       <div class="timeline_area">
          <div class="timeline_diary">
            <div class="timeline_image_name">
                 <%= image_tag @diary.user.profile_image.url, class:'icon2 user_image' %>
-                      <p class="post_name_show"><%= @diary.user.name %></p>
-                      <p class="post_time_show"><%= @diary.created_at.strftime('%m月%d日%H:%M')%></p><br>
+                      <p class="diary_name_show"><%= @diary.user.name %></p>
+                      <p class="diary_time_show"><%= @diary.created_at.strftime('%m月%d日%H:%M')%></p><br>
            </div>
                 <div class="timeline_content">
-                   <p class="post-text"><%= @diary.content %></p> 
-                    <div class="post_like_show">
+                   <p class="diary-text"><%= @diary.content %></p> 
+                    <div class="diary_like_show">
                       <p><i class="far fa-smile unlike-btn"></i><%= @diary.likes.count %></p>
                        <% if current_user.already_liked2?(@diary) %>
                           <%= link_to diary_like_path(@diary), method: :delete do %>
@@ -22,7 +22,7 @@
                         <% end %>
                        <% end %>
                     </div>
-                  <p class="post_delete_show"><% if current_user?(@diary.user) %>
+                  <p class="diary_delete_show"><% if current_user?(@diary.user) %>
                   <%= link_to "削除", @diary, method: :delete,
                                                     data: { confirm: "日記を削除しますか?" } %></p>    
                 </div>
@@ -31,20 +31,20 @@
        </div>  
   </div>
 </section>
-<div class="post_category_show">
-  <h2 class="section-title_post">カテゴリー</h2>
-  <div class="post_category_show2">
+<div class="diary_category_show">
+  <h2 class="section-title_diary">カテゴリー</h2>
+  <div class="diary_category_show2">
   <p class="btn_base_category"><%= @diary.category.name if @diary.category_id?%></p>
  </div>
 </div>
-<div class="post_image_show">
-  <h2 class="section-title_post">添付画像</h2>
-  <div class="post_image_show2">
+<div class="diary_image_show">
+  <h2 class="section-title_diary">添付画像</h2>
+  <div class="diary_image_show2">
   <%= image_tag @diary.diary_image.url if @diary.diary_image? %>
  </div>
 </div>
-<div class="post_likes_show">
-  <h2 class="section-title_post">いいねしたユーザー<p><i class="far fa-smile unlike-btn"></i><%= @diary.likes.count %></p></h2>
+<div class="diary_likes_show">
+  <h2 class="section-title_diary">いいねしたユーザー<p><i class="far fa-smile unlike-btn"></i><%= @diary.likes.count %></p></h2>
   
   <div class="post_like_show2">
   <% @diary.liked_users.each do |user| %>
@@ -52,27 +52,27 @@
   <% end %>
   </div>
 </div>
-<h2 class="section-title_post">コメント一覧<p><i class="far fa-comment comment_count"></i><%= @diary.comments.count %></p></h2>
+<h2 class="section-title_diary">コメント一覧<p><i class="far fa-comment comment_count"></i><%= @diary.comments.count %></p></h2>
 
 <%= form_for [@diary, @comment] do |f| %>
-  <div class="post_comment_catalog"><%= f.text_field :content %>
+  <div class="diary_comment_catalog"><%= f.text_field :content %>
     <%= f.hidden_field :diary_id, value:@diary.id %>
   </div>
-  <div class="post_comment_btn">
+  <div class="diary_comment_btn">
     <%= f.submit 'コメントする' %>
   </div>
 <% end %>
 <% @comments.each do |c| %>
   <div class="timeline_area">
-         <div class="timeline_posts">
+         <div class="timeline_diaries">
            <div class="timeline_image_name">
              <%= image_tag @diary.user.profile_image.url, class:'icon2 user_image' %>
              <a href="/users/<%= @diary.user.id %>"><%= c.user.name %></a>
              <%= localize c.created_at %>
            </div>
            <div class="timeline_content">
-              <p class="post-text"><%= c.content %></p>   
-              <p class="post_delete_show"><% if current_user?(@diary.user) %>
+              <p class="diary-text"><%= c.content %></p>   
+              <p class="diary_delete_show"><% if current_user?(@diary.user) %>
                <%= link_to "削除", diary_comment_path(c.diary.id,c.id), method: :delete,
                                                     data: { confirm: "コメントを削除しますか?" } %></p>    
            </div>

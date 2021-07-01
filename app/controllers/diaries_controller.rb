@@ -8,7 +8,7 @@ class DiariesController < ApplicationController
 
     def  index
       @user = current_user
-      @diary = Diaries.published,current_user.microposts.all.page(params[:page]).per(5)
+      @diaries = current_user.diaries.all.page(params[:page]).per(5)
       @like = Like.new
         
     end

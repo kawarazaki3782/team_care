@@ -3,8 +3,8 @@
 	 <div class="diary__inner inner">
      <h2 class="section-title_diary">日記投稿画面</h2>
        <div class="diary_formarea">
+         <%= form_for(@diary) do |f| %>
           <div class="diary_textarea">
-              <%= form_for(@diary) do |f| %>
               <%= render 'shared/error_messages', object: f.object %>
             <div class="field_diary text-center">
               <%= f.text_area :title, placeholder: "タイトルを入力してください",class:'diary_title'%>

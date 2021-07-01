@@ -26,7 +26,7 @@ ja:
 
   time:
     formats:
-    default: "%Y年%m月%d日%H:%M"
+      default: "%Y年%m月%d日%H:%M"
 
   activerecord:
     errors:
