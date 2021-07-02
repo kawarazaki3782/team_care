@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'favorites/index'
   get 'inquiry/index'
   get 'inquiry/confirm'
   get 'inquiry/thanks'
@@ -49,4 +50,16 @@ end
   resources :diaries do
     resources :comments, only: [:create, :destroy]
   end
+
+  resources :microposts do
+    post 'add' => 'favorites#create'
+    delete '/add' => 'favorites#destroy'
+  end
+
+  resources :diaries do
+    post 'add' => 'favorites#create'
+    delete '/add' => 'favorites#destroy'
+  end
+
+  resources :favorites, only: [:index, :create, :destroy]
 end

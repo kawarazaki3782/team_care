@@ -23,6 +23,9 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
   validates :profile, length: { maximum: 1000 }
+  has_many :favorites
+  has_many :microposts, through: :favorites
+  has_many :diaries, through: :favorites
   mount_uploader :profile_image, ImageUploader
   
    # 渡された文字列のハッシュ値を返す
@@ -85,5 +88,7 @@ class User < ApplicationRecord
   def already_liked2?(diary)
     self.likes.exists?(diary_id: diary.id)
   end
+
+ 
   
 end

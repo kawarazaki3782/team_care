@@ -5,6 +5,16 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @micropost = @user.micropost_ids
+    @diary = @user.diary_ids
+    # @favorites = Favorite.where(user_id: current_user.id).pluck(:diary_id) 
+    # @favorite_diaries = current_user.favorite_diaries.includes(:user).order(created_at: :desc)
+    # logger.debug "task: #{@favorites.inspect}"
+
+    # @diary = @user.diary_ids
+    # favorites = Favorite.where(user_id: current_user.id).pluck(:diary_id)  # ログイン中のユーザーのお気に入りのpost_idカラムを取得
+    # @favorites = Diary.find(favorites) 
+    
     # @microposts = @user.microposts.paginate(page: params[:page])
   end
   

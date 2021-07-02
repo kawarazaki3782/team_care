@@ -21,6 +21,11 @@
                          <i class="far fa-smile unlike-btn"></i>
                         <% end %>
                        <% end %>
+                        <% if !Favorite.exists?(user_id:current_user.id,micropost_id:@micropost.id) %>
+                          <%= link_to "お気に入り",micropost_add_path(@micropost), class:"btn_base_favorites", method: :post %>
+                          <% else %>
+                          <%= link_to "お気に入り解除",micropost_add_path(@micropost), class:"btn_base_favorites", method: :delete %>
+                        <% end %>
                     </div>
                   <p class="post_delete_show"><% if current_user?(@micropost.user) %>
                   <%= link_to "削除", @micropost, method: :delete,

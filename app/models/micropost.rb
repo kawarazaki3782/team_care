@@ -9,6 +9,8 @@ class Micropost < ApplicationRecord
   belongs_to :category, optional: true
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
+  has_many :favorites
+  has_many :users, through: :favorites
 
   # def microposts
   #   return Micropost.where(user_id: self.id)

@@ -10,5 +10,7 @@ class Diary < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
   enum status: { draft: 0, published: 1 }
+  has_many :favorites
+  has_many :users, through: :favorites
   validates :status, inclusion: { in: Diary.statuses.keys } 
 end
