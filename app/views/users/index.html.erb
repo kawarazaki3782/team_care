@@ -1,11 +1,11 @@
 <% provide(:title, 'ユーザー一覧') %>
-<h1>All users</h1>
-
-<%= will_paginate %>
-
-<ul class="users">
+<section id="" class="users_section">
+	 <div class="users__inner inner">
+     <h2 class="section-title_users">ユーザー覧</h2>
+<%= paginate @users %>
+<ul class="users_ul">
   <% @users.each do |user| %>
-    <li>
+    <li class="users_list">
       <%= image_tag user.profile_image.thumb100.url, class:'icon_mini' %>
       <%= link_to(user.name, "/users/#{user.id}") %> 
       <% if current_user.admin? && !current_user?(user) %>
@@ -15,6 +15,6 @@
     </li>
   <% end %>
   </ul>
-  <%= link_to "ホームへ戻る", microposts_path %>
-
-  <%= will_paginate %>
+ <%= paginate @users %>
+ </div>
+ </section>

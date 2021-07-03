@@ -4,13 +4,13 @@ class FavoritesController < ApplicationController
     if params[:diary_id].nil?
       @micropost = @user.micropost_ids
       favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc).pluck(:micropost_id) # ログイン中のユーザーのお気に入りのpost_idカラムを取得
-      @favorites = Micropost.find(favorites) 
+      @favorites = Micropost.find(favorites)
       
 
     elsif params[:micropost_id].nil?
       @diary = @user.diary_ids
       favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc).pluck(:diary_id) # ログイン中のユーザーのお気に入りのpost_idカラムを取得
-      @favorites = Diary.find(favorites) 
+      @favorites = Diary.find(favorites)
 
     else 
       redirect_to current_user

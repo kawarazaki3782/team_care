@@ -87,7 +87,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.page(page: params[:page])
+    @users = User.all.page(params[:page]).per(5)
   end
 
   def following
