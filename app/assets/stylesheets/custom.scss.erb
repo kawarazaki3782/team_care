@@ -790,122 +790,311 @@ h2.section-title {
 	object-fit:cover;
 	border-radius:20%;
 }
-/* マイページ タブ1*/
-.tab-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  margin:20px 0;
+
+.btn_base_users {
+		display: inline-block;
+		width: 300px;
+		max-width: 100%;
+		line-height: 72px;
+		height: 72px;
+		text-align: center;
+		background: $color-main2;
+		color: #fff;
+		font-size: 24px;
+		font-weight: 700;
+		border-radius: 8px;
+		cursor: pointer;
+	    outline: none;
+	    padding: 0rem 2rem;
+        box-shadow: 2px 2px 4px gray;
+        border: 1px solid #ccc;
+
+		a {
+		  text-decoration: none;
+		}
 }
-.tab-wrap:after {
-  content: '';
-  width: 100%;
-  height: 3px;
-  background: DeepSkyBlue;
-  display: block;
-  order: -1;
-}
-.tab-label {
-  color: White;
-  background: LightGray;
-  font-weight: bold;
-  text-shadow: 0 -1px 0 rgba(0,0,0,.2);
-  white-space: nowrap;
-  text-align: center;
-  padding: 10px .5em;
-  order: -1;
-  position: relative;
-  z-index: 1;
-  cursor: pointer;
-  border-radius: 5px 5px 0 0;
-  flex: 1;
-}
-.tab-label:not(:last-of-type) {
-  margin-right: 5px;
-}
-.tab-content {
-  width: 100%;
-  height: 0;
-  overflow: hidden;
-  opacity: 0;
-}
-.tab-switch:checked+.tab-label {
-  background: DeepSkyBlue;
-}
-.tab-switch:checked+.tab-label+.tab-content {
-  height: auto;
-  overflow: auto;
-  padding: 15px;
-  opacity: 1;
-  transition: .5s opacity;
-  box-shadow: 0 0 3px rgba(0,0,0,.2);
-}
-.tab-switch {
-  display: none;
-}
-/* マイページ タブ2*/
-.tab-wrap2 {
-  display: flex;
-  flex-wrap: wrap;
-  margin:20px 0;
-}
-.tab-wrap2:after {
-  content: '';
-  width: 100%;
-  height: 3px;
-  display: block;
-  order: -1;
+.users_tab {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid #707070;
 }
 
-.tab-label2 {
-  color: White;
-  background: LightGray;
-  font-weight: bold;
-  text-shadow: 0 -1px 0 rgba(0,0,0,.2);
-  white-space: nowrap;
-  text-align: center;
-  padding: 10px .5em;
-  order: -1;
-  position: relative;
-  z-index: 1;
-  cursor: pointer;
-  border-radius: 5px 5px 0 0;
-  flex: 1;
-}
-.tab-label2:not(:last-of-type) {
-  margin-right: 5px;
-}
-.tab-content2 {
-  width: 100%;
-  height: 0;
-  overflow: hidden;
-  opacity: 0;
+.btn_base_notifications {
+	   display: inline-block;
+		width: 300px;
+		max-width: 100%;
+		line-height: 72px;
+		height: 72px;
+		text-align: center;
+		background: #79bbc7;
+		color: #fff;
+		font-size: 24px;
+		font-weight: 700;
+		border-radius: 8px;
+		cursor: pointer;
+	    outline: none;
+	    padding: 0rem 2rem;
+        box-shadow: 2px 2px 4px gray;
+        border: 1px solid #ccc;
 }
 
-.tab-switch2:checked+.tab-label {
-  background: DeepSkyBlue;
-}
-.tab-switch2:checked+.tab-label+.tab-content {
-  height: auto;
-  overflow: auto;
-  padding: 15px;
-  opacity: 1;
-  transition: .5s opacity;
-  box-shadow: 0 0 3px rgba(0,0,0,.2);
+.notifications_button {
+    text-align: center;
+    margin-top: 50px;
 }
 
-.tab-switch2 {
-  display: none;
+.profile_image_users {
+	text-align: center;
 }
 
-.heading {
-  color: #fff;
-  background:  DeepSkyBlue;
-  font-size: 2rem;
-  line-height: 1;
-  font-weight: bold;
-  padding: 15px 21px;
-  margin-bottom: 10px;
+.user_name_users {
+	text-align: center;
 }
+
+.user_status_users {
+
+}
+
+.user_name_users {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.user_status_users {
+    font-size: 20px;
+	margin-bottom: 30px;
+}
+
+.users_tab_contents {
+	display: flex;
+	justify-content: space-evenly;
+	border-bottom: 1px solid #707070;
+	margin-bottom: 30px;
+}
+
+.users_content-item {
+
+}
+
+.btn_base_contents {
+		display: inline-block;
+		width: 300px;
+		max-width: 100%;
+		line-height: 72px;
+		height: 72px;
+		text-align: center;
+		background: $color-main2;
+		color: #fff;
+		font-size: 24px;
+		font-weight: 700;
+		border-radius: 8px;
+		cursor: pointer;
+	    outline: none;
+	    padding: 0rem 2rem;
+        box-shadow: 2px 2px 4px gray;
+        border: 1px solid #ccc;
+}
+.btn_base_profile {
+	    display: inline-block;
+		width: 300px;
+		max-width: 100%;
+		line-height: 72px;
+		height: 72px;
+		text-align: center;
+		background: #79bbc7;
+		color: #fff;
+		font-size: 24px;
+		font-weight: 700;
+		border-radius: 8px;
+		cursor: pointer;
+	    outline: none;
+	    padding: 0rem 2rem;
+        box-shadow: 2px 2px 4px gray;
+        border: 1px solid #ccc;
+}
+	
+.profile_edit_users {
+	text-align: center;
+}
+
+.follow_form_care {
+	text-align: center;
+
+}
+
+.longcare_users{
+	font-size: 50px;
+    text-align: center;
+}
+
+.longcare_content {
+	font-size: 20px;
+}
+
+ul.profile_ul {
+    text-align: center;
+	margin-bottom: 30px;
+}
+
+li.profile_list {
+    font-size: 25px;
+}
+
+.self-introduction {
+	text-align: center;
+}
+
+.profile_title {
+    font-size: 25px;
+}
+
+.profile_content {
+	border-width: 1px;
+    border-style: solid;
+    width: 70%;
+    height: 300px;
+    padding-top: 40px;
+    border-radius: 10px;
+    margin: 0 auto;
+	margin-bottom: 30px;
+}
+
+
+.user_dm_link {
+	margin-bottom: 30px;
+}
+
+.users_dm {
+   font-size: 25px;
+}
+
+.users_history_button {
+	margin-bottom: 30px;
+}
+
+
+.history_text {
+	font-size: 25px;
+}
+
+.btn_base_history {
+	    display: inline-block;
+		width: 300px;
+		max-width: 100%;
+		line-height: 72px;
+		height: 72px;
+		text-align: center;
+		background: #79bbc7;
+		color: #fff;
+		font-size: 24px;
+		font-weight: 700;
+		border-radius: 8px;
+		cursor: pointer;
+	    outline: none;
+	    padding: 0rem 2rem;
+        box-shadow: 2px 2px 4px gray;
+        border: 1px solid #ccc;
+
+}
+
+//////////////////////利用者詳細///////////////////////////
+
+.follow_block_tab {
+	display: flex;
+	justify-content: space-evenly;
+	border-bottom: 1px solid #707070;
+
+}
+
+.follow_block_item {
+	    display: inline-block;
+		width: 300px;
+		max-width: 100%;
+		line-height: 72px;
+		height: 72px;
+		text-align: center;
+		background: #79bbc7;
+		color: #fff;
+		font-size: 24px;
+		font-weight: 700;
+		border-radius: 8px;
+		cursor: pointer;
+	    outline: none;
+	    padding: 0rem 2rem;
+        box-shadow: 2px 2px 4px gray;
+        border: 1px solid #ccc;
+
+}
+
+.follow_item_btn {
+		width: 300px;
+		max-width: 100%;
+		line-height: 72px;
+		height: 72px;
+		background: #e0a2a7;
+		color: #fff;
+		font-size: 24px;
+		font-weight: 700;
+		border-radius: 8px;
+		cursor: pointer;
+	    outline: none;
+	    padding: 0rem 2rem;
+        box-shadow: 2px 2px 4px gray;
+        border: 1px solid #ccc;
+}
+
+.unfollow_item_btn {
+		width: 300px;
+		max-width: 100%;
+		line-height: 72px;
+		height: 72px;
+		background: #ede7be;
+		color: #fff;
+		font-size: 24px;
+		font-weight: 700;
+		border-radius: 8px;
+		cursor: pointer;
+	    outline: none;
+	    padding: 0rem 2rem;
+        box-shadow: 2px 2px 4px gray;
+        border: 1px solid #ccc;
+}
+.follow_form_users {
+    text-align: center;
+	margin-bottom: 50px;
+}
+
+.timeline_newposts {
+	background-color: #fff;
+    padding-top: 5px;
+    padding-bottom: 15px;
+    height: auto !important;
+    display: -ms-flexbox;
+    border-bottom: 1px solid #efe7d7;
+    border-top: 1px solid #efe7d7;
+}
+
+.timeline_content_new {
+    display: -webkit-box;
+	text-align: center;
+}
+
+.timeline_newdiaries {
+    padding-top: 5px;
+    border-top: 1px solid #efe7d7;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
 
 //////////////////////login はじめ///////////////////////////
 
@@ -1675,4 +1864,11 @@ h2.section-title_users {
 li.users_list {
 	border-top: 1px solid #efe7d7;
     border-bottom: 1px solid #efe7d7;
+}
+
+.icon2 {
+    max-width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 20%;
 }
