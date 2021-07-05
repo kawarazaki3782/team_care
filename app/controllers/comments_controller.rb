@@ -11,20 +11,17 @@ class CommentsController < ApplicationController
     end
 
     def destroy
-      if params[:micropost_id].nil?
+       unless  params[:diary_id].nil?
         @comment = Comment.find_by(diary_id: params[:diary_id], user_id: current_user.id)
         @comment.destroy
         redirect_back(fallback_location: root_path)
+       end 
 
-      elsif params[:diary_id].nil?
+       unless  params[:micropost_id].nil?
         @comment = Comment.find_by(micropost_id: params[:micropost_id], user_id: current_user.id)
         @comment.destroy
         redirect_back(fallback_location: root_path)
-    
-      else
-        redirect_to current_user
-      end   
-
+       end   
     end
     
 

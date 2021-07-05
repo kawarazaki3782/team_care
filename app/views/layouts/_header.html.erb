@@ -3,6 +3,9 @@
     <header class="header">
     <div class="header＿inner inner">
       <div class="header＿logo"><a href="/"><img src="/assets/logo_transparent.png" alt=""></a></div> 
+      <div class="search">
+        <%= render 'layouts/header_search' %>
+        </div>
         <ul class="header＿nav">
             <li><a href="/">ホーム</a></li>
             <li> <%= link_to "マイページ", "/users/#{current_user.id}" %></li>
@@ -17,9 +20,6 @@
     <header class="header">
     <div class="header＿inner inner">
       <div class="header＿logo"><a href="/"><img src="/assets/logo_transparent.png" alt=""></a></div> 
-        <div class="search">
-        <%= render 'layouts/header_search' %>
-        </div>
         <ul class="header＿nav">
             <li><a href="/">ホーム</a></li>
             <li> <%= link_to "チームケアとは", about_path %></li>

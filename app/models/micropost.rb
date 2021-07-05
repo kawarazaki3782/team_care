@@ -12,14 +12,14 @@ class Micropost < ApplicationRecord
   has_many :favorites
   has_many :users, through: :favorites
 
-  # def microposts
-  #   return Micropost.where(user_id: self.id)
-  # end
+  def microposts
+    return Micropost.where(user_id: self.id)
+  end
 
-  # def user
-  #   #インスタンスメソッドないで、selfはインスタンス自身を表す
-  #   return User.find_by(id: self.user_id)
-  # end
+  def user
+    #インスタンスメソッドないで、selfはインスタンス自身を表す
+    return User.find_by(id: self.user_id)
+  end
 
   
   private

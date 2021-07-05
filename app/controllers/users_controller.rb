@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   before_action :admin_user, only: :destroy
   
   def show
-
     if logged_in? && current_user.id.to_s == params[:id]
     @user = User.find(params[:id])
     @micropost = @user.micropost_ids
@@ -12,20 +11,10 @@ class UsersController < ApplicationController
     
     else
     @user = User.find(params[:id])
-    @microposts = Micropost.all.order(created_at: :desc).page(params[:page]).per(3)
-    @diaries = Diary.all.order(created_at: :desc).page(params[:page]).per(3)
-    # @microposts = @user.microposts.order(created_at: :desc)
-    # @diaries = @user.diaries.order(created_at: :desc)
+    @microposts = @user.microposts.order(created_at: :desc).page(params[:page]).per(3)
+    @diaries = @user.diaries.order(created_at: :desc).page(params[:page]).per(3)
     end
-    # @favorites = Favorite.where(user_id: current_user.id).pluck(:diary_id) 
-    # @favorite_diaries = current_user.favorite_diaries.includes(:user).order(created_at: :desc)
-    # logger.debug "task: #{@favorites.inspect}"
-
-    # @diary = @user.diary_ids
-    # favorites = Favorite.where(user_id: current_user.id).pluck(:diary_id)  # ログイン中のユーザーのお気に入りのpost_idカラムを取得
-    # @favorites = Diary.find(favorites) 
     
-    # @microposts = @user.microposts.paginate(page: params[:page])
   end
   
   def new

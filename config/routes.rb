@@ -61,5 +61,5 @@ end
     delete '/add' => 'favorites#destroy'
   end
 
-  resources :favorites, only: [:index, :create, :destroy]
+  resources :favorites
 end

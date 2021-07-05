@@ -10,7 +10,7 @@
                       <p class="favorite_name"><%= diary.user.name %></p>
                       <p class="favorite_time"><%= localize diary.created_at %></p><br>
                     </div>
-                  <div class="timeline_content_show">
+                  <div class="timeline_favorite_show">
                     <p class="favorite-text"><a href="/diaries/<%=diary.id%>"><%= diary.content %></a></p> 
                   <p><i class="far fa-smile unlike-btn"></i><%=diary.liked_users.count %></p>
                   <p><i class="far fa-comment comment_count"></i><%=diary.comments.count %></p>
@@ -31,13 +31,13 @@
      <h2 class="section-title_favorite">お気に入りのつぶやき一覧</h2>
       <div class="timeline_area">
                 <% @favorites.each do |micropost| %>
-                <div class="timeline_diaries">     
+                <div class="timeline_favorite">     
                     <div class="timeline_image_name">
                       <%= link_to  image_tag(micropost.user.profile_image.url, class:'icon2 user_image'), "/users/#{current_user.id}"%>
                       <p class="favorite_name"><%= micropost.user.name %></p>
                       <p class="favorite_time"><%= localize micropost.created_at %></p><br>
                     </div>
-                  <div class="timeline_content_show">
+                  <div class="timeline_favorite_show">
                     <p class="favorite-text"><a href="/microposts/<%=micropost.id%>"><%= micropost.content %></a></p> 
                   <p><i class="far fa-smile unlike-btn"></i><%=micropost.liked_users.count %></p>
                   <p><i class="far fa-comment comment_count"></i><%=micropost.comments.count %></p>

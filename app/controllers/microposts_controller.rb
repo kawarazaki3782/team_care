@@ -4,10 +4,9 @@ class MicropostsController < ApplicationController
     # before_action :authenticate_user?, only: [:show, :create]
     
     def index
-      @microposts = current_user.microposts.all.page(params[:page]).per(5)
+      @microposts = current_user.microposts.all.order("created_at DESC").page(params[:page]).per(5)
       @user = current_user
       @like = Like.new
-
     end
 
     def new
@@ -36,8 +35,9 @@ class MicropostsController < ApplicationController
     
     def search
       #Viewのformで取得したパラメータをモデルに渡す
-      @microposts = Micropost.search(params[:search])
+      @microposts = Micropost.search(params[:search]).page(params[:page]).per(5)
     end
+    
 
     def destroy
       @micropost.destroy
