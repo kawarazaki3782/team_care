@@ -12,14 +12,12 @@ class CommentsController < ApplicationController
 
     def destroy
        unless  params[:diary_id].nil?
-        @comment = Comment.find_by(diary_id: params[:diary_id], user_id: current_user.id)
-        @comment.destroy
+        Comment.find(params[:id]).destroy
         redirect_back(fallback_location: root_path)
        end 
 
        unless  params[:micropost_id].nil?
-        @comment = Comment.find_by(micropost_id: params[:micropost_id], user_id: current_user.id)
-        @comment.destroy
+        Comment.find(params[:id]).destroy
         redirect_back(fallback_location: root_path)
        end   
     end
@@ -51,7 +49,7 @@ class CommentsController < ApplicationController
     
       private
       def comment_params
-        params.require(:comment).permit(:content, :micropost_id, :diary_id)
+        params.require(:comment).permit(:content, :micropost_id, :diary_id, :user_id)
       end
 
     

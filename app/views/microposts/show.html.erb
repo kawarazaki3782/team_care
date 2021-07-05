@@ -72,13 +72,13 @@
   <div class="timeline_area">
          <div class="timeline_posts">
            <div class="timeline_image_name">
-             <%= image_tag @micropost.user.profile_image.url, class:'icon2 user_image' %>
-             <a href="/users/<%= @micropost.user.id %>"><%= c.user.name %></a>
+             <%= image_tag c.user.profile_image.url, class:'icon2 user_image' %>
+             <a href="/users/<%= c.user.id %>"><%= c.user.name %></a>
              <%= localize c.created_at %>
            </div>
            <div class="timeline_content">
               <p class="post-text"><%= c.content %></p>   
-              <p class="post_delete_show"><% if current_user?(@micropost.user) %>
+              <p class="post_delete_show"><% if current_user?(c.user) %>
                <%= link_to "削除", micropost_comment_path(c.micropost.id, c.id), method: :delete,
                                                     data: { confirm: "コメントを削除しますか?" } %></p>    
            </div>

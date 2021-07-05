@@ -71,13 +71,13 @@
   <div class="timeline_area">
          <div class="timeline_diaries">
            <div class="timeline_image_name">
-             <%= image_tag @diary.user.profile_image.url, class:'icon2 user_image' %>
-             <a href="/users/<%= @diary.user.id %>"><%= c.user.name %></a>
+             <%= image_tag c.user.profile_image.url, class:'icon2 user_image' %>
+             <a href="/users/<%= c.user.id %>"><%= c.user.name %></a>
              <%= localize c.created_at %>
            </div>
            <div class="timeline_content">
               <p class="diary-text"><%= c.content %></p>   
-              <p class="diary_delete_show"><% if current_user?(@diary.user) %>
+              <p class="diary_delete_show"><% if current_user?(c.user) %>
                <%= link_to "削除", diary_comment_path(c.diary.id,c.id), method: :delete,
                                                     data: { confirm: "コメントを削除しますか?" } %></p>    
            </div>

@@ -1,31 +1,55 @@
-<% provide(:title, '編集内容の確認') %>                                                            
-<%= image_tag @user.profile_image.thumb100.url, class:'icon' %>
-
+<% provide(:title, '編集内容の確認') %>
+<section id="" class="confirm_section">
+	 <div class="confirm__inner inner">
+     <h2 class="section-title_confirm">編集内容の確認</h2>
+     <div class="confirm_textarea">                                                            
 <%= form_with(model:@user, local: true, url: {action: 'verification'}, method: :patch) do |f| %>
-    <%= @user.profile_image%>
-    <%= f.hidden_field :profile_image %>
-    <%= f.hidden_field :profile_image_cache %>
-    <%= @user.name %>
-    <%= f.hidden_field :name %>
-    <%= @user.email %>
-    <%= f.hidden_field :email %>
-    <%= @user.password %>
-    <%= f.hidden_field :password %>
-    <%= @user.gender %>
-    <%= f.hidden_field :gender %>
-    <%= @user.birthday %>
+   <div class="confirm_image">
+       <%= image_tag @user.profile_image.url, class:'icon' %>
+       <%= f.hidden_field :profile_image %>
+       <%= f.hidden_field :profile_image_cache %>
+   </div>
+    <div class="confirm_item"> 
+            氏名:<%= @user.name %>
+            <%= f.hidden_field :name %>
+          </div>
+          <div class="confirm_item">
+           メールアドレス:<%= @user.email %>
+           <%= f.hidden_field :email %>
+        </div>
+        <div class="confirm_item">
+          パスワード:<%= @user.password %>
+          <%= f.hidden_field :password %>
+        </div>
+        <div class="confirm_item">
+          性別:<%= @user.gender %>
+          <%= f.hidden_field :gender %>
+        </div>
+    <div class="confirm_item">
+    生年月日:<%= @user.birthday %>
     <%= f.hidden_field :birthday %>
-    <%= @user.address %>
+    </div>
+    <div class="confirm_item">
+    住所:<%= @user.address %>
     <%= f.hidden_field :address %>
-    <%= @user.long_teamcare %>
+    </div>
+    <div class="confirm_item">
+    介護の状況:<%= @user.long_teamcare %>
     <%= f.hidden_field :long_teamcare %>
-    <%= @user.profile %>
+    </div>
+    <div class="confirm_item">
+    自己紹介:<%= @user.profile %>
     <%= f.hidden_field :profile %>
+    <%= f.hidden_field :profile_image_cache %>
     <%= hidden_field_tag :"cache[profile_image]", @user.profile_image.cache_name %>
-    <div class="actions">
-      <%= f.submit '入力画面に戻る', name:'back' %>
     </div>
     <div class="actions">
-      <%= f.submit 'この内容で登録',name:'save' %>
+      <%= f.submit '入力画面に戻る', class: "btn_base_confirm_back", name: 'back' %>
     </div>
+    <div class="actions">
+      <%= f.submit 'この内容で登録', class: "btn_base_confirm", name:'save' %>
+    </div>  
 <% end %>
+  </div>
+ </div>
+</section>

@@ -7,11 +7,17 @@ class FavoritesController < ApplicationController
         @favorites = Micropost.find(favorites)
       end
       
-      unless  params[:diary_id].nil?
+      unless params[:diary_id].nil?
         @diary = @user.diary_ids
         favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc).pluck(:diary_id) # ログイン中のユーザーのお気に入りのpost_idカラムを取得
         @favorites = Diary.find(favorites)
       end
+
+      if params[:micropost_id].nil? 
+        if params[:diary_id].nil?
+        redirect_back(fallback_location: root_path)
+      end
+    end
   end
 
   def create
