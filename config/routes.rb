@@ -62,6 +62,6 @@ end
   end
 
   resources :favorites
-  resources :messages, :only => [:create]
+  resources :messages, :only => [:create, :destroy]
   resources :rooms, :only => [:create, :show, :index]
 end
