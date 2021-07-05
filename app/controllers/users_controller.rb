@@ -5,17 +5,49 @@ class UsersController < ApplicationController
   
   def show
     if logged_in? && current_user.id.to_s == params[:id]
-    @user = User.find(params[:id])
-    @micropost = @user.micropost_ids
-    @diary = @user.diary_ids
-    
-    else
-    @user = User.find(params[:id])
-    @microposts = @user.microposts.order(created_at: :desc).page(params[:page]).per(3)
-    @diaries = @user.diaries.order(created_at: :desc).page(params[:page]).per(3)
+      @user = User.find(params[:id])
+      @micropost = @user.micropost_ids
+      @diary = @user.diary_ids
+      @rooms = @user.rooms
+      @currentUserEntry=Entry.where(user_id: current_user.id)
+      @userEntry=Entry.where(user_id: @user.id)
+      @currentUserEntry.each do |cu|
+        @userEntry.each do |u|
+          if cu.room_id == u.room_id then
+            @isRoom = true
+            @roomId = cu.room_id
+          end
+        end
+      end
+      if @isRoom
+      else
+        @room = Room.new
+        @entry = Entry.new
+      end
     end
     
-  end
+    if logged_in? && current_user.id.to_s != params[:id]
+      @user = User.find(params[:id])
+      @microposts = @user.microposts.order(created_at: :desc).page(params[:page]).per(3)
+      @diaries = @user.diaries.order(created_at: :desc).page(params[:page]).per(3)
+      @currentUserEntry=Entry.where(user_id: current_user.id)
+      @userEntry=Entry.where(user_id: @user.id)
+      @currentUserEntry.each do |cu|
+          @userEntry.each do |u|
+            if cu.room_id == u.room_id then
+              @isRoom = true
+              @roomId = cu.room_id
+            end
+          end
+        end
+        if @isRoom
+        else
+          @room = Room.new
+          @entry = Entry.new
+        end
+      end
+    end
+
   
   def new
     @user = User.new

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_01_201225) do
+ActiveRecord::Schema.define(version: 2021_07_05_120730) do
 
   create_table "categories", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 2021_07_01_201225) do
     t.index ["user_id"], name: "index_diaries_on_user_id"
   end
 
+  create_table "entries", charset: "utf8mb3", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "room_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_entries_on_room_id"
+    t.index ["user_id"], name: "index_entries_on_user_id"
+  end
+
   create_table "favorites", charset: "utf8mb3", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "micropost_id"
@@ -63,6 +72,16 @@ ActiveRecord::Schema.define(version: 2021_07_01_201225) do
     t.index ["diary_id"], name: "index_likes_on_diary_id"
     t.index ["micropost_id"], name: "index_likes_on_micropost_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "messages", charset: "utf8mb3", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "room_id", null: false
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "microposts", charset: "utf8mb3", force: :cascade do |t|
@@ -86,6 +105,12 @@ ActiveRecord::Schema.define(version: 2021_07_01_201225) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
+  create_table "rooms", charset: "utf8mb3", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -107,8 +132,12 @@ ActiveRecord::Schema.define(version: 2021_07_01_201225) do
   add_foreign_key "comments", "microposts"
   add_foreign_key "comments", "users"
   add_foreign_key "diaries", "users"
+  add_foreign_key "entries", "rooms"
+  add_foreign_key "entries", "users"
   add_foreign_key "likes", "diaries"
   add_foreign_key "likes", "microposts"
   add_foreign_key "likes", "users"
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "microposts", "users"
 end

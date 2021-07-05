@@ -62,4 +62,6 @@ end
   end
 
   resources :favorites
+  resources :messages, :only => [:create]
+  resources :rooms, :only => [:create, :show, :index]
 end

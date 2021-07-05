@@ -55,11 +55,11 @@
   <div class="self-introduction">
   <p class="profile_title">自己紹介</p>
   <p class="profile_content"><%= @user.profile %></p>
-  <div>
+  </div>
 
   <div class="user_dm_link">
     <p class="users_dm">お手紙</p>
-    <%= link_to "送受信履歴", root_path, class: "btn_base_profile" %>
+     <%= link_to "送受信履歴", rooms_path, class: "btn_base_history" %>
   </div>
   <div class="users_history_button">
      <p class="history_text">履歴<p>
@@ -100,7 +100,6 @@
   
     <div class="follow_block_tab">
       <div class="follow_block_item"><%= link_to "ブロックする", microposts_path %></div>
-      <div class="follow_block_item"><%= link_to "手紙を送る", microposts_path %></div>
     </div>  
   <ul class="profile_ul">
    <li class="profile_list">性別:<%= @user.gender %></li>
@@ -111,6 +110,19 @@
   <div class="self-introduction">
   <p class="profile_title">自己紹介</p>
   <p class="profile_content"><%= @user.profile %></p>
+  </div>
+  <div class="user_dm_link">
+    <p class="users_dm">お手紙</p> 
+     <% if @isRoom == true %>
+    <p class="btn_base_history"><a href="/rooms/<%= @roomId %>">お手紙を送る</a>
+    <% else %>
+    <%= form_for @room do |f| %>
+      <%= fields_for @entry do |e| %>
+        <%= e.hidden_field :user_id, :value=> @user.id %>
+      <% end %>
+      <%= f.submit "お手紙を送る", class: "btn_base_history" %>
+    <% end %>
+    <% end %>
   </div>
 <h2 class="section-title_post">最近のつぶやき</h2>
       <div class="timeline_area">

@@ -27,6 +27,9 @@ class User < ApplicationRecord
   has_many :fav_microposts, through: :favorites, source: :micropost
   has_many :fav_diaries, through: :favorites, source: :diary
   mount_uploader :profile_image, ImageUploader
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
+  has_many :rooms, through: :entries, source: :room
   
    # 渡された文字列のハッシュ値を返す
    def User.digest(string)
