@@ -9,6 +9,7 @@ class LikesController < ApplicationController
       unless params[:micropost_id].nil?
         @micropost = Micropost.find(params[:micropost_id])
         @like = current_user.likes.create!(micropost_id: @micropost.id)
+        @micropost.create_notification_by(current_user)
         redirect_back(fallback_location: root_path)
       end
     end

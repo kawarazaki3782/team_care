@@ -30,6 +30,8 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
   has_many :rooms, through: :entries, source: :room
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
   
    # 渡された文字列のハッシュ値を返す
    def User.digest(string)
@@ -91,7 +93,17 @@ class User < ApplicationRecord
   def already_liked2?(diary)
     self.likes.exists?(diary_id: diary.id)
   end
-
+  
+  def create_notification_follow!(current_user)
+    temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
+  end
  
   
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_05_120730) do
+ActiveRecord::Schema.define(version: 2021_07_05_215647) do
 
   create_table "categories", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
@@ -93,6 +93,18 @@ ActiveRecord::Schema.define(version: 2021_07_05_120730) do
     t.integer "category_id"
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
+  end
+
+  create_table "notifications", charset: "utf8mb3", force: :cascade do |t|
+    t.integer "visiter_id"
+    t.integer "visited_id"
+    t.integer "diary_id"
+    t.integer "comment_id"
+    t.string "action"
+    t.boolean "checked", default: false, null: false
+    t.integer "micropost_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "relationships", charset: "utf8mb3", force: :cascade do |t|
