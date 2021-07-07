@@ -3,14 +3,31 @@ class CommentsController < ApplicationController
         @comment = Comment.new(comment_params)
         @comment.user_id = current_user.id
         @micropost = @comment.micropost
-        if @comment.save
-          @micropost.create_notification_comment!(current_user, @comment.id)
-          redirect_back(fallback_location: root_path)
-        else
+        @diary = @comment.diary
+        @comment.save
+
+        unless params[:micropost_id].nil? 
+        @micropost.create_notification_comment!(current_user, @comment.id)
           redirect_back(fallback_location: root_path)
         end
-    
+        
+        unless params[:diary_id].nil?
+          @diary.create_notification_comment!(current_user, @comment.id)
+          redirect_back(fallback_location: root_path)
+        end
     end
+    # @comment = Comment.new(comment_params)
+    #     @comment.user_id = current_user.id
+    #     @micropost = @comment.micropost
+    #     @diary = @comment.diary
+    #     if @comment.save
+    #       @micropost.create_notification_comment!(current_user, @comment.id)
+    #       redirect_back(fallback_location: root_path)
+    #     else
+    #       redirect_back(fallback_location: root_path)
+    #     end
+    
+    # end
 
     def destroy
        unless  params[:diary_id].nil?

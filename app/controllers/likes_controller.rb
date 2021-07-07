@@ -3,6 +3,7 @@ class LikesController < ApplicationController
       unless params[:diary_id].nil?
         @diary = Diary.find(params[:diary_id])
         @like = current_user.likes.create!(diary_id: @diary.id)
+        @diary.create_notification_by(current_user)
         redirect_back(fallback_location: root_path)
       end
 
