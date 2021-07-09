@@ -1,11 +1,12 @@
  <section id="" class="diary_catalog section">
 	 <div class="diary__inner inner">
-     <h2 class="section-title_diary">日記投稿一覧</h2>
+     <h2 class="section-title_diary">日記一覧</h2>
+     <%= link_to "下書きフォルダへ", "/diaries/draft", class: "diary_draft_btn" %>
       <div class="timeline_area">
                 <% @diaries.each do |diary| %>
                 <div class="timeline_diaries">     
                     <div class="timeline_image_name">
-                      <%= link_to  image_tag(@user.profile_image.url, class:'icon2 user_image'), "/users/#{current_user.id}"%>
+                      <%= link_to  image_tag(@user.profile_image.url, class:'icon2 user_image'), "/users/#{@user.id}"%>
                       <p class="diary_name"><%= @user.name %></p>
                       <p class="diary_time"><%= diary.created_at.strftime('%m月%d日%H:%M')%><br>
                     </div>

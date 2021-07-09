@@ -9,17 +9,17 @@ module NotificationsHelper
         #notification.actionがfollowかlikeかcommentか
         case notification.action
           when "follow" then
-            tag.a(notification.visiter.name, href:users_path(@visiter), style:"font-weight: bold;")+"があなたをフォローしました"
+            tag.a(notification.visiter.name, style:"font-weight: bold;")+"があなたをフォローしました"
           when "like" then
-            tag.a(notification.visiter.name, href:users_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:micropost_path(notification.micropost_id), style:"font-weight: bold;")+"にいいねしました"
+            tag.a(notification.visiter.name, style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:micropost_path(notification.micropost_id), style:"font-weight: bold;")+"にいいねしました"
           when "like2" then
-            tag.a(notification.visiter.name, href:users_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたの日記', href:diary_path(notification.diary_id), style:"font-weight: bold;")+"にいいねしました" 
+            tag.a(notification.visiter.name, style:"font-weight: bold;")+"が"+tag.a('あなたの日記', href:diary_path(notification.diary_id), style:"font-weight: bold;")+"にいいねしました" 
           when "comment" then
               @comment = Comment.find_by(id: @visiter_comment)&.content
-              tag.a(@visiter.name, href:users_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:micropost_path(notification.comment_id), style:"font-weight: bold;")+"にコメントしました"
+              tag.a(@visiter.name, style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:micropost_path(notification.micropost_id), style:"font-weight: bold;")+"にコメントしました"
           when "comment2" then
               @comment = Comment.find_by(id: @visiter_comment)&.content
-              tag.a(@visiter.name, href:users_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:diary_path(notification.comment_id), style:"font-weight: bold;")+"にコメントしました"
+              tag.a(@visiter.name, style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:diary_path(notification.diary_id), style:"font-weight: bold;")+"にコメントしました"
         end
     end
 

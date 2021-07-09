@@ -3,7 +3,7 @@
                 <% @microposts.each do |micropost| %>
                 <div class="timeline_posts">     
                     <div class="timeline_image_name">
-                      <p class="post_image"><%= image_tag micropost.user.profile_image.url, class:'icon2 user_image' %></p>
+                      <p class="post_image"><%= link_to image_tag(micropost.user.profile_image.url, class:'icon2 user_image'), "/users/#{micropost.user.id}" %></p>
                       <p class="post_name"><%= micropost.user.name %></p>
                       <p class="post_time"><%= micropost.created_at.strftime('%m月%d日%H:%M')%><br>
                     </div>

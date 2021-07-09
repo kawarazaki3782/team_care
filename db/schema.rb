@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_05_215647) do
+ActiveRecord::Schema.define(version: 2021_07_07_144509) do
+
+  create_table "blocks", charset: "utf8mb3", force: :cascade do |t|
+    t.bigint "blocker_id"
+    t.bigint "blocked_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["blocked_id"], name: "index_blocks_on_blocked_id"
+    t.index ["blocker_id", "blocked_id"], name: "index_blocks_on_blocker_id_and_blocked_id", unique: true
+    t.index ["blocker_id"], name: "index_blocks_on_blocker_id"
+  end
 
   create_table "categories", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
@@ -140,6 +150,8 @@ ActiveRecord::Schema.define(version: 2021_07_05_215647) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "blocks", "users", column: "blocked_id"
+  add_foreign_key "blocks", "users", column: "blocker_id"
   add_foreign_key "comments", "diaries"
   add_foreign_key "comments", "microposts"
   add_foreign_key "comments", "users"

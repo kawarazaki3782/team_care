@@ -3,8 +3,8 @@
 <% diary = notification.diary %>
 
 <div class="user-view clearfix ">
-  <%= link_to users_path(notification.visiter) do %>
-    <%=  image_tag notification.visiter.profile_image.url, class:"user-thumb", style:"width: 60px;"%>
+  <%= link_to users_path(visiter) do %>
+    <%= link_to image_tag(notification.visiter.profile_image.url, class:"notification_image", style:"width: 60px;"), "/users/#{notification.visiter.id}"%>
   <% end %>
   <%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
   <br>

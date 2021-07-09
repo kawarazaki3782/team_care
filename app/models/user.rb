@@ -32,7 +32,11 @@ class User < ApplicationRecord
   has_many :rooms, through: :entries, source: :room
   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
-  
+  has_many :blocking_blocks,foreign_key: "blocker_id", class_name: "Block",  dependent: :destroy
+  has_many :blocking, through: :blocking_blocks, source: :blocked
+  has_many :blocker_blocks,foreign_key: "blocked_id", class_name: "Block", dependent: :destroy
+  has_many :blockers, through: :blockers_blocks, source: :blocker
+
    # 渡された文字列のハッシュ値を返す
    def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -104,6 +108,19 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
- 
-  
+
+  #すでにブロック済みであればture返す
+  def blocking?(other_user)
+      self.blocking.include?(other_user)
+  end
+
+  #ユーザーをブロックする
+  def block(other_user)
+    self.blocking_blocks.create(blocked_id: other_user.id)
+  end
+
+  #ユーザーのブロックを解除する
+  def unblock(other_user)
+    self.blocking_blocks.find_by(blocked_id: other_user.id).destroy
+  end 
 end

@@ -1,15 +1,19 @@
 <section id="" class="diary_show section">
 	 <div class="diary__inner inner">
      <h2 class="section-title_diary">日記詳細</h2>
+     <%= link_to "日記を編集", edit_diary_path, class:"diary_edit_btn" %></p>
       <div class="timeline_area">
          <div class="timeline_diary">
            <div class="timeline_image_name">
-                <%= image_tag @diary.user.profile_image.url, class:'icon2 user_image' %>
+                <%= link_to image_tag(@diary.user.profile_image.url, class:'icon2 user_image'), "/users/#{@diary.user.id}" %>
                       <p class="diary_name_show"><%= @diary.user.name %></p>
                       <p class="diary_time_show"><%= @diary.created_at.strftime('%m月%d日%H:%M')%></p><br>
            </div>
                 <div class="timeline_content">
-                   <p class="diary-text"><%= @diary.content %></p> 
+                  <div class="diary_title_area">
+                   <p class="diary-title">タイトル:<%= @diary.title %></p>
+                  </div>
+                   <p class="diary-text">本文:<%= @diary.content %></p> 
                     <div class="diary_like_show">
                       <p><i class="far fa-smile unlike-btn"></i><%= @diary.likes.count %></p>
                        <% if current_user.already_liked2?(@diary) %>
@@ -71,7 +75,7 @@
   <div class="timeline_area">
          <div class="timeline_diaries">
            <div class="timeline_image_name">
-             <%= image_tag c.user.profile_image.url, class:'icon2 user_image' %>
+             <%= link_to image_tag(c.user.profile_image.url, class:'icon2 user_image'), "/users/#{c.user.id}" %>
              <a href="/users/<%= c.user.id %>"><%= c.user.name %></a>
              <%= localize c.created_at %>
            </div>

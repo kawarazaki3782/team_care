@@ -122,17 +122,21 @@ class UsersController < ApplicationController
   end
 
   def following
-    @title = "Following"
     @user  = User.find(params[:id])
-    @users = @user.following.page(page: params[:page])
-    render 'show_follow'
+    @users = @user.following.page(params[:page]).per(5)
+    render 'show_followed'
   end
 
   def followers
-    @title = "Followers"
     @user  = User.find(params[:id])
-    @users = @user.followers.page(page: params[:page])
-    render 'show_follow'
+    @users = @user.followers.page(params[:page]).per(5)
+    render 'show_follower'
+  end
+
+  def blocking
+    @user =User.find(params[:id])
+    @users =@user.blocking.page(params[:page]).per(5)
+    render 'show_blocking'
   end
 
     private

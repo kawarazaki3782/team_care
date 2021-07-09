@@ -14,10 +14,17 @@ Rails.application.routes.draw do
   resources :users
   get '/users_path', to: 'users#index'
   get  '/about',   to: 'static_pages#about'
+  
   resources :users do
     member do
       get :following, :followers
     end
+  end
+
+  resources :diaries do
+    collection do
+      get :draft
+    end            
   end
   
   resources :microposts, only: [:index, :show, :create, :destroy, :new]
@@ -64,5 +71,15 @@ end
   resources :favorites
   resources :messages, :only => [:create, :destroy]
   resources :rooms, :only => [:create, :show, :index]
-  resources :notifications, only: :index
+  resources :notifications, :only => [:index, :destroy]
+  delete '/notifications',  to: 'notifications#destroy'
+
+  resources :users do
+    member do
+      get :blocking, :blockers
+    end
+  end
+resources :blocks, only: [:create, :destroy]
+
+
 end

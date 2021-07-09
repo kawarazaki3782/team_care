@@ -1,0 +1,24 @@
+<% provide(:title, 'ブロックした利用者') %>
+<% if @users.exists? %>
+<section id="" class="users_section">
+	 <div class="users__inner inner">
+     <h2 class="section-title_users">ブロックした利用者</h2>
+<ul class="users_ul">
+    <% @users.each do |user| %>
+      <li class="users_list">
+      <%= link_to image_tag(user.profile_image.thumb100.url, class:'icon_mini'),"/users/#{user.id}" %>
+      <%= user.name %>
+    </li>
+  <% end %>
+  </ul>
+ <%= paginate @users %>
+ </div>
+ </section>
+<% else %>
+<section id="" class="users_section">
+	 <div class="users__inner inner">
+     <h2 class="section-title_users">ブロックしている利用者</h2>
+     <p>ブロックしているユーザーはいません</p>
+   </div>
+</section>
+<% end %>

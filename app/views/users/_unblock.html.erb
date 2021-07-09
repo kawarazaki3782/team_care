@@ -1,0 +1,4 @@
+<%= form_with(model: current_user.blocking_blocks.find_by(blocked_id: @user.id),method: :delete) do |f| %>
+  <%= f.hidden_field :blocked_id %>  
+  <%= f.submit "ブロック中", class: "follow_block_item" %>
+<% end %>

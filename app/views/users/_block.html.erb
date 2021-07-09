@@ -1,0 +1,6 @@
+<%= form_with(model: current_user.blocking_blocks.build) do |f| %>
+  <%= f.hidden_field :blocked_id, value: @user.id %>
+  <%= f.submit "ブロックする", class: "follow_block_item" %>
+<% end %>
+
+ 

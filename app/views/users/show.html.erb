@@ -41,10 +41,13 @@
     <div class="users_content-item"><%= link_to "自分のつぶやき", microposts_path, class: "btn_base_contents" %></div>
     <div class="users_content-item"><%= link_to "自分の日記", diaries_path, class: "btn_base_contents" %></div>
   </div>
-
+  <div class="blocked_user">
+  <%= link_to "ブロックした利用者", blocking_user_url(@user), class: "btn_base_profile" %>
+  </div>
   <div class="profile_edit_users">
     <%= link_to "プロフィール編集", edit_user_path, class: "btn_base_profile" %>
   </div> 
+  
   
   <ul class="profile_ul">
    <li class="profile_list">性別:<%= @user.gender %></li>
@@ -60,14 +63,6 @@
   <div class="user_dm_link">
     <p class="users_dm">お手紙</p>
      <%= link_to "送受信履歴", rooms_path, class: "btn_base_history" %>
-  </div>
-  <div class="users_history_button">
-     <p class="history_text">履歴<p>
-    <div class="history_tab">
-      <%= link_to "コメント履歴", root_path, class: "btn_base_history" %>
-      <%= link_to "いいね履歴", root_path, class: "btn_base_history" %>
-      <%= link_to "下書きフォルダ", root_path, class: "btn_base_history" %>
-    </div> 
   </div>
 </div>
 </section>
@@ -95,12 +90,10 @@
     </div>
 
     <div class="follow_form_users">
-        <%= render 'follow_form' if logged_in? %>
-    </div>
-  
-    <div class="follow_block_tab">
-      <div class="follow_block_item"><%= link_to "ブロックする", microposts_path %></div>
-    </div>  
+      <%= render 'follow_form' if logged_in? %>
+      <%= render "show" %>
+      
+       
   <ul class="profile_ul">
    <li class="profile_list">性別:<%= @user.gender %></li>
      <li class="profile_list">誕生日:<%= @user.birthday %></li>
@@ -129,7 +122,7 @@
                 <% @microposts.each do |micropost| %>
                 <div class="timeline_newposts">  
                     <div class="timeline_image_name">
-                      <%= link_to  image_tag(@user.profile_image.url, class:'icon2 user_image'), "/users/#{current_user.id}"%>
+                      <%= link_to  image_tag(@user.profile_image.url, class:'icon2 user_image'), "/users/#{@user.id}"%>
                       <p class="post_name"><%= @user.name %></p>
                       <p class="post_time"><%= micropost.created_at.strftime('%m月%d日%H:%M')%><br>
                     </div>
@@ -158,13 +151,12 @@
                 <% if diary.status == "published" %>
                 <div class="timeline_newdiaries">     
                     <div class="timeline_image_name">
-                      <%= link_to  image_tag(@user.profile_image.url, class:'icon2 user_image'), "/users/#{current_user.id}"%>
+                      <%= link_to  image_tag(@user.profile_image.url, class:'icon2 user_image'), "/users/#{@user.id}"%>
                       <p class="diary_name"><%= @user.name %></p>
                       <p class="diary_time"><%= diary.created_at.strftime('%m月%d日%H:%M')%><br>
                     </div>
                   <div class="timeline_content_new">
-                    <p class="diary_status"><%= t("diary.status.#{diary.status}") %></p>
-                    <p class="diary-text"><a href="/diaries/<%= diary.id %>"><%= diary.content %></a></p> 
+                    <p class="diary-text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.content %></a></p> 
                     <p><i class="far fa-smile unlike-btn"></i><%= diary.liked_users.count %></p>
                   <% if @user.already_liked2?(diary) %>
                         <%= link_to diary_like_path(id: diary.id, diary_id:diary.id), method: :delete do %>

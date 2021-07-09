@@ -2,15 +2,19 @@ class DiariesController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :ensure_correct_user2,   only: :destroy
 
-    def  new
-        @diary = Diary.new
-    end
+  def draft 
+    @user = current_user
+    @diaries = Diary.where(user_id: current_user.id,status: :draft).order("created_at DESC").all.page(params[:page]).per(5)
+  end  
+  
+  def new
+    @diary = Diary.new
+  end
 
-    def  index
+    def index
       @user = current_user
-      @diaries = current_user.diaries.all.page(params[:page]).per(5)
+      @diaries = Diary.where(user_id: current_user.id,status: :published).order("created_at DESC").all.page(params[:page]).per(5)
       @like = Like.new
-        
     end
     
     def  create

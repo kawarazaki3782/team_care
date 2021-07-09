@@ -1243,15 +1243,6 @@ li.profile_list {
 }
 
 
-
-
-
-
-
-
-
-
-
 //////////////////////login はじめ///////////////////////////
 
 .w-250px {
@@ -1588,6 +1579,23 @@ h2.section-title_post {
 		}
 }
 
+form#new_comment {
+    text-align: center;
+}
+
+.timeline_posts_show {
+    background-color: #fff;
+    padding-top: 5px;
+    padding-bottom: 15px;
+    width: 100%;
+    min-height: 50px;
+    height: auto !important;
+    height: 90px;
+    display: -ms-flexbox;
+    border-bottom: 1px solid #efe7d7;
+    border-top: 1px solid #efe7d7;
+}
+
 ////////////diary post共通 /////////////
 .btn_base_favorites {
     display: inline-block;
@@ -1716,6 +1724,22 @@ input#diary_diary_image {
 	margin-bottom: 20px;
 } 
 
+.diary_draft_btn {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    padding: 1em 2em;
+    width: 300px;
+    color: #333;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: #cccccc;
+    border-radius: 50vh;
+    margin-bottom: 30px;
+}
+
+
+
 
 //////////////////////diary 編集///////////////////////////
 
@@ -1743,11 +1767,6 @@ input#diary_diary_image {
     border: 1px solid #3498db;
 }
 
-.diary_edit_image {
-    display: flex;
-	align-items: center;
-	justify-content: center;
-}
 
 .form_diary_image {
 	width: 30%;
@@ -1829,6 +1848,13 @@ input#diary_diary_image {
 .btn_diary_draft {
 	text-align: center;	
 	margin-bottom: 20px;
+}
+
+.edit_image_label {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 //////////////////////diary 詳細///////////////////////////
@@ -1948,6 +1974,23 @@ h2.section-title_diary {
 .diary_comment_catalog {
     text-align: center;
 }
+
+.diary_edit_btn {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  padding: 1em 2em;
+  width: 300px;
+  color: #333;
+  font-size: 18px;
+  font-weight: 700;
+  background-color: #cccccc;
+  border-radius: 50vh;
+  margin-bottom: 30px;
+}
+
+
+
 
 //////////////////////diary 投稿一覧///////////////////////////
 
@@ -2150,4 +2193,34 @@ li.users_list {
 .dm_entry {
 	text-align: center;
 	margin-bottom: 20px;
+}
+
+//////////////////////通知///////////////////////////
+
+.notification_delete {
+	text-align: right;
+}
+
+.notification_image {
+  width: 80px; /*任意のサイズ*/
+  height: auto;
+  object-fit: cover;
+  border-radius: 20%;
+  margin-top: 40px;
+}
+
+.user-view.clearfix {
+    border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+//////////////////////ブロック///////////////////////////
+
+div#block_form {
+    margin-top: 30px;
+}
+
+.blocked_user {
+	text-align: center;
+	margin-bottom: 30px;
 }
