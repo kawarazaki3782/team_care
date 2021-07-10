@@ -10,7 +10,6 @@ class ApplicationController < ActionController::Base
       @q = Micropost.ransack(params[:q])
     end
 
-    private
   
       # ユーザーのログインを確認する
       def logged_in_user
@@ -20,4 +19,14 @@ class ApplicationController < ActionController::Base
           redirect_to login_url
         end
       end
+
+
+    #   def block_in_user
+    #     @user = User.find params[:blocked_id]
+    #     unless @user.blocked_id.nil?
+    #     store_location
+    #     flash[:danger] = "このページにはアクセスできません"
+    #     redirect_to root_url
+    #   end
+    # end
 end

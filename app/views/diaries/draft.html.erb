@@ -10,7 +10,7 @@
                       <p class="diary_time"><%= diary.created_at.strftime('%m月%d日%H:%M')%><br>
                     </div>
                   <div class="timeline_content_show">
-                    <p class="diary-text"><a href="/diaries/<%= diary.id %>"><%= diary.content %></a></p> 
+                    <p class="diary-text"><a href="/diaries/<%= diary.id %>"><%= diary.title %></a></p> 
                     <p class="diary_delete"><% if current_user?(diary.user) %>
                     <%= link_to "削除", diary, method: :delete,
                                                     data: { confirm: "日記を削除しますか?" } %></p>   

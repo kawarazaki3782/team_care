@@ -11,7 +11,7 @@
                       <p class="favorite_time"><%= localize diary.created_at %></p><br>
                     </div>
                   <div class="timeline_favorite_show">
-                    <p class="favorite-text"><a href="/diaries/<%=diary.id%>"><%= diary.content %></a></p> 
+                    <p class="favorite-text"><a href="/diaries/<%=diary.id%>"><%= diary.title %></a></p> 
                   <p><i class="far fa-smile unlike-btn"></i><%=diary.liked_users.count %></p>
                   <p><i class="far fa-comment comment_count"></i><%=diary.comments.count %></p>
                   </div>

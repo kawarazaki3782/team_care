@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :destroy,  :following, :followers]
   before_action :correct_user, only: :edit
   before_action :admin_user, only: :destroy
+  # before_action :block_in_user, only: :show
   
   def show
     if logged_in? && current_user.id.to_s == params[:id]
@@ -17,8 +18,8 @@ class UsersController < ApplicationController
             @isRoom = true
             @roomId = cu.room_id
           end
-        end
       end
+    end
       if @isRoom
       else
         @room = Room.new
@@ -134,8 +135,8 @@ class UsersController < ApplicationController
   end
 
   def blocking
-    @user =User.find(params[:id])
-    @users =@user.blocking.page(params[:page]).per(5)
+    @user = User.find(params[:id])
+    @users = @user.blocking.page(params[:page]).per(5)
     render 'show_blocking'
   end
 
