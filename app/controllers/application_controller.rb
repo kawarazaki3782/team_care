@@ -19,14 +19,16 @@ class ApplicationController < ActionController::Base
           redirect_to login_url
         end
       end
+ 
 
-
-    #   def block_in_user
-    #     @user = User.find params[:blocked_id]
-    #     unless @user.blocked_id.nil?
-    #     store_location
-    #     flash[:danger] = "このページにはアクセスできません"
-    #     redirect_to root_url
-    #   end
-    # end
+      def block_in_user
+        @user = User.find(params[:id])
+        blocker_blocks = current_user.blocker_blocks
+        blocker_blocks.each do |b| 
+          if b.blocker_id == @user.id
+          flash[:danger] = "このページにはアクセスできません"
+          redirect_to root_url
+          end
+        end
+      end
 end

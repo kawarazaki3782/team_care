@@ -15,34 +15,32 @@
                   <p><i class="far fa-smile unlike-btn"></i><%=diary.liked_users.count %></p>
                   <p><i class="far fa-comment comment_count"></i><%=diary.comments.count %></p>
                   </div>
-                   <% end %>   
-                </div>  
-      </div>
-   </div>
+                </div>
+                <% end %>   
+       </div>      
+     </div>
 </section>
 
 <% else %>
-
 <section id="" class="favorite_catalog section">
 	 <div class="favorite__inner inner">
      <h2 class="section-title_favorite">お気に入りのつぶやき一覧</h2>
       <div class="timeline_area">
-                <% @favorites.each do |micropost| %>
-                <div class="timeline_favorite">     
-                    <div class="timeline_image_name">
+          <% @favorites.each do |micropost| %>
+               <div class="timeline_favorite">     
+                  <div class="timeline_image_name">
                       <%= link_to  image_tag(micropost.user.profile_image.url, class:'icon2 user_image'), "/users/#{micropost.user.id}"%>
                       <p class="favorite_name"><%= micropost.user.name %></p>
                       <p class="favorite_time"><%= localize micropost.created_at %></p><br>
-                    </div>
+                   </div>
                   <div class="timeline_favorite_show">
                     <p class="favorite-text"><a href="/microposts/<%=micropost.id%>"><%= micropost.content %></a></p> 
-                  <p><i class="far fa-smile unlike-btn"></i><%=micropost.liked_users.count %></p>
-                  <p><i class="far fa-comment comment_count"></i><%=micropost.comments.count %></p>
+                    <p><i class="far fa-smile unlike-btn"></i><%=micropost.liked_users.count %></p>
+                    <p><i class="far fa-comment comment_count"></i><%=micropost.comments.count %></p>
                   </div>
-                   <% end %>   
-                </div>  
+                  </div>
+            <% end %>   
       </div>
    </div>
 </section>
-
 <% end %>

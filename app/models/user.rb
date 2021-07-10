@@ -123,4 +123,6 @@ class User < ApplicationRecord
   def unblock(other_user)
     self.blocking_blocks.find_by(blocked_id: other_user.id).destroy
   end 
+
+  
 end
