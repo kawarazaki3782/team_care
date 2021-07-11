@@ -17,10 +17,14 @@ Rails.application.routes.draw do
   
   resources :users do
     member do
-      get :following, :followers
+      get :following, :followers, :users_microposts
+      get :following, :followers, :users_diaries
     end
   end
 
+  get "following_microposts" => "microposts#following_microposts"
+  get "following_diaries" => "diaries#following_diaries"
+  
   resources :diaries do
     collection do
       get :draft
