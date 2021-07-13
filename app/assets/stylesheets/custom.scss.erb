@@ -762,7 +762,7 @@ h2.section-title {
 		height: 180px;
 	}
 }
-//////////////////////signup//////////////////////////
+//////////////////////ログイン//////////////////////////
 
 h2.section-title_signup {
     text-align: center;
@@ -832,7 +832,7 @@ h2.section-title_signup {
 		}
 }
 
-///////////////profile_edit////////////////
+///////////////プロフィール編集////////////////
 
 .btn_base_profileedit {
     display: block;
@@ -854,7 +854,7 @@ h2.section-title_signup {
 
 }
 
-///////////////confirm verification////////////////
+///////////////新規登録確認画面////////////////
 
 h2.section-title_confirm {
     text-align: center;
@@ -1464,7 +1464,7 @@ h2.section-title_post {
 .post-text{
     width: 100%;
     padding-left: 30px;
-	font-size: 30px;
+	font-size: 20px;
 }
 
 .timeline_content {
@@ -1559,21 +1559,23 @@ h2.section-title_post {
 }
 
 .btn_base_category{
-		display: inline-block;
-		width: 384px;
-		max-width: 100%;
-		line-height: 72px;
-		height: 72px;
-		text-align: center;
-		background: $color-main3;
-		color: #fff;
-		font-size: 24px;
-		font-weight: 700;
-		border-radius: 8px;
-		cursor: pointer;
-	  outline: none;
-	  padding: 0rem 2rem;
-
+    display: inline-block;
+    width: 150px;
+    max-width: 100%;
+    line-height: 51px;
+    height: 50px;
+    text-align: center;
+    background: #ede7be;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    outline: none;
+    padding: 0rem 2rem;
+    box-shadow: 2px 2px 4px grey;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
 		a {
 		  text-decoration: none;
 		}
@@ -1859,28 +1861,23 @@ input#diary_diary_image {
 
 //////////////////////diary 詳細///////////////////////////
 
-.timeline_diary {
-    background-color: #fff;
-    padding-top: 5px;
-    padding-bottom: 15px;
-    min-height: 50px;
-    height: auto !important;
-    height: 90px;
-    display: -ms-flexbox;
-    border-bottom: 1px solid #efe7d7;
+.timeline_area_diary {
+    flex: 1;
+    height: 100%;
+	border-bottom: 1px solid #efe7d7;
     border-top: 1px solid #efe7d7;
 }
 
 select#diary_status {
-    width: 300px;
-    height: 80px;
-    font-size: 50px;
+    width: 250px;
+    height: 50px;
+    font-size: 15px;
 }
 
 select#diary_category_id {
-    width: 300px;
-    height: 80px;
-    font-size: 50px;
+    width: 250px;
+    height: 50px;
+    font-size: 15px;
 }
 
 .diary_name_show {
@@ -1895,9 +1892,8 @@ select#diary_category_id {
 }
 
 .diary-text {
-    width: 100%;
-    padding-left: 30px;
-    font-size: 30px;
+    font-size: 20px;
+	text-align: center;
 }
 
 .diary_delete_show {
@@ -1949,9 +1945,6 @@ h2.section-title_diary {
     
 }
 
-.diary-text {
-    text-align: center;
-}
 
 .diary_delete_show {
     padding-right: 30px;
@@ -1989,8 +1982,22 @@ h2.section-title_diary {
   margin-bottom: 30px;
 }
 
+.diary-title {
+    text-align: center;
+    font-size: 30px;
+}
 
+.diary_show_delete {
+    text-align: center;
+}
 
+.diary_like_show {
+    text-align: center;
+}
+
+.timeline_image_diary {
+    text-align: center;
+}
 
 //////////////////////diary 投稿一覧///////////////////////////
 
@@ -2010,15 +2017,10 @@ h2.section-title_diary {
     padding-left: 10px;
 }
 
-.diary-text {
-    width: 100%;
-    padding-left: 30px;
-    font-size: 30px;
-}
 
 .diary_delete {
     padding-right: 30px;
-    padding-top: 10px;
+    padding-top: 40px;
 }
 
 //////////////////////お気に入りの投稿、日記一覧///////////////////////////
@@ -2214,7 +2216,7 @@ li.users_list {
 	border-bottom: 1px solid #ccc;
 }
 
-//////////////////////ブロック///////////////////////////
+//////////////////////ブロック利用者一覧///////////////////////////
 
 div#block_form {
     margin-top: 30px;
@@ -2229,7 +2231,6 @@ div#block_form {
 
 .sidebar_popular_posts {
 width:250px;
-background-color:thistle;
 margin-top:10px;
 margin-left: 210px;
 }
@@ -2270,6 +2271,7 @@ p.rank_title {
 .rank_item {
     padding-top: 5px;
     padding-bottom: 15px;
+	text-align: center
 }
 
 .rank_item_contents {
@@ -2287,5 +2289,77 @@ p.rank_title {
     padding-bottom: 15px;
     height: auto !important;
     display: -ms-flexbox;
-    border-top: 1px solid #efe7d7;
+    border-top: 1px s
+	olid #efe7d7;
 }
+
+.category_name_btn {
+    display: inline-block;
+    width: 150px;
+    max-width: 100%;
+    line-height: 51px;
+    height: 50px;
+    text-align: center;
+    background: #ede7be;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    outline: none;
+    padding: 0rem 2rem;
+    box-shadow: 2px 2px 4px grey;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+/////////////////////カテゴリーnew///////////////////////////
+
+
+h2.section-title_category {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+
+
+.category_btn_area {
+	text-align: center;
+	margin-top: 30px;
+}
+
+.form_categoy_input {
+	text-align: center;
+}
+
+.category_items {
+    text-align: center;
+}
+
+.category_name {
+        display: inline-block;
+		width: 200px;
+		max-width: 100%;
+		line-height: 72px;
+		height: 72px;
+		text-align: center;
+		background:  #ede7be;
+		color: #fff;
+		font-size: 24px;
+		font-weight: 700;
+		border-radius: 8px;
+		cursor: pointer;
+	    outline: none;
+	    padding: 0rem 2rem;
+        box-shadow: 2px 2px 4px gray;
+        border: 1px solid #ccc;
+		margin-bottom: 20px;
+
+		a {
+		  text-decoration: none;
+		}
+}
+
+
+

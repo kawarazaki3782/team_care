@@ -6,10 +6,19 @@ class CategoriesController < ApplicationController
         @category = Category.new
     end
 
+    def show
+        @category = Category.find(params[:id])
+        @microposts = Micropost.where(category_id: @category.id).order(created_at: :desc).page(params[:page]).per(3)
+        @diaries = Diary.where(category_id: @category.id).order(created_at: :desc).page(params[:page]).per(3)
+    end
+
+
     def create
         @category = Category.new(category_params)
+        @category.user_id = current_user.id
         if @category.save
-            redirect_to categories_path, notice: "登録しました"
+            flash[:success] = "カテゴリー登録が完了しました"
+            redirect_to categories_path
         else
             render :new
         end
@@ -22,12 +31,12 @@ class CategoriesController < ApplicationController
     def destroy
         @category = Category.find(params[:id])
         @category.destroy
-        flash[:success] = "Category deleted"
+        flash[:danger] = "カテゴリーを削除しました"
         redirect_to categories_path
     end
 
     private
     def category_params
-        params.require(:category).permit(:name)
+        params.require(:category).permit(:name, :user_id)
     end
 end

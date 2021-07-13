@@ -37,7 +37,7 @@
                       <p class="post_time"><%= diary.created_at.strftime('%m月%d日%H:%M')%><br>
                     </div>
                   <div class="timeline_content_new">
-                    <p class="post-text"><a href="/diaries/<%= diary.id %>"><%= diary.content %></a></p> 
+                    <p class="post-text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.content %></a></p> 
                   <p><i class="far fa-smile unlike-btn"></i><%= diary.liked_users.count %></p>
                   <% if diary.user.already_liked?(diary) %>
                         <%= link_to diary_like_path(id: diary.id, diary_id:diary.id), method: :delete do %>
@@ -91,7 +91,7 @@
                       <p class="post_time"><%= diary.created_at.strftime('%m月%d日%H:%M')%><br>
                     </div>
                   <div class="timeline_content_new">
-                    <p class="post-text"><a href="/diaries/<%= diary.id %>"><%= diary.content %></a></p> 
+                    <p class="post-text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.content %></a></p> 
                   <p><i class="far fa-smile unlike-btn"></i><%= diary.liked_users.count %></p>
                   <% if diary.user.already_liked?(diary) %>
                         <%= link_to diary_like_path(id: diary.id, diary_id:diary.id), method: :delete do %>
@@ -107,8 +107,7 @@
                    <% end %>    
                   <%= paginate @diaries %>
                    <% end %>
-                </main>  
-                
+                </main>          
         <aside class="sidebar_popular_posts">
           <div class="rank_box">
             <p class="rank_title">人気のつぶやき</p>
@@ -117,7 +116,7 @@
                      <div class="rank_item">
                     <span class="ranking"><%= i %>位</span>
                     <span><%= link_to image_tag(micropost.user.profile_image.url, class:'icon_rank_image'), "/users/#{micropost.user.id}"%></span>
-                    <span class="rank_item_content"><%= micropost.content%></span>
+                    <span class="rank_item_content"><%= link_to micropost.content,"/microposts/#{micropost.id}" %></span>
                </div> 
                 <% end %>
               </div>
@@ -128,18 +127,23 @@
                 <% @diary_ranks.each.with_index(1) do |diary, i| %>
                      <div class="rank_item">
                     <span class="ranking"><%= i %>位</span>
-                    <span><%= link_to image_tag(diary.user.profile_image.url, class:'icon_rank_image'), "/users/#{diary.user.id}"%></span>
-                    <span class="rank_item_content"><%= diary.title %></span>
+                    <span><%= link_to image_tag(diary.user.profile_image.url, class:'icon_rank_image'), "/users/#{diary.user.id}" %></span>
+                    <span class="rank_item_content"><%= link_to diary.title,"/diaries/#{diary.id}" %></span>
                </div> 
                 <% end %>
               </div>
           </div>
+        <div class="rank_box">
+            <p class="rank_title">カテゴリー</p>
+              <div class="rank_items">
+                <% @categories.each do |category| %>
+                     <div class="rank_item">
+                    <span class="category_name_btn"><%= link_to category.name,"/categories/#{category.id}",category_id: category.id %></span>
+                   </div> 
+                <% end %>
       </aside>
       </div>  
 </section>
-
-
-
 <% else %>
 <div class="main">
     <div class="main_visual">

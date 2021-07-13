@@ -2,18 +2,20 @@
 	 <div class="diary__inner inner">
      <h2 class="section-title_diary">日記詳細</h2>
      <%= link_to "日記を編集", edit_diary_path, class:"diary_edit_btn" %></p>
-      <div class="timeline_area">
-         <div class="timeline_diary">
-           <div class="timeline_image_name">
-                <%= link_to image_tag(@diary.user.profile_image.url, class:'icon2 user_image'), "/users/#{@diary.user.id}" %>
-                      <p class="diary_name_show"><%= @diary.user.name %></p>
-                      <p class="diary_time_show"><%= @diary.created_at.strftime('%m月%d日%H:%M')%></p><br>
+      <div class="timeline_area_diary">
+           <div class="timeline_image_diary">
+           <p c><%= link_to image_tag(@diary.user.profile_image.url, class:'icon2 user_image'), "/users/#{@diary.user.id}" %>
+           <p class="diary_name_show"><%= @diary.user.name %></p>
+           <p class="diary_time_show"><%= @diary.created_at.strftime('%m月%d日%H:%M')%></p><br>
            </div>
-                <div class="timeline_content">
-                  <div class="diary_title_area">
-                   <p class="diary-title">タイトル:<%= @diary.title %></p>
-                  </div>
-                   <p class="diary-text">本文:<%= @diary.content %></p> 
+                
+                      <p class="diary-title">タイトル:<%= @diary.title %></p>
+                      <p class="diary-text">本文<br>
+                      <%= @diary.content %></p> 
+                      <% if current_user.id == @diary.user.id %>
+                      <p class="diary_show_delete"><%= link_to "日記を削除", @diary, method: :delete,
+                                                    data: { confirm: "日記を削除しますか?" } %></p><% end %>    
+                
                     <div class="diary_like_show">
                       <p><i class="far fa-smile unlike-btn"></i><%= @diary.likes.count %></p>
                        <% if current_user.already_liked2?(@diary) %>
@@ -25,6 +27,7 @@
                          <i class="far fa-smile unlike-btn"></i>
                         <% end %>
                        <% end %>
+                       <br>
                         <% if !Favorite.exists?(user_id:current_user.id,diary_id:@diary.id) %>
                           <%= link_to "お気に入り",diary_add_path(@diary), class:"btn_base_favorites", method: :post %>
                           <% else %>
@@ -32,8 +35,7 @@
                         <% end %>
                     </div>
                   <p class="diary_delete_show"><% if current_user?(@diary.user) %>
-                  <%= link_to "削除", @diary, method: :delete,
-                                                    data: { confirm: "日記を削除しますか?" } %></p>    
+                  
                 </div>
                <% end %>   
              <div>
@@ -43,7 +45,13 @@
 <div class="diary_category_show">
   <h2 class="section-title_diary">カテゴリー</h2>
   <div class="diary_category_show2">
-  <p class="btn_base_category"><%= @diary.category.name if @diary.category_id?%></p>
+  <p class="btn_base_category">
+  <% if @diary.category.nil? %>
+  なし 
+  <% else %>
+  <%= @diary.category.name%>
+  <% end %>
+  </p>
  </div>
 </div>
 <div class="diary_image_show">

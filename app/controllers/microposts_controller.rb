@@ -1,7 +1,7 @@
 class MicropostsController < ApplicationController
     before_action :logged_in_user, only: [:create, :destroy]
     before_action :ensure_correct_user,   only: :destroy
-    # before_action :authenticate_user?, only: [:show, :create]
+    
     
     def index
       @microposts = current_user.microposts.all.order("created_at DESC").page(params[:page]).per(5)
@@ -41,7 +41,7 @@ class MicropostsController < ApplicationController
 
     def destroy
       @micropost.destroy
-      flash[:success] = "つぶやきを削除しました"
+      flash[:danger] = "つぶやきを削除しました"
       redirect_to request.referrer || root_url
     end
     
@@ -59,7 +59,7 @@ class MicropostsController < ApplicationController
         def ensure_correct_user
           @micropost = Micropost.find_by(id: params[:id])
           if @micropost.user_id != @current_user.id
-          flash[:notice] = "権限がありません"
+          flash[:danger] = "権限がありません"
           redirect_to("/posts/index")
           end
         end

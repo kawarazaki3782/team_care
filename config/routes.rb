@@ -46,7 +46,7 @@ end
   post  'inquiry/confirm' => 'inquiry#confirm'   
   post  'inquiry/thanks'  => 'inquiry#thanks'    
   post 'guest_login', to: "guest_sessions#create"
-  resources :categories, except: [:show]
+  resources :categories
 
   resources :users, only: [:index, :show]
   resources :microposts, only: [:index, :show, :create] do
@@ -84,6 +84,5 @@ end
     end
   end
 resources :blocks, only: [:create, :destroy]
-
 
 end

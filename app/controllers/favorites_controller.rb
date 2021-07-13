@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
     @user = current_user
       unless params[:micropost_id].nil?
         @micropost = @user.micropost_ids
-        favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc).pluck(:micropost_id) # ログイン中のユーザーのお気に入りのpost_idカラムを取得
+        favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc).pluck(:micropost_id)# ログイン中のユーザーのお気に入りのpost_idカラムを取得
         @favorites = Micropost.find(favorites)
       end
       

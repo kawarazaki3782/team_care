@@ -40,7 +40,11 @@
   <h2 class="section-title_post">カテゴリー</h2>
   <div class="post_category_show2">
   <p class="btn_base_category">
-  <%= @micropost.category.name if @micropost.category_id?%>
+  <% if @micropost.category.nil? %>
+  なし 
+  <% else %>
+  <%= @micropost.category.name%>
+  <% end %>
   </p>
  </div>
 </div>

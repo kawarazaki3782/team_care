@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_07_144509) do
+ActiveRecord::Schema.define(version: 2021_07_11_154652) do
 
   create_table "blocks", charset: "utf8mb3", force: :cascade do |t|
     t.bigint "blocker_id"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 2021_07_07_144509) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
   create_table "comments", charset: "utf8mb3", force: :cascade do |t|
@@ -152,6 +154,7 @@ ActiveRecord::Schema.define(version: 2021_07_07_144509) do
 
   add_foreign_key "blocks", "users", column: "blocked_id"
   add_foreign_key "blocks", "users", column: "blocker_id"
+  add_foreign_key "categories", "users"
   add_foreign_key "comments", "diaries"
   add_foreign_key "comments", "microposts"
   add_foreign_key "comments", "users"

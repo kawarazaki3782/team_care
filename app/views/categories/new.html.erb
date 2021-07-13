@@ -1,13 +1,14 @@
-<div class="col-sm-12">
-    <h2 class="text-center">カテゴリーの追加</h2>
-    <%= form_with model: @category, local: true do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
-        <div class="form_input">
-            <%= f.label :name %>
-            <%= f.text_field :name, class:"form-control" %>
+<section id="" class="favorite_catalog section">
+  <div class="category__inner inner">
+    <h2 class="section-title_category">カテゴリーの追加</h2>
+      <%= form_with model: @category, local: true do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+        <div class="form_categoy_input">
+            <%= f.label :カテゴリー名 %>
+            <%= f.text_field :name, class:"form-category" %>
         </div>
-        <div class="form_action row">
-            <%= f.submit "登録する", class: "btn col-sm-12 submit_btn" %>
+        <div class="category_btn_area">
+            <%= f.submit "登録する", class: "btn_base_category" %>
         </div>
     <% end %>
 </div>

@@ -24,6 +24,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
   validates :profile, length: { maximum: 1000 }
   has_many :favorites
+  has_many :categories
   has_many :fav_microposts, through: :favorites, source: :micropost
   has_many :fav_diaries, through: :favorites, source: :diary
   mount_uploader :profile_image, ImageUploader
