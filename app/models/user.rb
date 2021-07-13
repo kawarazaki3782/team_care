@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+
+
   has_many :microposts, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
@@ -115,10 +117,19 @@ class User < ApplicationRecord
       self.blocking.include?(other_user)
   end
 
-  #ユーザーをブロックする
   def block(other_user)
-    self.blocking_blocks.create(blocked_id: other_user.id)
+    passive_relationships = self.current_user.passive_relationships
+    passive_relationships.each do |p|
+    if p.followed_id == other_user.id？
+      flash[:danger] = "フォロワーしている利用者はブロックできません"
+      redirect_back(fallback_location: root_path)
+    else
+      self.blocking_blocks.create(blocked_id: other_user.id)
+    end
   end
+  end
+
+
 
   #ユーザーのブロックを解除する
   def unblock(other_user)

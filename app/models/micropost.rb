@@ -13,14 +13,7 @@ class Micropost < ApplicationRecord
   has_many :users, through: :favorites
   has_many :notifications,dependent: :destroy
 
-  def microposts
-    return Micropost.where(user_id: self.id)
-  end
   
-  def user
-    #インスタンスメソッドないで、selfはインスタンス自身を表す
-    return User.find_by(id: self.user_id)
-  end
 
   def create_notification_by(current_user)
     notification=current_user.active_notifications.new(
