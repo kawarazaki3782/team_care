@@ -1,6 +1,21 @@
 class User < ApplicationRecord
+  before_save { email.downcase! }
+  attr_accessor :remember_token
+  validates :name,  presence: true, length: { maximum: 15 }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, length: { maximum: 255 },
+                    format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: true
+  has_secure_password
+  validates :password, presence: true, length: { minimum: 6 }
+  validates :profile, length: { maximum: 1000 }
+  validates :birthday, presence: true
+  validates :address, presence: true
+  validates :gender, presence: true
+  validates :long_teamcare, presence: true
 
 
+  mount_uploader :profile_image, ImageUploader
   has_many :microposts, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
@@ -15,21 +30,10 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_microposts, through: :likes, source: :micropost
   has_many :liked_diaries, through: :likes, source: :diary
-  before_save { email.downcase! }
-  attr_accessor :remember_token
-  validates :name,  presence: true, length: { maximum: 20 }
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, length: { maximum: 255 },
-                    format: { with: VALID_EMAIL_REGEX },
-                    uniqueness: true
-  has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }
-  validates :profile, length: { maximum: 1000 }
   has_many :favorites
   has_many :categories
   has_many :fav_microposts, through: :favorites, source: :micropost
   has_many :fav_diaries, through: :favorites, source: :diary
-  mount_uploader :profile_image, ImageUploader
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
   has_many :rooms, through: :entries, source: :room
@@ -128,8 +132,6 @@ class User < ApplicationRecord
     end
   end
   end
-
-
 
   #ユーザーのブロックを解除する
   def unblock(other_user)
