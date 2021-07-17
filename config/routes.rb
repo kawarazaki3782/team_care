@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :users
   get '/users_path', to: 'users#index'
   get  '/about',   to: 'static_pages#about'
-  
+  resources :guest_sessions, only: [:create]
   resources :users do
     member do
       get :following, :followers, :users_microposts

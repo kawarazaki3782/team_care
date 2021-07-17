@@ -3,7 +3,7 @@ class Diary < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
   validates :title, presence: true
-  validates :content, presence: true
+  validates :content, presence: true, length: { maximum: 5000 }
   belongs_to :category, optional: true
   has_many :comments, dependent: :destroy
   mount_uploader :diary_image, DiaryImageUploader
