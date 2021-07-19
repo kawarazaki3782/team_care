@@ -15,7 +15,7 @@ RSpec.describe User, type: :model do
       end
   end
 
-  it 'プロフィールイメージがnilでも登録できること' do
+  it "プロフィールイメージがnilでも登録できること" do
     user = FactoryBot.build(:user, profile_image:nil)
     expect(user).to be_valid
   end
