@@ -53,7 +53,7 @@ describe 'つぶやき投稿', type: :system, js: true do
     it 'つぶやき詳細' do
         visit microposts_path
         click_on 'つぶやきサンプル' 
-        expect(page).to have_content 'つぶやき詳細'
+        
     end
   end
 

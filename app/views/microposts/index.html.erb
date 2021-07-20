@@ -16,11 +16,11 @@
                                                     data: { confirm: "つぶやきを削除しますか?" } %></p>    
                   <p><i class="far fa-smile unlike-btn"></i><%= micropost.liked_users.count %></p>
                   <% if current_user.already_liked?(micropost) %>
-                        <%= link_to micropost_like_path(id: micropost.id, micropost_id:micropost.id), method: :delete do %>
+                        <%= link_to micropost_like_path(id: micropost.id, micropost_id:micropost.id),class: "likes-unliked", method: :delete do %>
                         <i class="far fa-smile like-btn"></i>
                       <% end %>
                       <% else %>
-                        <%= link_to micropost_likes_path(micropost), method: :post do %>
+                        <%= link_to micropost_likes_path(micropost),id: "likes-liked", method: :post do %>
                         <i class="far fa-smile unlike-btn"></i>
                       <% end %>
                       <% end %>
