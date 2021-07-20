@@ -78,12 +78,6 @@ RSpec.describe User, type: :model do
       expect(user.errors[:password]).to include("を入力してください")
       expect(user.save).to be_falsey
     end
-    it 'passwordが存在しても、password_confirmationが空白だと登録できないこと' do
-      user.password_confirmation = nil
-      expect(user).to be_invalid
-      expect(user.errors[:password_confirmation]).to include("を入力してください", "は6文字以上で入力してください")
-      expect(user.save).to be_falsey
-    end
     it 'passwordとpassword_confirmationが一致していないと登録できないこと' do
       user.password = 'password_A'
       user.password_confirmation = 'password_B'

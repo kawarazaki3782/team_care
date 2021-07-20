@@ -19,9 +19,9 @@
          <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
           <p class="text-center lead">会員登録済みの方はこちら</p>
           <dl>
-            <dt><%= f.label :email %></dt>
+            <dt><%= f.label :メールアドレス %></dt>
             <dd><%= f.email_field :email, class: 'login_form' %></dd><br>
-          <dt><%= f.label :password %></dt>
+          <dt><%= f.label :パスワード %></dt>
           <dd><%= f.password_field :password, class: 'login_form' %></dd>
           <br>
           <dt><%= f.label :remember_me  do %></dt>

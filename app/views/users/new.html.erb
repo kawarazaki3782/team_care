@@ -8,7 +8,7 @@
                <%= render 'shared/error_messages', object: f.object %>    
 							<div class="signup_control">
                 <dt>
-                  <%= f.label :プロフィール写真 , {class: 'signup_label signup__label signup__label--required'}%>
+                  <%= f.label :プロフィール写真, {class: 'signup_label signup__label signup__label--required'}%>
                 </dt>
                 <dd>
                   <%= f.file_field :profile_image, accept: 'profile_image/jpeg,profile_image/gif,profile_image/png' %>

@@ -28,7 +28,7 @@
                         <% end %>
                     </div>
                   <p class="post_delete_show"><% if current_user?(@micropost.user) %>
-                  <%= link_to "削除", @micropost, method: :delete,
+                  <%= link_to "つぶやき削除", @micropost, method: :delete,
                                                     data: { confirm: "つぶやきを削除しますか?" } %></p>    
                 </div>
                <% end %>   

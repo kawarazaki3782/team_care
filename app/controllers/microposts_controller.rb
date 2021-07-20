@@ -24,7 +24,7 @@ class MicropostsController < ApplicationController
       @micropost = Micropost.new(micropost_params)
       @micropost.user_id = current_user.id
         if @micropost.save!
-          flash[:success] = "つぶやきを投稿しました。"
+          flash[:success] = "つぶやきを投稿しました"
           redirect_to microposts_path
         else
           @feed_items = current_user.feed.paginate(page: params[:page])

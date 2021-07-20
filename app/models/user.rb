@@ -13,9 +13,6 @@ class User < ApplicationRecord
   validates :address, presence: true
   validates :gender, presence: true
   validates :long_teamcare, presence: true
-  validates :password_confirmation, presence: true, length: { minimum: 6 }
-
-
   mount_uploader :profile_image, ImageUploader
   has_many :microposts, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",
@@ -39,7 +36,7 @@ class User < ApplicationRecord
   has_many :entries, dependent: :destroy
   has_many :rooms, through: :entries, source: :room
   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
-  has_many :active_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
   has_many :blocking_blocks,foreign_key: "blocker_id", class_name: "Block",  dependent: :destroy
   has_many :blocking, through: :blocking_blocks, source: :blocked
   has_many :blocker_blocks,foreign_key: "blocked_id", class_name: "Block", dependent: :destroy

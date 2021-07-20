@@ -12,7 +12,7 @@
                   <div class="timeline_content_show">
                     <p class="post-text"><a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a></p> 
                     <p class="post_delete"><% if current_user?(micropost.user) %>
-                    <%= link_to "削除", micropost, method: :delete,
+                    <%= link_to "つぶやき削除", micropost, method: :delete,
                                                     data: { confirm: "つぶやきを削除しますか?" } %></p>    
                   <p><i class="far fa-smile unlike-btn"></i><%= micropost.liked_users.count %></p>
                   <% if current_user.already_liked?(micropost) %>

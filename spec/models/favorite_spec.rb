@@ -3,12 +3,13 @@ require 'rails_helper'
 RSpec.describe Favorite, type: :model do
   describe 'バリデーション' do
     context 'favoriteを保存できる場合' do
-    let(:favorite) { create(:favorite) }
+     let(:favorite) { create(:favorite) }
 
-    it '正常に保存できること' do
-      expect(favorite).to be_valid
+      it '正常に保存できること' do
+       expect(favorite).to be_valid
+       favorite.save
+      end
     end
-  end
 
   context 'favoriteを保存できない場合' do
     let(:favorite) { build(:favorite) }

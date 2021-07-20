@@ -44,7 +44,7 @@ class DiariesController < ApplicationController
     def update
       @diary = Diary.find(params[:id])
       if @diary.update(diary_params)
-        redirect_to root_url
+        redirect_to diaries_path
       else
         render 'new'
       end
@@ -53,7 +53,7 @@ class DiariesController < ApplicationController
     def destroy
       @diary.destroy
       flash[:success] = "日記を削除しました"
-      redirect_to root_url
+      redirect_to diaries_path
     end
 
     private
