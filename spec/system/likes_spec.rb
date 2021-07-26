@@ -1,24 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe 'Likes', type: :system do
-    let(:user) { FactoryBot.create(:user) }
-    let(:micropost) { FactoryBot.create(:micropost) }
-    let(:like) { FactoryBot.create(:like) }
+    let(:user) { create(:user) }
+    let(:micropost) { create(:micropost) }
+    let(:like) { create(:like, user_id: user.id, micropost_id: micropost.id) }
     before do
     sign_in_as user
-    user = like.user
    end
     it 'つぶやきにいいねをする' do
-    micropost = like.micropost
     click_on "自分のつぶやき"    
+    expect(page).to have_current_path microposts_path
+    
     expect do
-        find('.likes-unliked').click
-  
-        expect(page).to have_css '.likes-liked', visible: false
+        find('#micropost.id').click, visible: false
+        expect(page).to have_css '#micropost.id', visible: false
       end.to change { Like.count }.by(1)
     end
-end 
-#   it 'いいねを取り消す' do
+end
+    #   it 'いいねを取り消す' do
 #     like = create(:like)
 
 #     micropost = like.micropost
