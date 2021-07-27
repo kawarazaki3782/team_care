@@ -6,6 +6,13 @@
       <div class="search">
         <%= render 'layouts/header_search' %>
         </div>
+        <div id="hamburger">
+           <p class="btn-gNav">
+             <span></span>
+             <span></span>
+             <span></span>
+           </p>
+       <nav id="gNav">
         <ul class="header＿nav">
             <li><a href="/">ホーム</a></li>
             <li> <%= link_to "マイページ", "/users/#{current_user.id}" %></li>
@@ -17,6 +24,8 @@
             <% end %>
             <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
         </ul>
+       </nav>
+      </div>
       </div>
       </header>
         <% else %>
