@@ -128,6 +128,7 @@
                      <div class="rank_item">
                     <span class="ranking"><%= i %>位</span>
                     <span><%= link_to image_tag(diary.user.profile_image.url, class:'icon_rank_image'), "/users/#{diary.user.id}" %></span>
+                    
                     <span class="rank_item_content"><%= link_to diary.title,"/diaries/#{diary.id}" %></span>
                </div> 
                 <% end %>
@@ -137,7 +138,7 @@
             <p class="rank_title">カテゴリー</p>
               <div class="rank_items">
                 <% @categories.each do |category| %>
-                     <div class="rank_item">
+                     <div class="rank_item_category">
                     <span class="category_name_btn"><%= link_to category.name,"/categories/#{category.id}",category_id: category.id %></span>
                    </div> 
                 <% end %>

@@ -40,6 +40,7 @@ html,
 body {
 	margin: 0;
 	padding: 0;
+	overflow-x: hidden!important;
 }
 
 body{
@@ -98,7 +99,7 @@ h6 {
 	left: 0;
 
 	@include mq(sp) {
-		height: 60px;
+		height: 80px;
 	}
 }
 
@@ -119,14 +120,31 @@ h6 {
 	-webkit-transition: all 400ms;
 	transition: all 400ms;
  }
+
+ @include mq(sp) {
+	position: absolute;
+	width: 100%;
+	height: 4px;
+	background: #666;
+	border-radius: 10px;
+	-webkit-transition: all 400ms;
+	transition: all 400ms;
+ }
 }
 #hamburger .btn-gNav span:nth-child(1) {
 	@include mq(sm) {
 	top:0;
  }
+
+ @include mq(sp) {
+	top:0;
+ }
 }
 #hamburger .btn-gNav span:nth-child(2) {
 	@include mq(sm) {
+	top:10px;
+ }
+ @include mq(sp) {
 	top:10px;
  }
 }
@@ -135,10 +153,21 @@ h6 {
 	@include mq(sm) {
 		top:20px;
  }
+ @include mq(sp) {
+		top:20px;
+ }
 }
 
 #hamburger .btn-gNav {
 	@include mq(sm) {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	width: 30px;
+	height: 24px;
+	z-index: 3;
+ }
+ @include mq(sp) {
 	position: fixed;
 	top: 20px;
 	right: 20px;
@@ -157,10 +186,22 @@ h6 {
 	height: 100%;
 	z-index: 2;
  }
+ @include mq(sp) {
+	position: fixed;
+	top: 0;
+	right: -100%;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+ }
 }
 
 #gNav.open{
 	@include mq(sm) {
+	right: 0px;
+ }
+
+ @include mq(sp) {
 	right: 0px;
  }
 }
@@ -173,36 +214,14 @@ h6 {
 	flex-direction: column;
 	text-align: center;
  }
+ @include mq(sp) {
+	width: 100%;
+	height:100%;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+ }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 .header＿logo {
@@ -233,11 +252,12 @@ h6 {
 	@include mq(sm) {
     display: none;
 	}
+	
 }
 
 .header＿nav {
 	display: flex;
-	margin-left: auto;
+	margin-left: 30px;
 	align-items: center;
 
     @include mq(sm) {
@@ -260,7 +280,7 @@ h6 {
 }
 
 		@include mq(sp) {
-		margin: 0px -5px;
+		margin: 0px -95px 0px 40px;
         font-size: 10px;
 		color: #fff;
 }
@@ -298,22 +318,20 @@ h6 {
 }
 }
 }
-//////////////////////mainvisua///////////////////////////
+////////////////////ホーム ログインなし///////////////////////////
 
 .main {
   background: image-url('main.jpeg') no-repeat center center / cover;
 	width: 100%;
 	height: 600px;
 	position: relative;
-  margin-bottom: 50px;
-  border-radius: 20px;
+ 	margin-bottom: 50px;
+ 	border-radius: 20px;
 }
 
 .main::before {
   content: '';
-  /* ↓暗いオーバーレイを半透明で配置 */
   background-color: rgba(0, 0, 0, 0.4);
-  /* ↓全体を覆うように配置 */
   position: absolute;
   top: 0;
   left: 0;
@@ -330,13 +348,21 @@ h6 {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	text-align: center;
-  color: #fff;
+  	color: #fff;
 }
 
 .main_visual_title {
-	font-size: 64px;
+	font-size: 60px;
 	font-weight: 600;
 	line-height: 1.3;
+
+	@include mq('sm') {
+		font-size: 30px;
+	}	
+
+	@include mq('sp') {
+		font-size: 38px;
+	}		
 } 
 
 
@@ -344,6 +370,14 @@ h6 {
 	font-size: 40px;
 	font-weight: 600;
 	margin-top: 24px;
+
+	@include mq('sm') {
+		font-size: 20px;
+	}		
+
+	@include mq('sp') {
+		font-size: 25px;
+	}		
 }
 
 .main_visual_btn {
@@ -368,6 +402,13 @@ h6 {
 	    padding: 0rem 2rem;
 	    box-shadow: 2px 2px 4px gray;
 	    border: 1px solid #ccc;
+
+		@include mq('sm') {
+		width: 300px;
+	}		
+	@include mq('sp') {
+		width: 230px;
+	}		
   }
 }
 
@@ -514,8 +555,18 @@ span.important {
 	background: $color-main;
 
 	@include mq('sp') {
-		padding-top: 62px;
-		padding-bottom: 24px;
+		padding-top: 0px;
+		padding-bottom: 0px;
+	}
+
+	@include mq('tab') {
+		padding-top: 0px;
+		padding-bottom: 0px;
+	}
+
+	@include mq('sm') {
+		padding-top: 0px;
+		padding-bottom: 20px;
 	}
 }
 
@@ -545,7 +596,6 @@ span.important {
 
 	img {
 		width: 205px;
-
 		@include mq('sm') {
     	margin: 10px -100px -10px 0px;
 }
@@ -581,6 +631,14 @@ span.important {
 		list-style: none;
 		padding: 0;
 		margin: 0;
+
+		@include mq('sm') {
+			display:none;
+		}
+
+		@include mq('sp') {
+			display:none;
+		}
 
 		li {
 			margin-right: 40px;
@@ -693,6 +751,12 @@ span.important {
     box-sizing:         border-box;
 }
 
+.footer__left {
+	@include mq('sm') {
+    margin-right: 300px;
+   }
+}
+
 //////////////////////問い合わせ///////////////////////////
 .contact {
 	background: #efefef;
@@ -731,6 +795,10 @@ h2.section-title {
 		display: block;
 		margin-bottom: 24px;
 	}
+
+	@include mq('sm') {
+	display: block;
+   }
 
 	&:last-child {
 		margin-bottom: 0;
@@ -797,6 +865,9 @@ h2.section-title {
 			left: auto;
 			right: 0;
 			transform: translateY(-50%);
+		}
+		@include mq('sm') {
+			left: -48px;
 		}
 	}
 }
@@ -1039,11 +1110,9 @@ h2.section-title_confirm {
 }
 
 
+///////////////* miscellaneous *///////////////
 
 
-
-
-///////////////* miscellaneous */
 
 .debug_dump {
   clear: both;
@@ -1056,13 +1125,14 @@ h2.section-title_confirm {
 
  
 
-//////////////////////マイページ///////////////////////////
-
-.icon {
-  width:200px;
+//////////////////////マイページ//////////////////
+/////////
+.users_icon {
+  	width:200px;
 	height:200px;
 	object-fit:cover;
 	border-radius:20%;
+	margin: 0 auto;
 }
 
 .icon_mini {
@@ -1389,6 +1459,11 @@ li.profile_list {
     margin-bottom: 20px;
 }
 
+.login_text {
+    text-align: center;
+    font-weight: 500;
+}
+
 .login_border {
     border-width: 1px;
     border-style: solid;
@@ -1397,6 +1472,13 @@ li.profile_list {
     padding-top: 25px;
     border-radius: 10px;
 	margin: 0 auto;
+
+	@include mq('sm') {
+	width: 100%
+	}
+	@include mq('sp') {
+	width: 100%
+	}
 }
 
 .login_border2 {
@@ -1404,9 +1486,18 @@ li.profile_list {
     border-style: solid;
     width: 500px;
     height: 450px;
-    padding-top: 40px;
+    padding-top: 15px;
     border-radius: 10px;
 	margin: 0 auto;
+
+	@include mq('sm') {
+	width: 100%
+	}
+
+	@include mq('sp') {
+	width: 100%;
+	padding-top: 0px;
+	}
 }
 
 
@@ -1427,6 +1518,14 @@ li.profile_list {
 	    padding: 0rem 2rem;
         box-shadow: 2px 2px 4px gray;
         border: 1px solid #ccc;
+
+		@include mq('sm') {
+		width: 185px;
+		}
+
+		@include mq('sp') {
+		width: 185px;
+		}
 
 		a {
 		  text-decoration: none;
@@ -1453,13 +1552,29 @@ a:hover {
 
 form dl dt{
     width: 165px;
-    padding: 27px 55px;
+    padding: 22px 24px;
     float: left;
     clear: both;
+
+	@include mq('sm') {
+	float: none;
+	width: 100%;
+    padding: 0px 0px;
+	}
+
+	@include mq('sp') {
+	float: none;
+	width: 100%;
+    padding: 0px 0px;
+	}
 }
 
 form dl dd{
   padding:10px 0;
+
+  @include mq('sm') {
+	  padding:0px 0;
+  }
 }
 
 input[type="checkbox"]{
@@ -1569,6 +1684,10 @@ h2.section-title_post {
 	display: flex;
     flex-direction: inherit;
     align-items: center;
+
+	@include mq('sm') {
+		padding-bottom: 0px;
+	}
 }
 
 .user_image {
@@ -1579,19 +1698,39 @@ h2.section-title_post {
 .timeline_image_name {
     display: flex;
     padding-right: 0px;
+
+	@include mq('sp') {
+		display: grid;
+    padding-right: 0px;
+ }
 }
 
-.icon2 {
-    width: 100px;
-    height: 100px;
+.icon2_user_image {
+    width: 100%;
     object-fit: cover;
     border-radius: 20%;
+
+	@include mq('sm') {
+		width: 50%;
+	}
+
+	@include mq('sp') {
+		width: 50%;
+	}
 }
 
 .post-text{
     width: 100%;
     padding-left: 30px;
 	font-size: 20px;
+
+	@include mq('sm') {
+	padding-left:0;
+	}
+
+	@include mq('sp') {
+	padding-left:13px;
+	}
 }
 
 .timeline_content {
@@ -1600,16 +1739,66 @@ h2.section-title_post {
 }
 
 .post_delete {
-	padding-right: 30px;
-	padding-top: 10px;
+	padding-right: 50px;
+    padding-top: 7px;
+    margin-left: 50px;
+
+	@include mq('sp') {
+		padding-right: 0px;
+    	padding-top: 7px;
+    	margin-left: 50px;
+	}
+
+	@include mq('sm') {
+	padding-right:0;
+	font-size: 1px;
+	padding-top: 3px;
+    margin-left: 10px;
+	}
 }
 
 .post_name {
 	font-weight: bold;
+
+	@include mq('tab') {
+	  margin: 0px 0px 0px 0px;
+	}
+	@include mq('sm') {
+	 margin: 0px -5px 0px 0px;
+	}
+
+	@include mq('sp') {
+	  margin: 0px 0px 0px 0px;
+	}
 }
 
 .post_time {
 	padding-left: 10px;
+
+	@include mq('sp') {
+		padding-left: 0px;
+ }
+}
+ 
+
+i.far.fa-smile.unlike-btn {
+	@include mq('sm') {
+    font-size: 20px;
+	}
+}
+
+i.far.fa-smile.like-btn {
+	@include mq('sm') {
+    font-size: 20px;
+    margin-left: 0;
+	}
+}
+
+i.far.fa-comment.comment_count {
+	@include mq('sm') {
+    margin-left: 0;
+    font-size: 20px;
+	}
 }
 
 
@@ -1629,6 +1818,18 @@ h2.section-title_post {
 .timeline_content_show {
     display: -webkit-box;
     padding: 60px 12px 0px 0px;
+
+	@include mq('sm') {
+		margin: 9px 9px 2px -45px;
+	}
+
+	@include mq('sp') {
+		display: unset;
+	}
+
+	@include mq('sm') {
+		padding: 60px 50px 0px 0px;
+	}
 }
 
 .post_delete_show {
@@ -2205,12 +2406,7 @@ li.users_list {
     border-radius: 20%;
 }
 
-//////////////////////つぶやき検索///////////////////////////
-.timeline_search_show {
-    display: -webkit-box;
-    padding: 30px 12px 0px 0px;
-    margin: 0 auto;
-}
+
 //////////////////////ダイレクトメッセージ///////////////////////////
 
 .message_item {
@@ -2357,15 +2553,40 @@ div#block_form {
 //////////////////////ホームページ///////////////////////////
 
 .sidebar_popular_posts {
-width:250px;
-margin-top:10px;
-margin-left: 210px;
+	width:250px;
+	margin-top:10px;
+	margin-left: 210px;
+	
+	@include mq('sm') {
+	margin: 0 auto;
+	}
+
+	@include mq('sp') {
+	margin: 0 auto;
+	}
 }
 
 .icon_rank_image {
 	width: 20%;
     object-fit: cover;
     border-radius: 20%;
+	display: unset;
+}
+
+h2.section-title_users {
+	@include mq('sm') {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    font-size: 25px;
+	}
+
+	@include mq('sp') {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    font-size: 25px;
+	}
 }
 
 .container {
@@ -2375,6 +2596,14 @@ margin-left: 210px;
   display: flex;
   margin: 0 auto;
   max-width: 1080px;
+
+  @include mq('sm') {
+	  display: unset;
+}
+
+@include mq('sp') {
+	  display: unset;
+}
 }
 
 .main-contents {
@@ -2398,7 +2627,13 @@ p.rank_title {
 .rank_item {
     padding-top: 5px;
     padding-bottom: 15px;
-	text-align: center
+}
+
+.rank_item_category {
+	padding-top: 5px;
+    padding-bottom: 15px;
+	text-align: center;
+
 }
 
 .rank_item_contents {
@@ -2438,8 +2673,17 @@ p.rank_title {
     box-shadow: 2px 2px 4px grey;
     border: 1px solid #ccc;
     margin-bottom: 20px;
+
+	@include mq('sm') {
+		width: 100px;
+	}
 }
 
+input#search {
+	@include mq('sp') {
+    width: 32%;
+ }
+}
 /////////////////////カテゴリーnew///////////////////////////
 
 

@@ -7,13 +7,20 @@ RSpec.describe 'Likes', type: :system do
     before do
     sign_in_as user
    end
+
+   it 'データが存在するか' do
+    expect(Micropost.where(content: "aaa")).to eq 'aaa'
+   end
+
+
+
     it 'つぶやきにいいねをする' do
     click_on "自分のつぶやき"    
     expect(page).to have_current_path microposts_path
     
     expect do
-        find('.likes-liked').click
-        expect(page).to have_css '.likes-unliked', visible: false
+        find('.timeline_posts')
+        expect(page).to have_css '.likes-liked', visible: false
       end.to change { Like.count }.by(1)
     end
 end
