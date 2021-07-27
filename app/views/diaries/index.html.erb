@@ -5,12 +5,12 @@
       <div class="timeline_area">
                 <% @diaries.each do |diary| %>
                 <div class="timeline_diaries">     
-                    <div class="timeline_image_name">
+                    <div class="timeline_diary_name">
                       <%= link_to  image_tag(@user.profile_image.url, class:'icon2 user_image'), "/users/#{@user.id}"%>
                       <p class="diary_name"><%= @user.name %></p>
                       <p class="diary_time"><%= diary.created_at.strftime('%m月%d日%H:%M')%><br>
                     </div>
-                  <div class="timeline_content_show">
+                  <div class="timeline_diary_show">
                     <p class="diary-text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.title %></a></p> 
                     <p class="diary_delete"><% if current_user?(diary.user) %>
                     <%= link_to "日記を削除", diary, method: :delete,

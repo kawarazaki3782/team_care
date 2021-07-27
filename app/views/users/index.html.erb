@@ -5,8 +5,8 @@
 <ul class="users_ul">
   <% @users.each do |user| %>
     <li class="users_list">
-      <%= image_tag user.profile_image.thumb100.url, class:'icon_mini' %>
-      <%= link_to(user.name, "/users/#{user.id}") %> 
+      <%= link_to image_tag(user.profile_image.thumb100.url, class:'icon_mini'),"/users/#{user.id}" %>
+      <%= link_to(user.name, "/users/#{user.id}", class:'users_name' ) %> 
       <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "delete", user, method: :delete,
                                   data: { confirm: "You sure?" } %>

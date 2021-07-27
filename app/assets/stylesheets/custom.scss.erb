@@ -99,7 +99,11 @@ h6 {
 	left: 0;
 
 	@include mq(sp) {
-		height: 80px;
+		height: 100px;
+	}
+
+	@include mq(sm) {
+		height: 120px;
 	}
 }
 
@@ -1066,8 +1070,15 @@ h2.section-title_confirm {
 
 .confirm_item {
     font-size: 30px;
-    font-weight: 700;
     margin: 5px 0 5px 0;
+
+	@include mq('sp') {
+	 font-size: 15px;
+	}
+
+	@include mq('sm') {
+	 font-size: 15px;
+	}
 }
 
 .btn_base_confirm {
@@ -1109,6 +1120,10 @@ h2.section-title_confirm {
     margin-top: 20px;
 }
 
+.confirm_icon {
+	margin: 0 auto;
+}
+
 
 ///////////////* miscellaneous *///////////////
 
@@ -1126,7 +1141,7 @@ h2.section-title_confirm {
  
 
 //////////////////////マイページ//////////////////
-/////////
+
 .users_icon {
   	width:200px;
 	height:200px;
@@ -1160,6 +1175,23 @@ h2.section-title_confirm {
         box-shadow: 2px 2px 4px gray;
         border: 1px solid #ccc;
 
+		@include mq('tab') {
+		font-size: 18px;
+		width: 250px;
+	   }
+
+		@include mq('sp') {
+		font-size: 13px;
+		width: 100%;
+		padding:0;
+	}
+
+	@include mq('sm') {
+		font-size: 13px;
+		width: 100%;
+		padding:0;
+	}
+
 		a {
 		  text-decoration: none;
 		}
@@ -1187,6 +1219,18 @@ h2.section-title_confirm {
 	    padding: 0rem 2rem;
         box-shadow: 2px 2px 4px gray;
         border: 1px solid #ccc;
+
+		@include mq('sp') {
+		font-size: 20px;
+		width: 30%;
+		height: 70px;
+	}
+
+	@include mq('sm') {
+		font-size: 20px;
+		width: 30%;
+		height: 70px;
+	}
 }
 
 .notifications_button {
@@ -1245,6 +1289,19 @@ h2.section-title_confirm {
 	    padding: 0rem 2rem;
         box-shadow: 2px 2px 4px gray;
         border: 1px solid #ccc;
+
+		@include mq('sp') {
+		font-size: 17px;
+		width: 186px;
+		height: 68px;
+		padding: 0px;
+	}
+	@include mq('sm') {
+		font-size: 17px;
+		width: 186px;
+		height: 68px;
+		padding: 0px;
+	}
 }
 .btn_base_profile {
 	    display: inline-block;
@@ -1263,6 +1320,17 @@ h2.section-title_confirm {
 	    padding: 0rem 2rem;
         box-shadow: 2px 2px 4px gray;
         border: 1px solid #ccc;
+
+		@include mq('sp') {
+		font-size: 15px;
+		width: 186px;
+	}
+	@include mq('sm') {
+		font-size: 15px;
+		width: 186px;
+	}
+
+
 }
 	
 .profile_edit_users {
@@ -1349,7 +1417,58 @@ li.profile_list {
         box-shadow: 2px 2px 4px gray;
         border: 1px solid #ccc;
 
+		@include mq('sp') {
+		font-size: 15px;
+		width: 186px;
+	}
+	@include mq('sm') {
+		font-size: 15px;
+		width: 186px;
+	}
+
 }
+
+
+.user_category_link {
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+.users_category {
+   font-size: 25px;
+}
+
+
+.btn_user_category {
+	    display: inline-block;
+		width: 300px;
+		max-width: 100%;
+		line-height: 72px;
+		height: 72px;
+		text-align: center;
+		background: #79bbc7;
+		color: #fff;
+		font-size: 24px;
+		font-weight: 700;
+		border-radius: 8px;
+		cursor: pointer;
+	    outline: none;
+	    padding: 0rem 2rem;
+        box-shadow: 2px 2px 4px gray;
+        border: 1px solid #ccc;
+
+		@include mq('sp') {
+		font-size: 15px;
+		width: 186px;
+	}
+	@include mq('sm') {
+		font-size: 15px;
+		width: 186px;
+	}
+}
+
+
+
 
 //////////////////////利用者詳細///////////////////////////
 
@@ -1603,7 +1722,7 @@ h2.section-title_post {
     -moz-border-radius: 3px;
     border-radius: 3px;
     font-size: 16px;
-    width: 500px;
+    width: 100%;
     height: 200px;
 	box-shadow: 0 0 3px #3498db;
     border: 1px solid #3498db;
@@ -1784,6 +1903,7 @@ h2.section-title_post {
 i.far.fa-smile.unlike-btn {
 	@include mq('sm') {
     font-size: 20px;
+	margin: 0;
 	}
 }
 
@@ -1804,24 +1924,114 @@ i.far.fa-comment.comment_count {
 
 //////////////////////micropost 詳細///////////////////////////
 
+.post_timeline_area {
+    flex: 1;
+    height: 100%;
+}
+
+.icon_post_image {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20%;
+}
+
+.timeline_posts_detail {
+	background-color: #fff;
+    padding-top: 5px;
+    padding-bottom: 15px;
+    width: 100%;
+    min-height: 50px;
+    height: auto !important;
+    height: 90px;
+    display: -ms-flexbox;
+    border-bottom: 1px solid #efe7d7;
+    border-top: 1px solid #efe7d7;
+    display: flex;
+    flex-direction: inherit;
+    align-items: center;
+	padding-top: 60px;
+
+    @include mq('sp') {
+	padding-top: 40px;
+ }
+
+	 @include mq('sm') {
+	padding-top: 40px;
+ }
+}
+
 .post_name_show {
     font-weight: bold;
     font-size: 30px;
     padding-left: 10px;
+
+	@include mq('sp') {
+		font-size: 15px;
+	}
+
+	@include mq('sm') {
+		font-size: 15px;
+	}
+}
+
+.post-detail {
+	width: 100%;
+    padding-left: 80px;
+    font-size: 20px;
+	padding-top: 40px;
+
+	@include mq('tab') {
+		width: 90%;
+		font-size: 40px;
+	}
+
+	@include mq('sp') {
+		width: 30%;
+		font-size: 20px;
+		padding: 16px;
+	}
+
+	@include mq('sm') {
+		width: 30%;
+		font-size: 20px;
+		padding: 16px;
+	}
+}
+
+.post_detail_show {
+
+	margin: 0px -40px;
+
+	@include mq('sp') {
+    padding-top: 115px;
+	}
+
+	@include mq('sm') {
+    padding-top: 115px;
+	}
+}
+
+.post-detail-delete {
+    @include mq('tab') {
+    margin-left: 0px;
+	}
 }
 
 .post_time_show {
     padding-left: 10px;
     font-size: 30px;
+	@include mq('sp') {
+		font-size: 15px;
+	}
+
+	@include mq('sm') {
+		font-size: 15px;
+	}
 }
 
 .timeline_content_show {
     display: -webkit-box;
     padding: 60px 12px 0px 0px;
-
-	@include mq('sm') {
-		margin: 9px 9px 2px -45px;
-	}
 
 	@include mq('sp') {
 		display: unset;
@@ -1829,6 +2039,7 @@ i.far.fa-comment.comment_count {
 
 	@include mq('sm') {
 		padding: 60px 50px 0px 0px;
+		margin: 9px 9px 2px -45px;
 	}
 }
 
@@ -1836,7 +2047,17 @@ i.far.fa-comment.comment_count {
     padding-right: 30px;
     padding-top: 10px;
     font-size: 20px;
-}
+	margin-left: -100px;
+
+	@include mq('sp') {
+		font-size: 	12px;
+ 	   margin-left: -70px;
+  }	
+  @include mq('sm') {
+		font-size: 	12px;
+ 	   margin-left: -70px;
+  }	
+ }
 
 .post_image_show {
 	width: 100%;
@@ -1926,6 +2147,34 @@ form#new_comment {
     border-top: 1px solid #efe7d7;
 }
 
+.post_image_url {
+    margin: 0 auto;
+}
+.timeline_post_detail {
+	padding: 20px 24px 0px 0px;
+	display: -webkit-box;
+
+	@include mq('sp') {
+	padding: 20px 60px 30px 0px;
+  }
+  	@include mq('sm') {
+	padding: 20px 60px 30px 0px;
+  }
+}
+
+.timeline_post_name {
+	display: unset;
+    padding-right: 0px;
+
+	@include mq('sp') {
+	display: unset;
+  }
+
+  	@include mq('sm') {
+	display: unset;
+  }
+}
+
 ////////////diary post共通 /////////////
 .btn_base_favorites {
     display: inline-block;
@@ -1938,6 +2187,11 @@ form#new_comment {
     border-radius: 8px;
     outline: none;
     box-shadow: 2px 2px 4px grey;
+
+	@include mq('sp') {
+		line-height: 50px;
+		font-size: 20px;
+	}
 }
 //////////////////////diary 投稿///////////////////////////
 .diary__inner inner{
@@ -2091,7 +2345,7 @@ input#diary_diary_image {
 
 
 .form_diary_content {
-	width: 700px;
+	width: 100%;
 	height: 500px;
 	box-shadow: 0 0 3px #3498db;
     border: 1px solid #3498db;
@@ -2100,6 +2354,7 @@ input#diary_diary_image {
 
 .form_diary_image {
 	width: 30%;
+	margin: 0 auto;
 }
 
 .diary_edit_category {
@@ -2132,9 +2387,7 @@ input#diary_diary_image {
 		}
 }
 
-.btn_diary_edit {
-    margin: 100px;
-}
+
 
 .btn_base_draft{
 		display: inline-block;
@@ -2325,8 +2578,42 @@ h2.section-title_diary {
 
 .timeline_image_diary {
     text-align: center;
+
+	@include mq('sp') {
+	  padding-top: 30px;
+	}
+
+	@include mq('sm') {
+	  padding-top: 30px;
+	}
 }
 
+.icon2_diary_image {
+    width: 20%;
+    object-fit: cover;
+    border-radius: 20%;
+    margin: 0 auto;
+}
+
+.diary_image_url {
+	margin: 0 auto;
+}
+
+.diary_comment_delete {
+	margin: 30px;
+}
+
+.timeline_diary_name {
+	display: flex;
+	@include mq('sp') {
+	  display: unset;
+	}
+	@include mq('sm') {
+	  display: unset;
+	}
+
+
+}
 //////////////////////diary 投稿一覧///////////////////////////
 
 .timeline_diaries {
@@ -2343,8 +2630,29 @@ h2.section-title_diary {
 
 .diary_time {
     padding-left: 10px;
+
+	@include mq('sp') {
+	  padding-left: 0;
+	}
+	@include mq('sm') {
+	   padding-left: 0;
+	}
 }
 
+.timeline_diary_show {
+    display: -webkit-box;
+    padding: 60px 12px 0px 0px;
+
+	@include mq('sp') {
+	display: unset;
+	padding: 30px 0px 0px 60px; 
+	}
+
+	@include mq('sm') {
+	display: unset;
+	padding: 30px 0px 0px 60px; 
+	}
+}
 
 .diary_delete {
     padding-right: 30px;
@@ -2405,7 +2713,6 @@ li.users_list {
     object-fit: cover;
     border-radius: 20%;
 }
-
 
 //////////////////////ダイレクトメッセージ///////////////////////////
 
@@ -2520,6 +2827,15 @@ li.users_list {
 	margin-bottom: 20px;
 }
 
+input#message_content {
+	@include mq('sp') {
+	width: 100%;
+  }
+	@include mq('sm') {
+	width: 100%;
+  }
+}
+
 //////////////////////通知///////////////////////////
 
 .notification_delete {
@@ -2539,6 +2855,14 @@ li.users_list {
 	border-bottom: 1px solid #ccc;
 }
 
+h2.section-title_post {
+	@include mq('sp') {
+    font-size: 25px;
+	}
+    @include mq('sp') {
+    font-size: 25px;
+	}
+}
 //////////////////////ブロック利用者一覧///////////////////////////
 
 div#block_form {

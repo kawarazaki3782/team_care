@@ -10,7 +10,7 @@
                       <p class="post_time"><%= micropost.created_at.strftime('%m月%d日%H:%M')%><br>
                     </div>
                   <div class="timeline_content_show">
-                    <p class="post-text"><a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a></p> 
+                    <span class="post-text"><a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a></span> 
                     <p class="post_delete"><% if current_user?(micropost.user) %>
                     <%= link_to "つぶやき削除", micropost, method: :delete,
                                                     data: { confirm: "つぶやきを削除しますか?" } %></p>    

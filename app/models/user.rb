@@ -9,8 +9,6 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
   validates :profile, length: { maximum: 1000 }
-  validates :birthday, presence: true
-  validates :address, presence: true
   validates :gender, presence: true
   validates :long_teamcare, presence: true
   mount_uploader :profile_image, ImageUploader
@@ -120,16 +118,16 @@ class User < ApplicationRecord
   end
 
   def block(other_user)
-    passive_relationships = self.current_user.passive_relationships
-    passive_relationships.each do |p|
-    if p.followed_id == other_user.id？
-      flash[:danger] = "フォロワーしている利用者はブロックできません"
-      redirect_back(fallback_location: root_path)
-    else
+    # passive_relationships = self.current_user.passive_relationships
+    # passive_relationships.each do |p|
+    # if p.followed_id == other_user.id？
+    #   flash[:danger] = "フォロワーしている利用者はブロックできません"
+    #   redirect_back(fallback_location: root_path)
+    # else
       self.blocking_blocks.create(blocked_id: other_user.id)
     end
-  end
-  end
+  # end
+  # end
 
   #ユーザーのブロックを解除する
   def unblock(other_user)

@@ -64,7 +64,13 @@
     <p class="users_dm">お手紙</p>
      <%= link_to "送受信履歴", rooms_path, class: "btn_base_history" %>
   </div>
+
+  <div class="user_category_link">
+    <p class="users_category">カテゴリー</p>
+     <%= link_to "カテゴリーの追加", categories_path, class: "btn_user_category" %>
+  </div>
 </div>
+
 </section>
 <% else %>
 <!--他の人のページ(編集や削除はできない)-->
@@ -75,7 +81,7 @@
      <h2 class="section-title_users">利用者詳細</h2>
     <div class="profile_image_users">
         <% if @user.profile_image? %>                                                              
-        <%= image_tag @user.profile_image.url, class:'icon' %> 
+        <%= image_tag @user.profile_image.url, class:'users_icon' %> 
     </div>
     <br>
     <br>
@@ -156,7 +162,7 @@
                       <p class="diary_time"><%= diary.created_at.strftime('%m月%d日%H:%M')%><br>
                     </div>
                   <div class="timeline_content_new">
-                    <p class="diary-text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.content %></a></p> 
+                    <p class="diary-text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.title %></a></p> 
                     <p><i class="far fa-smile unlike-btn"></i><%= diary.liked_users.count %></p>
                   <% if @user.already_liked2?(diary) %>
                         <%= link_to diary_like_path(id: diary.id, diary_id:diary.id), method: :delete do %>

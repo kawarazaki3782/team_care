@@ -1,16 +1,16 @@
 <section id="" class="micropost_show section">
 	 <div class="micropost__inner inner">
      <h2 class="section-title_post">つぶやき詳細</h2>
-      <div class="timeline_area">
-         <div class="timeline_posts">
-           <div class="timeline_image_name">
-                <%= link_to image_tag(@micropost.user.profile_image.url, class:'icon2 user_image'), "/users/#{@micropost.user.id}" %>
+      <div class="post_timeline_area">
+         <div class="timeline_posts_detail">
+           <div class="timeline_post_name">
+                <%= link_to image_tag(@micropost.user.profile_image.url, class:'icon_post_image'), "/users/#{@micropost.user.id}" %>
                       <p class="post_name_show"><%= @micropost.user.name %></p>
                       <p class="post_time_show"><%= @micropost.created_at.strftime('%m月%d日%H:%M')%></p><br>
            </div>
-                <div class="timeline_content">
-                   <p class="post-text"><%= @micropost.content %></p> 
-                    <div class="post_like_show">
+                <div class="timeline_post_detail">
+                   <p class="post-detail"><%= @micropost.content %></p> 
+                    <div class="post_detail_show">
                       <p><i class="far fa-smile unlike-btn"></i><%= @micropost.likes.count %></p>
                        <% if current_user.already_liked?(@micropost) %>
                           <%= link_to micropost_like_path(@micropost), method: :delete do %>
@@ -27,8 +27,8 @@
                           <%= link_to "お気に入り解除",micropost_add_path(@micropost), class:"btn_base_favorites", method: :delete %>
                         <% end %>
                     </div>
-                  <p class="post_delete_show"><% if current_user?(@micropost.user) %>
-                  <%= link_to "つぶやき削除", @micropost, method: :delete,
+                  <span class="post_delete_show"><% if current_user?(@micropost.user) %>
+                  <%= link_to "つぶやき削除", @micropost, method: :delete,class:"post-detail-delete",
                                                     data: { confirm: "つぶやきを削除しますか?" } %></p>    
                 </div>
                <% end %>   
@@ -51,7 +51,7 @@
 <div class="post_image_show">
   <h2 class="section-title_post">添付画像</h2>
   <div class="post_image_show2">
-  <%= image_tag @micropost.post_image.url if @micropost.post_image? %>
+  <%= image_tag @micropost.post_image.url, class: "post_image_url" if @micropost.post_image? %>
  </div>
 </div>
 <div class="post_likes_show">
