@@ -12,8 +12,8 @@ RSpec.describe 'Likes', type: :system do
     expect(page).to have_current_path microposts_path
     
     expect do
-        find('.likes-unliked').click
-        expect(page).to have_css '.likes-liked', visible: false
+        find('.likes-liked').click
+        expect(page).to have_css '.likes-unliked', visible: false
       end.to change { Like.count }.by(1)
     end
 end

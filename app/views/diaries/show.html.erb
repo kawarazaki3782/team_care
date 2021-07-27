@@ -8,7 +8,6 @@
            <p class="diary_name_show"><%= @diary.user.name %></p>
            <p class="diary_time_show"><%= @diary.created_at.strftime('%m月%d日%H:%M')%></p><br>
            </div>
-                
                       <p class="diary-title">タイトル:<%= @diary.title %></p>
                       <p class="diary-text">本文<br>
                       <%= @diary.content %></p> 
@@ -60,6 +59,7 @@
   <%= image_tag @diary.diary_image.url if @diary.diary_image? %>
  </div>
 </div>
+
 <div class="diary_likes_show">
   <h2 class="section-title_diary">いいねしたユーザー<p><i class="far fa-smile unlike-btn"></i><%= @diary.likes.count %></p></h2>
   

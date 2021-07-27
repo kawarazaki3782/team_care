@@ -23,6 +23,13 @@
     <header class="header">
     <div class="header＿inner inner">
       <div class="header＿logo"><a href="/"><img src="/assets/logo_transparent.png" alt=""></a></div> 
+        <div id="hamburger">
+           <p class="btn-gNav">
+             <span></span>
+             <span></span>
+             <span></span>
+           </p>
+       <nav id="gNav">
         <ul class="header＿nav">
             <li><a href="/">ホーム</a></li>
             <li> <%= link_to "チームケアとは", about_path %></li>
@@ -30,6 +37,8 @@
             <li> <%= link_to "ログイン", login_path %></li>
             <li> <%= link_to "お問い合わせ", inquiry_index_path %></li>
         </ul>
+       </nav>
+      </div>
       </div>
     </div>
     </header>

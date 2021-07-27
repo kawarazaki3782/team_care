@@ -4,9 +4,18 @@ class StaticPagesController < ApplicationController
         @users = User.all
         @microposts = Micropost.all.page(params[:page]).per(3)
         @diaries = Diary.all.page(params[:page]).per(3)
-        @micropost_ranks = Micropost.last_week
-        @diary_ranks = Diary.diary_last_week
+        # @micropost_ranks = Micropost.last_week
+        # @diary_ranks = Diary.diary_last_week
         @categories = Category.all
+        likes = Like.all
+
+      unless  Micropost.find(likes(:micropost_id)) == nil?
+        @micropost_ranks = Micropost.last_week
+      end
+
+      unless Diary.find(likes(:diary_id)) == nil?
+        @diary_ranks = Diary.last_week
+      end
         
         unless @following_microposts == nil? && current_user.following_ids == nil?
           @following_microposts = Micropost.where(user_id: [*current_user.following_ids]).order("created_at DESC").page(params[:page]).per(3)

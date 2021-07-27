@@ -37,7 +37,7 @@
                       <p class="post_time"><%= diary.created_at.strftime('%m月%d日%H:%M')%><br>
                     </div>
                   <div class="timeline_content_new">
-                    <p class="post-text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.content %></a></p> 
+                    <p class="post-text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.title %></a></p> 
                   <p><i class="far fa-smile unlike-btn"></i><%= diary.liked_users.count %></p>
                   <% if diary.user.already_liked?(diary) %>
                         <%= link_to diary_like_path(id: diary.id, diary_id:diary.id), method: :delete do %>
@@ -91,7 +91,7 @@
                       <p class="post_time"><%= diary.created_at.strftime('%m月%d日%H:%M')%><br>
                     </div>
                   <div class="timeline_content_new">
-                    <p class="post-text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.content %></a></p> 
+                    <p class="post-text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.title %></a></p> 
                   <p><i class="far fa-smile unlike-btn"></i><%= diary.liked_users.count %></p>
                   <% if diary.user.already_liked?(diary) %>
                         <%= link_to diary_like_path(id: diary.id, diary_id:diary.id), method: :delete do %>

@@ -17,11 +17,11 @@
                   <p><i class="far fa-smile unlike-btn"></i><%= micropost.liked_users.count %></p>
                   <% if current_user.already_liked?(micropost) %>
                         <%= link_to micropost_like_path(id: micropost.id, micropost_id:micropost.id),class:"likes-unliked", method: :delete do %>
-                        <%# <i class="far fa-smile like-btn"></i> %>
+                        <i class="far fa-smile like-btn"></i>
                       <% end %>
                       <% else %>
-                        <%= link_to "いいね", micropost_likes_path(micropost),class:"likes-liked", method: :post do %>
-                        <%# <i class="far fa-smile unlike-btn"></i> %>
+                        <%= link_to micropost_likes_path(micropost),class:"likes-liked", method: :post do %>
+                        <i class="far fa-smile unlike-btn"></i>
                       <% end %>
                       <% end %>
                   <p><i class="far fa-comment comment_count"></i><%= micropost.comments.count %></p>

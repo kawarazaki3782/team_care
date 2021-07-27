@@ -14,14 +14,15 @@ $layout-width-inner: 1200px;
 
 // ブレークポイント
 $breakpoints: (
-	"sp": "(max-width: 767px)",
+	"sm": "(max-width: 399px)",
+	"sp": "(min-width: 400px) and (max-width: 767px)",
 	"tab": "(min-width: 768px) and (max-width: #{$layout-width-inner})",
-	"pc": "(min-width: #{$layout-width-inner})",
+	"pc": "(min-width: #{$layout-width-inner})"
 );
 
 // メディアクエリー
-@mixin mq($breakpoint: sp) {
-	@media #{map-get($breakpoints, $breakpoint)} {
+@mixin mq($breakpoint: sp){
+	@media #{map-get($breakpoints, $breakpoint)}{
 		@content;
 	}
 }
@@ -96,7 +97,7 @@ h6 {
 	top: 0;
 	left: 0;
 
-	@include mq('sp') {
+	@include mq(sp) {
 		height: 60px;
 	}
 }
@@ -107,17 +108,130 @@ h6 {
 	height: inherit;
 }
 
+
+#hamburger .btn-gNav span {
+	@include mq(sm) {
+	position: absolute;
+	width: 100%;
+	height: 4px;
+	background: #666;
+	border-radius: 10px;
+	-webkit-transition: all 400ms;
+	transition: all 400ms;
+ }
+}
+#hamburger .btn-gNav span:nth-child(1) {
+	@include mq(sm) {
+	top:0;
+ }
+}
+#hamburger .btn-gNav span:nth-child(2) {
+	@include mq(sm) {
+	top:10px;
+ }
+}
+
+#hamburger .btn-gNav span:nth-child(3) {
+	@include mq(sm) {
+		top:20px;
+ }
+}
+
+#hamburger .btn-gNav {
+	@include mq(sm) {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	width: 30px;
+	height: 24px;
+	z-index: 3;
+ }
+}
+
+#gNav{
+	@include mq(sm) {
+	position: fixed;
+	top: 0;
+	right: -100%;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+ }
+}
+
+#gNav.open{
+	@include mq(sm) {
+	right: 0px;
+ }
+}
+
+#gNav .header＿nav{
+	@include mq(sm) {
+	width: 100%;
+	height:100%;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+ }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .header＿logo {
   
 	width: 205px;
+
+	@include mq(sm) {
+			width: 40%;
+			margin: 0px -20px 0px -20px;
+}
+
+	@include mq(sp) {
+			width: 150px;
+			margin: 0px -20px 0px -17px;
+}
+	@include mq(tab) {
+			width: 150px;
+			margin: 0px -20px 0px -20px;
+}
+
+		}
 	
 	img {
-		display: block;
-    
+		display: block;		
+	}
 
-		@include mq('sp') {
-			width: 182px;
-		}
+.search {
+	@include mq(sm) {
+    display: none;
 	}
 }
 
@@ -126,20 +240,43 @@ h6 {
 	margin-left: auto;
 	align-items: center;
 
-	@include mq('sp') {
-		display: none;
-	}
+    @include mq(sm) {
+	  margin-left:-30px;
+}
 
+	@include mq(sp) {
+	  margin-left:10px;
+}
+	@include mq(tab) {
+		margin-left:10px;
+}
 	li {
+		color: #fff;
+
+		@include mq(sm) {
+		margin: 2px 30px;
+        font-size: 10px;
+		color: #fff;
+}
+
+		@include mq(sp) {
+		margin: 0px -5px;
+        font-size: 10px;
+		color: #fff;
+}
+	   @include mq(tab) {
+		margin: 0px -5px;
+        font-size: 10px;
+		color: #fff;
+}
 		&:not(:first-child) {
 	   margin-left: 40px;
-	  }
-
+	
 	   a {
 		text-decoration: none;
 		color: #fff;
 		position: relative;
-    display: inline-block;
+        display: inline-block;
 
 			&:hover {
       -webkit-animation: zoom .3s;
@@ -158,6 +295,7 @@ h6 {
    }
   }
  }
+}
 }
 }
 //////////////////////mainvisua///////////////////////////
@@ -364,24 +502,6 @@ li.features-item {
     background: url('noun_city hall_3955988.png') center center/contain no-repeat;
 }
 
-<%# .features-item:nth-child(4):before {
-    content: "";
-    display: block;
-    width: 120px;
-    height: 120px;
-    flex: 0 0 120px;
-    background: url(../img/futures/item04.svg) center center/contain no-repeat;
-}
-
-.features-item:nth-child(5):before {
-    content: "";
-    display: block;
-    width: 120px;
-    height: 120px;
-    flex: 0 0 120px;
-    background: url(../img/futures/item05.svg) center center/contain no-repeat;
-} %>
-
 span.important {
     font-weight: 600;
     color: #EC6D64;
@@ -406,20 +526,14 @@ span.important {
 	display: flex;
   justify-content: space-around;
 
-	@include mq('sp') {
-		display: block;
-	}
+	
 }
 
 
 .footer__center {
 	padding: 50px 10px 0;
 
-	@include mq('sp') {
-		width: 100%;
-		margin-top: 52px;
-		padding: 0;
-	}
+	
 }
 
 
@@ -431,6 +545,10 @@ span.important {
 
 	img {
 		width: 205px;
+
+		@include mq('sm') {
+    	margin: 10px -100px -10px 0px;
+}
 	}
 }
 
@@ -439,9 +557,7 @@ span.important {
 	color: #fff;
 	font-size: 14px;
 
-	@include mq('sp') {
-		margin-top: 20px;
-	}
+	
 
 	p {
 		margin-top: 0;
@@ -476,6 +592,13 @@ span.important {
 
 			@include mq('sp') {
 				margin-right: 16px;
+			}
+
+			@include mq('sm') {
+				margin-right: -14px;
+    			margin-left: 20px;
+   				margin-bottom: 0px;
+    			font-size: 10px;
 			}
 
 			&:last-child {
@@ -515,6 +638,10 @@ span.important {
 
 	@include mq('sp') {
 		margin-top: 40px;
+	}
+
+	@include mq('sm') {
+		font-size: 10px;
 	}
 
 	a {
