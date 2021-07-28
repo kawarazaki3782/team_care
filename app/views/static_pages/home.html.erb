@@ -6,13 +6,13 @@
                 <% @microposts.each do |micropost| %>
                 <% provide(:title, micropost.user.name) %>
                 <div class="timeline_homepage">  
-                    <div class="timeline_image_name">
+                    <div class="timeline_home_name">
                       <%= link_to  image_tag(micropost.user.profile_image.url, class:'icon2 user_image'), "/users/#{micropost.user.id}"%>
-                      <p class="post_name"><%= micropost.user.name %></p>
+                      <span class="post_name"><%= micropost.user.name %></span>
                       <p class="post_time"><%= micropost.created_at.strftime('%m月%d日%H:%M')%><br>
                     </div>
-                  <div class="timeline_content_new">
-                    <p class="post-text"><a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a></p> 
+                  <div class="timeline_home_new">
+                    <p class="home_text"><a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a></p> 
                   <p><i class="far fa-smile unlike-btn"></i><%= micropost.liked_users.count %></p>
                   <% if micropost.user.already_liked?(micropost) %>
                         <%= link_to micropost_like_path(id: micropost.id, micropost_id:micropost.id), method: :delete do %>
@@ -31,13 +31,13 @@
                 <% @diaries.each do |diary| %>
                 <% provide(:title, diary.user.name) %>
                 <div class="timeline_homepage">  
-                    <div class="timeline_image_name">
+                    <div class="timeline_home_name">
                       <%= link_to  image_tag(diary.user.profile_image.url, class:'icon2 user_image'), "/users/#{diary.user.id}"%>
-                      <p class="post_name"><%= diary.user.name %></p>
+                      <span class="post_name"><%= diary.user.name %></span>
                       <p class="post_time"><%= diary.created_at.strftime('%m月%d日%H:%M')%><br>
                     </div>
-                  <div class="timeline_content_new">
-                    <p class="post-text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.title %></a></p> 
+                  <div class="timeline_home_new">
+                    <p class="home_text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.title %></a></p> 
                   <p><i class="far fa-smile unlike-btn"></i><%= diary.liked_users.count %></p>
                   <% if diary.user.already_liked?(diary) %>
                         <%= link_to diary_like_path(id: diary.id, diary_id:diary.id), method: :delete do %>
@@ -57,13 +57,13 @@
                 <% @following_microposts.each do |micropost| %>
                 <% provide(:title, micropost.user.name) %>
                 <div class="timeline_homepage">  
-                    <div class="timeline_image_name">
+                    <div class="timeline_home_name">
                       <%= link_to  image_tag(micropost.user.profile_image.url, class:'icon2 user_image'), "/users/#{micropost.user.id}"%>
-                      <p class="post_name"><%= micropost.user.name %></p>
+                      <span class="post_name"><%= micropost.user.name %></span>
                       <p class="post_time"><%= micropost.created_at.strftime('%m月%d日%H:%M')%><br>
                     </div>
-                  <div class="timeline_content_new">
-                    <p class="post-text"><a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a></p> 
+                  <div class="timeline_home_new">
+                    <p class="home_text"><a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a></p> 
                   <p><i class="far fa-smile unlike-btn"></i><%= micropost.liked_users.count %></p>
                   <% if micropost.user.already_liked?(micropost) %>
                         <%= link_to micropost_like_path(id: micropost.id, micropost_id:micropost.id), method: :delete do %>
@@ -85,13 +85,13 @@
                 <% @following_diaries.each do |diary| %>
                 <% provide(:title, diary.user.name) %>
                 <div class="timeline_homepage">  
-                    <div class="timeline_image_name">
+                    <div class="timeline_home_name">
                       <%= link_to  image_tag(diary.user.profile_image.url, class:'icon2 user_image'), "/users/#{diary.user.id}"%>
-                      <p class="post_name"><%= diary.user.name %></p>
+                      <span class="post_name"><%= diary.user.name %></span>
                       <p class="post_time"><%= diary.created_at.strftime('%m月%d日%H:%M')%><br>
                     </div>
-                  <div class="timeline_content_new">
-                    <p class="post-text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.title %></a></p> 
+                  <div class="timeline_home_new">
+                    <p class="home_text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.title %></a></p> 
                   <p><i class="far fa-smile unlike-btn"></i><%= diary.liked_users.count %></p>
                   <% if diary.user.already_liked?(diary) %>
                         <%= link_to diary_like_path(id: diary.id, diary_id:diary.id), method: :delete do %>

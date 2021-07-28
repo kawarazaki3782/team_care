@@ -1822,6 +1822,11 @@ h2.section-title_post {
 		display: grid;
     padding-right: 0px;
  }
+
+ @include mq('sm') {
+		display: grid;
+    padding-right: 0px;
+ }
 }
 
 .icon2_user_image {
@@ -1895,6 +1900,10 @@ h2.section-title_post {
 	padding-left: 10px;
 
 	@include mq('sp') {
+		padding-left: 0px;
+ }
+
+ @include mq('sm') {
 		padding-left: 0px;
  }
 }
@@ -2035,11 +2044,12 @@ i.far.fa-comment.comment_count {
 
 	@include mq('sp') {
 		display: unset;
+		padding-left: 60px;
 	}
 
 	@include mq('sm') {
-		padding: 60px 50px 0px 0px;
-		margin: 9px 9px 2px -45px;
+		display: unset;
+		padding-left: 60px;
 	}
 }
 
@@ -2679,7 +2689,15 @@ h2.section-title_favorite {
 }
 
 .favorite_time {
-    padding-left: 10px
+    padding-left: 10px;
+
+	@include mq('sp') {
+		padding-left: 0px;
+ }
+
+ @include mq('sm') {
+		padding-left: 0px;
+ }
 }
 
 .favorite-text {
@@ -2880,6 +2898,10 @@ div#block_form {
 	width:250px;
 	margin-top:10px;
 	margin-left: 210px;
+
+   @include mq('tab') {
+	margin-left: 30px;
+   }
 	
 	@include mq('sm') {
 	margin: 0 auto;
@@ -3008,6 +3030,29 @@ input#search {
     width: 32%;
  }
 }
+
+.timeline_home_name {
+    display: flex;
+    padding-right: 0px;
+}
+
+.timeline_home_new {
+    display: flex;
+    text-align: center;
+	margin-top: -35px;
+}
+
+.home_text {
+
+	width: 100%;
+    padding-left: 30px;
+    font-size: 20px;
+
+    @include mq('tab') {
+    padding-left: 120px;
+	}
+}
+
 /////////////////////カテゴリーnew///////////////////////////
 
 
