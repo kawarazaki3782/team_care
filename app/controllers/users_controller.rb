@@ -12,28 +12,27 @@ class UsersController < ApplicationController
       @rooms = @user.rooms
       @currentUserEntry=Entry.where(user_id: current_user.id)
       @userEntry=Entry.where(user_id: @user.id)
-      @currentUserEntry.each do |cu|
-        @userEntry.each do |u|
-          if cu.room_id == u.room_id then
-            @isRoom = true
-            @roomId = cu.room_id
-          end
-      end
-    end
+        @currentUserEntry.each do |cu|
+          @userEntry.each do |u|
+            if cu.room_id == u.room_id then
+              @isRoom = true
+              @roomId = cu.room_id
+            end
+         end
+       end
       if @isRoom
       else
         @room = Room.new
         @entry = Entry.new
       end
     end
-    
     if logged_in? && current_user.id.to_s != params[:id]
       @user = User.find(params[:id])
       @microposts = @user.microposts.order(created_at: :desc).page(params[:page]).per(3)
       @diaries = @user.diaries.order(created_at: :desc).page(params[:page]).per(3)
       @currentUserEntry=Entry.where(user_id: current_user.id)
       @userEntry=Entry.where(user_id: @user.id)
-      @currentUserEntry.each do |cu|
+        @currentUserEntry.each do |cu|
           @userEntry.each do |u|
             if cu.room_id == u.room_id then
               @isRoom = true
@@ -49,7 +48,6 @@ class UsersController < ApplicationController
       end
     end
 
-  
   def new
     @user = User.new
   end
@@ -67,18 +65,17 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if params[:back]
-      render 'new' 
-    elsif @user.save
-      log_in @user
-      flash[:success] = "新規登録が完了しました"
-      redirect_to @user
-    else
-      render 'new'
-    end
+      if params[:back]
+        render 'new' 
+      elsif @user.save
+        log_in @user
+        flash[:success] = "新規登録が完了しました"
+        redirect_to @user
+      else
+        render 'new'
+      end
   end
   
-
   def edit
   end
 
@@ -86,22 +83,19 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.attributes = user_params
     @user.profile_image.cache!
-    
-    # 戻るときはエラーチェックしない
-    if params[:back]
-       render 'edit'
-       return
-    end
-
+      # 戻るときはエラーチェックしない
+      if params[:back]
+         render 'edit'
+         return
+      end
     # エラーがあれば編集画面へ戻す
-    unless @user.valid?
-      render 'edit'
+      unless @user.valid?
+        render 'edit'
       return
     end
-
-    if params[:save]
-      @user.profile_image.retrieve_from_cache! params[:cache][:profile_image]
-        if @user.update(user_params)
+      if params[:save]
+        @user.profile_image.retrieve_from_cache! params[:cache][:profile_image]
+      if @user.update(user_params)
         # updateへリダイレクト 
         # リダイレクトするのは、F5などでブラウザのリロードで
         # 保存処理が二重に動かないようにするため
@@ -111,7 +105,7 @@ class UsersController < ApplicationController
         # 編集画面へ戻す
         render 'edit'
        end
-    end
+     end
   end 
 
   def update
@@ -141,11 +135,9 @@ class UsersController < ApplicationController
   end
 
     private
-
     def user_params
       params.require(:user).permit(:name, :email, :profile_image, :password, :password_confirmation, :gender, :birthday, :address, :long_teamcare, :profile, :profile_image_cache)
     end
-
 
     def correct_user
       @user = User.find(params[:id])
@@ -154,7 +146,5 @@ class UsersController < ApplicationController
 
     def admin_user
       redirect_to(root_url) unless current_user.admin?
-    end
-
-    
+    end    
 end

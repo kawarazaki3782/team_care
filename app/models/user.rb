@@ -40,17 +40,17 @@ class User < ApplicationRecord
   has_many :blocker_blocks,foreign_key: "blocked_id", class_name: "Block", dependent: :destroy
   has_many :blockers, through: :blockers_blocks, source: :blocker
 
-   # 渡された文字列のハッシュ値を返す
-   def User.digest(string)
+  # 渡された文字列のハッシュ値を返す
+  def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
-   end
+  end
 
    # ランダムなトークンを返す
-   def User.new_token
+  def User.new_token
     SecureRandom.urlsafe_base64
-   end
+  end
 
   # 永続セッションのためにユーザーをデータベースに記憶する
   def remember
@@ -69,13 +69,13 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
- # ユーザーのステータスフィードを返す
- def feed
-  following_ids = "SELECT followed_id FROM relationships
+  # ユーザーのステータスフィードを返す
+  def feed
+    following_ids = "SELECT followed_id FROM relationships
                    WHERE follower_id = :user_id"
-  Micropost.where("user_id IN (#{following_ids})
+    Micropost.where("user_id IN (#{following_ids})
                    OR user_id = :user_id", user_id: id)
- end
+  end
 
   # ユーザーをフォローする
   def follow(other_user)
@@ -97,7 +97,7 @@ class User < ApplicationRecord
     self.likes.exists?(micropost_id: micropost.id)
   end
 
-  def already_liked2?(diary)
+  def already_liked_diary?(diary)
     self.likes.exists?(diary_id: diary.id)
   end
   
@@ -105,16 +105,16 @@ class User < ApplicationRecord
     temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
     if temp.blank?
       notification = current_user.active_notifications.new(
-        visited_id: id,
-        action: 'follow'
+      visited_id: id,
+      action: 'follow'
       )
       notification.save if notification.valid?
-    end
+      end
   end
 
-  #すでにブロック済みであればture返す
+  #すでにブロック済みであればtrue返す
   def blocking?(other_user)
-      self.blocking.include?(other_user)
+    self.blocking.include?(other_user)
   end
 
   def block(other_user)
@@ -124,8 +124,8 @@ class User < ApplicationRecord
     #   flash[:danger] = "フォロワーしている利用者はブロックできません"
     #   redirect_back(fallback_location: root_path)
     # else
-      self.blocking_blocks.create(blocked_id: other_user.id)
-    end
+    self.blocking_blocks.create(blocked_id: other_user.id)
+  end
   # end
   # end
 
@@ -133,6 +133,4 @@ class User < ApplicationRecord
   def unblock(other_user)
     self.blocking_blocks.find_by(blocked_id: other_user.id).destroy
   end 
-
-  
 end

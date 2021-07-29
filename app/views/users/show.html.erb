@@ -164,7 +164,7 @@
                   <div class="timeline_content_new">
                     <p class="diary-text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.title %></a></p> 
                     <p><i class="far fa-smile unlike-btn"></i><%= diary.liked_users.count %></p>
-                  <% if @user.already_liked2?(diary) %>
+                  <% if @user.already_liked_diary?(diary) %>
                         <%= link_to diary_like_path(id: diary.id, diary_id:diary.id), method: :delete do %>
                         <i class="far fa-smile like-btn"></i>
                       <% end %>

@@ -17,7 +17,7 @@
                 
                     <div class="diary_like_show">
                       <p><i class="far fa-smile unlike-btn"></i><%= @diary.likes.count %></p>
-                       <% if current_user.already_liked2?(@diary) %>
+                       <% if current_user.already_liked_diary?(@diary) %>
                           <%= link_to diary_like_path(@diary), method: :delete do %>
                           <i class="far fa-smile like-btn"></i>
                          <% end %>
