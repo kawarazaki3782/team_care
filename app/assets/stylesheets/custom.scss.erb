@@ -1537,26 +1537,14 @@ li.profile_list {
 	margin-bottom: 50px;
 }
 
-.timeline_newposts {
-	background-color: #fff;
-    padding-top: 5px;
-    padding-bottom: 15px;
-    height: auto !important;
-    display: -ms-flexbox;
+.timeline_other_user {
+    display: flex;
+    padding-right: 0px;
     border-bottom: 1px solid #efe7d7;
     border-top: 1px solid #efe7d7;
 }
 
-.timeline_content_new {
-    display: -webkit-box;
-	text-align: center;
-}
 
-.timeline_newdiaries {
-    padding-top: 5px;
-    border-top: 1px solid #efe7d7;
-    align-items: center;
-}
 
 
 //////////////////////login はじめ///////////////////////////
@@ -1888,7 +1876,7 @@ h2.section-title_post {
 	  margin: 0px 0px 0px 0px;
 	}
 	@include mq('sm') {
-	 margin: 0px -5px 0px 0px;
+	 margin: 0px 5px 0px 0px;
 	}
 
 	@include mq('sp') {
@@ -3040,6 +3028,13 @@ input#search {
     display: flex;
     text-align: center;
 	margin-top: -35px;
+
+	@include mq('sp') {
+      margin-top: -60px;
+	}
+    @include mq('sm') {
+      margin-top: -60px;
+  }
 }
 
 .home_text {

@@ -1,11 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe 'Likes', type: :system,js: true do
-  let(:user) { FactoryBot.create(:user) }
-  let(:micropost) { FactoryBot.create(:micropost, user_id: user.id) }
-  let(:diary) { FactoryBot.create(:diary, user_id: user.id) }
-  let(:like) { FactoryBot.create(:like, user_id: user.id, micropost_id: micropost.id) }
-  
+  let!(:user) { FactoryBot.create(:user) }
+  let!(:micropost) { FactoryBot.create(:micropost, user_id: user.id) }
+  let!(:diary) { FactoryBot.create(:diary, user_id: user.id) }
+  let!(:like) { FactoryBot.create(:like, user_id: user.id, diary_id: diary.id) }
+  let!(:like) { FactoryBot.create(:like, user_id: user.id, micropost_id: micropost.id) }
+
   before do
     sign_in_as user
   end

@@ -4,7 +4,12 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     @micropost = @comment.micropost
     @diary = @comment.diary
-    @comment.save
+      if @comment.save
+        flash[:success] = "コメントが投稿されました"
+      else
+        redirect_back(fallback_location: root_path)
+      end
+
       unless params[:micropost_id].nil? 
         @micropost.create_notification_comment!(current_user, @comment.id)
           redirect_back(fallback_location: root_path)

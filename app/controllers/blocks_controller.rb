@@ -4,7 +4,7 @@ class BlocksController < ApplicationController
     @user =User.find(params[:block][:blocked_id])
     current_user.block(@user)
     respond_to do |format|
-      format.html {redirect_to @user, flash: {success: 'ブロックしました！'} }
+      format.html {redirect_to @user, flash: {success: 'ブロックしました'} }
       format.js
     end
   end
