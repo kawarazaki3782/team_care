@@ -27,6 +27,7 @@
                   </div>
                    <% end %>
                    <%= paginate @microposts %>
+                   
                  <h2 class="section-title_users">みんなの最新の日記</h2>
                 <% @diaries.each do |diary| %>
                 <% provide(:title, diary.user.name) %>
@@ -66,11 +67,11 @@
                     <p class="home_text"><a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a></p> 
                   <p><i class="far fa-smile unlike-btn"></i><%= micropost.liked_users.count %></p>
                   <% if micropost.user.already_liked?(micropost) %>
-                        <%= link_to micropost_like_path(id: micropost.id, micropost_id:micropost.id), method: :delete do %>
+                        <%= link_to micropost_like_path(id: micropost.id, micropost_id:micropost.id),class:'likes_liked', method: :delete do %>
                         <i class="far fa-smile like-btn"></i>
                       <% end %>
                       <% else %>
-                        <%= link_to micropost_likes_path(micropost), method: :post do %>
+                        <%= link_to micropost_likes_path(micropost),class:'likes_unliked', method: :post do %>
                         <i class="far fa-smile unlike-btn"></i>
                       <% end %>
                       <% end %>
@@ -125,6 +126,7 @@
             <p class="rank_title">人気の日記</p>
               <div class="rank_items">
                 <% @diary_ranks.each.with_index(1) do |diary, i| %>
+               
                      <div class="rank_item">
                     <span class="ranking"><%= i %>位</span>
                     <span><%= link_to image_tag(diary.user.profile_image.url, class:'icon_rank_image'), "/users/#{diary.user.id}" %></span>

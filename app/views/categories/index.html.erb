@@ -1,19 +1,18 @@
 <section id="" class="category_catalog section">
   <div class="category__inner inner">
     <h2 class="section-title_category">カテゴリー 一覧</h2>
-    <%= link_to "カテゴリーを追加する", "/categories/new", class: "diary_draft_btn" %>
-      <div class="category_items">
-        <% @categories.each do |category| %>
-        <div class="category_item">
-            <span class="category_name"><%= category.name %></span>
-            
-            <span class="category_delete">
-            <% if current_user.id == category.user_id %>
-            <%= link_to '削除', category, method: :delete,
+      <%= link_to "カテゴリーを追加する", "/categories/new", class: "diary_draft_btn" %>
+        <div class="category_items">
+          <% @categories.each do |category| %>
+            <div class="category_item">
+              <span class="category_name"><%= category.name %></span>
+              <span class="category_delete">
+               <% if current_user.id == category.user_id %>
+               <%= link_to '削除', category, method: :delete,
                                     data: { confirm: "カテゴリー削除しますか?" } %><% end %>
-            </span>
-       </div>
-    <% end %>
-  </div>
-</div>
+              </span>
+            </div>
+            <% end %>
+         </div>
+     </div>
 </section>

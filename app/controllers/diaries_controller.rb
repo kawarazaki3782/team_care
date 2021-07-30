@@ -57,19 +57,20 @@ class DiariesController < ApplicationController
   end
 
   private  
-    def diary_params
-      params.require(:diary).permit(:content, :diary_image, :category_id, :user_id, :title, :diary_image_cache, :status)
-    end
 
-    def ensure_correct_user2
-      @diary = Diary.find_by(id: params[:id])
-        if @diary.user_id != @current_user.id
-          flash[:notice] = "権限がありません"
-          redirect_to("/diaries/index")
-        end
-    end
+  def diary_params
+    params.require(:diary).permit(:content, :diary_image, :category_id, :user_id, :title, :diary_image_cache, :status)
+  end
 
-    def require_login
-      redirect_to login_path if !logged_in?
-    end
+  def ensure_correct_user2
+    @diary = Diary.find_by(id: params[:id])
+      if @diary.user_id != @current_user.id
+        flash[:notice] = "権限がありません"
+        redirect_to("/diaries/index")
+      end
+  end
+
+  def require_login
+    redirect_to login_path if !logged_in?
+  end
 end

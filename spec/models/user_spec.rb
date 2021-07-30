@@ -38,19 +38,7 @@ RSpec.describe User, type: :model do
     user.valid?
     expect(user.errors.added?(:gender, :blank)).to be_truthy
   end
-
-  it "生年月日がなければ無効" do
-    user = FactoryBot.build(:user, birthday:nil)
-    user.valid?
-    expect(user.errors.added?(:birthday, :blank)).to be_truthy
-  end
-
-  it "住所がなければ無効" do
-    user = FactoryBot.build(:user, address:nil)
-    user.valid?
-    expect(user.errors.added?(:address, :blank)).to be_truthy
-  end
-
+  
   it "介護の形態がなければ無効" do
     user = FactoryBot.build(:user, long_teamcare:nil)
     user.valid?

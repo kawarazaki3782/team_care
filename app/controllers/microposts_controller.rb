@@ -43,16 +43,17 @@ class MicropostsController < ApplicationController
   end
 
   private 
-    def micropost_params
-      params.require(:micropost).permit(:content, :post_image, :category_id, :user_id)
-    end
+
+  def micropost_params
+    params.require(:micropost).permit(:content, :post_image, :category_id, :user_id)
+  end
        
-    def ensure_correct_user
-      @micropost = Micropost.find_by(id: params[:id])
-        if @micropost.user_id != @current_user.id
-          flash[:danger] = "権限がありません"
-          redirect_to("/posts/index")
-        end
-     end    
- end
+  def ensure_correct_user
+    @micropost = Micropost.find_by(id: params[:id])
+      if @micropost.user_id != @current_user.id
+        flash[:danger] = "権限がありません"
+         redirect_to("/posts/index")
+      end
+   end    
+end
 
