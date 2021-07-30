@@ -14,12 +14,12 @@
                   <div class="timeline_home_new">
                     <p class="home_text"><a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a></p> 
                   <p><i class="far fa-smile unlike-btn"></i><%= micropost.liked_users.count %></p>
-                  <% if micropost.user.already_liked?(micropost) %>
-                        <%= link_to micropost_like_path(id: micropost.id, micropost_id:micropost.id), method: :delete do %>
+                  <% if current_user.already_liked?(micropost) %>
+                        <%= link_to micropost_like_path(id: micropost.id, micropost_id:micropost.id), class:'likes_liked', method: :delete do %>
                         <i class="far fa-smile like-btn"></i>
                       <% end %>
                       <% else %>
-                        <%= link_to micropost_likes_path(micropost), method: :post do %>
+                        <%= link_to micropost_likes_path(micropost), class:'likes_unliked', method: :post do %>
                         <i class="far fa-smile unlike-btn"></i>
                       <% end %>
                       <% end %>
@@ -40,12 +40,12 @@
                   <div class="timeline_home_new">
                     <p class="home_text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.title %></a></p> 
                   <p><i class="far fa-smile unlike-btn"></i><%= diary.liked_users.count %></p>
-                  <% if diary.user.already_liked?(diary) %>
-                        <%= link_to diary_like_path(id: diary.id, diary_id:diary.id), method: :delete do %>
+                  <% if current_user.already_liked_diary?(diary) %>
+                        <%= link_to diary_like_path(id: diary.id, diary_id:diary.id), class:'likes_liked_diary', method: :delete do %>
                         <i class="far fa-smile like-btn"></i>
                       <% end %>
                       <% else %>
-                        <%= link_to diary_likes_path(diary), method: :post do %>
+                        <%= link_to diary_likes_path(diary), class:'likes_unliked_diary', method: :post do %>
                         <i class="far fa-smile unlike-btn"></i>
                       <% end %>
                       <% end %>
@@ -66,7 +66,7 @@
                   <div class="timeline_home_new">
                     <p class="home_text"><a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a></p> 
                   <p><i class="far fa-smile unlike-btn"></i><%= micropost.liked_users.count %></p>
-                  <% if micropost.user.already_liked?(micropost) %>
+                  <% if current_user.already_liked?(micropost) %>
                         <%= link_to micropost_like_path(id: micropost.id, micropost_id:micropost.id),class:'likes_liked', method: :delete do %>
                         <i class="far fa-smile like-btn"></i>
                       <% end %>
@@ -94,7 +94,7 @@
                   <div class="timeline_home_new">
                     <p class="home_text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.title %></a></p> 
                   <p><i class="far fa-smile unlike-btn"></i><%= diary.liked_users.count %></p>
-                  <% if diary.user.already_liked?(diary) %>
+                  <% if current_user.already_liked_diary?(diary) %>
                         <%= link_to diary_like_path(id: diary.id, diary_id:diary.id), method: :delete do %>
                         <i class="far fa-smile like-btn"></i>
                       <% end %>

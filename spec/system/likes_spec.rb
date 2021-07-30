@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Likes', type: :system,js: true do
   let(:user) { FactoryBot.create(:user) }
   let(:micropost) { FactoryBot.create(:micropost, user_id: user.id) }
+  let(:diary) { FactoryBot.create(:diary, user_id: user.id) }
   let(:like) { FactoryBot.create(:like, user_id: user.id, micropost_id: micropost.id) }
   
   before do
@@ -11,30 +12,35 @@ RSpec.describe 'Likes', type: :system,js: true do
 
    it 'つぶやきにいいねをする' do
     visit root_path
-    expect(page).to have_current_path root_path
       expect do
-         find('.likes_unliked', visible: false).click
+         find('.likes_unliked', match: :first , visible: false).click
          expect(page).to have_css '.likes_liked', visible: false
        end.to change { Like.count }.by(1)
     end
-end
-    #   it 'いいねを取り消す' do
-#     like = create(:like)
 
-#     micropost = like.micropost
+   it 'つぶやきのいいねを取り消す' do
+     visit root_path
+     find('.likes_unliked', match: :first , visible: false).click
+       expect do
+         find('.likes_liked', match: :first , visible: false).click
+         expect(page).to have_css '.likes_unliked', visible: false
+       end.to change { Like.count }.by(-1)
+   end
 
-#     user = like.user
+   it '日記にいいねをする' do
+    visit root_path
+      expect do
+         find('.likes_unliked_diary', match: :first , visible: false).click
+         expect(page).to have_css '.likes_liked_diary', visible: false
+       end.to change { Like.count }.by(1)
+    end
 
-#     sign_in user
-
-#     visit micropost_path(micropost)
-
-#     expect do
-#       find('.likes-liked').click
-
-#       expect(page).to have_css '.likes-unliked', visible: false
-#     end.to change { Like.count }.by(-1)
-
-#     expect(current_path).to eq micropost_path(micropost)
-#   end
-# end
+   it '日記のいいねを取り消す' do
+     visit root_path
+     find('.likes_unliked_diary', match: :first , visible: false).click
+       expect do
+         find('.likes_liked_diary', match: :first , visible: false).click
+         expect(page).to have_css '.likes_unliked_diary', visible: false
+       end.to change { Like.count }.by(-1)
+   end
+  end
