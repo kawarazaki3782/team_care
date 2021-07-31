@@ -1,6 +1,6 @@
 class DiariesController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
-  before_action :ensure_correct_user2,   only: :destroy
+  before_action :ensure_correct_user_diary,   only: :destroy
 
   def draft 
     @user = current_user
@@ -24,8 +24,7 @@ class DiariesController < ApplicationController
         flash[:success] = "日記を投稿しました。"
         redirect_to diaries_path
       else
-        @feed_items = current_user.feed.paginate(page: params[:page])
-        redirect_to root_url
+        redirect_back(fallback_location: root_path)
       end  
   end
 
@@ -46,7 +45,7 @@ class DiariesController < ApplicationController
       if @diary.update(diary_params)
         redirect_to diaries_path
       else
-        render 'new'
+        render 'edit'
       end
   end
 
@@ -62,7 +61,7 @@ class DiariesController < ApplicationController
     params.require(:diary).permit(:content, :diary_image, :category_id, :user_id, :title, :diary_image_cache, :status)
   end
 
-  def ensure_correct_user2
+  def ensure_correct_user_diary
     @diary = Diary.find_by(id: params[:id])
       if @diary.user_id != @current_user.id
         flash[:notice] = "権限がありません"

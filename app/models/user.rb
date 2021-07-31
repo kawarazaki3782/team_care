@@ -118,16 +118,9 @@ class User < ApplicationRecord
   end
 
   def block(other_user)
-    passive_relationships = self.current_user.passive_relationships
-      passive_relationships.each do |p|
-        if p.followed_id == other_user.id？
-          flash[:danger] = "フォロワーしている利用者はブロックできません"
-          redirect_back(fallback_location: root_path)
-        else
-          self.blocking_blocks.create(blocked_id: other_user.id)
-        end
-      end
-   end
+    return false if self.following.pluck(:id).include?(other_user.id)
+    self.blocking_blocks.create(blocked_id: other_user.id)
+  end
 
   #ユーザーのブロックを解除する
   def unblock(other_user)

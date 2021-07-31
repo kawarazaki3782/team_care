@@ -7,14 +7,21 @@ class CommentsController < ApplicationController
       if @comment.save
         flash[:success] = "コメントが投稿されました"
       else
+        flash[:error] = "コメントが作成できません"
         redirect_back(fallback_location: root_path)
       end
 
-      unless params[:micropost_id].nil? 
+      if params[:micropost_id].nil? 
+        flash[:error] = "コメントが作成できません"
+        redirect_back(fallback_location: root_path)
+      else
         @micropost.create_notification_comment!(current_user, @comment.id)
-          redirect_back(fallback_location: root_path)
+        redirect_back(fallback_location: root_path)
       end
-      unless params[:diary_id].nil?
+      if params[:diary_id].nil?
+        flash[:error] = "コメントが作成できません"
+        redirect_back(fallback_location: root_path)
+      else
         @diary.create_notification_comment!(current_user, @comment.id)
         redirect_back(fallback_location: root_path)
       end

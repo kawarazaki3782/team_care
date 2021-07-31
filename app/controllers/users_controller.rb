@@ -58,9 +58,13 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    flash[:danger] = "User deleted"
-    redirect_to users_url
+    if User.find(params[:id]).destroy
+      flash[:danger] = "ユーザーを削除しました"
+      redirect_to users_url
+    else
+      flash[:danger] = "ユーザーを削除できませんでした"
+      redirect_to users_url
+    end
   end
 
   def create
@@ -72,6 +76,7 @@ class UsersController < ApplicationController
         flash[:success] = "新規登録が完了しました"
         redirect_to @user
       else
+        flash[:danger] = "ユーザーを登録できませんでした"
         render 'new'
       end
   end
@@ -96,13 +101,9 @@ class UsersController < ApplicationController
       if params[:save]
         @user.profile_image.retrieve_from_cache! params[:cache][:profile_image]
       if @user.update(user_params)
-        # updateへリダイレクト 
-        # リダイレクトするのは、F5などでブラウザのリロードで
-        # 保存処理が二重に動かないようにするため
         redirect_to :action => 'update' 
        else
-        # DBへの保存に失敗
-        # 編集画面へ戻す
+        flash[:danger] = "ユーザーを編集できませんでした"
         render 'edit'
        end
      end

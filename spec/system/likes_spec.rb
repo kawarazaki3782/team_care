@@ -44,4 +44,4 @@ RSpec.describe 'Likes', type: :system,js: true do
          expect(page).to have_css '.likes_unliked_diary', visible: false
        end.to change { Like.count }.by(-1)
    end
-  end
+end
