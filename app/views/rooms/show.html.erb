@@ -10,14 +10,16 @@
   <%=link_to image_tag(m.user.profile_image.url, class:'faceicon img') %>
   <p class="says"><strong><%= m.content %></strong>
     <small>by <strong><a href="/users/<%= m.user_id %>"><%= m.user.name %>さん</a></strong></small></p>
+    <% if current_user?(m.user) %>
     <%=link_to '削除', m, method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn-sm btn-danger dm_delete'%>
+    <% end %>
     <hr>
   
   <% end %>
 </div>
 </div>
 <% else %>
-  <p class="says"><h3 class="text-center">メッセージはまだありません</h3></p>
+  <h3 class="text-center">メッセージはまだありません</h3>
 <% end %>
 </div>
 <div class="dm_post">

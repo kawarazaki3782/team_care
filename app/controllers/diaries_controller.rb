@@ -21,9 +21,10 @@ class DiariesController < ApplicationController
     @diary = Diary.new(diary_params)
     @diary.user_id = current_user.id
       if @diary.save!
-        flash[:success] = "日記を投稿しました。"
+        flash[:success] = "日記を投稿しました"
         redirect_to diaries_path
       else
+        flash[:danger] = "日記が投稿できません"
         redirect_back(fallback_location: root_path)
       end  
   end
@@ -38,21 +39,27 @@ class DiariesController < ApplicationController
 
   def edit
     @diary = Diary.find(params[:id])
-    end
+  end
 
   def update
     @diary = Diary.find(params[:id])
       if @diary.update(diary_params)
+        flash[:success] = "日記の編集が完了しました"
         redirect_to diaries_path
       else
+        flash[:danger] = "日記を編集できません"
         render 'edit'
       end
   end
 
   def destroy
-    @diary.destroy
-    flash[:success] = "日記を削除しました"
-    redirect_to diaries_path
+    if @diary.destroy
+      flash[:danger] = "日記を削除しました"
+      redirect_to diaries_path
+    else
+      flash[:danger] = "日記を削除できません"
+      redirect_to diaries_path
+    end
   end
 
   private  

@@ -31,7 +31,6 @@ class CategoriesController < ApplicationController
       redirect_to categories_path
     else 
       flash[:danger] = "カテゴリーを削除できませんでした"
-      redirect_to categories_path
     end
   end
   private

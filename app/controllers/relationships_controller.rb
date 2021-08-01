@@ -3,21 +3,29 @@ class RelationshipsController < ApplicationController
 
   def create
      @user = User.find(params[:followed_id])
-     current_user.follow(@user)
+     if current_user.follow(@user)
      @user.create_notification_follow!(current_user)
        respond_to do |format|
           format.html { redirect_to @user }
           format.js
         end
-  end
+      else
+        flash[:danger] = "フォローできませんでした"
+        redirect_back(fallback_location: root_path)
+      end
+    end
     
   def destroy
     @user = Relationship.find(params[:id]).followed
-    current_user.unfollow(@user)
+    if current_user.unfollow(@user)
       respond_to do |format|
         format.html { redirect_to @user }
         format.js
       end
+    else
+      flash[:danger] = "フォローを解除できません"
+      redirect_back(fallback_location: root_path)
     end
+  end
 end
 

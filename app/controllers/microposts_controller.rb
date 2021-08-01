@@ -1,6 +1,6 @@
 class MicropostsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
-  before_action :ensure_correct_user,   only: :destroy
+  before_action :ensure_correct_user, only: :destroy
     
   def index
     @microposts = current_user.microposts.all.order("created_at DESC").page(params[:page]).per(5)
@@ -26,8 +26,8 @@ class MicropostsController < ApplicationController
         flash[:success] = "つぶやきを投稿しました"
         redirect_to microposts_path
       else
-        @feed_items = current_user.feed.paginate(page: params[:page])
-        redirect_to root_url
+        flash[:danger] = "つぶやきの投稿に失敗しました"
+        redirect_to microposts_path
       end
    end
 
@@ -37,9 +37,13 @@ class MicropostsController < ApplicationController
   end
     
   def destroy
-    @micropost.destroy
-    flash[:danger] = "つぶやきを削除しました"
-    redirect_to microposts_path
+    if @micropost.destroy
+      flash[:danger] = "つぶやきを削除しました"
+      redirect_to microposts_path
+    else
+      flash[:danger] = "つぶやきの削除に失敗しました"
+      redirect_to microposts_path
+    end
   end
 
   private 

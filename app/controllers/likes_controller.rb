@@ -12,7 +12,12 @@ class LikesController < ApplicationController
       @micropost.create_notification_by(current_user)
       redirect_back(fallback_location: root_path)
     end
-  end
+    if params[:micropost_id].nil? && params[:diary_id].nil?
+      flash[:danger] = "いいねできませんでした"
+    end
+  end  
+
+
       
   def destroy
     unless params[:diary_id].nil?
@@ -24,6 +29,9 @@ class LikesController < ApplicationController
       @like = Like.find_by(micropost_id: params[:micropost_id], user_id: current_user.id)
       @like.destroy
       redirect_back(fallback_location: root_path)
+    end
+    if params[:micropost_id].nil? && params[:diary_id].nil?
+      flash[:danger] = "いいねできませんでした"
     end
   end
 end

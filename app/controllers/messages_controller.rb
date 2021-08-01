@@ -11,10 +11,14 @@ class MessagesController < ApplicationController
 
   def destroy
     message = Message.find(params[:id])
-    message.destroy
-    redirect_back(fallback_location: root_path)
-  end    
-     
+    if message.destroy
+      redirect_back(fallback_location: root_path)
+    else
+      flash[:danger] = "メッセージを削除できません"
+      redirect_back(fallback_location: root_path)
+    end    
+  end
+
   private 
 
   def message_params

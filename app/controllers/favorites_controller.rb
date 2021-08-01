@@ -1,20 +1,40 @@
 class FavoritesController < ApplicationController
   def index
     @user = current_user
-    unless params[:micropost_id].nil?
+    
+    if params[:micropost_id].present? && params[:diary_id].nil?
       @micropost = @user.micropost_ids
-      favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc).pluck(:micropost_id)# ログイン中のユーザーのお気に入りのpost_idカラムを取得
+      favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc).pluck(:micropost_id)
       @favorites = Micropost.find(favorites)
+    else
+      flash[:danger] = "お気に入りに登録されていません"
+      redirect_back(fallback_location: root_path)
     end
-    unless params[:diary_id].nil?
+    
+
+    if params[:diary_id].present? && params[:micropost_id].nil?
       @diary = @user.diary_ids
-      favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc).pluck(:diary_id) # ログイン中のユーザーのお気に入りのpost_idカラムを取得
+      favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc).pluck(:diary_id) 
       @favorites = Diary.find(favorites)
+    else
+      flash[:danger] = "お気に入りに登録されていません"
+      redirect_back(fallback_location: root_path)
     end
-    if params[:micropost_id].nil? 
-      if params[:diary_id].nil?
-        redirect_back(fallback_location: root_path)
-      end
+  
+    
+    # unless params[:micropost_id].nil? || params[:micropost_id] == [""]
+    #   @micropost = @user.micropost_ids
+    #   favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc).pluck(:micropost_id)# ログイン中のユーザーのお気に入りのpost_idカラムを取得
+    #   @favorites = Micropost.find(favorites)
+    # end
+    # unless params[:diary_id].nil? || params[:diary_id] == [""]
+    #   @diary = @user.diary_ids
+    #   favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc).pluck(:diary_id) # ログイン中のユーザーのお気に入りのpost_idカラムを取得
+    #   @favorites = Diary.find(favorites)
+    # end
+    if params[:micropost_id].nil? && params[:diary_id].nil?
+      flash[:danger] = "お気に入りに登録されていません"
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -29,7 +49,10 @@ class FavoritesController < ApplicationController
       @micropost = Micropost.find(params[:micropost_id])
       @favorite = current_user.favorites.create!(micropost_id: @micropost.id)
       redirect_back(fallback_location: root_path)
-    end     
+    end
+    if params[:micropost_id].nil? && params[:diary_id].nil?
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def destroy
@@ -43,5 +66,8 @@ class FavoritesController < ApplicationController
       @favorite.destroy
       redirect_back(fallback_location: root_path)
     end   
+    if params[:micropost_id].nil? && params[:diary_id].nil?
+      redirect_back(fallback_location: root_path)
+    end
   end
 end

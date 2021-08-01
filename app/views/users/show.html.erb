@@ -8,8 +8,8 @@
 
         <div class="users_tab">
             <div class="users_tab-item"><%= link_to "利用者一覧", users_path, class: "btn_base_users" %></div>
-            <div class="users_tab-item"><%= link_to "お気に入りのつぶやき", favorites_path(micropost_id: @micropost), class: "btn_base_users" %></div>
-            <div class="users_tab-item"><%= link_to "お気に入りの日記", favorites_path(diary_id: @diary), class: "btn_base_users" %></div>
+            <div class="users_tab-item"><%= link_to "お気に入りのつぶやき", favorites_path(micropost_id: @micropost_favorites), class: "btn_base_users" %></div>
+            <div class="users_tab-item"><%= link_to "お気に入りの日記", favorites_path(diary_id: @diary_favorites), class: "btn_base_users" %></div>
         </div>
 
         <div class="notifications_button">
@@ -82,6 +82,7 @@
     <div class="profile_image_users">
         <% if @user.profile_image? %>                                                              
         <%= image_tag @user.profile_image.url, class:'users_icon' %> 
+        <%end%>
     </div>
     <br>
     <br>
@@ -149,7 +150,7 @@
                   </div>
                    <% end %>
                 </div>  
-          <% end %>
+          
       </div>  
 <%= paginate @microposts %>
 <h2 class="section-title_diary">最近の日記</h2>

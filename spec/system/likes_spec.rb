@@ -4,18 +4,16 @@ RSpec.describe 'Likes', type: :system,js: true do
   let!(:user) { FactoryBot.create(:user) }
   let!(:micropost) { FactoryBot.create(:micropost, user_id: user.id) }
   let!(:diary) { FactoryBot.create(:diary, user_id: user.id) }
-  let!(:like) { FactoryBot.create(:like, user_id: user.id, diary_id: diary.id) }
-  let!(:like) { FactoryBot.create(:like, user_id: user.id, micropost_id: micropost.id) }
 
   before do
     sign_in_as user
   end
 
    it 'つぶやきにいいねをする' do
-    visit root_path
+    click_on '自分のつぶやき'
       expect do
-         find('.likes_unliked', match: :first , visible: false).click
-         expect(page).to have_css '.likes_liked', visible: false
+         find('.likes-liked', match: :first , visible: false).click
+         expect(page).to have_css '.likes-unliked', visible: false
        end.to change { Like.count }.by(1)
     end
 

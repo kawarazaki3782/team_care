@@ -1,11 +1,11 @@
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
-  def self.last_week 
+  def self.micropost_ranks
     Micropost.where(id: Like.group(:micropost_id).order('count(micropost_id) desc').limit(5).pluck(:micropost_id))
   end
 
-  def self.diary_last_week 
+  def self.diary_ranks
     Diary.where(id: Like.group(:diary_id).order('count(diary_id) desc').limit(5).pluck(:diary_id))
   end
   

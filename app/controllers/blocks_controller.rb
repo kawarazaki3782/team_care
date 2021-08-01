@@ -8,7 +8,7 @@ class BlocksController < ApplicationController
         format.js
       end
     else
-      flash[:success] = "ブロックできませんでした"
+      flash[:danger] = "ブロックできませんでした"
       redirect_back(fallback_location: root_path)
     end
   end
@@ -21,7 +21,7 @@ class BlocksController < ApplicationController
         format.js
       end
     else 
-      flash[:success] = "ブロックを解除できませんでした"
+      flash[:danger] = "ブロックを解除できません"
       redirect_back(fallback_location: root_path)
     end
   end
