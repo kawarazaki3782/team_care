@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Block, type: :model do
   describe 'アソシエーション' do
     let(:association) do
-    described_class.reflect_on_association(target)
-   end
+      described_class.reflect_on_association(target)
+    end
 
     context 'blocker' do
       let(:target) { :blocker }

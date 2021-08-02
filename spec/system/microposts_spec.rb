@@ -8,19 +8,17 @@ describe 'つぶやき投稿', type: :system, js: true do
     it 'つぶやき投稿できること' do
       sign_in_as user
       visit new_micropost_path
-
       fill_in 'micropost[content]', with: 'コンテンツ'
       attach_file 'micropost[post_image]', 'spec/fixtures/noimage.jpeg'
       click_on '投稿する'
-
       expect(page).to have_current_path microposts_path
     end
   end
 
   describe 'つぶやき一覧表示' do
     before do
-        FactoryBot.create(:micropost, user_id: user.id)
-        sign_in_as user
+      FactoryBot.create(:micropost, user_id: user.id)
+      sign_in_as user
     end
 
     it '自分のつぶやき一覧が表示されること' do
@@ -29,38 +27,38 @@ describe 'つぶやき投稿', type: :system, js: true do
     end
     
     it 'お気に入りのつぶやき一覧が表示されること' do
-        visit user_path(user)
-        click_on "お気に入りのつぶやき"
-        expect(page).to have_content 'お気に入りのつぶやき'
+      visit user_path(user)
+      click_on "お気に入りのつぶやき"
+      expect(page).to have_content 'お気に入りのつぶやき'
     end
 
     it 'フォローした利用者のつぶやき一覧が表示されること' do
-        visit root_path
-        expect(page).to have_content 'フォローしている利用者のつぶやき'
+      visit root_path
+      expect(page).to have_content 'フォローしている利用者のつぶやき'
     end
     
     it 'みんなのつぶやき一覧が表示されること' do
-        visit root_path
-        expect(page).to have_content 'みんなの最新のつぶやき'
+      visit root_path
+      expect(page).to have_content 'みんなの最新のつぶやき'
     end
   end
 
   describe 'つぶやき詳細表示' do
     before do
-        FactoryBot.create(:micropost, user_id: user.id)
-        sign_in_as user
+      FactoryBot.create(:micropost, user_id: user.id)
+      sign_in_as user
     end
+
     it 'つぶやき詳細' do
-        visit microposts_path
-        click_on 'つぶやきサンプル' 
-        
+      visit microposts_path
+      click_on 'つぶやきサンプル'     
     end
   end
 
   describe 'つぶやき削除' do
     before do
-        FactoryBot.create(:micropost, user_id: user.id)
-        sign_in_as user
+      FactoryBot.create(:micropost, user_id: user.id)
+      sign_in_as user
     end
 
     it 'つぶやきを削除できること(つぶやき一覧)' do
@@ -74,13 +72,13 @@ describe 'つぶやき投稿', type: :system, js: true do
     end
 
     it 'つぶやきを削除できること(つぶやき詳細)' do
-        visit microposts_path
-        click_on 'つぶやきサンプル', match: :first 
-        page.accept_confirm do
-          click_on 'つぶやき削除'
-        end
-        visit microposts_path
-        expect(page).to have_content 'つぶやき一覧'
+      visit microposts_path
+      click_on 'つぶやきサンプル', match: :first 
+       page.accept_confirm do
+         click_on 'つぶやき削除'
+      end
+      visit microposts_path
+      expect(page).to have_content 'つぶやき一覧'
     end
   end
 end

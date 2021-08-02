@@ -10,7 +10,6 @@ RSpec.describe"ユーザー登録機能", type: :system,js: true do
     it "新しいユーザーを作成できること" do
       visit root_path
       click_link "新規登録", match: :first
-
       attach_file "user[profile_image]", "spec/fixtures/noimage.jpeg"
       fill_in "user[name]", with: "サブロー"
       fill_in "user[email]", with: "sample@example.com"
@@ -24,7 +23,6 @@ RSpec.describe"ユーザー登録機能", type: :system,js: true do
       select '介護者', from: 'user[long_teamcare]'
       fill_in "user[profile]", with: "こんにちは"
       click_on "確認画面へ"
-
       expect(page).to have_content "登録内容の確認"
     end
   end
@@ -33,7 +31,6 @@ RSpec.describe"ユーザー登録機能", type: :system,js: true do
     it 'プロフィールを編集出来ること' do
       sign_in_as(user)
       click_link 'プロフィール編集'
-
       attach_file "user[profile_image]", "spec/fixtures/noimage.jpeg"
       fill_in "user[name]", with: "サブロー"
       fill_in "user[email]", with: "sample@example.com"
@@ -48,7 +45,6 @@ RSpec.describe"ユーザー登録機能", type: :system,js: true do
       fill_in "user[profile]", with: "こんにちは"
       click_on '確認画面へ'
       expect(page).to have_content '編集内容の確認'
-      
     end
 
     it '他のユーザーの編集ページにはアクセスできないこと' do

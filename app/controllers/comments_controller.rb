@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
       redirect_back(fallback_location: root_path)
     else
       Comment.find(params[:id]).destroy
-      flash[:danger] = "コメントが削除されました"
+      flash[:danger] = "コメントが削除できません"
     end   
   end
 

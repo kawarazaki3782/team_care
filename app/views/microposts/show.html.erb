@@ -83,7 +83,7 @@
            <div class="timeline_content">
               <p class="post-text"><%= c.content %></p>   
               <p class="post_delete_show"><% if current_user?(c.user) %>
-               <%= link_to "削除", micropost_comment_path(c.micropost.id, c.id), method: :delete,
+               <%= link_to "削除", micropost_comment_path(c.micropost.id, c.id), method: :delete,class:"comment_delete",
                                                     data: { confirm: "コメントを削除しますか?" } %></p>    
            </div>
          </div>

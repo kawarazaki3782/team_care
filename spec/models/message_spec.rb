@@ -52,21 +52,20 @@ RSpec.describe Message, type: :model do
   end
   describe 'アソシエーション' do
     let(:association) do
-    described_class.reflect_on_association(target)
-   end
+      described_class.reflect_on_association(target)
+    end
 
-  context 'user' do
-    # targetは :userに指定
-    let(:target) { :user }
-    it { expect(association.macro).to eq :belongs_to }
-    it { expect(association.class_name).to eq 'User' }
-  end
+    context 'user' do
+      let(:target) { :user }
+      it { expect(association.macro).to eq :belongs_to }
+      it { expect(association.class_name).to eq 'User' }
+    end
 
-  context 'room' do
-    let(:target) { :room }
-    it { expect(association.macro).to eq :belongs_to }
-    it { expect(association.class_name).to eq 'Room' }
+    context 'room' do
+      let(:target) { :room }
+      it { expect(association.macro).to eq :belongs_to }
+      it { expect(association.class_name).to eq 'Room' }
+    end
   end
-end
 end
 

@@ -27,5 +27,5 @@ RSpec.describe 'ブロック機能', type: :system, js: true do
           expect(page).to have_css '.follow_block_item', visible: false
         end.to change { Block.count }.by(-1)
     end
-  end 
+  end
 end

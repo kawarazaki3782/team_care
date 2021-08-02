@@ -34,7 +34,7 @@ describe "リンクの確認（ログイン済み）", js: true do
 end
 
 describe "リンクの確認（ログイン未）", js: true do
-    let!(:user) { FactoryBot.create(:user, name: "一般ユーザー") }
+  let!(:user) { FactoryBot.create(:user, name: "一般ユーザー") }
   
     before do
       visit root_path
