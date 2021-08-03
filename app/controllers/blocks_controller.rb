@@ -1,18 +1,12 @@
 class BlocksController < ApplicationController
   
   def create
-    begin 
-      @user = User.find(params[:block][:blocked_id])
-      current_user.block(@user)
-      respond_to do |format|
-        format.html {redirect_to @user, flash: {success: 'ブロックしました'} }
-        format.js
-      end
-    rescue ActiveRecord::RecordNotFound => e
-      logger.error e 
-      logger.error e.backtrace.join("\n") 
-      flash[:alert] += 'ブロックできません'
-    end
+        @user = User.find(params[:block][:blocked_id])
+        current_user.block(@user)
+          respond_to do |format|
+            format.html {redirect_to @user, flash: {success: 'ブロックしました'} }
+            format.js
+        end
   end
     
   def destroy

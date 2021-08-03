@@ -771,9 +771,6 @@ h2.section-title {
     padding-top: 100px;
 }
 
-.contact__inner{
-}
-
 .contact__item {
 	margin: 80px auto 0;
 	padding: 60px;
@@ -781,10 +778,10 @@ h2.section-title {
 	width: 800px;
 	max-width: 100%;
 
-	@include mq('sp') {
-		padding: 20px;
-		margin-top: 26px;
-	}
+  @include mq('sp') {
+	padding: 20px;
+	margin-top: 26px;
+ }
 }
 
 .contact__controls {
@@ -795,85 +792,86 @@ h2.section-title {
 	margin-bottom: 60px;
 	display: flex;
 
-	@include mq('sp') {
-		display: block;
-		margin-bottom: 24px;
-	}
-
-	@include mq('sm') {
+  @include mq('sp') {
 	display: block;
-   }
+	margin-bottom: 24px;
+}
 
-	&:last-child {
-		margin-bottom: 0;
-	}
+  @include mq('sm') {
+	display: block;
+}
 
-	dt {
-		width: 160px;
-		padding: 6px 0 0;
-		margin: 0;
+  &:last-child {
+	margin-bottom: 0;
+}
 
-		@include mq('sp') {
-			width: 100%;
-			padding-top: 0;
-		}
-	}
+  dt {
+	width: 160px;
+	padding: 6px 0 0;
+	margin: 0;
 
-	dd {
-		flex-grow: 1;
-		padding: 0;
-		margin: 0;
+  @include mq('sp') {
+	width: 100%;
+	padding-top: 0;
+ }
+}
 
-		@include mq('sp') {
-			width: 100%;
-			margin-top: 8px;
-		}
-	}
+  dd {
+	flex-grow: 1;
+	padding: 0;
+	margin: 0;
+
+  @include mq('sp') {
+	width: 100%;
+	margin-top: 8px;
+  }
+ }
 }
 
 .contact__label {
 	font-size: 16px;
 	font-weight: 700;
 
-	@include mq('sp') {
-		font-size: 16px;
-		display: inline-block;
-	}
+  @include mq('sp') {
+	font-size: 16px;
+	display: inline-block;
+ }
 }
 
 .contact__label--required {
 	position: relative;
 
-	@include mq('sp') {
-		padding-right: 54px;
-	}
+  @include mq('sp') {
+	padding-right: 54px;
+}
 
-	&::after {
-		content: "必須";
-		position: absolute;
-		background: $color-active;
-		border-radius: 4px;
-		text-align: center;
-		color: #fff;
-		font-size: 14px;
-		line-height: 1;
-		font-weight: 700;
-		padding: 4px 8px;
-		width: 44px;
-		display: block;
-		top: calc(100% + 8px);
-		left: 0;
+  &::after {
+	content: "必須";
+	position: absolute;
+	background: $color-active;
+	border-radius: 4px;
+	text-align: center;
+	color: #fff;
+	font-size: 14px;
+	line-height: 1;
+	font-weight: 700;
+	padding: 4px 8px;
+	width: 44px;
+	display: block;
+	top: calc(100% + 8px);
+	left: 0;
 
-		@include mq('sp') {
-			top: 50%;
-			left: auto;
-			right: 0;
-			transform: translateY(-50%);
-		}
-		@include mq('sm') {
-			left: -48px;
-		}
-	}
+  @include mq('sp') {
+	top: 50%;
+	left: auto;
+	right: 0;
+	transform: translateY(-50%);
+}
+
+  @include mq('sm') {
+	left: -48px;
+  }
+ }
 }
 
 .contact__required {
@@ -911,10 +909,10 @@ h2.section-title {
 	box-shadow: none;
 	height: 38px;
 
-	@include mq('sp') {
-		padding-top: 4px;
-		padding-bottom: 4px;
-	}
+  @include mq('sp') {
+	padding-top: 4px;
+	padding-bottom: 4px;
+ }
 }
 
 .form-select {
@@ -931,15 +929,15 @@ h2.section-title {
 	border: 1px solid #707070;
 	height: 38px;
 
-	@include mq('sp') {
-		padding-top: 3px;
-		padding-bottom: 3px;
-		background-position: center right 10px;
-	}
+  @include mq('sp') {
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-position: center right 10px;
+}
 
-	&::-ms-expand {
-		display: none;
-	}
+  &::-ms-expand {
+	display: none;
+  }
 }
 
 .form-textarea {
@@ -960,14 +958,14 @@ h2.section-title {
 	font-size: 14px;
 	vertical-align: bottom;
 
-	@include mq('sp') {
-		height: 180px;
-	}
+  @include mq('sp') {
+	height: 180px;
+ }
 }
 //////////////////////ログイン//////////////////////////
 
 h2.section-title_signup {
-    text-align: center;
+	text-align: center;
 }
 
 .signup_label {
@@ -1012,26 +1010,26 @@ h2.section-title_signup {
 }
 
 .btn_base_signup {
-		display: inline-block;
-		width: 300px;
-		max-width: 100%;
-		line-height: 72px;
-		height: 72px;
-		text-align: center;
-		background: $color-main2;
-		color: #fff;
-		font-size: 24px;
-		font-weight: 700;
-		border-radius: 8px;
-		cursor: pointer;
-	    outline: none;
-	    padding: 0rem 2rem;
-        box-shadow: 2px 2px 4px gray;
-        border: 1px solid #ccc;
+	display: inline-block;
+	width: 300px;
+	max-width: 100%;
+	line-height: 72px;
+	height: 72px;
+	text-align: center;
+	background: $color-main2;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 700;
+	border-radius: 8px;
+	cursor: pointer;
+	outline: none;
+	padding: 0rem 2rem;
+    box-shadow: 2px 2px 4px gray;
+    border: 1px solid #ccc;
 
-		a {
-		  text-decoration: none;
-		}
+  a {
+	text-decoration: none;
+ }
 }
 
 ///////////////プロフィール編集////////////////
@@ -1053,7 +1051,6 @@ h2.section-title_signup {
     border: 1px solid #ccc;
     margin: 0 auto;
 	margin-top: 20px;
-
 }
 
 ///////////////新規登録確認画面////////////////
@@ -1072,13 +1069,13 @@ h2.section-title_confirm {
     font-size: 30px;
     margin: 5px 0 5px 0;
 
-	@include mq('sp') {
-	 font-size: 15px;
-	}
+  @include mq('sp') {
+	font-size: 15px;
+}
 
-	@include mq('sm') {
-	 font-size: 15px;
-	}
+  @include mq('sm') {
+	font-size: 15px;
+ }
 }
 
 .btn_base_confirm {
@@ -1124,21 +1121,15 @@ h2.section-title_confirm {
 	margin: 0 auto;
 }
 
-
 ///////////////* miscellaneous *///////////////
 
-
-
 .debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  @include box_sizing;
+	clear: both;
+    float: left;
+    width: 100%;
+    margin-top: 45px;
+    @include box_sizing;
 }
-
-
- 
 
 //////////////////////マイページ//////////////////
 
@@ -1151,50 +1142,50 @@ h2.section-title_confirm {
 }
 
 .icon_mini {
-  width:100px;
+    width:100px;
 	height:100px;
 	object-fit:cover;
 	border-radius:20%;
 }
 
 .btn_base_users {
-		display: inline-block;
-		width: 300px;
-		max-width: 100%;
-		line-height: 72px;
-		height: 72px;
-		text-align: center;
-		background: $color-main2;
-		color: #fff;
-		font-size: 24px;
-		font-weight: 700;
-		border-radius: 8px;
-		cursor: pointer;
-	    outline: none;
-	    padding: 0rem 2rem;
-        box-shadow: 2px 2px 4px gray;
-        border: 1px solid #ccc;
+	display: inline-block;
+	width: 300px;
+	max-width: 100%;
+	line-height: 72px;
+	height: 72px;
+	text-align: center;
+	background: $color-main2;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 700;
+	border-radius: 8px;
+	cursor: pointer;
+	outline: none;
+	padding: 0rem 2rem;
+    box-shadow: 2px 2px 4px gray;
+    border: 1px solid #ccc;
 
-		@include mq('tab') {
-		font-size: 18px;
-		width: 250px;
-	   }
+  @include mq('tab') {
+	font-size: 18px;
+	width: 250px;
+}
 
-		@include mq('sp') {
-		font-size: 13px;
-		width: 100%;
-		padding:0;
-	}
+  @include mq('sp') {
+	font-size: 13px;
+	width: 100%;
+	padding:0;
+}
 
-	@include mq('sm') {
-		font-size: 13px;
-		width: 100%;
-		padding:0;
-	}
+  @include mq('sm') {
+	font-size: 13px;
+	width: 100%;
+	padding:0;
+}
 
-		a {
-		  text-decoration: none;
-		}
+  a {
+	text-decoration: none;
+ }
 }
 .users_tab {
 	display: flex;
@@ -1203,34 +1194,34 @@ h2.section-title_confirm {
 }
 
 .btn_base_notifications {
-	   display: inline-block;
-		width: 300px;
-		max-width: 100%;
-		line-height: 72px;
-		height: 72px;
-		text-align: center;
-		background: #79bbc7;
-		color: #fff;
-		font-size: 24px;
-		font-weight: 700;
-		border-radius: 8px;
-		cursor: pointer;
-	    outline: none;
-	    padding: 0rem 2rem;
-        box-shadow: 2px 2px 4px gray;
-        border: 1px solid #ccc;
+	display: inline-block;
+	width: 300px;
+	max-width: 100%;
+	line-height: 72px;
+	height: 72px;
+	text-align: center;
+	background: #79bbc7;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 700;
+	border-radius: 8px;
+	cursor: pointer;
+	outline: none;
+	padding: 0rem 2rem;
+    box-shadow: 2px 2px 4px gray;
+    border: 1px solid #ccc;
 
-		@include mq('sp') {
-		font-size: 20px;
-		width: 30%;
-		height: 70px;
-	}
+  @include mq('sp') {
+	font-size: 20px;
+	width: 30%;
+	height: 70px;
+}
 
-	@include mq('sm') {
-		font-size: 20px;
-		width: 30%;
-		height: 70px;
-	}
+  @include mq('sm') {
+	font-size: 20px;
+	width: 30%;
+	height: 70px;
+ }
 }
 
 .notifications_button {
@@ -1268,69 +1259,66 @@ h2.section-title_confirm {
 	margin-bottom: 30px;
 }
 
-.users_content-item {
-
-}
-
 .btn_base_contents {
-		display: inline-block;
-		width: 300px;
-		max-width: 100%;
-		line-height: 72px;
-		height: 72px;
-		text-align: center;
-		background: $color-main2;
-		color: #fff;
-		font-size: 24px;
-		font-weight: 700;
-		border-radius: 8px;
-		cursor: pointer;
-	    outline: none;
-	    padding: 0rem 2rem;
-        box-shadow: 2px 2px 4px gray;
-        border: 1px solid #ccc;
+	display: inline-block;
+	width: 300px;
+	max-width: 100%;
+	line-height: 72px;
+	height: 72px;
+	text-align: center;
+	background: $color-main2;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 700;
+	border-radius: 8px;
+	cursor: pointer;
+    outline: none;
+	padding: 0rem 2rem;
+    box-shadow: 2px 2px 4px gray;
+    border: 1px solid #ccc;
 
-		@include mq('sp') {
-		font-size: 17px;
-		width: 186px;
-		height: 68px;
-		padding: 0px;
-	}
-	@include mq('sm') {
-		font-size: 17px;
-		width: 186px;
-		height: 68px;
-		padding: 0px;
-	}
+  @include mq('sp') {
+	font-size: 17px;
+	width: 186px;
+	height: 68px;
+	padding: 0px;
 }
+
+  @include mq('sm') {
+	font-size: 17px;
+	width: 186px;
+	height: 68px;
+	padding: 0px;
+ }
+}
+
 .btn_base_profile {
-	    display: inline-block;
-		width: 300px;
-		max-width: 100%;
-		line-height: 72px;
-		height: 72px;
-		text-align: center;
-		background: #79bbc7;
-		color: #fff;
-		font-size: 24px;
-		font-weight: 700;
-		border-radius: 8px;
-		cursor: pointer;
-	    outline: none;
-	    padding: 0rem 2rem;
-        box-shadow: 2px 2px 4px gray;
-        border: 1px solid #ccc;
+	display: inline-block;
+	width: 300px;
+	max-width: 100%;
+	line-height: 72px;
+	height: 72px;
+	text-align: center;
+	background: #79bbc7;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 700;
+	border-radius: 8px;
+	cursor: pointer;
+	outline: none;
+	padding: 0rem 2rem;
+    box-shadow: 2px 2px 4px gray;
+    border: 1px solid #ccc;
 
-		@include mq('sp') {
-		font-size: 15px;
-		width: 186px;
-	}
-	@include mq('sm') {
-		font-size: 15px;
-		width: 186px;
-	}
+  @include mq('sp') {
+	font-size: 15px;
+	width: 186px;
+}
 
-
+  @include mq('sm') {
+	font-size: 15px;
+	width: 186px;
+ }
 }
 	
 .profile_edit_users {
@@ -1339,7 +1327,6 @@ h2.section-title_confirm {
 
 .follow_form_care {
 	text-align: center;
-
 }
 
 .longcare_users{
@@ -1379,7 +1366,6 @@ li.profile_list {
 	margin-bottom: 30px;
 }
 
-
 .user_dm_link {
 	margin-bottom: 30px;
 	text-align: center;
@@ -1394,38 +1380,37 @@ li.profile_list {
 	text-align: center;
 }
 
-
 .history_text {
 	font-size: 25px;
 }
 
 .btn_base_history {
-	    display: inline-block;
-		width: 300px;
-		max-width: 100%;
-		line-height: 72px;
-		height: 72px;
-		text-align: center;
-		background: #79bbc7;
-		color: #fff;
-		font-size: 24px;
-		font-weight: 700;
-		border-radius: 8px;
-		cursor: pointer;
-	    outline: none;
-	    padding: 0rem 2rem;
-        box-shadow: 2px 2px 4px gray;
-        border: 1px solid #ccc;
+	display: inline-block;
+	width: 300px;
+	max-width: 100%;
+	line-height: 72px;
+	height: 72px;
+	text-align: center;
+	background: #79bbc7;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 700;
+	border-radius: 8px;
+	cursor: pointer;
+	outline: none;
+	padding: 0rem 2rem;
+    box-shadow: 2px 2px 4px gray;
+    border: 1px solid #ccc;
 
-		@include mq('sp') {
-		font-size: 15px;
-		width: 186px;
-	}
-	@include mq('sm') {
-		font-size: 15px;
-		width: 186px;
-	}
+  @include mq('sp') {
+	font-size: 15px;
+	width: 186px;
+}
 
+  @include mq('sm') {
+	font-size: 15px;
+	width: 186px;
+ }
 }
 
 
@@ -1438,37 +1423,34 @@ li.profile_list {
    font-size: 25px;
 }
 
-
 .btn_user_category {
-	    display: inline-block;
-		width: 300px;
-		max-width: 100%;
-		line-height: 72px;
-		height: 72px;
-		text-align: center;
-		background: #79bbc7;
-		color: #fff;
-		font-size: 24px;
-		font-weight: 700;
-		border-radius: 8px;
-		cursor: pointer;
-	    outline: none;
-	    padding: 0rem 2rem;
-        box-shadow: 2px 2px 4px gray;
-        border: 1px solid #ccc;
+	display: inline-block;
+	width: 300px;
+	max-width: 100%;
+	line-height: 72px;
+	height: 72px;
+	text-align: center;
+	background: #79bbc7;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 700;
+	border-radius: 8px;
+	cursor: pointer;
+	outline: none;
+	padding: 0rem 2rem;
+    box-shadow: 2px 2px 4px gray;
+    border: 1px solid #ccc;
 
-		@include mq('sp') {
-		font-size: 15px;
-		width: 186px;
-	}
-	@include mq('sm') {
-		font-size: 15px;
-		width: 186px;
-	}
+  @include mq('sp') {
+	font-size: 15px;
+	width: 186px;
 }
 
-
-
+  @include mq('sm') {
+	font-size: 15px;
+	width: 186px;
+ }
+}
 
 //////////////////////利用者詳細///////////////////////////
 
@@ -1476,62 +1458,61 @@ li.profile_list {
 	display: flex;
 	justify-content: space-evenly;
 	border-bottom: 1px solid #707070;
-
 }
 
 .follow_block_item {
-	    display: inline-block;
-		width: 300px;
-		max-width: 100%;
-		line-height: 72px;
-		height: 72px;
-		text-align: center;
-		background: #79bbc7;
-		color: #fff;
-		font-size: 24px;
-		font-weight: 700;
-		border-radius: 8px;
-		cursor: pointer;
-	    outline: none;
-	    padding: 0rem 2rem;
-        box-shadow: 2px 2px 4px gray;
-        border: 1px solid #ccc;
-
+	display: inline-block;
+	width: 300px;
+	max-width: 100%;
+	line-height: 72px;
+	height: 72px;
+	text-align: center;
+	background: #79bbc7;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 700;
+	border-radius: 8px;
+	cursor: pointer;
+	outline: none;
+	padding: 0rem 2rem;
+    box-shadow: 2px 2px 4px gray;
+    border: 1px solid #ccc;
 }
 
 .follow_item_btn {
-		width: 300px;
-		max-width: 100%;
-		line-height: 72px;
-		height: 72px;
-		background: #e0a2a7;
-		color: #fff;
-		font-size: 24px;
-		font-weight: 700;
-		border-radius: 8px;
-		cursor: pointer;
-	    outline: none;
-	    padding: 0rem 2rem;
-        box-shadow: 2px 2px 4px gray;
-        border: 1px solid #ccc;
+	width: 300px;
+	max-width: 100%;
+	line-height: 72px;
+	height: 72px;
+	background: #e0a2a7;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 700;
+	border-radius: 8px;
+	cursor: pointer;
+    outline: none;
+    padding: 0rem 2rem;
+    box-shadow: 2px 2px 4px gray;
+    border: 1px solid #ccc;
 }
 
 .unfollow_item_btn {
-		width: 300px;
-		max-width: 100%;
-		line-height: 72px;
-		height: 72px;
-		background: #ede7be;
-		color: #fff;
-		font-size: 24px;
-		font-weight: 700;
-		border-radius: 8px;
-		cursor: pointer;
-	    outline: none;
-	    padding: 0rem 2rem;
-        box-shadow: 2px 2px 4px gray;
-        border: 1px solid #ccc;
+	width: 300px;
+	max-width: 100%;
+	line-height: 72px;
+	height: 72px;
+	background: #ede7be;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 700;
+	border-radius: 8px;
+	cursor: pointer;
+	outline: none;
+	padding: 0rem 2rem;
+    box-shadow: 2px 2px 4px gray;
+    border: 1px solid #ccc;
 }
+
 .follow_form_users {
     text-align: center;
 	margin-bottom: 50px;
@@ -1544,13 +1525,10 @@ li.profile_list {
     border-top: 1px solid #efe7d7;
 }
 
-
-
-
 //////////////////////login はじめ///////////////////////////
 
 .w-250px {
-  width: 250px !important;
+	width: 250px !important;
 }
 
 .login {
@@ -1580,12 +1558,13 @@ li.profile_list {
     border-radius: 10px;
 	margin: 0 auto;
 
-	@include mq('sm') {
+  @include mq('sm') {
 	width: 100%
-	}
-	@include mq('sp') {
+}
+
+  @include mq('sp') {
 	width: 100%
-	}
+ }
 }
 
 .login_border2 {
@@ -1597,46 +1576,46 @@ li.profile_list {
     border-radius: 10px;
 	margin: 0 auto;
 
-	@include mq('sm') {
+  @include mq('sm') {
 	width: 100%
-	}
+}
 
-	@include mq('sp') {
+  @include mq('sp') {
 	width: 100%;
 	padding-top: 0px;
-	}
+ }
 }
 
 
 .btn_base {
-		display: inline-block;
-		width: 384px;
-		max-width: 100%;
-		line-height: 72px;
-		height: 72px;
-		text-align: center;
-		background: $color-main2;
-		color: #fff;
-		font-size: 24px;
-		font-weight: 700;
-		border-radius: 8px;
-		cursor: pointer;
-	    outline: none;
-	    padding: 0rem 2rem;
-        box-shadow: 2px 2px 4px gray;
-        border: 1px solid #ccc;
+	display: inline-block;
+	width: 384px;
+	max-width: 100%;
+	line-height: 72px;
+	height: 72px;
+	text-align: center;
+	background: $color-main2;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 700;
+	border-radius: 8px;
+	cursor: pointer;
+	outline: none;
+	padding: 0rem 2rem;
+    box-shadow: 2px 2px 4px gray;
+    border: 1px solid #ccc;
 
-		@include mq('sm') {
-		width: 185px;
-		}
+  @include mq('sm') {
+	width: 185px;
+}
 
-		@include mq('sp') {
-		width: 185px;
-		}
+  @include mq('sp') {
+	width: 185px;
+}
 
-		a {
-		  text-decoration: none;
-		}
+  a {
+	text-decoration: none;
+ }
 }
 
 a:hover {
@@ -1653,7 +1632,7 @@ a:hover {
     border-radius: 3px;
     font-size: 16px;
     width: 250px;
-	  box-shadow: 0 0 3px #3498db;
+	box-shadow: 0 0 3px #3498db;
     border: 1px solid #3498db;
 }
 
@@ -1663,37 +1642,37 @@ form dl dt{
     float: left;
     clear: both;
 
-	@include mq('sm') {
+  @include mq('sm') {
 	float: none;
 	width: 100%;
     padding: 0px 0px;
-	}
+}
 
-	@include mq('sp') {
+  @include mq('sp') {
 	float: none;
 	width: 100%;
     padding: 0px 0px;
-	}
+ }
 }
 
 form dl dd{
-  padding:10px 0;
+	padding:10px 0;
 
   @include mq('sm') {
-	  padding:0px 0;
-  }
+	padding:0px 0;
+ }
 }
 
-input[type="checkbox"]{
-  transform: scale(2);
-  box-shadow: 0 0 3px #3498db;
-  border: 1px solid #3498db;
+input[type="checkbox"] {
+	transform: scale(2);
+	box-shadow: 0 0 3px #3498db;
+	border: 1px solid #3498db;
 }
 
 //////////////////////micropost 投稿//////////////////////////
 
 .micropost.section {
-    padding-bottom: 250px;
+	padding-bottom: 250px;
 }
 
 h2.section-title_post {
@@ -1717,32 +1696,31 @@ h2.section-title_post {
 }
 
 .btn_base_post{
-		display: inline-block;
-		width: 384px;
-		max-width: 100%;
-		line-height: 72px;
-		height: 72px;
-		text-align: center;
-		background: $color-main2;
-		color: #fff;
-		font-size: 24px;
-		font-weight: 700;
-		border-radius: 8px;
-		cursor: pointer;
-	    outline: none;
-	    padding: 0rem 2rem;
-        box-shadow: 2px 2px 4px gray;
-        border: 1px solid #ccc;
+	display: inline-block;
+	width: 384px;
+	max-width: 100%;
+	line-height: 72px;
+	height: 72px;
+	text-align: center;
+	background: $color-main2;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 700;
+	border-radius: 8px;
+	cursor: pointer;
+	outline: none;
+	padding: 0rem 2rem;
+    box-shadow: 2px 2px 4px gray;
+    border: 1px solid #ccc;
 
-		a {
-		  text-decoration: none;
-		}
+  a {
+	text-decoration: none;
+ }
 }
 
 .post_form {
     bottom: 57%;
     left: 29%;
-
 }
 
 .field_post {
@@ -1763,7 +1741,6 @@ h2.section-title_post {
     border-radius: 10px;
     margin: 0 auto
 }
-
 
 //////////////////////micropost 投稿一覧///////////////////////////
 
@@ -1792,9 +1769,9 @@ h2.section-title_post {
     flex-direction: inherit;
     align-items: center;
 
-	@include mq('sm') {
-		padding-bottom: 0px;
-	}
+  @include mq('sm') {
+	padding-bottom: 0px;
+ }
 }
 
 .user_image {
@@ -1806,13 +1783,13 @@ h2.section-title_post {
     display: flex;
     padding-right: 0px;
 
-	@include mq('sp') {
-		display: grid;
+  @include mq('sp') {
+	display: grid;
     padding-right: 0px;
  }
 
- @include mq('sm') {
-		display: grid;
+   @include mq('sm') {
+	display: grid;
     padding-right: 0px;
  }
 }
@@ -1822,13 +1799,13 @@ h2.section-title_post {
     object-fit: cover;
     border-radius: 20%;
 
-	@include mq('sm') {
-		width: 50%;
+  @include mq('sm') {
+	width: 50%;
 	}
 
-	@include mq('sp') {
-		width: 50%;
-	}
+  @include mq('sp') {
+	width: 50%;
+ }
 }
 
 .post-text{
@@ -1836,13 +1813,13 @@ h2.section-title_post {
     padding-left: 30px;
 	font-size: 20px;
 
-	@include mq('sm') {
+  @include mq('sm') {
 	padding-left:0;
-	}
+}
 
-	@include mq('sp') {
+  @include mq('sp') {
 	padding-left:13px;
-	}
+ }
 }
 
 .timeline_content {
@@ -1855,67 +1832,68 @@ h2.section-title_post {
     padding-top: 7px;
     margin-left: 50px;
 
-	@include mq('sp') {
-		padding-right: 0px;
-    	padding-top: 7px;
-    	margin-left: 50px;
-	}
+  @include mq('sp') {
+	padding-right: 0px;
+    padding-top: 7px;
+    margin-left: 50px;
+}
 
-	@include mq('sm') {
+  @include mq('sm') {
 	padding-right:0;
 	font-size: 1px;
 	padding-top: 3px;
     margin-left: 10px;
-	}
+ }
 }
 
 .post_name {
 	font-weight: bold;
 
-	@include mq('tab') {
-	  margin: 0px 0px 0px 0px;
-	}
-	@include mq('sm') {
-	 margin: 0px 5px 0px 0px;
-	}
+  @include mq('tab') {
+	margin: 0px 0px 0px 0px;
+}
 
-	@include mq('sp') {
-	  margin: 0px 0px 0px 0px;
-	}
+  @include mq('sm') {
+	margin: 0px 5px 0px 0px;
+}
+
+  @include mq('sp') {
+	margin: 0px 0px 0px 0px;
+ }
 }
 
 .post_time {
 	padding-left: 10px;
 
-	@include mq('sp') {
-		padding-left: 0px;
+  @include mq('sp') {
+	padding-left: 0px;
  }
 
  @include mq('sm') {
-		padding-left: 0px;
+	padding-left: 0px;
  }
 }
  
-
 i.far.fa-smile.unlike-btn {
 	@include mq('sm') {
     font-size: 20px;
 	margin: 0;
-	}
+ }
 }
 
 i.far.fa-smile.like-btn {
 	@include mq('sm') {
     font-size: 20px;
     margin-left: 0;
-	}
+ }
 }
 
 i.far.fa-comment.comment_count {
-	@include mq('sm') {
+
+  @include mq('sm') {
     margin-left: 0;
     font-size: 20px;
-	}
+ }
 }
 
 
@@ -1948,11 +1926,11 @@ i.far.fa-comment.comment_count {
     align-items: center;
 	padding-top: 60px;
 
-    @include mq('sp') {
+  @include mq('sp') {
 	padding-top: 40px;
  }
 
-	 @include mq('sm') {
+  @include mq('sm') {
 	padding-top: 40px;
  }
 }
@@ -1962,13 +1940,13 @@ i.far.fa-comment.comment_count {
     font-size: 30px;
     padding-left: 10px;
 
-	@include mq('sp') {
-		font-size: 15px;
-	}
+  @include mq('sp') {
+	font-size: 15px;
+}
 
-	@include mq('sm') {
-		font-size: 15px;
-	}
+  @include mq('sm') {
+	font-size: 15px;
+  }
 }
 
 .post-detail {
@@ -1977,68 +1955,69 @@ i.far.fa-comment.comment_count {
     font-size: 20px;
 	padding-top: 40px;
 
-	@include mq('tab') {
-		width: 90%;
-		font-size: 40px;
-	}
+  @include mq('tab') {
+	width: 90%;
+	font-size: 40px;
+}
 
-	@include mq('sp') {
-		width: 30%;
-		font-size: 20px;
-		padding: 16px;
-	}
+  @include mq('sp') {
+	width: 30%;
+	font-size: 20px;
+	padding: 16px;
+}
 
-	@include mq('sm') {
-		width: 30%;
-		font-size: 20px;
-		padding: 16px;
-	}
+  @include mq('sm') {
+	width: 30%;
+	font-size: 20px;
+	padding: 16px;
+ }
 }
 
 .post_detail_show {
+    margin: 0px -40px;
 
-	margin: 0px -40px;
+  @include mq('sp') {
+	padding-top: 115px;
+}
 
-	@include mq('sp') {
-    padding-top: 115px;
-	}
-
-	@include mq('sm') {
-    padding-top: 115px;
-	}
+  @include mq('sm') {
+	padding-top: 115px;
+ }
 }
 
 .post-detail-delete {
-    @include mq('tab') {
-    margin-left: 0px;
-	}
+
+  @include mq('tab') {
+	margin-left: 0px;
+ }
 }
 
 .post_time_show {
-    padding-left: 10px;
+	padding-left: 10px;
     font-size: 30px;
-	@include mq('sp') {
-		font-size: 15px;
-	}
 
-	@include mq('sm') {
-		font-size: 15px;
-	}
+  @include mq('sp') {
+	font-size: 15px;
+}
+
+  @include mq('sm') {
+	font-size: 15px;
+ }
 }
 
 .timeline_content_show {
     display: -webkit-box;
     padding: 60px 12px 0px 0px;
 
-	@include mq('sp') {
+  @include mq('sp') {
 		display: unset;
 		padding-left: 60px;
-	}
+}
 
-	@include mq('sm') {
-		display: unset;
-		padding-left: 60px;
-	}
+  @include mq('sm') {
+	display: unset;
+	padding-left: 60px;
+ }
 }
 
 .post_delete_show {
@@ -2047,13 +2026,14 @@ i.far.fa-comment.comment_count {
     font-size: 20px;
 	margin-left: -75px;
 
-	@include mq('sp') {
-		font-size: 	12px;
- 	   margin-left: -70px;
+  @include mq('sp') {
+	font-size: 	12px;
+ 	margin-left: -70px;
   }	
+
   @include mq('sm') {
-		font-size: 	12px;
- 	   margin-left: -70px;
+	font-size: 	12px;
+ 	margin-left: -70px;
   }	
  }
 
@@ -2123,13 +2103,14 @@ i.far.fa-comment.comment_count {
     box-shadow: 2px 2px 4px grey;
     border: 1px solid #ccc;
     margin-bottom: 20px;
-		a {
-		  text-decoration: none;
-		}
+
+  a {
+	text-decoration: none;
+ }
 }
 
 form#new_comment {
-    text-align: center;
+	text-align: center;
 }
 
 .timeline_posts_show {
@@ -2148,30 +2129,31 @@ form#new_comment {
 .post_image_url {
     margin: 0 auto;
 }
+
 .timeline_post_detail {
 	padding: 20px 24px 0px 0px;
 	display: -webkit-box;
 
-	@include mq('sp') {
+  @include mq('sp') {
 	padding: 20px 60px 30px 0px;
-  }
-  	@include mq('sm') {
+}
+  @include mq('sm') {
 	padding: 20px 60px 30px 0px;
-  }
+ }
 }
 
 .timeline_post_name {
 	display: unset;
     padding-right: 0px;
 
-	@include mq('sp') {
+  @include mq('sp') {
 	display: unset;
-  }
-
-  	@include mq('sm') {
-	display: unset;
-  }
 }
+
+  @include mq('sm') {
+	display: unset;
+  }
+ }
 
 ////////////diary post共通 /////////////
 .btn_base_favorites {
@@ -2186,14 +2168,15 @@ form#new_comment {
     outline: none;
     box-shadow: 2px 2px 4px grey;
 
-	@include mq('sp') {
-		line-height: 50px;
-		font-size: 20px;
-	}
+  @include mq('sp') {
+	line-height: 50px;
+	font-size: 20px;
+ }
 }
 //////////////////////diary 投稿///////////////////////////
+
 .diary__inner inner{
-   padding-bottom: 280px;	
+	padding-bottom: 280px;	
 }
 
 
@@ -2221,61 +2204,60 @@ h2.section-title_diary {
 }
 
 .btn_base_diary{
-		display: inline-block;
-		width: 384px;
-		max-width: 100%;
-		line-height: 72px;
-		height: 72px;
-		text-align: center;
-		background: $color-main2;
-		color: #fff;
-		font-size: 24px;
-		font-weight: 700;
-		border-radius: 8px;
-		cursor: pointer;
-	    outline: none;
-	    padding: 0rem 2rem;
-        box-shadow: 2px 2px 4px gray;
-        border: 1px solid #ccc;
-		margin-bottom: 20px;
+	display: inline-block;
+	width: 384px;
+	max-width: 100%;
+	line-height: 72px;
+	height: 72px;
+	text-align: center;
+	background: $color-main2;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 700;
+	border-radius: 8px;
+	cursor: pointer;
+	outline: none;
+	padding: 0rem 2rem;
+    box-shadow: 2px 2px 4px gray;
+    border: 1px solid #ccc;
+	margin-bottom: 20px;
 
-		a {
-		  text-decoration: none;
-		}
+  a {
+	text-decoration: none;
+ }
 }
 
 .btn_base_diary2{
-		display: inline-block;
-		width: 384px;
-		max-width: 100%;
-		line-height: 72px;
-		height: 72px;
-		margin: 0 auto;
-		background: $color-main2;
-		color: #fff;
-		font-size: 24px;
-		font-weight: 700;
-		border-radius: 8px;
-		cursor: pointer;
-	    outline: none;
-	    padding: 0rem 14rem;
-        box-shadow: 2px 2px 4px gray;
-        border: 1px solid #ccc;
-	    display: flex;
+	display: inline-block;
+	width: 384px;
+	max-width: 100%;
+	line-height: 72px;
+	height: 72px;
+	margin: 0 auto;
+	background: $color-main2;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 700;
+	border-radius: 8px;
+	cursor: pointer;
+	outline: none;
+	padding: 0rem 14rem;
+    box-shadow: 2px 2px 4px gray;
+    border: 1px solid #ccc;
+	display: flex;
 
-		a {
-		  text-decoration: none;
-		}
+  a {
+	text-decoration: none;
+ }
 }
 
 .diary_form {
-    bottom: 57%;
+	bottom: 57%;
     left: 29%;
-
 }
 
 .diary_category {
-   text-align: center;   
+	text-align: center;   
 }
 
 input#diary_diary_image {
@@ -2320,9 +2302,6 @@ input#diary_diary_image {
     margin-bottom: 30px;
 }
 
-
-
-
 //////////////////////diary 編集///////////////////////////
 
 .diary_edit_title {
@@ -2341,14 +2320,12 @@ input#diary_diary_image {
     border: 1px solid #3498db;
 }
 
-
 .form_diary_content {
 	width: 100%;
 	height: 500px;
 	box-shadow: 0 0 3px #3498db;
     border: 1px solid #3498db;
 }
-
 
 .form_diary_image {
 	width: 30%;
@@ -2360,57 +2337,55 @@ input#diary_diary_image {
 }
 
 .btn_base_update{
-		display: inline-block;
-		width: 384px;
-		max-width: 100%;
-		line-height: 72px;
-		height: 72px;
-		margin: 0 auto;
-		background: $color-main2;
-		color: #fff;
-		font-size: 24px;
-		font-weight: 700;
-		border-radius: 8px;
-		cursor: pointer;
-	    outline: none;
-	    padding: 0rem 14rem;
-        box-shadow: 2px 2px 4px gray;
-        border: 1px solid #ccc;
-	    display: flex;
-		margin-bottom: 20px;
-		margin: 0 auto;
+	display: inline-block;
+	width: 384px;
+	max-width: 100%;
+	line-height: 72px;
+	height: 72px;
+	margin: 0 auto;
+	background: $color-main2;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 700;
+	border-radius: 8px;
+	cursor: pointer;
+	outline: none;
+	padding: 0rem 14rem;
+    box-shadow: 2px 2px 4px gray;
+    border: 1px solid #ccc;
+	display: flex;
+	margin-bottom: 20px;
+	margin: 0 auto;
 
-		a {
-		  text-decoration: none;
-		}
+  a {
+	text-decoration: none;
+ }
 }
 
-
-
 .btn_base_draft{
-		display: inline-block;
-		width: 384px;
-		max-width: 100%;
-		line-height: 72px;
-		height: 72px;
-		margin: 0 auto;
-		background: $color-main2;
-		color: #fff;
-		font-size: 24px;
-		font-weight: 700;
-		border-radius: 8px;
-		cursor: pointer;
-	    outline: none;
-	    padding: 0rem 7rem;
-        box-shadow: 2px 2px 4px gray;
-        border: 1px solid #ccc;
-	    display: flex;
-		margin-bottom: 20px;
-		margin: 0 auto;
+	display: inline-block;
+	width: 384px;
+	max-width: 100%;
+	line-height: 72px;
+	height: 72px;
+	margin: 0 auto;
+	background: $color-main2;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 700;
+	border-radius: 8px;
+	cursor: pointer;
+	outline: none;
+    padding: 0rem 7rem;
+    box-shadow: 2px 2px 4px gray;
+    border: 1px solid #ccc;
+	display: flex;
+	margin-bottom: 20px;
+	margin: 0 auto;
 
-		a {
-		  text-decoration: none;
-		}
+  a {
+	text-decoration: none;
+ }
 }
 
 .timeline_frame {
@@ -2520,10 +2495,8 @@ h2.section-title_diary {
 
 .timeline_diaries {
     padding-top: 5px;
-    border-top: 1px solid #efe7d7;
-    
+    border-top: 1px solid #efe7d7;    
 }
-
 
 .diary_delete_show {
     padding-right: 30px;
@@ -2532,7 +2505,7 @@ h2.section-title_diary {
 }
 
 .timeline_content {
-    padding: 20px 24px 0px 0px;
+	padding: 20px 24px 0px 0px;
 }
 
 .post_like_show2 {
@@ -2548,17 +2521,17 @@ h2.section-title_diary {
 }
 
 .diary_edit_btn {
-  display: block;
-  position: relative;
-  margin: 0 auto;
-  padding: 1em 2em;
-  width: 300px;
-  color: #333;
-  font-size: 18px;
-  font-weight: 700;
-  background-color: #cccccc;
-  border-radius: 50vh;
-  margin-bottom: 30px;
+	display: block;
+    position: relative;
+	margin: 0 auto;
+    padding: 1em 2em;
+    width: 300px;
+    color: #333;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: #cccccc;
+    border-radius: 50vh;
+    margin-bottom: 30px;
 }
 
 .diary-title {
@@ -2577,13 +2550,13 @@ h2.section-title_diary {
 .timeline_image_diary {
     text-align: center;
 
-	@include mq('sp') {
-	  padding-top: 30px;
-	}
+  @include mq('sp') {
+	padding-top: 30px;
+}
 
-	@include mq('sm') {
-	  padding-top: 30px;
-	}
+  @include mq('sm') {
+	padding-top: 30px;
+ }
 }
 
 .icon2_diary_image {
@@ -2603,14 +2576,14 @@ h2.section-title_diary {
 
 .timeline_diary_name {
 	display: flex;
-	@include mq('sp') {
-	  display: unset;
-	}
-	@include mq('sm') {
-	  display: unset;
-	}
 
+  @include mq('sp') {
+	display: unset;
+}
 
+  @include mq('sm') {
+	display: unset;
+ }
 }
 //////////////////////diary 投稿一覧///////////////////////////
 
@@ -2623,33 +2596,34 @@ h2.section-title_diary {
 }
 
 .diary_name {
-    font-weight: bold;
+	font-weight: bold;
 }
 
 .diary_time {
     padding-left: 10px;
 
-	@include mq('sp') {
-	  padding-left: 0;
-	}
-	@include mq('sm') {
-	   padding-left: 0;
-	}
+  @include mq('sp') {
+	padding-left: 0;
+}
+
+  @include mq('sm') {
+	padding-left: 0;
+ }
 }
 
 .timeline_diary_show {
-    display: -webkit-box;
+	display: -webkit-box;
     padding: 60px 12px 0px 0px;
 
-	@include mq('sp') {
+  @include mq('sp') {
 	display: unset;
 	padding: 30px 0px 0px 60px; 
-	}
+}
 
-	@include mq('sm') {
+  @include mq('sm') {
 	display: unset;
 	padding: 30px 0px 0px 60px; 
-	}
+ }
 }
 
 .diary_delete {
@@ -2679,12 +2653,12 @@ h2.section-title_favorite {
 .favorite_time {
     padding-left: 10px;
 
-	@include mq('sp') {
-		padding-left: 0px;
+  @include mq('sp') {
+	padding-left: 0px;
  }
 
  @include mq('sm') {
-		padding-left: 0px;
+	padding-left: 0px;
  }
 }
 
@@ -2693,7 +2667,6 @@ h2.section-title_favorite {
     padding-left: 30px;
     font-size: 30px;
 }
-
 
 .timeline_favorite_show {
     display: -webkit-box;
@@ -2726,7 +2699,6 @@ li.users_list {
 	border: 1px solid #efe7d7;
     font-weight: bold;
     font-size: 15px;
-
 }
 
 .message_image {
@@ -2734,90 +2706,93 @@ li.users_list {
 }
 
 .balloon_l,
-.balloon_r{
-  margin: 30px 0;
-  display:flex;
-  justify-content: flex-start;
-  align-items: flex-start; /*縦位置を上揃え*/
+.balloon_r {
+	margin: 30px 0;
+    display:flex;
+    justify-content: flex-start;
+    align-items: flex-start; /*縦位置を上揃え*/
 /*   align-items: center; */ /*縦位置を真ん中揃え*/
 }
 
-.faceicon img{
-  width: 80px; /*任意のサイズ*/
-  height: auto;
-  object-fit: cover;
-  border-radius: 20%;
+.faceicon img {
+	width: 80px; /*任意のサイズ*/
+    height: auto;
+    object-fit: cover;
+    border-radius: 20%;
 }
-.balloon_l .faceicon{
-  margin-right:25px;
+
+.balloon_l .faceicon {
+	margin-right:25px;
 }
 
 .says {
-  max-width:500px; /*最大幅は任意*/
-  flex-wrap: wrap;
-  position: relative;
-  padding: 17px 13px 15px 18px;
-  border-radius: 12px;
-  background: #ebe7be;/*色は任意*/
-  box-sizing:border-box;
-  margin:0 !important;
-  line-height:1.5;
-  display: inline-table;
+	max-width:500px; /*最大幅は任意*/
+    flex-wrap: wrap;
+    position: relative;
+    padding: 17px 13px 15px 18px;
+    border-radius: 12px;
+    background: #ebe7be;/*色は任意*/
+    box-sizing:border-box;
+    margin:0 !important;
+    line-height:1.5;
+    display: inline-table;
 }
-.says p{
-  margin:8px 0 0 !important; 
+.says p {
+	margin:8px 0 0 !important; 
 }
+
 .says p:first-child{
-  margin-top:0 !important;
+	margin-top:0 !important;
 }
 .says:after {
-  content: "";
-  position: absolute;
-  border: 10px solid transparent;
-/*   margin-top:-3px;  */
+	content: "";
+    position: absolute;
+    border: 10px solid transparent;
+/*  margin-top:-3px;  */
 }
+
 .balloon_l .says:after {
-  left: -26px;
-  border-right: 22px solid #ebe7be;
+	left: -26px;
+    border-right: 22px solid #ebe7be;
 }
 
 .btn_base_dm {
 	display: inline-block;
-		width: 150px;
-		max-width: 100%;
-		line-height: 72px;
-		height: 72px;
-		text-align: center;
-		background: #79bbc7;
-		color: #fff;
-		font-size: 24px;
-		font-weight: 700;
-		border-radius: 8px;
-		cursor: pointer;
-	    outline: none;
-	    padding: 0rem 2rem;
-        box-shadow: 2px 2px 4px gray;
-        border: 1px solid #ccc;
-		margin: 30px 0 30px 0
+	width: 150px;
+	max-width: 100%;
+	line-height: 72px;
+	height: 72px;
+	text-align: center;
+	background: #79bbc7;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 700;
+	border-radius: 8px;
+	cursor: pointer;
+	outline: none;
+	padding: 0rem 2rem;
+    box-shadow: 2px 2px 4px gray;
+    border: 1px solid #ccc;
+	margin: 30px 0 30px 0
 }
 
 .btn_base_dmbk {
-	    display: inline-block;
-		width:  300px;
-		max-width: 100%;
-		line-height: 72px;
-		height: 72px;
-		text-align: center;
-		background: #79bbc7;
-		color: #fff;
-		font-size: 24px;
-		font-weight: 700;
-		border-radius: 8px;
-		cursor: pointer;
-	    outline: none;
-	    padding: 0rem 2rem;
-        box-shadow: 2px 2px 4px gray;
-        border: 1px solid #ccc;
+	display: inline-block;
+	width:  300px;
+	max-width: 100%;
+	line-height: 72px;
+	height: 72px;
+	text-align: center;
+	background: #79bbc7;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 700;
+	border-radius: 8px;
+	cursor: pointer;
+	outline: none;
+	padding: 0rem 2rem;
+    box-shadow: 2px 2px 4px gray;
+    border: 1px solid #ccc;
 }
 
 .dm_post {
@@ -2834,12 +2809,13 @@ li.users_list {
 }
 
 input#message_content {
-	@include mq('sp') {
+
+  @include mq('sp') {
 	width: 100%;
-  }
-	@include mq('sm') {
+}
+  @include mq('sm') {
 	width: 100%;
-  }
+ }
 }
 
 //////////////////////通知///////////////////////////
@@ -2849,11 +2825,11 @@ input#message_content {
 }
 
 .notification_image {
-  width: 80px; /*任意のサイズ*/
-  height: auto;
-  object-fit: cover;
-  border-radius: 20%;
-  margin-top: 40px;
+	width: 80px; /*任意のサイズ*/
+    height: auto;
+    object-fit: cover;
+    border-radius: 20%;
+    margin-top: 40px;
 }
 
 .user-view.clearfix {
@@ -2862,17 +2838,20 @@ input#message_content {
 }
 
 h2.section-title_post {
-	@include mq('sp') {
-    font-size: 25px;
-	}
-    @include mq('sp') {
-    font-size: 25px;
-	}
+
+  @include mq('sp') {
+	font-size: 25px;
 }
+
+  @include mq('sp') {
+    font-size: 25px;
+ }
+}
+
 //////////////////////ブロック利用者一覧///////////////////////////
 
 div#block_form {
-    margin-top: 30px;
+	margin-top: 30px;
 }
 
 .blocked_user {
@@ -2887,17 +2866,17 @@ div#block_form {
 	margin-top:10px;
 	margin-left: 210px;
 
-   @include mq('tab') {
+  @include mq('tab') {
 	margin-left: 30px;
-   }
+}
 	
-	@include mq('sm') {
+  @include mq('sm') {
 	margin: 0 auto;
-	}
+}
 
-	@include mq('sp') {
+  @include mq('sp') {
 	margin: 0 auto;
-	}
+ }
 }
 
 .icon_rank_image {
@@ -2908,44 +2887,45 @@ div#block_form {
 }
 
 h2.section-title_users {
-	@include mq('sm') {
-    text-align: center;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    font-size: 25px;
-	}
 
-	@include mq('sp') {
+  @include mq('sm') {
     text-align: center;
     padding-top: 50px;
     padding-bottom: 50px;
     font-size: 25px;
-	}
+}
+
+  @include mq('sp') {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    font-size: 25px;
+ }
 }
 
 .container {
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  margin: 0 auto;
-  max-width: 1080px;
+	display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    margin: 0 auto;
+    max-width: 1080px;
 
   @include mq('sm') {
-	  display: unset;
+	display: unset;
 }
 
-@include mq('sp') {
-	  display: unset;
-}
+  @include mq('sp') {
+	display: unset;
+ }
 }
 
 .main-contents {
-  width: calc(100% - 300px);
+	width: calc(100% - 300px);
 }
 
 .sidebar {
-  width: 300px;
+	width: 300px;
 }
 
 p.rank_title {
@@ -2955,7 +2935,6 @@ p.rank_title {
 
 .rank_items {
     border-bottom: 1px solid;
-	
 }
 
 .rank_item {
@@ -2967,7 +2946,6 @@ p.rank_title {
 	padding-top: 5px;
     padding-bottom: 15px;
 	text-align: center;
-
 }
 
 .rank_item_contents {
@@ -3008,13 +2986,13 @@ p.rank_title {
     border: 1px solid #ccc;
     margin-bottom: 20px;
 
-	@include mq('sm') {
-		width: 100px;
-	}
+  @include mq('sm') {
+	width: 100px;
+ }
 }
 
 input#search {
-	@include mq('sp') {
+  @include mq('sp') {
     width: 32%;
  }
 }
@@ -3029,34 +3007,33 @@ input#search {
     text-align: center;
 	margin-top: -35px;
 
-	@include mq('sp') {
-      margin-top: -60px;
-	}
-    @include mq('sm') {
-      margin-top: -60px;
-  }
+  @include mq('sp') {
+    margin-top: -60px;
+}
+  @include mq('sm') {
+	margin-top: -60px;
+ }
 }
 
 .home_text {
-
 	width: 70%;
     padding-left: 30px;
     font-size: 20px;
 
-    @include mq('tab') {
+  @include mq('tab') {
     padding-left: 120px;
 	width: 60%;
-	}
+}
 
-	@include mq('sp') {
+  @include mq('sp') {
+	padding-left: 100px;
+	width: 100%;
+}
+
+  @include mq('sm') {
     padding-left: 100px;
 	width: 100%;
-	}
-
-	@include mq('sm') {
-    padding-left: 100px;
-	width: 100%;
-	}
+ }
 }
 
 /////////////////////カテゴリーnew///////////////////////////
@@ -3067,8 +3044,6 @@ h2.section-title_category {
     padding-top: 50px;
     padding-bottom: 50px;
 }
-
-
 
 .category_btn_area {
 	text-align: center;
@@ -3084,28 +3059,25 @@ h2.section-title_category {
 }
 
 .category_name {
-        display: inline-block;
-		width: 200px;
-		max-width: 100%;
-		line-height: 72px;
-		height: 72px;
-		text-align: center;
-		background:  #ede7be;
-		color: #fff;
-		font-size: 24px;
-		font-weight: 700;
-		border-radius: 8px;
-		cursor: pointer;
-	    outline: none;
-	    padding: 0rem 2rem;
-        box-shadow: 2px 2px 4px gray;
-        border: 1px solid #ccc;
-		margin-bottom: 20px;
+	display: inline-block;
+	width: 200px;
+	max-width: 100%;
+	line-height: 72px;
+	height: 72px;
+	text-align: center;
+	background:  #ede7be;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 700;
+	border-radius: 8px;
+	cursor: pointer;
+	outline: none;
+	padding: 0rem 2rem;
+    box-shadow: 2px 2px 4px gray;
+    border: 1px solid #ccc;
+	margin-bottom: 20px;
 
-		a {
-		  text-decoration: none;
-		}
+  a {
+	text-decoration: none;
+ }
 }
-
-
-

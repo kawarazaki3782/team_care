@@ -27,13 +27,15 @@ class UsersController < ApplicationController
         @room = Room.new
         @entry = Entry.new
       end
+    
     end
     if logged_in? && current_user.id.to_s != params[:id]
-      @user = User.find(params[:id])
-      @microposts = @user.microposts.order(created_at: :desc).page(params[:page]).per(3)
-      @diaries = @user.diaries.order(created_at: :desc).page(params[:page]).per(3)
-      @currentUserEntry=Entry.where(user_id: current_user.id)
-      @userEntry=Entry.where(user_id: @user.id)
+      begin 
+        @user = User.find(params[:id]) 
+        @microposts = @user.microposts.order(created_at: :desc).page(params[:page]).per(3)
+        @diaries = @user.diaries.order(created_at: :desc).page(params[:page]).per(3)
+        @currentUserEntry=Entry.where(user_id: current_user.id)
+        @userEntry=Entry.where(user_id: @user.id)
         @currentUserEntry.each do |cu|
           @userEntry.each do |u|
             if cu.room_id == u.room_id then
@@ -49,6 +51,11 @@ class UsersController < ApplicationController
         end
       end
     end
+    rescue ActiveRecord::RecordNotFound => e
+    redirect_to :root
+    flash[:danger] = "ユーザーが削除されました"
+    end
+    
 
   def new
     @user = User.new
@@ -83,23 +90,20 @@ class UsersController < ApplicationController
       end
   end
   
-  def edit
-  end
+  def edit;end
 
   def verification
     @user = User.find(params[:id])
     @user.attributes = user_params
     @user.profile_image.cache!
-      # 戻るときはエラーチェックしない
       if params[:back]
          render 'edit'
          return
       end
-    # エラーがあれば編集画面へ戻す
       unless @user.valid?
         render 'edit'
       return
-    end
+      end
       if params[:save]
         @user.profile_image.retrieve_from_cache! params[:cache][:profile_image]
       if @user.update(user_params)

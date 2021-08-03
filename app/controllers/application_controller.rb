@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
     
-  def about
-  end
+  def about;end
 
    # ユーザーのログインを確認する
   def logged_in_user
@@ -14,7 +13,13 @@ class ApplicationController < ActionController::Base
   end
 
   def block_in_user
-    @user = User.find(params[:id])
+    begin
+      @user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      logger.error e 
+      logger.error e.backtrace.join("\n") 
+      flash[:alert] = 'ブロックできません'
+    end
     blocker_blocks = current_user.blocker_blocks
     blocker_blocks.each do |b| 
       if b.blocker_id == @user.id
