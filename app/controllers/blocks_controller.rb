@@ -1,15 +1,17 @@
 class BlocksController < ApplicationController
   
   def create
-    @user =User.find(params[:block][:blocked_id])
-    if current_user.block(@user)
+    begin 
+      @user = User.find(params[:block][:blocked_id])
+      current_user.block(@user)
       respond_to do |format|
         format.html {redirect_to @user, flash: {success: 'ブロックしました'} }
         format.js
       end
-    else
-      flash[:danger] = "ブロックできません"
-      redirect_back(fallback_location: root_path)
+    rescue ActiveRecord::RecordNotFound => e
+      logger.error e 
+      logger.error e.backtrace.join("\n") 
+      flash[:alert] += 'ブロックできません'
     end
   end
     

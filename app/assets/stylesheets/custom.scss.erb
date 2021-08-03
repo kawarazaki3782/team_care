@@ -14,22 +14,19 @@ $layout-width-inner: 1200px;
 
 // ブレークポイント
 $breakpoints: (
-	"sm": "(max-width: 399px)",
-	"sp": "(min-width: 400px) and (max-width: 767px)",
-	"tab": "(min-width: 768px) and (max-width: #{$layout-width-inner})",
-	"pc": "(min-width: #{$layout-width-inner})"
+  "sm": "(max-width: 399px)",
+  "sp": "(min-width: 400px) and (max-width: 767px)",
+  "tab": "(min-width: 768px) and (max-width: #{$layout-width-inner})",
+  "pc": "(min-width: #{$layout-width-inner})"
 );
 
 // メディアクエリー
-@mixin mq($breakpoint: sp){
+@mixin mq($breakpoint: sp) {
 	@media #{map-get($breakpoints, $breakpoint)}{
 		@content;
 	}
 }
 
-// -----
-// 
-// -----
 *,
 *::before,
 *::after {
@@ -38,9 +35,9 @@ $breakpoints: (
 
 html,
 body {
-	margin: 0;
-	padding: 0;
-	overflow-x: hidden!important;
+  	margin: 0;
+  	padding: 0;
+  	overflow-x: hidden!important;
 }
 
 body{
@@ -76,7 +73,7 @@ h6 {
  }
 
  a {
-	 color: inherit;
+	color: inherit;
  }
 
 //////////////////////header/////////////////////////// 
@@ -98,13 +95,13 @@ h6 {
 	top: 0;
 	left: 0;
 
-	@include mq(sp) {
-		height: 100px;
-	}
+  @include mq(sp) {
+	height: 100px;
+}
 
-	@include mq(sm) {
-		height: 120px;
-	}
+  @include mq(sm) {
+	height: 120px;
+ }
 }
 
 .header＿inner {
@@ -113,9 +110,8 @@ h6 {
 	height: inherit;
 }
 
-
 #hamburger .btn-gNav span {
-	@include mq(sm) {
+  @include mq(sm) {
 	position: absolute;
 	width: 100%;
 	height: 4px;
@@ -123,47 +119,51 @@ h6 {
 	border-radius: 10px;
 	-webkit-transition: all 400ms;
 	transition: all 400ms;
- }
-
- @include mq(sp) {
-	position: absolute;
-	width: 100%;
-	height: 4px;
-	background: #666;
-	border-radius: 10px;
-	-webkit-transition: all 400ms;
-	transition: all 400ms;
- }
 }
+
+  @include mq(sp) {
+	position: absolute;
+	width: 100%;
+	height: 4px;
+	background: #666;
+	border-radius: 10px;
+	-webkit-transition: all 400ms;
+	transition: all 400ms;
+  }
+}
+
 #hamburger .btn-gNav span:nth-child(1) {
-	@include mq(sm) {
+  @include mq(sm) {
 	top:0;
- }
+}
 
- @include mq(sp) {
+  @include mq(sp) {
 	top:0;
  }
 }
+
 #hamburger .btn-gNav span:nth-child(2) {
-	@include mq(sm) {
+  @include mq(sm) {
 	top:10px;
- }
- @include mq(sp) {
+}
+
+  @include mq(sp) {
 	top:10px;
  }
 }
 
 #hamburger .btn-gNav span:nth-child(3) {
-	@include mq(sm) {
-		top:20px;
- }
- @include mq(sp) {
-		top:20px;
+  @include mq(sm) {
+	top:20px;
+}
+
+  @include mq(sp) {
+	top:20px;
  }
 }
 
 #hamburger .btn-gNav {
-	@include mq(sm) {
+  @include mq(sm) {
 	position: fixed;
 	top: 20px;
 	right: 20px;
@@ -171,7 +171,8 @@ h6 {
 	height: 24px;
 	z-index: 3;
  }
- @include mq(sp) {
+
+  @include mq(sp) {
 	position: fixed;
 	top: 20px;
 	right: 20px;
@@ -189,8 +190,9 @@ h6 {
 	width: 100%;
 	height: 100%;
 	z-index: 2;
- }
- @include mq(sp) {
+}
+
+  @include mq(sp) {
 	position: fixed;
 	top: 0;
 	right: -100%;
@@ -201,24 +203,25 @@ h6 {
 }
 
 #gNav.open{
-	@include mq(sm) {
+  @include mq(sm) {
 	right: 0px;
- }
+}
 
- @include mq(sp) {
+  @include mq(sp) {
 	right: 0px;
  }
 }
 
 #gNav .header＿nav{
-	@include mq(sm) {
+  @include mq(sm) {
 	width: 100%;
 	height:100%;
 	display: flex;
 	flex-direction: column;
 	text-align: center;
- }
- @include mq(sp) {
+}
+
+  @include mq(sp) {
 	width: 100%;
 	height:100%;
 	display: flex;
@@ -226,37 +229,33 @@ h6 {
 	text-align: center;
  }
 }
-
 
 .header＿logo {
-  
 	width: 205px;
-
-	@include mq(sm) {
-			width: 40%;
-			margin: 0px -20px 0px -20px;
+  @include mq(sm) {
+	width: 40%;
+	margin: 0px -20px 0px -20px;
 }
 
-	@include mq(sp) {
-			width: 150px;
-			margin: 0px -20px 0px -17px;
-}
-	@include mq(tab) {
-			width: 150px;
-			margin: 0px -20px 0px -20px;
+  @include mq(sp) {
+	width: 150px;
+	margin: 0px -20px 0px -17px;
 }
 
-		}
+  @include mq(tab) {
+	width: 150px;
+	margin: 0px -20px 0px -20px;
+ }
+}
 	
-	img {
-		display: block;		
-	}
+img {
+	display: block;		
+}
 
 .search {
-	@include mq(sm) {
-    display: none;
-	}
-	
+  @include mq(sm) {
+	display: none;
+ }	
 }
 
 .header＿nav {
@@ -264,53 +263,55 @@ h6 {
 	margin-left: 30px;
 	align-items: center;
 
-    @include mq(sm) {
-	  margin-left:-30px;
+  @include mq(sm) {
+	margin-left:-30px;
 }
 
-	@include mq(sp) {
-	  margin-left:10px;
-}
-	@include mq(tab) {
-		margin-left:10px;
-}
-	li {
-		color: #fff;
-
-		@include mq(sm) {
-		margin: 2px 30px;
-        font-size: 10px;
-		color: #fff;
+  @include mq(sp) {
+	margin-left:10px;
 }
 
-		@include mq(sp) {
-		margin: 0px -95px 0px 40px;
-        font-size: 10px;
-		color: #fff;
+  @include mq(tab) {
+	margin-left:10px;
 }
-	   @include mq(tab) {
-		margin: 0px -5px;
-        font-size: 10px;
-		color: #fff;
+li {
+	color: #fff;
+
+  @include mq(sm) {
+	margin: 2px 30px;
+    font-size: 10px;
+	color: #fff;
 }
-		&:not(:first-child) {
-	   margin-left: 40px;
-	
-	   a {
-		text-decoration: none;
-		color: #fff;
-		position: relative;
-        display: inline-block;
 
-			&:hover {
-      -webkit-animation: zoom .3s;
-      animation: zoom .3s;
+  @include mq(sp) {
+	margin: 0px -95px 0px 40px;
+    font-size: 10px;
+	color: #fff;
+}
 
-      @-webkit-keyframes zoom {
-      50% {
-      -webkit-transform: scale(1.05);
-      
-      @keyframes zoom {
+  @include mq(tab) {
+	margin: 0px -5px;
+    font-size: 10px;
+	color: #fff;
+}
+&:not(:first-child) {
+	margin-left: 40px;
+		 
+a {
+	text-decoration: none;
+	color: #fff;
+	position: relative;
+    display: inline-block;
+
+&:hover {
+    -webkit-animation: zoom .3s;
+    animation: zoom .3s;
+    @-webkit-keyframes zoom {
+
+50% {
+	-webkit-transform: scale(1.05);
+
+@keyframes zoom {
       50% {
       transform: scale(1.05);
       }
@@ -325,18 +326,19 @@ h6 {
 
 i.fa.fa-circle {
 	width: 1px;
-	
-	@include mq(sp) {
-     margin: -16px 0 0px 175px;
-    }
-    @include mq(sm) {
-    margin: -18px 0 0px 48px;
-    }    
+
+  @include mq(sp) {
+	margin: -16px 0 0px 175px;
+}
+
+  @include mq(sm) {
+	margin: -18px 0 0px 48px;
+ }    
 }
 ////////////////////ホーム ログインなし///////////////////////////
 
 .main {
-  background: image-url('main.jpeg') no-repeat center center / cover;
+    background: image-url('main.jpeg') no-repeat center center / cover;
 	width: 100%;
 	height: 600px;
 	position: relative;
@@ -345,15 +347,15 @@ i.fa.fa-circle {
 }
 
 .main::before {
-  content: '';
-  background-color: rgba(0, 0, 0, 0.4);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-  border-radius: 20px;
+	content: '';
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 20px;
 }
 
 
@@ -371,13 +373,13 @@ i.fa.fa-circle {
 	font-weight: 600;
 	line-height: 1.3;
 
-	@include mq('sm') {
-		font-size: 30px;
-	}	
+  @include mq('sm') {
+	font-size: 30px;
+}	
 
-	@include mq('sp') {
-		font-size: 38px;
-	}		
+  @include mq('sp') {
+	font-size: 38px;
+ }		
 } 
 
 
@@ -386,45 +388,44 @@ i.fa.fa-circle {
 	font-weight: 600;
 	margin-top: 24px;
 
-	@include mq('sm') {
-		font-size: 20px;
-	}		
+  @include mq('sm') {
+	font-size: 20px;
+}		
 
-	@include mq('sp') {
-		font-size: 25px;
-	}		
+  @include mq('sp') {
+	font-size: 25px;
+ }		
 }
 
 .main_visual_btn {
 	margin-top: 40px;
-	
-   
-	a {
-		display: inline-block;
-		width: 384px;
-		max-width: 100%;
-		line-height: 72px;
-		height: 72px;
-		text-align: center;
-		text-decoration: none;
-		background: $color-main2;
-		color: #fff;
-		font-size: 24px;
-		font-weight: 700;
-		border-radius: 8px;
-		cursor: pointer;
-	    outline: none;
-	    padding: 0rem 2rem;
-	    box-shadow: 2px 2px 4px gray;
-	    border: 1px solid #ccc;
 
-		@include mq('sm') {
-		width: 300px;
-	}		
-	@include mq('sp') {
-		width: 230px;
-	}		
-  }
+a {
+	display: inline-block;
+	width: 384px;
+	max-width: 100%;
+	line-height: 72px;
+	height: 72px;
+	text-align: center;
+	text-decoration: none;
+	background: $color-main2;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 700;
+	border-radius: 8px;
+	cursor: pointer;
+	outline: none;
+	padding: 0rem 2rem;
+	box-shadow: 2px 2px 4px gray;
+	border: 1px solid #ccc;
+
+  @include mq('sm') {
+	width: 300px;
+}		
+  @include mq('sp') {
+	width: 230px;
+  }		
+ }
 }
 
 .main_visual_btn a:active {
@@ -433,17 +434,15 @@ i.fa.fa-circle {
 	box-shadow: none;
 }
 
-
-
 //////////////////////about///////////////////////////
 
 .about_main {
-  background: image-url('hands.jpeg') no-repeat center center / cover;
+	background: image-url('hands.jpeg') no-repeat center center / cover;
 	width: 100%;
 	height: 600px;
 	position: relative;
-  margin-bottom: 50px;
-  border-radius: 20px;
+    margin-bottom: 50px;
+    border-radius: 20px;
 }
 
 .breadcrumb {
@@ -563,164 +562,153 @@ span.important {
     color: #EC6D64;
 }
 
-
 //////////////////////footer///////////////////////////
 .footer {
 	padding: 48px 0 24px;
 	background: $color-main;
 
-	@include mq('sp') {
-		padding-top: 0px;
-		padding-bottom: 0px;
-	}
-
-	@include mq('tab') {
-		padding-top: 0px;
-		padding-bottom: 0px;
-	}
-
-	@include mq('sm') {
-		padding-top: 0px;
-		padding-bottom: 20px;
-	}
+  @include mq('sp') {
+	padding-top: 0px;
+	padding-bottom: 0px;
 }
 
-.footer__inner{
+  @include mq('tab') {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+@include mq('sm') {
+	padding-top: 0px;
+	padding-bottom: 20px;
+ }
 }
 
 .footer__contents {
 	display: flex;
-  justify-content: space-around;
-
-	
+  	justify-content: space-around;
 }
 
 
 .footer__center {
 	padding: 50px 10px 0;
-
-	
 }
-
 
 .footer__logo {
-	a {
-		transition: all 0.3s ease 0s;
-		text-decoration: none;
-	}
-
-	img {
-		width: 205px;
-		@include mq('sm') {
-    	margin: 10px -100px -10px 0px;
+  a {
+	transition: all 0.3s ease 0s;
+	text-decoration: none;
 }
-	}
+
+img {
+	width: 205px;
+  @include mq('sm') {
+	margin: 10px -100px -10px 0px;
+  }
+ }
 }
 
 .footer__info {
 	margin-top: 22px;
 	color: #fff;
 	font-size: 14px;
+  p {
+	margin-top: 0;
+	margin-bottom: 6px;
 
-	
+  @include mq('sp') {
+	margin-bottom: 6px;
+}
 
-	p {
-		margin-top: 0;
-		margin-bottom: 6px;
-
-		@include mq('sp') {
-			margin-bottom: 6px;
-		}
-
-		&:last-child {
-			margin-bottom: 0;
-		}
-	}
+  &:last-child {
+	margin-bottom: 0;
+  }
+ }
 }
 
 .footer__nav {
 
-       ul {
-		display: flex;
-		flex-wrap: wrap;
-		list-style: none;
-		padding: 0;
-		margin: 0;
+  ul {
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	padding: 0;
+	margin: 0;
 
-		@include mq('sm') {
-			display:none;
-		}
+  @include mq('sm') {
+	display:none;
+}
 
-		@include mq('sp') {
-			display:none;
-		}
+  @include mq('sp') {
+	display:none;
+}
 
-		li {
-			margin-right: 40px;
-			margin-bottom: 12px;
+  li {
+	margin-right: 40px;
+	margin-bottom: 12px;
 
-			@include mq('tab') {
-				margin-right: 20px;
-			}
+  @include mq('tab') {
+	margin-right: 20px;
+}
 
-			@include mq('sp') {
-				margin-right: 16px;
-			}
+  @include mq('sp') {
+	margin-right: 16px;
+}
 
-			@include mq('sm') {
-				margin-right: -14px;
-    			margin-left: 20px;
-   				margin-bottom: 0px;
-    			font-size: 10px;
-			}
+  @include mq('sm') {
+	margin-right: -14px;
+    margin-left: 20px;
+   	margin-bottom: 0px;
+    font-size: 10px;
+}
 
-			&:last-child {
-				margin-right: 0;
-			}
+  &:last-child {
+	margin-right: 0;
+}
 
-			a {
-				color: #fff;
-				text-decoration: none;
-				transition: all 0.3s ease 0s;
-        display: inline-block;
+  a {
+	color: #fff;
+	text-decoration: none;
+	transition: all 0.3s ease 0s;
+    display: inline-block;
 
-        &:hover {
-       -webkit-animation: zoom .3s;
-        animation: zoom .3s;
+   &:hover {
+	-webkit-animation: zoom .3s;
+    animation: zoom .3s;
 
-        @-webkit-keyframes zoom {
-        50% {
-        -webkit-transform: scale(1.05);
+  @-webkit-keyframes zoom {
+  50% {
+	-webkit-transform: scale(1.05);
   
-        @keyframes zoom {
-        50% {
-        transform: scale(1.05);
-       } 
-      }
-    }
-   }
+  @keyframes zoom {
+  50% {
+	transform: scale(1.05);
+  } 
  }
 }
 }
 }
 }
+}
+}
+}
+
 .footer__copy {
 	text-align: center;
 	color: #fff;
 	font-size: 14px;
 
-	@include mq('sp') {
-		margin-top: 40px;
-	}
+  @include mq('sp') {
+	margin-top: 40px;
+}
 
-	@include mq('sm') {
-		font-size: 10px;
-	}
+  @include mq('sm') {
+	font-size: 10px;
+}
 
-	a {
-		text-decoration: none;
-		color: #fff;
-	}
+  a {
+	text-decoration: none;
+	color: #fff;
+  }
 }
 
 .totop {
@@ -731,33 +719,33 @@ span.important {
 	visibility: visible;
 	transition: all 0.3s ease 0s;
 
-	@include mq('tab') {
-		right: 16px;
-		bottom: 16px;
-	}
+  @include mq('tab') {
+	right: 16px;
+	bottom: 16px;
+}
 
-	@include mq('sp') {
-		right: 10px;
-		bottom: 10px;
-	}
+  @include mq('sp') {
+	right: 10px;
+	bottom: 10px;
+}
 
-	&.is-show {
-		visibility: visible;
-	}
+  &.is-show {
+	visibility: visible;
+}
 
-	a {
-		text-decoration: none;
-		transition: all 0.3s ease 0s;
-	}
+  a {
+	text-decoration: none;
+	transition: all 0.3s ease 0s;
+}
 
-	img {
-		width: 60px;
-		vertical-align: bottom;
+  img {
+	width: 60px;
+	vertical-align: bottom;
 
-		@include mq('sp') {
-			width: 42px;
-		}
+  @include mq('sp') {
+	width: 42px;
 	}
+  }
 }
 
 @mixin box_sizing {
@@ -767,7 +755,8 @@ span.important {
 }
 
 .footer__left {
-	@include mq('sm') {
+	
+  @include mq('sm') {
     margin-right: 300px;
    }
 }
