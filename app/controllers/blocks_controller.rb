@@ -1,16 +1,15 @@
 class BlocksController < ApplicationController
+  before_action :set_block, only: [:create, :destroy]
   
   def create
-        @user = User.find(params[:block][:blocked_id])
-        current_user.block(@user)
-          respond_to do |format|
-            format.html {redirect_to @user, flash: {success: 'ブロックしました'} }
-            format.js
-        end
+    current_user.block(@user)
+      respond_to do |format|
+        format.html {redirect_to @user, flash: {success: 'ブロックしました'} }
+        format.js
+      end
   end
     
   def destroy
-    @user = User.find(params[:block][:blocked_id])
     if current_user.unblock(@user)
       respond_to do |format|
         format.html {redirect_back(fallback_location: root_url)}
@@ -21,6 +20,10 @@ class BlocksController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
   end
-end
-    
+
+  private
+  def set_block
+    @user = User.find(params[:block][:blocked_id])
+  end
+end  
 

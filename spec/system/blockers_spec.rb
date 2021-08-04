@@ -11,7 +11,7 @@ RSpec.describe 'ブロック機能', type: :system, js: true do
   describe 'ユーザーをブロックする' do
     it 'ブロックできること' do
       find('a.btn_base_users',match: :first).click
-      click_on "その他ユーザー"
+      click_on 'その他ユーザー'
         expect do  
           find('.follow_block_item',match: :first).click
           expect(page).to have_css '.follow_block_item', visible: false
@@ -20,7 +20,7 @@ RSpec.describe 'ブロック機能', type: :system, js: true do
 
     it 'ブロックを解除できること' do
       find('a.btn_base_users',match: :first).click
-      click_on "その他ユーザー"
+      click_on 'その他ユーザー'
       find('.follow_block_item',match: :first).click
         expect do  
           find('.follow_block_item',match: :first).click
@@ -30,10 +30,12 @@ RSpec.describe 'ブロック機能', type: :system, js: true do
 
     it 'ブロックできない場合' do
       find('a.btn_base_users',match: :first).click
-      click_on "その他ユーザー"
-      other_user.delete
-      find('.follow_block_item',match: :first).click
-      expect(page).to have_content 'ブロックできません'
+      click_on 'その他ユーザー'
+      User.find_by(name: 'その他ユーザー').destroy
+      block_params = Block.attribute(:block, blocked_id: other_user.id)
+      post :create, params: {block: block_params}
+      # find('.follow_block_item',match: :first, visible: false).click
+      expect(flash[:alert]).to eq "ブロックできません"
     end
   end
 end

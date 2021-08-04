@@ -108,6 +108,10 @@
      <li class="profile_list">住所:<%= @user.address %><li>
      <li class="profile_list">介護の形態:<%= @user.long_teamcare %></li>
   </ul>
+   <% if current_user.admin? && !current_user?(@user) %>
+    | <%= link_to "delete", @user, method: :delete,class: 'other_user_delete',
+                                  data: { confirm: "ユーザーを削除しますか?" } %>
+      <% end %>
   <div class="self-introduction">
   <p class="profile_title">自己紹介</p>
   <p class="profile_content"><%= @user.profile %></p>

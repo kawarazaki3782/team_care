@@ -2,11 +2,11 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :destroy,  :following, :followers]
   before_action :correct_user, only: :edit
   before_action :admin_user, only: :destroy
-  before_action :block_in_user, only: :show
+  before_action :blocking_user, only: :show
+  before_action :set_user, only: [:show, :verification, :destroy, :update, :following, :followers, :blocking]
   
   def show
     if logged_in? && current_user.id.to_s == params[:id]
-      @user = User.find(params[:id])
       @micropost = @user.micropost_ids
       @diary = @user.diary_ids
       @micropost_favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc).pluck(:micropost_id)
@@ -31,7 +31,6 @@ class UsersController < ApplicationController
     end
     if logged_in? && current_user.id.to_s != params[:id]
       begin 
-        @user = User.find(params[:id]) 
         @microposts = @user.microposts.order(created_at: :desc).page(params[:page]).per(3)
         @diaries = @user.diaries.order(created_at: :desc).page(params[:page]).per(3)
         @currentUserEntry=Entry.where(user_id: current_user.id)
@@ -67,7 +66,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if User.find(params[:id]).destroy
+    if @user.destroy
       flash[:danger] = "ユーザーを削除しました"
       redirect_to users_url
     else
@@ -93,7 +92,6 @@ class UsersController < ApplicationController
   def edit;end
 
   def verification
-    @user = User.find(params[:id])
     @user.attributes = user_params
     @user.profile_image.cache!
       if params[:back]
@@ -115,28 +113,23 @@ class UsersController < ApplicationController
      end
   end 
 
-  def update
-    @user = User.find(params[:id])
-  end
+  def update;end
 
   def index
     @users = User.all.page(params[:page]).per(5)
   end
 
   def following
-    @user  = User.find(params[:id])
     @users = @user.following.page(params[:page]).per(5)
     render 'show_followed'
   end
 
   def followers
-    @user  = User.find(params[:id])
     @users = @user.followers.page(params[:page]).per(5)
     render 'show_follower'
   end
 
   def blocking
-    @user = User.find(params[:id])
     @users = @user.blocking.page(params[:page]).per(5)
     render 'show_blocking'
   end
@@ -154,4 +147,8 @@ class UsersController < ApplicationController
   def admin_user
     redirect_to(root_url) unless current_user.admin?
   end    
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 end

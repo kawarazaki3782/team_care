@@ -1,10 +1,11 @@
 class CategoriesController < ApplicationController
+  before_action :set_category, only: [:show, :destroy]
+
   def new
     @category = Category.new
   end
 
   def show
-    @category = Category.find(params[:id])
     @microposts = Micropost.where(category_id: @category.id).order(created_at: :desc).page(params[:page]).per(3)
     @diaries = Diary.where(category_id: @category.id).order(created_at: :desc).page(params[:page]).per(3)
   end
@@ -25,7 +26,6 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category = Category.find(params[:id])
     if @category.destroy
       flash[:danger] = "カテゴリーを削除しました"
       redirect_to categories_path
@@ -37,5 +37,9 @@ class CategoriesController < ApplicationController
   
   def category_params
     params.require(:category).permit(:name, :user_id)
+  end
+
+  def set_category
+    @category = Category.find(params[:id])
   end
 end

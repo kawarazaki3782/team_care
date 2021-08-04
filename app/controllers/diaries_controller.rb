@@ -1,6 +1,7 @@
 class DiariesController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
-  before_action :ensure_correct_user_diary,   only: :destroy
+  before_action :ensure_correct_user_diary,only: :destroy
+  before_action :set_diary, only: [:show, :edit, :update]
 
   def draft 
     @user = current_user
@@ -30,26 +31,22 @@ class DiariesController < ApplicationController
   end
 
   def show
-    @diary = Diary.find(params[:id])
     require_login if @diary.draft?
     @comments = @diary.comments
     @comment = Comment.new
     @like = Like.new  
   end
 
-  def edit
-    @diary = Diary.find(params[:id])
-  end
+  def edit;end
 
   def update
-    @diary = Diary.find(params[:id])
-      if @diary.update(diary_params)
-        flash[:success] = "日記の編集が完了しました"
-        redirect_to diaries_path
-      else
-        flash[:danger] = "日記を編集できません"
-        render 'edit'
-      end
+    if @diary.update(diary_params)
+      flash[:success] = "日記の編集が完了しました"
+      redirect_to diaries_path
+    else
+      flash[:danger] = "日記を編集できません"
+      render 'edit'
+    end
   end
 
   def destroy
@@ -63,7 +60,6 @@ class DiariesController < ApplicationController
   end
 
   private  
-
   def diary_params
     params.require(:diary).permit(:content, :diary_image, :category_id, :user_id, :title, :diary_image_cache, :status)
   end
@@ -78,5 +74,9 @@ class DiariesController < ApplicationController
 
   def require_login
     redirect_to login_path if !logged_in?
+  end
+  
+  def set_diary
+    @diary = Diary.find(params[:id])
   end
 end

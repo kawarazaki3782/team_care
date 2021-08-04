@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
      end
   end
 
-  def block_in_user
+  def blocking_user
     begin
       @user = User.find(params[:id])
     rescue ActiveRecord::RecordNotFound => e

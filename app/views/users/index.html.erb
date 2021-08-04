@@ -9,7 +9,7 @@
       <%= link_to(user.name, "/users/#{user.id}", class:'users_name' ) %> 
       <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "delete", user, method: :delete,
-                                  data: { confirm: "You sure?" } %>
+                                  data: { confirm: "ユーザーを削除しますか?" } %>
       <% end %>
     </li>
   <% end %>

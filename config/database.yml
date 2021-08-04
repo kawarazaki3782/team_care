@@ -6,11 +6,13 @@
 #
 default: &default
   adapter: mysql2
+  charset: utf8mb4
+  encoding: utf8mb4
+  collation: utf8mb4_unicode_ci
   database: team_care
   username: root
   password: gyRlLNJyl3%G
   host: localhost
-  encoding: utf8mb4
   socket: /var/lib/mysql/mysql.sock
 
 development:
