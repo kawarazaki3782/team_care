@@ -16,6 +16,7 @@ class ApplicationRecord < ActiveRecord::Base
   def user
     return User.find_by(id: self.id)
   end
+
 end
 
 

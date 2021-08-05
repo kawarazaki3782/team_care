@@ -16,9 +16,7 @@ class LikesController < ApplicationController
       flash[:danger] = "いいねできませんでした"
     end
   end  
-
-
-      
+ 
   def destroy
     unless params[:diary_id].nil?
       @like = Like.find_by(diary_id: params[:diary_id], user_id: current_user.id)

@@ -12,6 +12,7 @@ class Micropost < ApplicationRecord
   has_many :favorites
   has_many :users, through: :favorites
   has_many :notifications,dependent: :destroy
+  
 
   def create_notification_by(current_user)
     notification=current_user.active_notifications.new(

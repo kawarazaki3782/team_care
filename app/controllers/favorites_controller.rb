@@ -1,7 +1,7 @@
 class FavoritesController < ApplicationController
+  before_action :current_user_set, only: [:show, :index ]
+  
   def index
-    @user = current_user
-    
     if params[:micropost_id].present? && params[:diary_id].nil?
       @micropost = @user.micropost_ids
       favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc).pluck(:micropost_id)
@@ -17,7 +17,6 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    @user = current_user
     if  params[:diary_id].present? && params[:micropost_id].nil?
       @diary = Diary.find(params[:diary_id])
       @favorite = current_user.favorites.create!(diary_id: @diary.id)

@@ -1,10 +1,10 @@
 class MicropostsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :ensure_correct_user, only: :destroy
+  before_action :current_user_set, only: :index 
     
   def index
     @microposts = current_user.microposts.all.order("created_at DESC").page(params[:page]).per(5)
-    @user = current_user
     @like = Like.new
   end
 

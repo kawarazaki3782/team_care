@@ -33,6 +33,7 @@ class CategoriesController < ApplicationController
       flash[:danger] = "カテゴリーを削除できませんでした"
     end
   end
+  
   private
   
   def category_params

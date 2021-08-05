@@ -36,4 +36,9 @@ class ApplicationController < ActionController::Base
         redirect_to root_url
       end
   end
+
+  private 
+  def current_user_set
+    @user = current_user
+  end
 end
