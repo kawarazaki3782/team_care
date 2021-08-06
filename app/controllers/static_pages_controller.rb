@@ -6,13 +6,9 @@ class StaticPagesController < ApplicationController
         @diaries = Diary.all.page(params[:page]).per(3) 
         @micropost_ranks = Micropost.micropost_ranks
         @diary_ranks = Diary.diary_ranks
-        @categories = Category.all
-        unless @following_microposts == nil? && current_user.following_ids == nil?
-          @following_microposts = Micropost.where(user_id: [*current_user.following_ids]).order("created_at DESC").page(params[:page]).per(3)
-        end
-        unless @following_diaries == nil?
-          @following_diaries = Diary.where(user_id: [*current_user.following_ids]).order("created_at DESC").page(params[:page]).per(3)
-        end
+        @categories = Category.all        
+        @following_microposts = Micropost.following_microposts(*current_user).page(params[:page]).per(3)
+        @following_diaries = Diary.following_diaries(*current_user).page(params[:page]).per(3)
      end
    end
 end

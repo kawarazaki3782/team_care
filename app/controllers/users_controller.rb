@@ -1,16 +1,14 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :destroy,  :following, :followers]
+  before_action :logged_in_user, only: %i[index edit destroy following followers]
   before_action :correct_user, only: :edit
   before_action :admin_user, only: :destroy
   before_action :blocking_user, only: :show
-  before_action :set_user, only: [:show, :verification, :destroy, :update, :following, :followers, :blocking]
+  before_action :set_user, only: %i[show verification destroy update following followers blocking]
   
   def show
     if logged_in? && current_user.id.to_s == params[:id]
       @micropost = @user.micropost_ids
       @diary = @user.diary_ids
-      @micropost_favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc).pluck(:micropost_id)
-      @diary_favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc).pluck(:diary_id) 
       @rooms = @user.rooms
       @currentUserEntry=Entry.where(user_id: current_user.id)
       @userEntry=Entry.where(user_id: @user.id)

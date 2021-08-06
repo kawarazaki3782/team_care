@@ -50,12 +50,11 @@
                   </div>
                    <% end %>    
                   <%= paginate @diaries %>
-              <% unless @following_microposts == nil? %>
                  <h2 class="section-title_users">フォローしている利用者のつぶやき</h2>
                 <% @following_microposts.each do |micropost| %>
                 <div class="timeline_homepage">  
                     <div class="timeline_home_name">
-                      <%= link_to  image_tag(micropost.user.profile_image.url, class:'icon2 user_image'), "/users/#{micropost.user.id}"%>
+                      <%= link_to image_tag(micropost.user.profile_image.url, class:'icon2 user_image'), "/users/#{micropost.user.id}"%>
                       <span class="post_name"><%= micropost.user.name %></span>
                       <p class="post_time"><%= micropost.created_at.strftime('%m月%d日%H:%M')%><br>
                     </div>
@@ -75,9 +74,6 @@
                   </div>
                    <% end %>
                    <%= paginate @microposts %>
-                   <% end %>
-
-                  <% unless @following_microposts == nil? %>
                   <h2 class="section-title_users">フォローしている利用者の日記</h2>
                 <% @following_diaries.each do |diary| %>
                 <div class="timeline_homepage">  
@@ -102,7 +98,6 @@
                   </div>
                    <% end %>    
                   <%= paginate @diaries %>
-                   <% end %>
                 </main>          
         <aside class="sidebar_popular_posts">
           <div class="rank_box">

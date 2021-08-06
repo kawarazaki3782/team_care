@@ -1,11 +1,11 @@
 class DiariesController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy]
+  before_action :logged_in_user, only: %i[create destroy]
   before_action :ensure_correct_user_diary,only: :destroy
-  before_action :set_diary, only: [:show, :edit, :update]
-  before_action :current_user_set, only: [:draft, :index ]
+  before_action :set_diary, only: %i[show edit update]
+  before_action :current_user_set, only: %i[draft index]
 
   def draft 
-    @diaries = Diary.where(user_id: current_user.id,status: :draft).order("created_at DESC").all.page(params[:page]).per(5)
+    @diaries = Diary.draft_index(current_user.id).page(params[:page]).per(5)
   end  
   
   def new
@@ -13,7 +13,7 @@ class DiariesController < ApplicationController
   end
 
   def index
-    @diaries = Diary.where(user_id: current_user.id,status: :published).order("created_at DESC").all.page(params[:page]).per(5)
+    @diaries = Diary.diary_index(current_user.id).page(params[:page]).per(5)
     @like = Like.new
   end
     

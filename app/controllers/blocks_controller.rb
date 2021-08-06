@@ -1,5 +1,5 @@
 class BlocksController < ApplicationController
-  before_action :set_block, only: [:create, :destroy]
+  before_action :set_block, only: %i[create destroy]
   
   def create
     current_user.block(@user)

@@ -1,13 +1,13 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :destroy]
+  before_action :set_category, only: %i[show destroy]
 
   def new
     @category = Category.new
   end
 
   def show
-    @microposts = Micropost.where(category_id: @category.id).order(created_at: :desc).page(params[:page]).per(3)
-    @diaries = Diary.where(category_id: @category.id).order(created_at: :desc).page(params[:page]).per(3)
+    @microposts = Micropost.category_microposts(@category.id).page(params[:page]).per(3)
+    @diaries = Diary.category_diaries(@category.id).page(params[:page]).per(3)
   end
 
   def create

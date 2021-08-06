@@ -1,14 +1,14 @@
 class FavoritesController < ApplicationController
-  before_action :current_user_set, only: [:show, :index ]
+  before_action :current_user_set, only: %i[show index]
   
   def index
     if params[:micropost_id].present? && params[:diary_id].nil?
       @micropost = @user.micropost_ids
-      favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc).pluck(:micropost_id)
+      favorites = Favorite.micropost_favorites(current_user.id)
       return @favorites = Micropost.where(id: favorites)
     elsif params[:diary_id].present? && params[:micropost_id].nil?
       @diary = @user.diary_ids
-      favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc).pluck(:diary_id) 
+      favorites =  Favorite.diary_favorites(current_user.id)
       return @favorites = Diary.where(id: favorites)
     else 
       flash[:danger] = "お気に入りに登録されていません"
