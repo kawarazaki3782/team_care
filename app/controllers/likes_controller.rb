@@ -1,4 +1,5 @@
 class LikesController < ApplicationController
+  
   def create
     unless params[:diary_id].nil?
       @diary = Diary.find(params[:diary_id])

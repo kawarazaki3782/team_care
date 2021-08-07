@@ -8,11 +8,11 @@
               <span class="category_name"><%= category.name %></span>
               <span class="category_delete">
                <% if current_user.id == category.user_id %>
-               <%= link_to '削除', category, method: :delete, class:"categories_delete",
+                 <%= link_to '削除', category, method: :delete, class:"categories_delete",
                                     data: { confirm: "カテゴリー削除しますか?" } %><% end %>
-              </span>
+                </span>
             </div>
-            <% end %>
-         </div>
-     </div>
+          <% end %>
+        </div>
+  </div>
 </section>

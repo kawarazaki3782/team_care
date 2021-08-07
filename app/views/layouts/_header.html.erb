@@ -1,55 +1,54 @@
 <% if logged_in? %>
-
-    <header class="header">
-    <div class="header＿inner inner">
-      <div class="header＿logo"><a href="/"><img src="/assets/logo_transparent.png" alt=""></a></div> 
+<header class="header">
+  <div class="header＿inner inner">
+    <div class="header＿logo"><a href="/"><img src="/assets/logo_transparent.png" alt=""></a></div> 
       <div class="search">
         <%= render 'layouts/header_search' %>
-        </div>
-        <div id="hamburger">
-           <p class="btn-gNav">
-             <span></span>
-             <span></span>
-             <span></span>
-           </p>
-       <nav id="gNav">
-        <ul class="header＿nav">
+      </div>
+      <div id="hamburger">
+        <p class="btn-gNav">
+          <span></span>
+          <span></span>
+          <span></span>
+        </p>
+        <nav id="gNav">
+          <ul class="header＿nav">
             <li><a href="/">ホーム</a></li>
             <li> <%= link_to "マイページ", "/users/#{current_user.id}" %></li>
             <li><%= link_to "つぶやき投稿", new_micropost_url %></li>
             <li><%= link_to "日記投稿", new_diary_url %></li>
             <li><%= link_to "通知", notifications_path %></li>
-            <% if unchecked_notifications.any? %>
-            <i class="fa fa-circle" style="color: red;"></i>
-            <% end %>
+              <% if unchecked_notifications.any? %>
+                <i class="fa fa-circle" style="color: red;"></i>
+              <% end %>
             <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
-        </ul>
-       </nav>
+          </ul>
+        </nav>
       </div>
-      </div>
-      </header>
-        <% else %>
-    <header class="header">
-    <div class="header＿inner inner">
-      <div class="header＿logo"><a href="/"><img src="/assets/logo_transparent.png" alt=""></a></div> 
-        <div id="hamburger">
-           <p class="btn-gNav">
-             <span></span>
-             <span></span>
-             <span></span>
-           </p>
-       <nav id="gNav">
-        <ul class="header＿nav">
-            <li><a href="/">ホーム</a></li>
-            <li> <%= link_to "チームケアとは", about_path %></li>
-            <li> <%= link_to "新規登録", signup_path %></li>
-            <li> <%= link_to "ログイン", login_path %></li>
-            <li> <%= link_to "お問い合わせ", inquiry_index_path %></li>
-        </ul>
-       </nav>
-      </div>
+  </div>
+</header>
+<% else %>
+<header class="header">
+  <div class="header＿inner inner">
+    <div class="header＿logo"><a href="/"><img src="/assets/logo_transparent.png" alt=""></a></div> 
+      <div id="hamburger">
+        <p class="btn-gNav">
+        <span></span>
+        <span></span>
+        <span></span>
+        </p>
+          <nav id="gNav">
+            <ul class="header＿nav">
+              <li><a href="/">ホーム</a></li>
+              <li> <%= link_to "チームケアとは", about_path %></li>
+              <li> <%= link_to "新規登録", signup_path %></li>
+              <li> <%= link_to "ログイン", login_path %></li>
+              <li> <%= link_to "お問い合わせ", inquiry_index_path %></li>
+            </ul>
+          </nav>
       </div>
     </div>
-    </header>
-    <%end%>
+  </div>
+</header>
+<%end%>
       

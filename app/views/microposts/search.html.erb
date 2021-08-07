@@ -1,31 +1,31 @@
 <h2 class="section-title_post">検索結果: <%= @microposts.count %> 件</h2>
-      <div class="timeline_area">
-                <% @microposts.each do |micropost| %>
-                <div class="timeline_posts">     
-                    <div class="timeline_image_name">
-                      <%= link_to image_tag(micropost.user.profile_image.url, class:'icon2_user_image'), "/users/#{micropost.user.id}" %>
-                      <p class="post_name"><%= micropost.user.name %></p>
-                      <p class="post_time"><%= micropost.created_at.strftime('%m月%d日%H:%M')%><br>
-                    </div>
-                  <div class="timeline_content_show">
-                    <span class="post-text"><a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a></span> 
-                    <p class="post_delete"><% if current_user?(micropost.user) %>
-                    <%= link_to "つぶやき削除", micropost, method: :delete,class:"posts-delete",
+  <div class="timeline_area">
+    <% @microposts.each do |micropost| %>
+      <div class="timeline_posts">     
+        <div class="timeline_image_name">
+          <%= link_to image_tag(micropost.user.profile_image.url, class:'icon2_user_image'), "/users/#{micropost.user.id}" %>
+          <p class="post_name"><%= micropost.user.name %></p>
+          <p class="post_time"><%= micropost.created_at.strftime('%m月%d日%H:%M')%><br>
+        </div>
+        <div class="timeline_content_show">
+          <span class="post-text"><a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a></span> 
+            <p class="post_delete"><% if current_user?(micropost.user) %>
+              <%= link_to "つぶやき削除", micropost, method: :delete,class:"posts-delete",
                                                     data: { confirm: "つぶやきを削除しますか?" } %></p>    
-                  <p><i class="far fa-smile unlike-btn"></i><%= micropost.liked_users.count %></p>
-                  <% if current_user.already_liked?(micropost) %>
-                        <%= link_to micropost_like_path(id: micropost.id, micropost_id:micropost.id),class:"likes-unliked", method: :delete do %>
-                        <i class="far fa-smile like-btn"></i>
-                      <% end %>
-                      <% else %>
-                        <%= link_to micropost_likes_path(micropost),class:"likes-liked", method: :post do %>
-                        <i class="far fa-smile unlike-btn"></i>
-                      <% end %>
-                      <% end %>
-                  <p><i class="far fa-comment comment_count"></i><%= micropost.comments.count %></p>
-                  </div>
-                   <% end %>   
-                </div>  
-          <% end %>
-      </div>
+              <p><i class="far fa-smile unlike-btn"></i><%= micropost.liked_users.count %></p>
+                <% if current_user.already_liked?(micropost) %>
+                  <%= link_to micropost_like_path(id: micropost.id, micropost_id:micropost.id),class:"likes-unliked", method: :delete do %>
+                    <i class="far fa-smile like-btn"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to micropost_likes_path(micropost),class:"likes-liked", method: :post do %>
+                    <i class="far fa-smile unlike-btn"></i>
+                  <% end %>
+                <% end %>
+                <p><i class="far fa-comment comment_count"></i><%= micropost.comments.count %></p>
+          </div>
+         <% end %>   
+      </div>  
+    <% end %>
+  </div>
 <%= paginate @microposts %>

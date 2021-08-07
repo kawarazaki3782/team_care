@@ -49,8 +49,8 @@ class UsersController < ApplicationController
       end
     end
     rescue ActiveRecord::RecordNotFound => e
-    redirect_to :root
-    flash[:danger] = "ユーザーが削除されました"
+      redirect_to :root
+      flash[:danger] = "ユーザーが削除されました"
     end
     
 

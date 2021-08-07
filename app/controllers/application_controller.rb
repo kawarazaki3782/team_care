@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
     
   def about;end
 
-   # ユーザーのログインを確認する
   def logged_in_user
      unless logged_in?
        store_location

@@ -1,148 +1,146 @@
 <% if logged_in? %>
 <section id="" class="users_section">
-	 <div class="users__inner container">
-     <main class="timeline_area">
-     <h2 class="section-title_users">みんなの最新のつぶやき</h2>
-                <% @microposts.each do |micropost| %>
-                <div class="timeline_homepage">  
-                    <div class="timeline_home_name">
-                      <%= link_to  image_tag(micropost.user.profile_image.url, class:'icon2 user_image'), "/users/#{micropost.user.id}"%>
-                      <span class="post_name"><%= micropost.user.name %></span>
-                      <p class="post_time"><%= micropost.created_at.strftime('%m月%d日%H:%M')%><br>
-                    </div>
-                  <div class="timeline_home_new">
-                    <p class="home_text"><a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a></p> 
-                  <p><i class="far fa-smile unlike-btn"></i><%= micropost.liked_users.count %></p>
-                  <% if current_user.already_liked?(micropost) %>
-                        <%= link_to micropost_like_path(id: micropost.id, micropost_id:micropost.id), class:'likes_liked', method: :delete do %>
-                        <i class="far fa-smile like-btn"></i>
-                      <% end %>
-                      <% else %>
-                        <%= link_to micropost_likes_path(micropost), class:'likes_unliked', method: :post do %>
-                        <i class="far fa-smile unlike-btn"></i>
-                      <% end %>
-                      <% end %>
-                  <p><i class="far fa-comment comment_count"></i><%= micropost.comments.count %></p>
-                  </div>
-                   <% end %>
-                   <%= paginate @microposts %>  
-                 <h2 class="section-title_users">みんなの最新の日記</h2>
-                <% @diaries.each do |diary| %>
-                <div class="timeline_homepage">  
-                    <div class="timeline_home_name">
-                      <%= link_to  image_tag(diary.user.profile_image.url, class:'icon2 user_image'), "/users/#{diary.user.id}"%>
-                      <span class="post_name"><%= diary.user.name %></span>
-                      <p class="post_time"><%= diary.created_at.strftime('%m月%d日%H:%M')%><br>
-                    </div>
-                  <div class="timeline_home_new">
-                    <p class="home_text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.title %></a></p> 
-                  <p><i class="far fa-smile unlike-btn"></i><%= diary.liked_users.count %></p>
-                  <% if current_user.already_liked_diary?(diary) %>
-                        <%= link_to diary_like_path(id: diary.id, diary_id:diary.id), class:'likes_liked_diary', method: :delete do %>
-                        <i class="far fa-smile like-btn"></i>
-                      <% end %>
-                      <% else %>
-                        <%= link_to diary_likes_path(diary), class:'likes_unliked_diary', method: :post do %>
-                        <i class="far fa-smile unlike-btn"></i>
-                      <% end %>
-                      <% end %>
-                  <p><i class="far fa-comment comment_count"></i><%= diary.comments.count %></p>
-                  </div>
-                   <% end %>    
-                  <%= paginate @diaries %>
-                 <h2 class="section-title_users">フォローしている利用者のつぶやき</h2>
-                <% @following_microposts.each do |micropost| %>
-                <div class="timeline_homepage">  
-                    <div class="timeline_home_name">
-                      <%= link_to image_tag(micropost.user.profile_image.url, class:'icon2 user_image'), "/users/#{micropost.user.id}"%>
-                      <span class="post_name"><%= micropost.user.name %></span>
-                      <p class="post_time"><%= micropost.created_at.strftime('%m月%d日%H:%M')%><br>
-                    </div>
-                  <div class="timeline_home_new">
-                    <p class="home_text"><a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a></p> 
-                  <p><i class="far fa-smile unlike-btn"></i><%= micropost.liked_users.count %></p>
-                  <% if current_user.already_liked?(micropost) %>
-                        <%= link_to micropost_like_path(id: micropost.id, micropost_id:micropost.id),class:'likes_liked', method: :delete do %>
-                        <i class="far fa-smile like-btn"></i>
-                      <% end %>
-                      <% else %>
-                        <%= link_to micropost_likes_path(micropost),class:'likes_unliked', method: :post do %>
-                        <i class="far fa-smile unlike-btn"></i>
-                      <% end %>
-                      <% end %>
-                  <p><i class="far fa-comment comment_count"></i><%= micropost.comments.count %></p>
-                  </div>
-                   <% end %>
-                   <%= paginate @microposts %>
-                  <h2 class="section-title_users">フォローしている利用者の日記</h2>
-                <% @following_diaries.each do |diary| %>
-                <div class="timeline_homepage">  
-                    <div class="timeline_home_name">
-                      <%= link_to  image_tag(diary.user.profile_image.url, class:'icon2 user_image'), "/users/#{diary.user.id}"%>
-                      <span class="post_name"><%= diary.user.name %></span>
-                      <p class="post_time"><%= diary.created_at.strftime('%m月%d日%H:%M')%><br>
-                    </div>
-                  <div class="timeline_home_new">
-                    <p class="home_text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.title %></a></p> 
-                  <p><i class="far fa-smile unlike-btn"></i><%= diary.liked_users.count %></p>
-                  <% if current_user.already_liked_diary?(diary) %>
-                        <%= link_to diary_like_path(id: diary.id, diary_id:diary.id), method: :delete do %>
-                        <i class="far fa-smile like-btn"></i>
-                      <% end %>
-                      <% else %>
-                        <%= link_to diary_likes_path(diary), method: :post do %>
-                        <i class="far fa-smile unlike-btn"></i>
-                      <% end %>
-                      <% end %>
-                  <p><i class="far fa-comment comment_count"></i><%= diary.comments.count %></p>
-                  </div>
-                   <% end %>    
-                  <%= paginate @diaries %>
-                </main>          
-        <aside class="sidebar_popular_posts">
-          <div class="rank_box">
-            <p class="rank_title">人気のつぶやき</p>
-              <div class="rank_items">
-                <% @micropost_ranks.each.with_index(1) do |micropost, i| %>
-                     <div class="rank_item">
-                    <span class="ranking"><%= i %>位</span>
-                    <span><%= link_to image_tag(micropost.user.profile_image.url, class:'icon_rank_image'), "/users/#{micropost.user.id}"%></span>
-                    <span class="rank_item_content"><%= link_to micropost.content,"/microposts/#{micropost.id}" %></span>
-               </div> 
+  <div class="users__inner container">
+    <main class="timeline_area">
+      <h2 class="section-title_users">みんなの最新のつぶやき</h2>
+        <% @microposts.each do |micropost| %>
+          <div class="timeline_homepage">  
+            <div class="timeline_home_name">
+              <%= link_to  image_tag(micropost.user.profile_image.url, class:'icon2 user_image'), "/users/#{micropost.user.id}"%>
+              <span class="post_name"><%= micropost.user.name %></span>
+              <p class="post_time"><%= micropost.created_at.strftime('%m月%d日%H:%M')%><br>
+            </div>
+            <div class="timeline_home_new">
+              <p class="home_text"><a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a></p> 
+              <p><i class="far fa-smile unlike-btn"></i><%= micropost.liked_users.count %></p>
+              <% if current_user.already_liked?(micropost) %>
+                <%= link_to micropost_like_path(id: micropost.id, micropost_id:micropost.id), class:'likes_liked', method: :delete do %>
+                  <i class="far fa-smile like-btn"></i>
                 <% end %>
+              <% else %>
+                <%= link_to micropost_likes_path(micropost), class:'likes_unliked', method: :post do %>
+                  <i class="far fa-smile unlike-btn"></i>
+                <% end %>
+              <% end %>
+              <p><i class="far fa-comment comment_count"></i><%= micropost.comments.count %></p>
+            </div>
+        <% end %>
+        <%= paginate @microposts %>  
+      <h2 class="section-title_users">みんなの最新の日記</h2>
+        <% @diaries.each do |diary| %>
+          <div class="timeline_homepage">  
+            <div class="timeline_home_name">
+              <%= link_to  image_tag(diary.user.profile_image.url, class:'icon2 user_image'), "/users/#{diary.user.id}"%>
+                <span class="post_name"><%= diary.user.name %></span>
+                <p class="post_time"><%= diary.created_at.strftime('%m月%d日%H:%M')%><br>
+            </div>
+            <div class="timeline_home_new">
+              <p class="home_text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.title %></a></p> 
+              <p><i class="far fa-smile unlike-btn"></i><%= diary.liked_users.count %></p>
+                <% if current_user.already_liked_diary?(diary) %>
+                  <%= link_to diary_like_path(id: diary.id, diary_id:diary.id), class:'likes_liked_diary', method: :delete do %>
+                    <i class="far fa-smile like-btn"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to diary_likes_path(diary), class:'likes_unliked_diary', method: :post do %>
+                    <i class="far fa-smile unlike-btn"></i>
+                  <% end %>
+                <% end %>
+              <p><i class="far fa-comment comment_count"></i><%= diary.comments.count %></p>
               </div>
-          </div>
-          <div class="rank_box">
-            <p class="rank_title">人気の日記</p>
-              <div class="rank_items">
-                <% @diary_ranks.each.with_index(1) do |diary, i| %>
-               
-                     <div class="rank_item">
-                    <span class="ranking"><%= i %>位</span>
-                    <span><%= link_to image_tag(diary.user.profile_image.url, class:'icon_rank_image'), "/users/#{diary.user.id}" %></span>
-                    
-                    <span class="rank_item_content"><%= link_to diary.title,"/diaries/#{diary.id}" %></span>
-               </div> 
+        <% end %>    
+        <%= paginate @diaries %>
+      <h2 class="section-title_users">フォローしている利用者のつぶやき</h2>
+        <% @following_microposts.each do |micropost| %>
+          <div class="timeline_homepage">  
+            <div class="timeline_home_name">
+              <%= link_to image_tag(micropost.user.profile_image.url, class:'icon2 user_image'), "/users/#{micropost.user.id}"%>
+                <span class="post_name"><%= micropost.user.name %></span>
+                <p class="post_time"><%= micropost.created_at.strftime('%m月%d日%H:%M')%><br>
+            </div>
+          <div class="timeline_home_new">
+            <p class="home_text"><a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a></p> 
+              <p><i class="far fa-smile unlike-btn"></i><%= micropost.liked_users.count %></p>
+                <% if current_user.already_liked?(micropost) %>
+                  <%= link_to micropost_like_path(id: micropost.id, micropost_id:micropost.id),class:'likes_liked', method: :delete do %>
+                    <i class="far fa-smile like-btn"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to micropost_likes_path(micropost),class:'likes_unliked', method: :post do %>
+                    <i class="far fa-smile unlike-btn"></i>
+                  <% end %>
                 <% end %>
-              </div>
+              <p><i class="far fa-comment comment_count"></i><%= micropost.comments.count %></p>
           </div>
-        <div class="rank_box">
-            <p class="rank_title">カテゴリー</p>
-              <div class="rank_items">
-                <% @categories.each do |category| %>
-                     <div class="rank_item_category">
-                    <span class="category_name_btn"><%= link_to category.name,"/categories/#{category.id}",category_id: category.id %></span>
-                   </div> 
+        <% end %>
+        <%= paginate @microposts %>
+      <h2 class="section-title_users">フォローしている利用者の日記</h2>
+        <% @following_diaries.each do |diary| %>
+          <div class="timeline_homepage">  
+            <div class="timeline_home_name">
+              <%= link_to  image_tag(diary.user.profile_image.url, class:'icon2 user_image'), "/users/#{diary.user.id}"%>
+                <span class="post_name"><%= diary.user.name %></span>
+                <p class="post_time"><%= diary.created_at.strftime('%m月%d日%H:%M')%><br>
+            </div>
+            <div class="timeline_home_new">
+              <p class="home_text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.title %></a></p> 
+              <p><i class="far fa-smile unlike-btn"></i><%= diary.liked_users.count %></p>
+                <% if current_user.already_liked_diary?(diary) %>
+                  <%= link_to diary_like_path(id: diary.id, diary_id:diary.id), method: :delete do %>
+                    <i class="far fa-smile like-btn"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to diary_likes_path(diary), method: :post do %>
+                    <i class="far fa-smile unlike-btn"></i>
+                  <% end %>
                 <% end %>
-      </aside>
-      </div>  
+              <p><i class="far fa-comment comment_count"></i><%= diary.comments.count %></p>
+            </div>
+        <% end %>    
+        <%= paginate @diaries %>
+    </main>          
+    <aside class="sidebar_popular_posts">
+      <div class="rank_box">
+        <p class="rank_title">人気のつぶやき</p>
+          <div class="rank_items">
+            <% @micropost_ranks.each.with_index(1) do |micropost, i| %>
+              <div class="rank_item">
+                <span class="ranking"><%= i %>位</span>
+                <span><%= link_to image_tag(micropost.user.profile_image.url, class:'icon_rank_image'), "/users/#{micropost.user.id}"%></span>
+                <span class="rank_item_content"><%= link_to micropost.content,"/microposts/#{micropost.id}" %></span>
+              </div> 
+            <% end %>
+          </div>
+      </div>
+      <div class="rank_box">
+        <p class="rank_title">人気の日記</p>
+          <div class="rank_items">
+            <% @diary_ranks.each.with_index(1) do |diary, i| %>
+              <div class="rank_item">
+                <span class="ranking"><%= i %>位</span>
+                <span><%= link_to image_tag(diary.user.profile_image.url, class:'icon_rank_image'), "/users/#{diary.user.id}" %></span>
+                <span class="rank_item_content"><%= link_to diary.title,"/diaries/#{diary.id}" %></span>
+              </div> 
+            <% end %>
+          </div>
+      </div>
+      <div class="rank_box">
+        <p class="rank_title">カテゴリー</p>
+          <div class="rank_items">
+            <% @categories.each do |category| %>
+              <div class="rank_item_category">
+                <span class="category_name_btn"><%= link_to category.name,"/categories/#{category.id}",category_id: category.id %></span>
+              </div> 
+            <% end %>
+    </aside>
+  </div>  
 </section>
 <% else %>
 <div class="main">
-    <div class="main_visual">
-          <div class="main_visual_title">チームケアへようこそ</div>
-          <div class="main_visual_lead">介護の悩みを共有しよう</div>
-          <div class="main_visual_btn"><a href="/login">はじめる</a></div>
-    </div>
+  <div class="main_visual">
+    <div class="main_visual_title">チームケアへようこそ</div>
+    <div class="main_visual_lead">介護の悩みを共有しよう</div>
+    <div class="main_visual_btn"><a href="/login">はじめる</a></div>
+  </div>
 </div>
 <%end%>

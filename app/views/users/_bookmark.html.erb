@@ -1,21 +1,21 @@
 <section id="" class="favorite_catalog section">
-	 <div class="diary__inner inner">
-     <h2 class="section-title_diary">お気に入り一覧</h2>
+  <div class="diary__inner inner">
+    <h2 class="section-title_diary">お気に入り一覧</h2>
       <div class="timeline_area">
-                <% @favorites.each do |diary| %>
-                <div class="timeline_diaries">     
-                    <div class="timeline_image_name">
-                      <%= link_to  image_tag(diary.user.profile_image.url, class:'icon2 user_image'), "/users/#{current_user.id}"%>
-                      <p class="diary_name"><%= diary.user.name %></p>
-                      <p class="diary_time"><%= localize diary.created_at %></p><br>
-                    </div>
-                  <div class="timeline_content_show">
-                    <p class="diary-text"><a href="/diaries/<%=diary.id%>"><%= diary.content %></a></p> 
-                  <p><i class="far fa-smile unlike-btn"></i><%=diary.liked_users.count %></p>
-                  <p><i class="far fa-comment comment_count"></i><%=diary.comments.count %></p>
-                  </div>
-                   <% end %>   
-                </div>  
+        <% @favorites.each do |diary| %>
+          <div class="timeline_diaries">     
+            <div class="timeline_image_name">
+              <%= link_to  image_tag(diary.user.profile_image.url, class:'icon2 user_image'), "/users/#{current_user.id}"%>
+              <p class="diary_name"><%= diary.user.name %></p>
+              <p class="diary_time"><%= localize diary.created_at %></p><br>
+            </div>
+            <div class="timeline_content_show">
+              <p class="diary-text"><a href="/diaries/<%=diary.id%>"><%= diary.content %></a></p> 
+              <p><i class="far fa-smile unlike-btn"></i><%=diary.liked_users.count %></p>
+              <p><i class="far fa-comment comment_count"></i><%=diary.comments.count %></p>
+            </div>
+        <% end %>   
+        </div>  
       </div>
    </div>
 </section>

@@ -1,46 +1,46 @@
 <% if logged_in? %>
 <footer class="footer">
-		<div class="footer__inner inner">
-			<div class="footer__contents">
-				<div class="footer__left">
-					<div class="footer__logo"><a href="/"><img src="/assets/logo_transparent.png" alt="TeamCare"></a></div><!-- /.footer__logo -->
-				</div><!-- /.footer__left -->
-				<div class="footer__center">
-					<nav class="footer__nav">
-						<ul>
-						<li><a href="/" class="is-active">ホーム</a></li>
-            <li> <%= link_to "マイページ", users_path(@user) %></li>
-            <li><%= link_to "つぶやき投稿", new_micropost_url %></li>
-            <li><%= link_to "日記投稿", new_diary_url %></li>
-            <li> <%= link_to "ログアウト", logout_path,method: :delete %></li>
-						</ul>
-					</nav><!-- /.footer__nav -->
-				</div><!-- /.footer__center -->
-			</div><!-- /.footer__contents -->
-			<div class="footer__copy">Copyright &copy; 2021 <a href="/" target="_blank">team_care</a> All rights reserved.</div><!-- /.footer__copy -->
-		</div><!-- /.footer__inner -->
-	</footer><!-- /.footer -->
-	<div class="totop"><a href="#"><img src="/assets/totop.png" alt="上部へスクロール"></a></div><!-- /.totop -->
+  <div class="footer__inner inner">
+    <div class="footer__contents">
+	  <div class="footer__left">
+	    <div class="footer__logo"><a href="/"><img src="/assets/logo_transparent.png" alt="TeamCare"></a></div>
+	  </div>
+	    <div class="footer__center">
+		  <nav class="footer__nav">
+		    <ul>
+			  <li><a href="/" class="is-active">ホーム</a></li>
+              <li> <%= link_to "マイページ", users_path(@user) %></li>
+              <li><%= link_to "つぶやき投稿", new_micropost_url %></li>
+              <li><%= link_to "日記投稿", new_diary_url %></li>
+              <li> <%= link_to "ログアウト", logout_path,method: :delete %></li>
+		    </ul>
+		  </nav>
+		</div>
+	</div>
+    <div class="footer__copy">Copyright &copy; 2021 <a href="/" target="_blank">team_care</a> All rights reserved.</div>
+  </div>
+</footer>
+<div class="totop"><a href="#"><img src="/assets/totop.png" alt="上部へスクロール"></a></div>
 <%else%>
-<footer class="footer">
-		<div class="footer__inner inner">
-			<div class="footer__contents">
-				<div class="footer__left">
-					<div class="footer__logo"><a href=""><img src="/assets/logo_transparent.png" alt="TeamCare"></a></div><!-- /.footer__logo -->
-				</div><!-- /.footer__left -->
-				<div class="footer__center">
-					<nav class="footer__nav">
-						<ul>
-							<li><a href="">チームケアとは</a></li>
+  <footer class="footer">
+    <div class="footer__inner inner">
+	  <div class="footer__contents">
+	    <div class="footer__left">
+		  <div class="footer__logo"><a href=""><img src="/assets/logo_transparent.png" alt="TeamCare"></a></div>
+		</div>
+		<div class="footer__center">
+		  <nav class="footer__nav">
+		    <ul>
+			  <li><a href="">チームケアとは</a></li>
               <li> <%= link_to "新規登録", signup_path %></li>
               <li> <%= link_to "ログイン", login_path %></li>
               <li> <%= link_to "お問い合わせ", inquiry_index_path %></li>
-						</ul>
-					</nav><!-- /.footer__nav -->
-				</div><!-- /.footer__center -->
-			</div><!-- /.footer__contents -->
-			<div class="footer__copy">Copyright &copy; 2021 <a href="/" target="_blank">team_care</a> All rights reserved.</div><!-- /.footer__copy -->
-		</div><!-- /.footer__inner -->
-	</footer><!-- /.footer -->
-	<div class="totop"><a href="#"><img src="/assets/totop.png" alt="上部へスクロール"></a></div><!-- /.totop -->
-  <%end%>
+			</ul>
+		  </nav>
+		</div>
+	</div>
+	<div class="footer__copy">Copyright &copy; 2021 <a href="/" target="_blank">team_care</a> All rights reserved.</div>
+  </div>
+</footer>
+<div class="totop"><a href="#"><img src="/assets/totop.png" alt="上部へスクロール"></a></div>
+<%end%>

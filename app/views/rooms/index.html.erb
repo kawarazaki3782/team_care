@@ -1,17 +1,16 @@
 <% if current_user.id == @user.id %>
 <section id="" class="micropost_catalog section">
-	 <div class="micropost__inner inner">
-     <h2 class="section-title_post">お手紙一覧</h2>
+  <div class="micropost__inner inner">
+    <h2 class="section-title_post">お手紙一覧</h2>
       <div class="timeline_area">
-  <% @rooms.each do |r| %>
-    <% r.users.each do |u| %>
-     <% if u.id == current_user.id %>
-     <% else %>
-        <p class="message_item"><%=link_to  image_tag(u.profile_image.url, class:'icon2 message_image'), "/users/#{u.id}"  %><a href="/rooms/<%= r.id %>"><%= u.name %>さんとのやり取り</a></p>
-     <% end %>
-    <% end %> 
-  <% end %>
+        <% @rooms.each do |r| %>
+          <% r.users.each do |u| %>
+            <% if u.id == current_user.id %>
+            <% else %>
+              <p class="message_item"><%=link_to  image_tag(u.profile_image.url, class:'icon2 message_image'), "/users/#{u.id}"  %><a href="/rooms/<%= r.id %>"><%= u.name %>さんとのやり取り</a></p>
+            <% end %>
+          <% end %> 
+       <% end %>
 <% else %>
-
-
+<h3 class="text-center">またメッセージはありません</h3>
 <% end %>

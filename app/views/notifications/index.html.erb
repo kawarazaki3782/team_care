@@ -1,18 +1,18 @@
 <section id="" class="micropost_catalog section">
-	 <div class="micropost__inner inner">
-     <h2 class="section-title_post">通知一覧</h2>
+  <div class="micropost__inner inner">
+    <h2 class="section-title_post">通知一覧</h2>
       <div class="timeline_area">
-  <div class="notification_delete">
-  <%= link_to "すべての通知を削除する", @notification, method: :delete, class:"notification_all_delete",data: {confirm: 'すべての通知を削除しますか?'} %>
+        <div class="notification_delete">
+          <%= link_to "すべての通知を削除する", @notification, method: :delete, class:"notification_all_delete",data: {confirm: 'すべての通知を削除しますか?'} %>
+       </div>
+<% if @notifications.exists? %>
+  <div class="users-index">
+    <%= render @notifications %>
+    <%= paginate @notifications %>
+      </div>
   </div>
-  <% if @notifications.exists? %>
-    <div class="users-index">
-      <%= render @notifications %>
-      <%= paginate @notifications %>
-   </div>
- </div>
 </section>
 <% else %>
-    <p>通知はありません</p>
+<p>通知はありません</p>
 <% end %>
 </div>

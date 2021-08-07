@@ -1,193 +1,178 @@
 <% if logged_in? && current_user.id.to_s == params[:id] %>
-<!--マイページ(編集や削除ができる)-->
-<!--例えば、誰のホームページなのかわかりやすくするためにそのユーザーの名前を表示するとき-->
 <% provide(:title, @user.name) %>
 <section id="" class="users_section">
-	 <div class="users__inner inner">
-     <h2 class="section-title_users">マイページ</h2>
-
-        <div class="users_tab">
-            <div class="users_tab-item"><%= link_to "利用者一覧", users_path, class: "btn_base_users" %></div>
-            <div class="users_tab-item"><%= link_to "お気に入りのつぶやき", favorites_path(micropost_id: @user.micropost_ids), class: "btn_base_users" %></div>
-            <div class="users_tab-item"><%= link_to "お気に入りの日記", favorites_path(diary_id: @user.diary_ids), class: "btn_base_users" %></div>
-        </div>
-
-        <div class="notifications_button">
-            <%= link_to "通知",  notifications_path, class: "btn_base_notifications" %>
-        </div>
-        <br>
-        <br>
-    <div class="profile_image_users">
+  <div class="users__inner inner">
+    <h2 class="section-title_users">マイページ</h2>
+      <div class="users_tab">
+        <div class="users_tab-item"><%= link_to "利用者一覧", users_path, class: "btn_base_users" %></div>
+        <div class="users_tab-item"><%= link_to "お気に入りのつぶやき", favorites_path(micropost_id: @user.micropost_ids), class: "btn_base_users" %></div>
+        <div class="users_tab-item"><%= link_to "お気に入りの日記", favorites_path(diary_id: @user.diary_ids), class: "btn_base_users" %></div>
+      </div>
+      <div class="notifications_button">
+        <%= link_to "通知",  notifications_path, class: "btn_base_notifications" %>
+      </div>
+      <br>
+      <br>
+      <div class="profile_image_users">
         <% if @user.profile_image? %>                                                              
-        <%= image_tag @user.profile_image.url, class:'users_icon' %> 
-    </div>
-    <br>
-    <br>
-    <div class="user_name_users">
-    <%= @user.name %>さん
-     </div>
-    <div class="user_status_users">
+          <%= image_tag @user.profile_image.url, class:'users_icon' %> 
+      </div>
+      <br>
+      <br>
+      <div class="user_name_users">
+        <%= @user.name %>さん
+      </div>
+      <div class="user_status_users">
         <%= render 'shared/stats' %>
-    </div>
-    <div class="follow_form_users">
+      </div>
+      <div class="follow_form_users">
         <%= render 'follow_form' if logged_in? %>
+      </div>
+      <div class="longcare_users">
+        <i class="fas fa-medal longcare"></i><p class="longcare_content"><%= @user.long_teamcare %>
+      </div>
+      <% end %> 
+      <div class="users_tab_contents">
+        <div class="users_content-item"><%= link_to "自分のつぶやき", microposts_path, class: "btn_base_contents" %></div>
+        <div class="users_content-item"><%= link_to "自分の日記", diaries_path, class: "btn_base_contents" %></div>
+     </div>
+     <div class="blocked_user">
+       <%= link_to "ブロックした利用者", blocking_user_url(@user), class: "btn_base_profile" %>
+     </div>
+     <div class="profile_edit_users">
+       <%= link_to "プロフィール編集", edit_user_path, class: "btn_base_profile" %>
+     </div> 
+    <ul class="profile_ul">
+      <li class="profile_list">性別:<%= @user.gender %></li>
+      <li class="profile_list">誕生日:<%= @user.birthday %></li>
+      <li class="profile_list">住所:<%= @user.address %><li>
+      <li class="profile_list">介護の形態:<%= @user.long_teamcare %></li>
+    </ul>
+    <div class="self-introduction">
+      <p class="profile_title">自己紹介</p>
+      <p class="profile_content"><%= @user.profile %></p>
     </div>
-    <div class="longcare_users">
-    <i class="fas fa-medal longcare"></i><p class="longcare_content"><%= @user.long_teamcare %>
-    </div>
-  <% end %>
-  
-  <div class="users_tab_contents">
-    <div class="users_content-item"><%= link_to "自分のつぶやき", microposts_path, class: "btn_base_contents" %></div>
-    <div class="users_content-item"><%= link_to "自分の日記", diaries_path, class: "btn_base_contents" %></div>
-  </div>
-  <div class="blocked_user">
-  <%= link_to "ブロックした利用者", blocking_user_url(@user), class: "btn_base_profile" %>
-  </div>
-  <div class="profile_edit_users">
-    <%= link_to "プロフィール編集", edit_user_path, class: "btn_base_profile" %>
-  </div> 
-  
-  
-  <ul class="profile_ul">
-   <li class="profile_list">性別:<%= @user.gender %></li>
-     <li class="profile_list">誕生日:<%= @user.birthday %></li>
-     <li class="profile_list">住所:<%= @user.address %><li>
-     <li class="profile_list">介護の形態:<%= @user.long_teamcare %></li>
-  </ul>
-  <div class="self-introduction">
-  <p class="profile_title">自己紹介</p>
-  <p class="profile_content"><%= @user.profile %></p>
-  </div>
-
-  <div class="user_dm_link">
-    <p class="users_dm">お手紙</p>
-     <%= link_to "送受信履歴", rooms_path, class: "btn_base_history" %>
-  </div>
-
+    <div class="user_dm_link">
+      <p class="users_dm">お手紙</p>
+      <%= link_to "送受信履歴", rooms_path, class: "btn_base_history" %>
+   </div>
   <div class="user_category_link">
     <p class="users_category">カテゴリー</p>
-     <%= link_to "カテゴリーの追加", categories_path, class: "btn_user_category" %>
+    <%= link_to "カテゴリーの追加", categories_path, class: "btn_user_category" %>
   </div>
 </div>
-
 </section>
 <% else %>
 <!--他の人のページ(編集や削除はできない)-->
 <!--投稿されたイベントをクリックしてそこから他の人のページに飛んだ場合-->
 <% provide(:title, @user.name) %>
-
 <section id="" class="users_section">
-	 <div class="users__inner inner">
-     <h2 class="section-title_users">利用者詳細</h2>
-    <div class="profile_image_users">
+  <div class="users__inner inner">
+    <h2 class="section-title_users">利用者詳細</h2>
+      <div class="profile_image_users">
         <% if @user.profile_image? %>                                                              
-        <%= image_tag @user.profile_image.url, class:'users_icon' %> 
+          <%= image_tag @user.profile_image.url, class:'users_icon' %> 
         <%end%>
-    </div>
-    <br>
-    <br>
-    <div class="user_name_users">
-    <%= @user.name %>さん
-     </div>
-    <div class="user_status_users">
-        <%= render 'shared/stats' %>
-    </div>
-    <div class="longcare_users">
-    <i class="fas fa-medal longcare"></i><p class="longcare_content"><%= @user.long_teamcare %>
-    </div>
-
-    <div class="follow_form_users">
-      <%= render 'follow_form' if logged_in? %>
-      <%= render "show" %>
-      
-       
-  <ul class="profile_ul">
-   <li class="profile_list">性別:<%= @user.gender %></li>
-     <li class="profile_list">誕生日:<%= @user.birthday %></li>
-     <li class="profile_list">住所:<%= @user.address %><li>
-     <li class="profile_list">介護の形態:<%= @user.long_teamcare %></li>
-  </ul>
-   <% if current_user.admin? && !current_user?(@user) %>
-    | <%= link_to "delete", @user, method: :delete,class: 'other_user_delete',
-                                  data: { confirm: "ユーザーを削除しますか?" } %>
-      <% end %>
-  <div class="self-introduction">
-  <p class="profile_title">自己紹介</p>
-  <p class="profile_content"><%= @user.profile %></p>
-  </div>
-  <div class="user_dm_link">
-    <p class="users_dm">お手紙</p> 
-     <% if @isRoom == true %>
-    <p class="btn_base_history"><a href="/rooms/<%= @roomId %>">お手紙を送る</a>
-    <% else %>
-    <%= form_for @room do |f| %>
-      <%= fields_for @entry do |e| %>
-        <%= e.hidden_field :user_id, :value=> @user.id %>
-      <% end %>
-      <%= f.submit "お手紙を送る", class: "btn_base_history" %>
-    <% end %>
-    <% end %>
-  </div>
-<h2 class="section-title_post">最近のつぶやき</h2>
-      <div class="timeline_area">
-                 <% @microposts.each do |micropost| %>
-                <% provide(:title, micropost.user.name) %>
-                <div class="timeline_homepage">  
-                    <div class="timeline_other_user">
-                      <%= link_to  image_tag(micropost.user.profile_image.url, class:'icon2 user_image'), "/users/#{micropost.user.id}"%>
-                      <span class="post_name"><%= micropost.user.name %></span>
-                      <p class="post_time"><%= micropost.created_at.strftime('%m月%d日%H:%M')%><br>
-                    </div>
-                  <div class="timeline_home_new">
-                    <p class="home_text"><a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a></p> 
-                  <p><i class="far fa-smile unlike-btn"></i><%= micropost.liked_users.count %></p>
-                  <% if current_user.already_liked?(micropost) %>
-                        <%= link_to micropost_like_path(id: micropost.id, micropost_id:micropost.id), class:'likes_liked', method: :delete do %>
-                        <i class="far fa-smile like-btn"></i>
-                      <% end %>
-                      <% else %>
-                        <%= link_to micropost_likes_path(micropost), class:'likes_unliked', method: :post do %>
-                        <i class="far fa-smile unlike-btn"></i>
-                      <% end %>
-                      <% end %>
-                  <p><i class="far fa-comment comment_count"></i><%= micropost.comments.count %></p>
-                  </div>
-                   <% end %>
-                </div>  
-          
-      </div>  
-<%= paginate @microposts %>
-<h2 class="section-title_diary">最近の日記</h2>
-      <div class="timeline_area">
-                <% @diaries.each do |diary| %>
-                <% if diary.status == "published" %>
-                <div class="timeline_homepage">  
-                    <div class="timeline_other_user">
-                      <%= link_to  image_tag(diary.user.profile_image.url, class:'icon2 user_image'), "/users/#{diary.user.id}"%>
-                      <span class="post_name"><%= diary.user.name %></span>
-                      <p class="post_time"><%= diary.created_at.strftime('%m月%d日%H:%M')%><br>
-                    </div>
-                  <div class="timeline_home_new">
-                    <p class="home_text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.title %></a></p> 
-                  <p><i class="far fa-smile unlike-btn"></i><%= diary.liked_users.count %></p>
-                  <% if current_user.already_liked_diary?(diary) %>
-                        <%= link_to diary_like_path(id: diary.id, diary_id:diary.id), class:'likes_liked_diary', method: :delete do %>
-                        <i class="far fa-smile like-btn"></i>
-                      <% end %>
-                      <% else %>
-                        <%= link_to diary_likes_path(diary), class:'likes_unliked_diary', method: :post do %>
-                        <i class="far fa-smile unlike-btn"></i>
-                      <% end %>
-                      <% end %>
-                  <p><i class="far fa-comment comment_count"></i><%= diary.comments.count %></p>
-                  </div>
-                   <% end %>    
-                  <% end %>   
-                </div>  
-                </div>  
       </div>
-   </div>
+      <br>
+      <br>
+      <div class="user_name_users">
+        <%= @user.name %>さん
+       </div>
+      <div class="user_status_users">
+        <%= render 'shared/stats' %>
+      </div>
+      <div class="longcare_users">
+        <i class="fas fa-medal longcare"></i><p class="longcare_content"><%= @user.long_teamcare %>
+      </div>
+      <div class="follow_form_users">
+        <%= render 'follow_form' if logged_in? %>
+        <%= render "show" %>
+        <ul class="profile_ul">
+          <li class="profile_list">性別:<%= @user.gender %></li>
+          <li class="profile_list">誕生日:<%= @user.birthday %></li>
+          <li class="profile_list">住所:<%= @user.address %><li>
+          <li class="profile_list">介護の形態:<%= @user.long_teamcare %></li>
+        </ul>
+        <% if current_user.admin? && !current_user?(@user) %>
+    |     <%= link_to "delete", @user, method: :delete,class: 'other_user_delete',
+                                  data: { confirm: "ユーザーを削除しますか?" } %>
+        <% end %>
+        <div class="self-introduction">
+          <p class="profile_title">自己紹介</p>
+          <p class="profile_content"><%= @user.profile %></p>
+        </div>
+        <div class="user_dm_link">
+          <p class="users_dm">お手紙</p> 
+          <% if @isRoom == true %>
+            <p class="btn_base_history"><a href="/rooms/<%= @roomId %>">お手紙を送る</a>
+          <% else %>
+            <%= form_for @room do |f| %>
+              <%= fields_for @entry do |e| %>
+                <%= e.hidden_field :user_id, :value=> @user.id %>
+              <% end %>
+              <%= f.submit "お手紙を送る", class: "btn_base_history" %>
+            <% end %>
+          <% end %>
+    </div>
+    <h2 class="section-title_post">最近のつぶやき</h2>
+      <div class="timeline_area">
+        <% @microposts.each do |micropost| %>
+        <% provide(:title, micropost.user.name) %>
+          <div class="timeline_homepage">  
+            <div class="timeline_other_user">
+              <%= link_to  image_tag(micropost.user.profile_image.url, class:'icon2 user_image'), "/users/#{micropost.user.id}"%>
+                <span class="post_name"><%= micropost.user.name %></span>
+                <p class="post_time"><%= micropost.created_at.strftime('%m月%d日%H:%M')%><br>
+            </div>
+            <div class="timeline_home_new">
+              <p class="home_text"><a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a></p> 
+              <p><i class="far fa-smile unlike-btn"></i><%= micropost.liked_users.count %></p>
+                <% if current_user.already_liked?(micropost) %>
+                  <%= link_to micropost_like_path(id: micropost.id, micropost_id:micropost.id), class:'likes_liked', method: :delete do %>
+                    <i class="far fa-smile like-btn"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to micropost_likes_path(micropost), class:'likes_unliked', method: :post do %>
+                    <i class="far fa-smile unlike-btn"></i>
+                  <% end %>
+                <% end %>
+                <p><i class="far fa-comment comment_count"></i><%= micropost.comments.count %></p>
+            </div>
+        <% end %>
+      </div>       
+    </div>  
+    <%= paginate @microposts %>
+    <h2 class="section-title_diary">最近の日記</h2>
+    <div class="timeline_area">
+      <% @diaries.each do |diary| %>
+        <% if diary.status == "published" %>
+          <div class="timeline_homepage">  
+            <div class="timeline_other_user">
+              <%= link_to  image_tag(diary.user.profile_image.url, class:'icon2 user_image'), "/users/#{diary.user.id}"%>
+              <span class="post_name"><%= diary.user.name %></span>
+              <p class="post_time"><%= diary.created_at.strftime('%m月%d日%H:%M')%><br>
+            </div>
+            <div class="timeline_home_new">
+              <p class="home_text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.title %></a></p> 
+              <p><i class="far fa-smile unlike-btn"></i><%= diary.liked_users.count %></p>
+                <% if current_user.already_liked_diary?(diary) %>
+                  <%= link_to diary_like_path(id: diary.id, diary_id:diary.id), class:'likes_liked_diary', method: :delete do %>
+                    <i class="far fa-smile like-btn"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to diary_likes_path(diary), class:'likes_unliked_diary', method: :post do %>
+                    <i class="far fa-smile unlike-btn"></i>
+                  <% end %>
+                <% end %>
+                <p><i class="far fa-comment comment_count"></i><%= diary.comments.count %></p>
+            </div>
+        <% end %>    
+      <% end %>   
+    </div>  
+  </div>  
+ </div>
+</div>
 </section>
 <%= paginate @diaries %>
 <% end %>

@@ -1,69 +1,68 @@
 <% unless @diary == nil %> 
 <section id="" class="favorite_catalog section">
-	 <div class="favorite__inner inner">
-     <h2 class="section-title_favorite">お気に入りの日記一覧</h2>
+  <div class="favorite__inner inner">
+    <h2 class="section-title_favorite">お気に入りの日記一覧</h2>
       <div class="timeline_area">
-                <% @favorites.each do |diary| %>
-                <div class="timeline_diaries">     
-                    <div class="timeline_image_name">
-                      <%= link_to  image_tag(diary.user.profile_image.url, class:'icon2 user_image'), "/users/#{diary.user}"%>
-                      <p class="diary_name"><%= diary.user.name %></p>
-                      <p class="diary_time"><%= diary.created_at.strftime('%m月%d日%H:%M')%><br>
-                    </div>
-                  <div class="timeline_content_show">
-                    <p class="diary-text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.title %></a></p> 
-                    <p class="diary_delete"><% if current_user?(diary.user) %>
-                    <%= link_to "日記を削除", diary, method: :delete,
+        <% @favorites.each do |diary| %>
+          <div class="timeline_diaries">     
+            <div class="timeline_image_name">
+              <%= link_to  image_tag(diary.user.profile_image.url, class:'icon2 user_image'), "/users/#{diary.user}"%>
+              <p class="diary_name"><%= diary.user.name %></p>
+              <p class="diary_time"><%= diary.created_at.strftime('%m月%d日%H:%M')%><br>
+            </div>
+            <div class="timeline_content_show">
+              <p class="diary-text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.title %></a></p> 
+                <p class="diary_delete"><% if current_user?(diary.user) %>
+                  <%= link_to "日記を削除", diary, method: :delete,
                                                     data: { confirm: "日記を削除しますか?" } %><% end %></p>
-                  <p><i class="far fa-smile unlike-btn"></i><%= diary.liked_users.count %></p>
-                  <% if current_user.already_liked_diary?(diary) %>
-                        <%= link_to diary_like_path(id: diary.id, diary_id:diary.id), method: :delete do %>
-                        <i class="far fa-smile like-btn"></i>
-                        <% end %>
-                      <% else %>
-                        <%= link_to diary_likes_path(diary), method: :post do %>
-                        <i class="far fa-smile unlike-btn"></i>
-                      <% end %>
-                      <% end %>
-                  <p><i class="far fa-comment comment_count"></i><%= diary.comments.count %></p>
-                  </div>
-                </div>  
-          <% end %>
+              <p><i class="far fa-smile unlike-btn"></i><%= diary.liked_users.count %></p>
+                <% if current_user.already_liked_diary?(diary) %>
+                  <%= link_to diary_like_path(id: diary.id, diary_id:diary.id), method: :delete do %>
+                    <i class="far fa-smile like-btn"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to diary_likes_path(diary), method: :post do %>
+                    <i class="far fa-smile unlike-btn"></i>
+                  <% end %>
+                <% end %>
+                <p><i class="far fa-comment comment_count"></i><%= diary.comments.count %></p>
+            </div>
+          </div>  
+        <% end %>
       </div>
    </div>
 </section>
-
 <% else %>
 <section id="" class="favorite_catalog section">
-	 <div class="favorite__inner inner">
-     <h2 class="section-title_favorite">お気に入りのつぶやき一覧</h2>
+  <div class="favorite__inner inner">
+    <h2 class="section-title_favorite">お気に入りのつぶやき一覧</h2>
       <div class="timeline_area">
-          <% @favorites.each do |micropost| %>
-               <div class="timeline_favorite">     
-                  <div class="timeline_image_name">
-                      <%= link_to  image_tag(micropost.user.profile_image.url, class:'icon2 user_image'), "/users/#{micropost.user.id}"%>
-                      <p class="favorite_name"><%= micropost.user.name %></p>
-                      <p class="favorite_time"><%= localize micropost.created_at %></p><br>
-                   </div>
-                  <div class="timeline_content_show">
-                    <span class="post-text"><a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a></span> 
-                    <p class="post_delete"><% if current_user?(micropost.user) %>
-                    <%= link_to "削除", micropost, method: :delete,
+        <% @favorites.each do |micropost| %>
+          <div class="timeline_favorite">     
+            <div class="timeline_image_name">
+              <%= link_to  image_tag(micropost.user.profile_image.url, class:'icon2 user_image'), "/users/#{micropost.user.id}"%>
+              <p class="favorite_name"><%= micropost.user.name %></p>
+              <p class="favorite_time"><%= localize micropost.created_at %></p><br>
+            </div>
+            <div class="timeline_content_show">
+              <span class="post-text"><a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a></span> 
+              <p class="post_delete"><% if current_user?(micropost.user) %>
+                <%= link_to "削除", micropost, method: :delete,
                                                     data: { confirm: "つぶやきを削除しますか?" } %></p><% end %>    
-                  <p><i class="far fa-smile unlike-btn"></i><%= micropost.liked_users.count %></p>
-                  <% if current_user.already_liked?(micropost) %>
-                        <%= link_to micropost_like_path(id: micropost.id, micropost_id:micropost.id), method: :delete do %>
-                        <i class="far fa-smile like-btn"></i>
-                      <% end %>
-                      <% else %>
-                        <%= link_to micropost_likes_path(micropost), method: :post do %>
-                        <i class="far fa-smile unlike-btn"></i>
-                      <% end %>
-                      <% end %>
-                  <p><i class="far fa-comment comment_count"></i><%= micropost.comments.count %></p>
-                  </div>
-                </div>  
-          <% end %>
+              <p><i class="far fa-smile unlike-btn"></i><%= micropost.liked_users.count %></p>
+                <% if current_user.already_liked?(micropost) %>
+                  <%= link_to micropost_like_path(id: micropost.id, micropost_id:micropost.id), method: :delete do %>
+                    <i class="far fa-smile like-btn"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to micropost_likes_path(micropost), method: :post do %>
+                    <i class="far fa-smile unlike-btn"></i>
+                  <% end %>
+                <% end %>
+                <p><i class="far fa-comment comment_count"></i><%= micropost.comments.count %></p>
+          </div>
+        <% end %>
       </div>
+  </div>
 </section>
 <% end %>

@@ -1,38 +1,37 @@
 <% provide(:title, "Log in") %>
 <p class="login_text">チームケアへようこそ<br>
 ひとりで悩まず、まずは誰かに相談しよう</p>
-
 <div class="login_title text-center">
-      <div class ="login_border">
-      <div class="text-center">
-        <p class="lead">お試し利用はこちら</p>
-          <%= link_to "簡単ログイン", guest_login_path, class: 'btn_base' , method: :post %>
-      </div>
+  <div class ="login_border">
+    <div class="text-center">
+      <p class="lead">お試し利用はこちら</p>
+      <%= link_to "簡単ログイン", guest_login_path, class: 'btn_base' , method: :post %>
+    </div>
       <br>
       <div class='text-center'>
-          <p class="lead">新規登録する</p>
-           <%= link_to "会員登録", signup_path, class: 'btn_base', method: :get %>
+        <p class="lead">新規登録する</p>
+        <%= link_to "会員登録", signup_path, class: 'btn_base', method: :get %>
       </div>
-      </div>
-      <br> 
-      <div class ="login_border2">
-         <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
-          <p class="text-center lead">会員登録済みの方はこちら</p>
-          <dl>
-            <dt><%= f.label :メールアドレス %></dt>
-            <dd><%= f.email_field :email, class: 'login_form' %></dd><br>
+  </div>
+    <br> 
+    <div class ="login_border2">
+      <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+        <p class="text-center lead">会員登録済みの方はこちら</p>
+        <dl>
+          <dt><%= f.label :メールアドレス %></dt>
+          <dd><%= f.email_field :email, class: 'login_form' %></dd><br>
           <dt><%= f.label :パスワード %></dt>
           <dd><%= f.password_field :password, class: 'login_form' %></dd>
           <br>
-          <dt><%= f.label :remember_me  do %></dt>
-          <dd><%= f.check_box :remember_me %>
-          <span class="lead">ログイン状態を保持する</span></dd>
-          </dl>
-         <% end %>
-       <div class='login_btn text-center'>
-        <%= f.submit "ログイン", class: 'btn_base' %>
-       </div>
-      </div>
-        <% end %>
+            <dt><%= f.label :remember_me  do %></dt>
+              <dd><%= f.check_box :remember_me %>
+              <span class="lead">ログイン状態を保持する</span></dd>
+        </dl>
+            <% end %>
+         <div class='login_btn text-center'>
+           <%= f.submit "ログイン", class: 'btn_base' %>
+         </div>
+      <% end %>
     </div>
+  </div>
 </div>

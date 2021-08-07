@@ -1,27 +1,27 @@
 <% if logged_in? %>
-  <section id="" class="micropost section">
-	 <div class="micropost__inner inner">
-     <h2 class="section-title_post">つぶやき投稿画面</h2>
-       <div class="post_textarea">
-          <%= form_for(@micropost) do |f| %>
+<section id="" class="micropost section">
+  <div class="micropost__inner inner">
+    <h2 class="section-title_post">つぶやき投稿画面</h2>
+      <div class="post_textarea">
+        <%= form_for(@micropost) do |f| %>
           <%= render 'shared/error_messages', object: f.object %>
-        <div class="field_post text-center">
-          <%= f.text_area :content, placeholder: "140文字以内",class:'microposts_textarea'%>
-        </div>
-        <div class="post_category">
-          <%= f.label :category_id %>
-          <%= f.collection_select :category_id, Category.all, :id, :name,:include_blank => "カテゴリ-を選択してください"%>
-        </div>
-        <div class="picture text-center">
-          <%= f.file_field :post_image, accept: 'image/jpeg,image/gif,image/png',class:'post_form' %>
-        </div>                                                          
-      <div class="text-center">
-        <%= f.submit "投稿する", class: "btn_base_post text-center" %>
+            <div class="field_post text-center">
+              <%= f.text_area :content, placeholder: "140文字以内",class:'microposts_textarea'%>
+            </div>
+            <div class="post_category">
+              <%= f.label :category_id %>
+              <%= f.collection_select :category_id, Category.all, :id, :name,:include_blank => "カテゴリ-を選択してください"%>
+            </div>
+            <div class="picture text-center">
+              <%= f.file_field :post_image, accept: 'image/jpeg,image/gif,image/png',class:'post_form' %>
+            </div>                                                          
+            <div class="text-center">
+              <%= f.submit "投稿する", class: "btn_base_post text-center" %>
+            </div>
         <% end %>
-      </div>
-    </div>
-    </div>
-  </section>
+     </div>
+  </div>
+</section>
 <script type="text/javascript">
   $('#micropost_post_image').bind('change', function() {
     var size_in_megabytes = this.files[0].size/1024/1024;
@@ -30,10 +30,9 @@
     }
   });
 </script>
-
 <%else%>
-<%= link_to "ユーザー登録", signup_path, class: "btn btn-lg btn-primary" %>
-<%= link_to "ログイン", login_path, class: "btn btn-lg btn-primary"%>
+  <%= link_to "ユーザー登録", signup_path, class: "btn btn-lg btn-primary" %>
+  <%= link_to "ログイン", login_path, class: "btn btn-lg btn-primary"%>
 <%end%>
 
 

@@ -1,7 +1,7 @@
 <% provide(:title, '確認画面') %>                                                            
 <section id="" class="confirm_section">
-	 <div class="confirm__inner inner">
-     <h2 class="section-title_confirm">登録内容の確認</h2>
+  <div class="confirm__inner inner">
+    <h2 class="section-title_confirm">登録内容の確認</h2>
      <div class="confirm_textarea">
         <%= form_for @user do |f| %>
           <div class="confirm_image">
@@ -15,39 +15,39 @@
           <div class="confirm_item">
            メールアドレス:<%= @user.email %>
            <%= f.hidden_field :email %>
+          </div>
+          <div class="confirm_item">
+            パスワード:<%= @user.password %>
+            <%= f.hidden_field :password %>
+          </div>
+          <div class="confirm_item">
+            性別:<%= @user.gender %>
+            <%= f.hidden_field :gender %>
+          </div>
+          <div class="confirm_item">
+            生年月日:<%= @user.birthday %>
+            <%= f.hidden_field :birthday %>
+          </div>
+          <div class="confirm_item">
+            住所:<%= @user.address %>
+            <%= f.hidden_field :address %>
+          </div>
+          <div class="confirm_item">
+            介護の状況:<%= @user.long_teamcare %>
+            <%= f.hidden_field :long_teamcare %>
+          </div>
+          <div class="confirm_item">
+            自己紹介:<%= @user.profile %>
+            <%= f.hidden_field :profile %>
+            <%= f.hidden_field :profile_image_cache %>
+          </div>
+          <div class="actions">
+            <%= f.submit '入力画面に戻る', class: "btn_base_confirm_back", name: 'back' %>
+         </div>
+         <div class="actions">
+           <%= f.submit 'この内容で登録', class: "btn_base_confirm" %>
         </div>
-        <div class="confirm_item">
-          パスワード:<%= @user.password %>
-          <%= f.hidden_field :password %>
-        </div>
-        <div class="confirm_item">
-          性別:<%= @user.gender %>
-          <%= f.hidden_field :gender %>
-        </div>
-    <div class="confirm_item">
-    生年月日:<%= @user.birthday %>
-    <%= f.hidden_field :birthday %>
+      <% end %>
     </div>
-    <div class="confirm_item">
-    住所:<%= @user.address %>
-    <%= f.hidden_field :address %>
-    </div>
-    <div class="confirm_item">
-    介護の状況:<%= @user.long_teamcare %>
-    <%= f.hidden_field :long_teamcare %>
-    </div>
-    <div class="confirm_item">
-    自己紹介:<%= @user.profile %>
-    <%= f.hidden_field :profile %>
-    <%= f.hidden_field :profile_image_cache %>
-    </div>
-    <div class="actions">
-      <%= f.submit '入力画面に戻る', class: "btn_base_confirm_back", name: 'back' %>
-    </div>
-    <div class="actions">
-      <%= f.submit 'この内容で登録', class: "btn_base_confirm" %>
-    </div>
-<% end %>
-</div>
-</div>
+  </div>
 </section>

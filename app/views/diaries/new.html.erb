@@ -1,29 +1,29 @@
 <% if logged_in? %>
-  <section id="" class="diary section">
-	 <div class="diary__inner inner">
-     <h2 class="section-title_diary">日記投稿画面</h2>
-       <div class="diary_formarea">
-         <%= form_for(@diary) do |f| %>
+<section id="" class="diary section">
+  <div class="diary__inner inner">
+    <h2 class="section-title_diary">日記投稿画面</h2>
+      <div class="diary_formarea">
+        <%= form_for(@diary) do |f| %>
           <div class="diary_textarea">
-              <%= render 'shared/error_messages', object: f.object %>
-            <div class="field_diary text-center">
-              <%= f.text_area :title, placeholder: "タイトルを入力してください",class:'diary_title'%>
-              <%= f.text_area :content, placeholder: "本文を入力してください",class:'diary_content'%>
-            </div> 
-            <div class="diary_category">
-              <%= f.label :category_id %>
-              <%= f.collection_select :category_id, Category.all, :id, :name,:include_blank => "カテゴリ-を選択してください"%>
-           </div>
-          <div class="picture text-center">
-            <%= f.file_field :diary_image,class:'diary_form' %>
-            <%= f.hidden_field :diary_image_cache %>
-        </div>
-       </div>                                          
-      <div class="btn_diary text-center">
-        <%= f.select :status, Diary.statuses.map { |k, v| [t("diary.status.#{k}"), k] }, selected: @diary.status %>
-        <%= f.submit "投稿する", class: "btn_base_update text-center" %>
+            <%= render 'shared/error_messages', object: f.object %>
+              <div class="field_diary text-center">
+                <%= f.text_area :title, placeholder: "タイトルを入力してください",class:'diary_title'%>
+                <%= f.text_area :content, placeholder: "本文を入力してください",class:'diary_content'%>
+              </div> 
+              <div class="diary_category">
+                <%= f.label :category_id %>
+                <%= f.collection_select :category_id, Category.all, :id, :name,:include_blank => "カテゴリ-を選択してください"%>
+             </div>
+             <div class="picture text-center">
+               <%= f.file_field :diary_image,class:'diary_form' %>
+               <%= f.hidden_field :diary_image_cache %>
+             </div>
+          </div>                                          
+          <div class="btn_diary text-center">
+            <%= f.select :status, Diary.statuses.map { |k, v| [t("diary.status.#{k}"), k] }, selected: @diary.status %>
+            <%= f.submit "投稿する", class: "btn_base_update text-center" %>
+          </div>
         <% end %>
-        </div> 
       </div>
     </div>
   </section>
@@ -35,10 +35,9 @@
     }
   });
 </script>
-
 <%else%>
-<%= link_to "ユーザー登録", signup_path, class: "btn btn-lg btn-primary" %>
-<%= link_to "ログイン", login_path, class: "btn btn-lg btn-primary"%>
+  <%= link_to "ユーザー登録", signup_path, class: "btn btn-lg btn-primary" %> 
+  <%= link_to "ログイン", login_path, class: "btn btn-lg btn-primary"%>
 <%end%>
 
 
