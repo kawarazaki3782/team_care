@@ -122,15 +122,6 @@ describe '日記投稿', type: :system, js: true do
       sign_in_as user
     end
 
-    it '日記を削除できること(日記一覧)' do
-      visit diaries_path
-        page.accept_confirm do
-          click_on '日記を削除'
-        end
-      visit diaries_path
-      expect(page).to have_content '日記一覧'
-      end
-
     it '日記を削除できること(日記詳細)' do
       visit diaries_path
       click_on 'タイトル'
@@ -150,8 +141,9 @@ describe '日記投稿', type: :system, js: true do
     it '下書きの削除' do
       visit diaries_path
       click_on '下書きフォルダへ' 
+      click_on 'タイトル'
         page.accept_confirm do
-          click_on '下書きを削除'
+          click_on '削除'
        end
       visit diaries_path
       expect(page).to have_content '日記一覧'

@@ -32,9 +32,7 @@ RSpec.describe 'ブロック機能', type: :system, js: true do
       find('a.btn_base_users',match: :first).click
       click_on 'その他ユーザー'
       User.find_by(name: 'その他ユーザー').destroy
-      block_params = Block.attribute(:block, blocked_id: other_user.id)
-      post :create, params: {block: block_params}
-      # find('.follow_block_item',match: :first, visible: false).click
+      find('.follow_block_item',match: :first, visible: false).click
       expect(flash[:alert]).to eq "ブロックできません"
     end
   end

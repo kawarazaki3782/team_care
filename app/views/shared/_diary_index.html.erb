@@ -1,0 +1,22 @@
+<% @diaries.each do |diary| %>
+  <div class="timeline_homepage">  
+    <div class="timeline_home_name">
+      <%= link_to  image_tag(diary.user.profile_image.url, class:'icon2 user_image'), "/users/#{diary.user.id}"%>
+      <span class="post_name"><%= diary.user.name %></span>
+      <p class="post_time"><%= diary.created_at.strftime('%m月%d日%H:%M')%><br>
+    </div>
+    <div class="timeline_home_new">
+      <p class="home_text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.title %></a></p> 
+      <p><i class="far fa-smile unlike-btn"></i><%= diary.liked_users.count %></p>
+        <% if current_user.already_liked_diary?(diary) %>
+          <%= link_to diary_like_path(id: diary.id, diary_id:diary.id), class:'likes_liked_diary', method: :delete do %>
+            <i class="far fa-smile like-btn"></i>
+          <% end %>
+        <% else %>
+          <%= link_to diary_likes_path(diary), class:'likes_unliked_diary', method: :post do %>
+            <i class="far fa-smile unlike-btn"></i>
+          <% end %>
+        <% end %>
+        <p><i class="far fa-comment comment_count"></i><%= diary.comments.count %></p>
+  </div>
+<% end %>    

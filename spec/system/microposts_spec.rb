@@ -61,16 +61,6 @@ describe 'つぶやき投稿', type: :system, js: true do
       sign_in_as user
     end
 
-    it 'つぶやきを削除できること(つぶやき一覧)' do
-      visit microposts_path
-      page.accept_confirm do
-        click_on 'つぶやき削除'
-      end
-
-      visit microposts_path
-      expect(page).to have_content 'つぶやき一覧'
-    end
-
     it 'つぶやきを削除できること(つぶやき詳細)' do
       visit microposts_path
       click_on 'つぶやきサンプル', match: :first 

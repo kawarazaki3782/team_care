@@ -7,6 +7,7 @@
           <div class="confirm_image">
             <%= image_tag @user.profile_image.url, class:'confirm_icon' %>
             <%= f.hidden_field :profile_image %>
+            <%= f.hidden_field :profile_image_cache %>
           </div>
           <div class="confirm_item"> 
             氏名:<%= @user.name %>
@@ -40,12 +41,13 @@
             自己紹介:<%= @user.profile %>
             <%= f.hidden_field :profile %>
             <%= f.hidden_field :profile_image_cache %>
+            <%= hidden_field_tag :"cache[profile_image]", @user.profile_image.cache_name %>
           </div>
           <div class="actions">
             <%= f.submit '入力画面に戻る', class: "btn_base_confirm_back", name: 'back' %>
          </div>
          <div class="actions">
-           <%= f.submit 'この内容で登録', class: "btn_base_confirm" %>
+           <%= f.submit 'この内容で登録', class: "btn_base_confirm", name:'save' %>
         </div>
       <% end %>
     </div>

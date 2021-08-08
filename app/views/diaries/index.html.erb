@@ -3,33 +3,7 @@
     <h2 class="section-title_diary">日記一覧</h2>
       <%= link_to "下書きフォルダへ", "/diaries/draft", class: "diary_draft_btn" %>
       <div class="timeline_area">
-        <% @diaries.each do |diary| %>
-          <div class="timeline_diaries">     
-            <div class="timeline_diary_name">
-              <%= link_to  image_tag(@user.profile_image.url, class:'icon2 user_image'), "/users/#{@user.id}"%>
-              <p class="diary_name"><%= @user.name %></p>
-              <p class="diary_time"><%= diary.created_at.strftime('%m月%d日%H:%M')%><br>
-            </div>
-            <div class="timeline_diary_show">
-              <p class="diary-text"><a href="/diaries/<%= diary.id %>">タイトル:<%= diary.title %></a></p> 
-              <p class="diary_delete"><% if current_user?(diary.user) %>
-              <%= link_to "日記を削除", diary, method: :delete,
-                                                    data: { confirm: "日記を削除しますか?" } %></p>    
-              <p><i class="far fa-smile unlike-btn"></i><%= diary.liked_users.count %></p>
-                <% if current_user.already_liked_diary?(diary) %>
-                  <%= link_to diary_like_path(id: diary.id, diary_id:diary.id), method: :delete do %>
-                    <i class="far fa-smile like-btn"></i>
-                  <% end %>
-                <% else %>
-                  <%= link_to diary_likes_path(diary), method: :post do %>
-                    <i class="far fa-smile unlike-btn"></i>
-                  <% end %>
-                <% end %>
-                <p><i class="far fa-comment comment_count"></i><%= diary.comments.count %></p>
-            </div>
-            <% end %>   
-          </div>  
-        <% end %>
+        <%=render 'shared/diary_index'%>
       </div>
    </div>
 </section>

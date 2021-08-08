@@ -13,10 +13,10 @@ class MicropostsController < ApplicationController
   end
     
   def show
-    @micropost = Micropost.find(params[:id])
-    @comments = @micropost.comments
-    @comment = Comment.new
-    @like = Like.new
+      @micropost = Micropost.find(params[:id])
+      @comments = @micropost.comments
+      @comment = Comment.new
+      @like = Like.new
   end
 
   def create

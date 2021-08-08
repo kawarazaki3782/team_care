@@ -12,8 +12,8 @@ RSpec.describe 'いいね', type: :system,js: true do
    it 'つぶやきにいいねをする' do
     click_on '自分のつぶやき'
       expect do
-         find('.likes_liked', match: :first , visible: false).click
-         expect(page).to have_css '.likes_unliked', visible: false
+         find('.likes_unliked', match: :first , visible: false).click
+         expect(page).to have_css '.likes_liked', visible: false
        end.to change { Like.count }.by(1)
     end
 

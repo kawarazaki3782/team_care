@@ -77,7 +77,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
       if params[:back]
         render 'new' 
-      elsif @user.save
+      elsif params[:save]
+        @user.save
         log_in @user
         flash[:success] = "新規登録が完了しました"
         redirect_to @user

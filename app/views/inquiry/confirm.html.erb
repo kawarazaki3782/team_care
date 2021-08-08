@@ -2,42 +2,40 @@
 <section id="" class="contact section">  
   <div class="contact__inner inner">
     <h2 class="section-title">お問い合わせ内容の確認</h2>
+		<div class="contact__item">
+			<dl class="contact__controls">
+			<div class="contact__control">
+				<dt>
+				<label class="contact__label contact__label--required" for="your-name">お名前</label>
+				</dt>
+				<dd>
+				<%= f.hidden_field :name %>
+				<%= @inquiry.name %>
+				</dd>
+			</div>
+			<div class="contact__control">
+				<dt>
+				<label class="contact__label contact__label--required" for="your-mail">メールアドレス</label>
+				</dt>
+				<dd>
+				<%= f.hidden_field :email %>
+				<%= @inquiry.email %>
+				</dd>
+			</div>
+			<div class="contact__control">
+				<dt>
+				<label class="contact__label" for="your-message">お問い合わせ内容</label>
+				</dt>
+				<dd>
+				<%= f.hidden_field :message %>
+				<%= simple_format(@inquiry.message) %>
+				</dd>
+			</div>
+			</dl>
+		</div>
+		<div class="contact__submit">
+			<%= f.submit '送信する', class: 'button-arrow-right' %>
+	    </div>  
   </div>
-  <div class="contact__item">
-    <dl class="contact__controls">
-	  <div class="contact__control">
-	    <dt>
-		  <label class="contact__label contact__label--required" for="your-name">お名前</label>
-		</dt>
-		<dd>
-          <%= f.hidden_field :name %>
-          <%= @inquiry.name %>
-		</dd>
-	  </div>
-	  <div class="contact__control">
-	    <dt>
-		  <label class="contact__label contact__label--required" for="your-mail">メールアドレス</label>
-		</dt>
-		<dd>
-		  <%= f.hidden_field :email %>
-          <%= @inquiry.email %>
-		</dd>
-	  </div>
-	  <div class="contact__control">
-	    <dt>
-		  <label class="contact__label" for="your-message">お問い合わせ内容</label>
-		</dt>
-		<dd>
-		  <%= f.hidden_field :message %>
-          <%= simple_format(@inquiry.message) %>
-		</dd>
-	  </div>
-	</dl>
-  </div>
-  <div class="contact__submit">
-    <%= f.submit '送信する', class: 'button-arrow-right' %>
-  </div>
-<% end %>
-  </div>
- </div>
 </section>
+<% end %>

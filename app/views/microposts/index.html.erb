@@ -2,33 +2,7 @@
   <div class="micropost__inner inner">
     <h2 class="section-title_post">つぶやき一覧</h2>
       <div class="timeline_area">
-        <% @microposts.each do |micropost| %>
-          <div class="timeline_posts">     
-            <div class="timeline_image_name">
-              <%= link_to image_tag(@user.profile_image.url, class:'icon2 user_image'), "/users/#{current_user.id}"%>
-              <p class="post_name"><%= @user.name %></p>
-              <p class="post_time"><%= micropost.created_at.strftime('%m月%d日%H:%M')%><br>
-            </div>
-            <div class="timeline_content_show">
-              <span class="post-text"><a href="/microposts/<%= micropost.id %>"><%= micropost.content %></a></span> 
-              <p class="post_delete"><% if current_user?(micropost.user) %>
-              <%= link_to "つぶやき削除", micropost, method: :delete,
-                                                    data: { confirm: "つぶやきを削除しますか?" } %></p>    
-              <p><i class="far fa-smile unlike-btn"></i><%= micropost.liked_users.count %></p>
-                <% if current_user.already_liked?(micropost) %>
-                  <%= link_to micropost_like_path(id: micropost.id, micropost_id:micropost.id),class:"likes_unliked", method: :delete do %>
-                    <i class="far fa-smile like-btn"></i>
-                  <% end %>
-                <% else %>
-                  <%= link_to micropost_likes_path(micropost),class:"likes_liked", method: :post do %>
-                    <i class="far fa-smile unlike-btn"></i>
-                  <% end %>
-                <% end %>
-                <p><i class="far fa-comment comment_count"></i><%= micropost.comments.count %></p>
-            </div>
-            <% end %>   
-          </div>  
-        <% end %>
+        <%=render 'shared/micropost_index'%>
       </div>
    </div>
 </section>
