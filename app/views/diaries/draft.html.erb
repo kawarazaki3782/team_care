@@ -2,7 +2,7 @@
   <div class="diary__inner inner">
     <h2 class="section-title_diary">下書きフォルダ</h2>
       <div class="timeline_area">
-        <%= render'shared/diary_index'%>
+        <%= render partial: 'shared/diary_index', collection: @diaries, as: :diary %>
       </div>
    </div>
 </section>

@@ -2,7 +2,7 @@
   <div class="micropost__inner inner">
     <h2 class="section-title_post">検索結果: <%= @microposts.count %> 件</h2>
       <div class="timeline_area">
-        <%=render 'shared/micropost_index' %>
+        <%= render partial: 'shared/micropost_index', collection: @microposts, as: :micropost %>
       </div>
   </div>
 </section>

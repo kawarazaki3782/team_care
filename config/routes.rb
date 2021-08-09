@@ -40,8 +40,8 @@ Rails.application.routes.draw do
   resources :microposts do
     collection do
       match 'search' => 'microposts#search', via: %i[get post]
+    end
   end
-end
   get   'inquiry'         => 'inquiry#index'     
   post  'inquiry/confirm' => 'inquiry#confirm'   
   post  'inquiry/thanks'  => 'inquiry#thanks'    

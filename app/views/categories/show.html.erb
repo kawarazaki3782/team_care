@@ -2,12 +2,12 @@
   <div class="micropost__inner inner">
     <h2 class="section-title_post">つぶやき一覧(<%= @category.name%>)</h2>
       <div class="timeline_area">
-        <%=render 'shared/micropost_index'%>
+        <%= render partial: 'shared/micropost_index', collection: @microposts, as: :micropost %>
       </div>
       <%= paginate @microposts %>
       <h2 class="section-title_post">日記一覧(<%= @category.name%>)</h2>
         <div class="timeline_area">
-         <%= render 'shared/diary_index'%>
+         <%= render partial: 'shared/diary_index', collection: @diaries, as: :diary %>
       </div>
    </div>
 </section>

@@ -3,7 +3,7 @@
   <div class="favorite__inner inner">
     <h2 class="section-title_favorite">お気に入りの日記一覧</h2>
       <div class="timeline_area">
-       <%=render 'shared/diary_index'%>
+       <%= render partial: 'shared/diary_index', collection: @diaries, as: :diary %>
       </div>
    </div>
 </section>
@@ -12,7 +12,7 @@
   <div class="favorite__inner inner">
     <h2 class="section-title_favorite">お気に入りのつぶやき一覧</h2>
       <div class="timeline_area">
-        <%=render 'shared/micropost_index'%>
+        <%= render partial: 'shared/micropost_index', collection: @microposts, as: :micropost %>
       </div>
   </div>
 </section>

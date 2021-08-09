@@ -13,10 +13,15 @@ class MicropostsController < ApplicationController
   end
     
   def show
-      @micropost = Micropost.find(params[:id])
-      @comments = @micropost.comments
-      @comment = Comment.new
-      @like = Like.new
+      if params[:id] == "search"
+        redirect_to root_path
+        flash[:danger] = '再度検索をかけてください'
+      else
+        @micropost = Micropost.find(params[:id])
+        @comments = @micropost.comments
+        @comment = Comment.new
+        @like = Like.new
+      end
   end
 
   def create
@@ -32,7 +37,6 @@ class MicropostsController < ApplicationController
    end
 
   def search
-    #Viewのformで取得したパラメータをモデルに渡す
     @microposts = Micropost.search(params[:search]).page(params[:page]).per(5)
   end
     

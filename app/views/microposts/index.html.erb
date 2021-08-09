@@ -2,7 +2,7 @@
   <div class="micropost__inner inner">
     <h2 class="section-title_post">つぶやき一覧</h2>
       <div class="timeline_area">
-        <%=render 'shared/micropost_index'%>
+        <%= render partial: 'shared/micropost_index', collection: @microposts, as: :micropost %>
       </div>
    </div>
 </section>
