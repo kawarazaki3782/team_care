@@ -10,10 +10,10 @@ class RelationshipsController < ApplicationController
         format.js
       end
     else
-      flash[:danger] = "フォローできませんでした"
+      flash[:danger] = 'フォローできませんでした'
       redirect_back(fallback_location: root_path)
-     end
     end
+  end
 
   def destroy
     @user = Relationship.find(params[:id]).followed
@@ -23,9 +23,8 @@ class RelationshipsController < ApplicationController
         format.js
       end
     else
-      flash[:danger] = "フォローを解除できません"
+      flash[:danger] = 'フォローを解除できません'
       redirect_back(fallback_location: root_path)
     end
-   end
+  end
 end
-

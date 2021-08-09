@@ -9,6 +9,6 @@ class CreateDiaries < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
-    add_index :diaries, [:user_id, :created_at]
+    add_index :diaries, %i[user_id created_at]
   end
 end

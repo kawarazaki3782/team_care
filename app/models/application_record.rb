@@ -10,48 +10,42 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   def microposts
-    return Micropost.where(user_id: self.id)
+    Micropost.where(user_id: id)
   end
 
   def user
-    return User.find_by(id: self.id)
+    User.find_by(id: id)
   end
 
   def self.micropost_favorites(user_bigint)
-    Favorite.where(user_id: (user_bigint)).order(created_at: :desc).pluck(:micropost_id)
+    Favorite.where(user_id: user_bigint).order(created_at: :desc).pluck(:micropost_id)
   end
 
   def self.diary_favorites(user_bigint)
-    Favorite.where(user_id: (user_bigint)).order(created_at: :desc).pluck(:diary_id)
+    Favorite.where(user_id: user_bigint).order(created_at: :desc).pluck(:diary_id)
   end
 
   def self.following_microposts(user_bigint)
-    Micropost.where(user_id: [(user_bigint).following_ids]).order("created_at DESC")
+    Micropost.where(user_id: [user_bigint.following_ids]).order('created_at DESC')
   end
 
   def self.following_diaries(user_bigint)
-    Diary.where(user_id: [(user_bigint).following_ids]).order("created_at DESC")
+    Diary.where(user_id: [user_bigint.following_ids]).order('created_at DESC')
   end
 
   def self.category_microposts(category)
-    Micropost.where(category_id: (category)).order(created_at: :desc)
+    Micropost.where(category_id: category).order(created_at: :desc)
   end
 
   def self.category_diaries(category)
-    Diary.where(category_id: (category)).order(created_at: :desc)
+    Diary.where(category_id: category).order(created_at: :desc)
   end
 
   def self.draft_index(current_user)
-    Diary.where(user_id: (current_user), status: :draft).order("created_at DESC").all
+    Diary.where(user_id: current_user, status: :draft).order('created_at DESC').all
   end
 
   def self.diary_index(current_user)
-    Diary.where(user_id: (current_user), status: :published).order("created_at DESC").all
+    Diary.where(user_id: current_user, status: :published).order('created_at DESC').all
   end
 end
-
-
-
-
-
-

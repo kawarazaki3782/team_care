@@ -21,7 +21,7 @@ module SessionsHelper
         log_in user
         @current_user = user
       end
-   end
+    end
   end
 
   # 渡されたユーザーがカレントユーザーであればtrueを返す
@@ -57,5 +57,5 @@ module SessionsHelper
   # アクセスしようとしたURLを覚えておく
   def store_location
     session[:forwarding_url] = request.original_url if request.get?
-    end
   end
+end

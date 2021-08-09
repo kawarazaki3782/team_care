@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   before_save { email.downcase! }
   attr_accessor :remember_token
+
   validates :name,  presence: true, length: { maximum: 15 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
@@ -13,12 +14,12 @@ class User < ApplicationRecord
   validates :long_teamcare, presence: true
   mount_uploader :profile_image, ImageUploader
   has_many :microposts, dependent: :destroy
-  has_many :active_relationships, class_name:  "Relationship",
-                                  foreign_key: "follower_id",
-                                  dependent:   :destroy
-  has_many :passive_relationships, class_name:  "Relationship",
-                                  foreign_key: "followed_id",
-                                  dependent:   :destroy
+  has_many :active_relationships, class_name: 'Relationship',
+                                  foreign_key: 'follower_id',
+                                  dependent: :destroy
+  has_many :passive_relationships, class_name: 'Relationship',
+                                   foreign_key: 'followed_id',
+                                   dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :comments, dependent: :destroy
@@ -33,22 +34,25 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
   has_many :rooms, through: :entries, source: :room
-  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
-  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
-  has_many :blocking_blocks, foreign_key: "blocker_id", class_name: "Block",  dependent: :destroy
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visiter_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+  has_many :blocking_blocks, foreign_key: 'blocker_id', class_name: 'Block', dependent: :destroy
   has_many :blocking, through: :blocking_blocks, source: :blocked
-  has_many :blocker_blocks, foreign_key: "blocked_id", class_name: "Block", dependent: :destroy
+  has_many :blocker_blocks, foreign_key: 'blocked_id', class_name: 'Block', dependent: :destroy
   has_many :blockers, through: :blockers_blocks, source: :blocker
 
   # 渡された文字列のハッシュ値を返す
-  def User.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                  BCrypt::Engine.cost
+  def self.digest(string)
+    cost = if ActiveModel::SecurePassword.min_cost
+             BCrypt::Engine::MIN_COST
+           else
+             BCrypt::Engine.cost
+           end
     BCrypt::Password.create(string, cost: cost)
   end
 
-   # ランダムなトークンを返す
-  def User.new_token
+  # ランダムなトークンを返す
+  def self.new_token
     SecureRandom.urlsafe_base64
   end
 
@@ -61,6 +65,7 @@ class User < ApplicationRecord
   # 渡されたトークンがダイジェストと一致したらtrueを返す
   def authenticated?(remember_token)
     return false if remember_digest.nil?
+
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
 
@@ -94,36 +99,36 @@ class User < ApplicationRecord
 
   # ユーザーが投稿に対してすでにいいねしていたらtrueを返す
   def already_liked?(micropost)
-    self.likes.exists?(micropost_id: micropost.id)
+    likes.exists?(micropost_id: micropost.id)
   end
 
   def already_liked_diary?(diary)
-    self.likes.exists?(diary_id: diary.id)
+    likes.exists?(diary_id: diary.id)
   end
 
   def create_notification_follow!(current_user)
-    temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ", current_user.id, id, 'follow'])
+    temp = Notification.where(['visiter_id = ? and visited_id = ? and action = ? ', current_user.id, id, 'follow'])
     if temp.blank?
       notification = current_user.active_notifications.new(
-      visited_id: id,
-      action: 'follow'
+        visited_id: id,
+        action: 'follow'
       )
       notification.save if notification.valid?
-      end
+    end
   end
 
-  #すでにブロック済みであればtrue返す
+  # すでにブロック済みであればtrue返す
   def blocking?(other_user)
-    self.blocking.include?(other_user)
+    blocking.include?(other_user)
   end
 
   def block(other_user)
-    return false if self.following.pluck(:id).include?(other_user.id)
-    self.blocking_blocks.create(blocked_id: other_user.id)
+    return false if following.pluck(:id).include?(other_user.id)
+    blocking_blocks.create(blocked_id: other_user.id)
   end
 
-  #ユーザーのブロックを解除する
+  # ユーザーのブロックを解除する
   def unblock(other_user)
-    self.blocking_blocks.find_by(blocked_id: other_user.id).destroy
+    blocking_blocks.find_by(blocked_id: other_user.id).destroy
   end
 end

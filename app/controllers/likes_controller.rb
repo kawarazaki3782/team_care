@@ -1,5 +1,4 @@
 class LikesController < ApplicationController
-
   def create
     unless params[:diary_id].nil?
       @diary = Diary.find(params[:diary_id])
@@ -13,9 +12,7 @@ class LikesController < ApplicationController
       @micropost.create_notification_by(current_user)
       redirect_back(fallback_location: root_path)
     end
-    if params[:micropost_id].nil? && params[:diary_id].nil?
-      flash[:danger] = "いいねできませんでした"
-    end
+    flash[:danger] = 'いいねできませんでした' if params[:micropost_id].nil? && params[:diary_id].nil?
   end
 
   def destroy
@@ -29,8 +26,6 @@ class LikesController < ApplicationController
       @like.destroy
       redirect_back(fallback_location: root_path)
     end
-    if params[:micropost_id].nil? && params[:diary_id].nil?
-      flash[:danger] = "いいねできませんでした"
-    end
+    flash[:danger] = 'いいねできませんでした' if params[:micropost_id].nil? && params[:diary_id].nil?
   end
 end

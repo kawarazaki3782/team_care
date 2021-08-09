@@ -21,10 +21,10 @@ class DiariesController < ApplicationController
     @diary = Diary.new(diary_params)
     @diary.user_id = current_user.id
     if @diary.save!
-      flash[:success] = "日記を投稿しました"
+      flash[:success] = '日記を投稿しました'
       redirect_to diaries_path
     else
-      flash[:danger] = "日記が投稿できません"
+      flash[:danger] = '日記が投稿できません'
       redirect_back(fallback_location: root_path)
     end
   end
@@ -40,25 +40,25 @@ class DiariesController < ApplicationController
 
   def update
     if @diary.update(diary_params)
-      flash[:success] = "日記の編集が完了しました"
+      flash[:success] = '日記の編集が完了しました'
       redirect_to diaries_path
     else
-      flash[:danger] = "日記を編集できません"
+      flash[:danger] = '日記を編集できません'
       render 'edit'
     end
   end
 
   def destroy
-    if @diary.destroy
-      flash[:danger] = "日記を削除しました"
-      redirect_to diaries_path
-    else
-      flash[:danger] = "日記を削除できません"
-      redirect_to diaries_path
-    end
+    flash[:danger] = if @diary.destroy
+                       '日記を削除しました'
+                     else
+                       '日記を削除できません'
+                     end
+    redirect_to diaries_path
   end
 
   private
+
   def diary_params
     params.require(:diary).permit(:content, :diary_image, :category_id, :user_id, :title, :diary_image_cache, :status)
   end
@@ -66,13 +66,13 @@ class DiariesController < ApplicationController
   def ensure_correct_user_diary
     @diary = Diary.find_by(id: params[:id])
     if @diary.user_id != @current_user.id
-      flash[:notice] = "権限がありません"
-      redirect_to("/diaries/index")
+      flash[:notice] = '権限がありません'
+      redirect_to('/diaries/index')
     end
   end
 
   def require_login
-    redirect_to login_path if !logged_in?
+    redirect_to login_path unless logged_in?
   end
 
   def set_diary

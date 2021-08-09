@@ -1,9 +1,9 @@
-require "test_helper"
+require 'test_helper'
 
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
-  test "should get home" do
+  test 'should get home' do
     get static_pages_home_url
     assert_response :success
-    assert_select "title", "Team_Care"
+    assert_select 'title', 'Team_Care'
   end
 end

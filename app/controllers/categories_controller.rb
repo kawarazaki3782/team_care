@@ -14,7 +14,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
     @category.user_id = current_user.id
     if @category.save
-      flash[:success] = "カテゴリー登録が完了しました"
+      flash[:success] = 'カテゴリー登録が完了しました'
       redirect_to categories_path
     else
       render :new
@@ -27,14 +27,15 @@ class CategoriesController < ApplicationController
 
   def destroy
     if @category.destroy
-      flash[:danger] = "カテゴリーを削除しました"
+      flash[:danger] = 'カテゴリーを削除しました'
       redirect_to categories_path
     else
-      flash[:danger] = "カテゴリーを削除できませんでした"
+      flash[:danger] = 'カテゴリーを削除できませんでした'
     end
   end
 
   private
+
   def category_params
     params.require(:category).permit(:name, :user_id)
   end

@@ -5,7 +5,7 @@ module Utf8mb4
       yield td if block_given?
     end
   end
-  end
+end
 
 ActiveSupport.on_load :active_record do
   module ActiveRecord::ConnectionAdapters

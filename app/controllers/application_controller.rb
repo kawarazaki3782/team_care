@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   def logged_in_user
     unless logged_in?
       store_location
-      flash[:danger] = "ログインしてください"
+      flash[:danger] = 'ログインしてください'
       redirect_to login_url
     end
   end
@@ -17,12 +17,13 @@ class ApplicationController < ActionController::Base
     rescue ActiveRecord::RecordNotFound => e
       logger.error e
       logger.error e.backtrace.join("\n")
-      flash[:alert] = 'ブロックできません'
+      flash[:danger] = 'ユーザーが削除されたためブロックできません'
+      redirect_to root_url
     end
     blocker_blocks = current_user.blocker_blocks
     blocker_blocks.each do |b|
       if b.blocker_id == @user.id
-        flash[:danger] = "このページにはアクセスできません"
+        flash[:danger] = 'このページにはアクセスできません'
         redirect_to root_url
       end
     end
@@ -37,6 +38,7 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
   def current_user_set
     @user = current_user
   end

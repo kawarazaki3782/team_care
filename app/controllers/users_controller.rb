@@ -10,16 +10,16 @@ class UsersController < ApplicationController
       @micropost = @user.micropost_ids
       @diary = @user.diary_ids
       @rooms = @user.rooms
-      @currentUserEntry=Entry.where(user_id: current_user.id)
-      @userEntry=Entry.where(user_id: @user.id)
+      @currentUserEntry = Entry.where(user_id: current_user.id)
+      @userEntry = Entry.where(user_id: @user.id)
       @currentUserEntry.each do |cu|
-       @userEntry.each do |u|
-         if cu.room_id == u.room_id then
-           @isRoom = true
-           @roomId = cu.room_id
-         end
-       end
-     end
+        @userEntry.each do |u|
+          if cu.room_id == u.room_id
+            @isRoom = true
+            @roomId = cu.room_id
+          end
+        end
+      end
       if @isRoom
       else
         @room = Room.new
@@ -31,11 +31,11 @@ class UsersController < ApplicationController
       begin
         @microposts = @user.microposts.order(created_at: :desc).page(params[:page]).per(3)
         @diaries = @user.diaries.order(created_at: :desc).page(params[:page]).per(3)
-        @currentUserEntry=Entry.where(user_id: current_user.id)
-        @userEntry=Entry.where(user_id: @user.id)
+        @currentUserEntry = Entry.where(user_id: current_user.id)
+        @userEntry = Entry.where(user_id: @user.id)
         @currentUserEntry.each do |cu|
           @userEntry.each do |u|
-            if cu.room_id == u.room_id then
+            if cu.room_id == u.room_id
               @isRoom = true
               @roomId = cu.room_id
             end
@@ -49,11 +49,10 @@ class UsersController < ApplicationController
       end
     end
     rescue ActiveRecord::RecordNotFound => e
-      redirect_to :root
-      flash[:danger] = "ユーザーが削除されました"
+      flash[:danger] = 'ユーザーが削除されました'
+      redirect_to root_path
     end
-
-
+    
   def new
     @user = User.new
   end
@@ -64,13 +63,12 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if @user.destroy
-      flash[:danger] = "ユーザーを削除しました"
-      redirect_to users_url
-    else
-      flash[:danger] = "ユーザーを削除できませんでした"
-      redirect_to users_url
-    end
+    flash[:danger] = if @user.destroy
+                       'ユーザーを削除しました'
+                     else
+                       'ユーザーを削除できませんでした'
+                     end
+    redirect_to users_url
   end
 
   def create
@@ -80,10 +78,10 @@ class UsersController < ApplicationController
     elsif params[:save]
       @user.save
       log_in @user
-      flash[:success] = "新規登録が完了しました"
+      flash[:success] = '新規登録が完了しました'
       redirect_to @user
     else
-      flash[:danger] = "ユーザーを登録できませんでした"
+      flash[:danger] = 'ユーザーを登録できませんでした'
       render 'new'
     end
   end
@@ -104,12 +102,12 @@ class UsersController < ApplicationController
     if params[:save]
       @user.profile_image.retrieve_from_cache! params[:cache][:profile_image]
       if @user.update(user_params)
-        redirect_to :action => 'update'
-       else
-         flash[:danger] = "ユーザーを編集できませんでした"
-         render 'edit'
-       end
-   end
+        redirect_to action: 'update'
+      else
+        flash[:danger] = 'ユーザーを編集できませんでした'
+        render 'edit'
+      end
+    end
   end
 
   def update; end
@@ -134,8 +132,10 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
-    params.require(:user).permit(:name, :email, :profile_image, :password, :password_confirmation, :gender, :birthday, :address, :long_teamcare, :profile, :profile_image_cache)
+    params.require(:user).permit(:name, :email, :profile_image, :password, :password_confirmation, :gender, :birthday,
+                                 :address, :long_teamcare, :profile, :profile_image_cache)
   end
 
   def correct_user

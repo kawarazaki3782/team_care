@@ -47,6 +47,6 @@ class DiaryImageUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
   def extension_white_list
-    %w(jpg jpeg gif png)
+    %w[jpg jpeg gif png]
   end
 end

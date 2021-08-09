@@ -31,9 +31,9 @@ RSpec.describe 'ブロック機能', type: :system, js: true do
     it 'ブロックできない場合' do
       find('a.btn_base_users', match: :first).click
       click_on 'その他ユーザー'
-      User.find_by(name: 'その他ユーザー').destroy
+      other_user.delete
       find('.follow_block_item', match: :first, visible: false).click
-      expect(flash[:alert]).to eq 'ブロックできません'
+      expect(flash[:alert]).to eq 'ユーザーが削除されたためブロックできません'
     end
   end
 end

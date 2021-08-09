@@ -13,12 +13,11 @@ class Micropost < ApplicationRecord
   has_many :users, through: :favorites
   has_many :notifications, dependent: :destroy
 
-
   def create_notification_by(current_user)
-    notification=current_user.active_notifications.new(
-    micropost_id: self.id,
-    visited_id: user_id,
-    action: "like"
+    notification = current_user.active_notifications.new(
+      micropost_id: id,
+      visited_id: user_id,
+      action: 'like'
     )
     notification.save if notification.valid?
   end
@@ -29,35 +28,33 @@ class Micropost < ApplicationRecord
     hoge_ids.each do |hoge_id|
       save_notification_comment!(current_user, comment_id, hoge_id['user_id'])
     end
-    #常に投稿者に通知を送る
+    # 常に投稿者に通知を送る
     save_notification_comment!(current_user, comment_id, user_id)
   end
 
   def save_notification_comment!(current_user, comment_id, visited_id)
     # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
     notification = current_user.active_notifications.new(
-    micropost_id: id,
-    comment_id: comment_id,
-    visited_id: visited_id,
-    action: 'comment'
+      micropost_id: id,
+      comment_id: comment_id,
+      visited_id: visited_id,
+      action: 'comment'
     )
     # 自分の投稿に対するコメントの場合は、通知済みとする
-    if notification.visiter_id == notification.visited_id
-      notification.checked = true
-    end
+    notification.checked = true if notification.visiter_id == notification.visited_id
     notification.save if notification.valid?
-   end
+  end
 
-private
-# アップロードされた画像のサイズをバリデーションする
+  private
+
+  # アップロードされた画像のサイズをバリデーションする
   def post_image_size
-    if post_image.size > 5.megabytes
-      errors.add(:post_image, "should be less than 5MB")
-    end
+    errors.add(:post_image, 'should be less than 5MB') if post_image.size > 5.megabytes
   end
 
   def self.search(search)
     return Micropost.all unless search
-    Micropost.where(["content like?", "%#{search}%"])
+
+    Micropost.where(['content like?', "%#{search}%"])
   end
 end
