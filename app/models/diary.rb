@@ -30,8 +30,6 @@ class Diary < ApplicationRecord
     hoge_ids.each do |hoge_id|
       save_notification_comment!(current_user, comment_id, hoge_id['user_id'])
     end
-    # 常に投稿者に通知を送る
-    save_notification_comment!(current_user, comment_id, user_id)
   end
 
   def save_notification_comment!(current_user, comment_id, visited_id)
