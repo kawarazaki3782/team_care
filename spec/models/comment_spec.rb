@@ -4,13 +4,13 @@ RSpec.describe Comment, type: :model do
   describe 'バリデーション' do
     let(:comment) { FactoryBot.build(:comment) }
 
-    it "正常に投稿できる" do
+    it '正常に投稿できる' do
       expect(comment).to be_valid
       comment.save
     end
-    
-    context "content" do
-      it "contentがないと無効" do
+
+    context 'content' do
+      it 'contentがないと無効' do
         comment.content = nil
         expect(comment).to be_invalid
         expect(comment.save).to be_falsey
@@ -29,23 +29,23 @@ RSpec.describe Comment, type: :model do
       end
     end
 
-  describe 'アソシエーション' do
-    let(:association) do
-      described_class.reflect_on_association(target)
-   end
-    
-     context 'user' do
-       let(:target) { :user }
+    describe 'アソシエーション' do
+      let(:association) do
+        described_class.reflect_on_association(target)
+      end
+
+      context 'user' do
+        let(:target) { :user }
         it { expect(association.macro).to eq :belongs_to }
         it { expect(association.class_name).to eq 'User' }
-     end
+      end
 
       context 'micropost' do
         let(:target) { :micropost }
         it { expect(association.macro).to eq :belongs_to }
         it { expect(association.class_name).to eq 'Micropost' }
       end
-      
+
       context 'diary' do
         let(:target) { :diary }
         it { expect(association.macro).to eq :belongs_to  }

@@ -1,26 +1,26 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
-    
-  def about;end
+
+  def about; end
 
   def logged_in_user
-     unless logged_in?
-       store_location
-       flash[:danger] = "ログインしてください"
-       redirect_to login_url
-     end
+    unless logged_in?
+      store_location
+      flash[:danger] = "ログインしてください"
+      redirect_to login_url
+    end
   end
 
   def blocking_user
     begin
       @user = User.find(params[:id])
     rescue ActiveRecord::RecordNotFound => e
-      logger.error e 
-      logger.error e.backtrace.join("\n") 
+      logger.error e
+      logger.error e.backtrace.join("\n")
       flash[:alert] = 'ブロックできません'
     end
     blocker_blocks = current_user.blocker_blocks
-    blocker_blocks.each do |b| 
+    blocker_blocks.each do |b|
       if b.blocker_id == @user.id
         flash[:danger] = "このページにはアクセスできません"
         redirect_to root_url
@@ -30,13 +30,13 @@ class ApplicationController < ActionController::Base
 
   def guest_user
     @user = User.find_by(email: 'guest@example.com')
-      if @user == current_user
-        flash[:danger] = 'ゲストユーザーは編集・投稿が出来ません'
-        redirect_to root_url
-      end
+    if @user == current_user
+      flash[:danger] = 'ゲストユーザーは編集・投稿が出来ません'
+      redirect_to root_url
+    end
   end
 
-  private 
+  private
   def current_user_set
     @user = current_user
   end

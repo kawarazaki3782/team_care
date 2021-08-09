@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :micropost do
-    content { "つぶやきサンプル" }
+    content { 'つぶやきサンプル' }
     association :user
   end
 end

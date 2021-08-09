@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :category do
     association :user
-    name  {"カテゴリー"}
+    name { 'カテゴリー' }
   end
 end

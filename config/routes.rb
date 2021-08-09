@@ -24,27 +24,27 @@ Rails.application.routes.draw do
 
   get "following_microposts" => "microposts#following_microposts"
   get "following_diaries" => "diaries#following_diaries"
-  
+
   resources :diaries do
     collection do
       get :draft
-    end            
+    end
   end
-  
+
   resources :microposts, only: [:index, :show, :create, :destroy, :new]
   resources :microposts do
     resources :comments, only: [:create, :destroy]
   end
-  
+
   resources :relationships,   only: [:create, :destroy]
   resources :microposts do
     collection do
       match 'search' => 'microposts#search', via: %i[get post]
     end
   end
-  get   'inquiry'         => 'inquiry#index'     
-  post  'inquiry/confirm' => 'inquiry#confirm'   
-  post  'inquiry/thanks'  => 'inquiry#thanks'    
+  get   'inquiry'         => 'inquiry#index'
+  post  'inquiry/confirm' => 'inquiry#confirm'
+  post  'inquiry/thanks'  => 'inquiry#thanks'
   post 'guest_login', to: "guest_sessions#create"
   resources :categories
 
@@ -83,6 +83,6 @@ Rails.application.routes.draw do
       get :blocking, :blockers
     end
   end
-resources :blocks, only: [:create, :destroy]
+  resources :blocks, only: [:create, :destroy]
 
 end

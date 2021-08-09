@@ -14,7 +14,7 @@ RSpec.describe Relationship, type: :model do
 
     context 'follower' do
       let(:target) { :followed }
-      it { expect(association.macro).to eq :belongs_to  }
+      it { expect(association.macro).to eq :belongs_to }
       it { expect(association.class_name).to eq 'User' }
     end
   end

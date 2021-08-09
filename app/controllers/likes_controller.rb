@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-  
+
   def create
     unless params[:diary_id].nil?
       @diary = Diary.find(params[:diary_id])
@@ -16,8 +16,8 @@ class LikesController < ApplicationController
     if params[:micropost_id].nil? && params[:diary_id].nil?
       flash[:danger] = "いいねできませんでした"
     end
-  end  
- 
+  end
+
   def destroy
     unless params[:diary_id].nil?
       @like = Like.find_by(diary_id: params[:diary_id], user_id: current_user.id)

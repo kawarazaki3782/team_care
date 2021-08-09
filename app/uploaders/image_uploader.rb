@@ -1,4 +1,4 @@
-class ImageUploader < CarrierWave::Uploader::Base  
+class ImageUploader < CarrierWave::Uploader::Base
 
   # リサイズしたり画像形式を変更するのに必要
   include CarrierWave::MiniMagick
@@ -8,16 +8,16 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-#   # CarrierWave.configure do |config| 
-#   #   config.remove_previously_stored_files_after_update = false 
-#   # end 
- 
-  #サムネイルの為に画像をリサイズ
-  process :resize_to_fill =>  [200, 200, "center"] 
+#   # CarrierWave.configure do |config|
+#   #   config.remove_previously_stored_files_after_update = false
+#   # end
 
-  version :thumb100 do 
-  process :resize_to_fill =>  [100, 100, "center"] 
-  end  
+  #サムネイルの為に画像をリサイズ
+  process :resize_to_fill =>  [200, 200, "center"]
+
+  version :thumb100 do
+    process :resize_to_fill =>  [100, 100, "center"]
+  end
 
 # #   def remove!
 # #     unless model.keep_file

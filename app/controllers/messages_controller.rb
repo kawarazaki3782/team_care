@@ -1,5 +1,5 @@
-class MessagesController < ApplicationController  
-    
+class MessagesController < ApplicationController
+
   def create
     if Entry.where(:user_id => current_user.id, :room_id => params[:message][:room_id]).present?
       @message = Message.create(params.require(:message).permit(:user_id, :content, :room_id).merge(:user_id => current_user.id))
@@ -16,13 +16,13 @@ class MessagesController < ApplicationController
     else
       flash[:danger] = "メッセージを削除できません"
       redirect_back(fallback_location: root_path)
-    end    
+    end
   end
 
-  private 
+  private
 
   def message_params
     params.require(:message).permit(:room_id, :content)
   end
 end
-    
+

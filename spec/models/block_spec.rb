@@ -14,7 +14,7 @@ RSpec.describe Block, type: :model do
 
     context 'blocking' do
       let(:target) { :blocked }
-      it { expect(association.macro).to eq :belongs_to  }
+      it { expect(association.macro).to eq :belongs_to }
       it { expect(association.class_name).to eq 'User' }
     end
   end

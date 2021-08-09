@@ -8,13 +8,13 @@ gem 'rails', '~> 6.1.1'
 gem 'bcrypt',         '3.1.13'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3', '~> 1.4'
-gem 'mysql2','~> 0.5'
+gem 'mysql2', '~> 0.5'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 gem 'bootstrap-sass', '3.4.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
-gem 'jquery-rails' 
+gem 'jquery-rails'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -49,6 +49,10 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rspec'
 end
 
 group :test do

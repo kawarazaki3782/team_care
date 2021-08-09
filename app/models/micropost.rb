@@ -11,14 +11,14 @@ class Micropost < ApplicationRecord
   has_many :liked_users, through: :likes, source: :user
   has_many :favorites
   has_many :users, through: :favorites
-  has_many :notifications,dependent: :destroy
-  
+  has_many :notifications, dependent: :destroy
+
 
   def create_notification_by(current_user)
     notification=current_user.active_notifications.new(
-    micropost_id:self.id,
-    visited_id:user_id,
-    action:"like"
+    micropost_id: self.id,
+    visited_id: user_id,
+    action: "like"
     )
     notification.save if notification.valid?
   end
@@ -30,17 +30,17 @@ class Micropost < ApplicationRecord
       save_notification_comment!(current_user, comment_id, hoge_id['user_id'])
     end
     #常に投稿者に通知を送る
-    save_notification_comment!(current_user, comment_id, user_id) 
+    save_notification_comment!(current_user, comment_id, user_id)
   end
 
   def save_notification_comment!(current_user, comment_id, visited_id)
     # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
-      notification = current_user.active_notifications.new(
-      micropost_id: id,    
-      comment_id: comment_id,
-      visited_id: visited_id,
-      action: 'comment'
-      )
+    notification = current_user.active_notifications.new(
+    micropost_id: id,
+    comment_id: comment_id,
+    visited_id: visited_id,
+    action: 'comment'
+    )
     # 自分の投稿に対するコメントの場合は、通知済みとする
     if notification.visiter_id == notification.visited_id
       notification.checked = true

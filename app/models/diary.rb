@@ -12,14 +12,14 @@ class Diary < ApplicationRecord
   enum status: { draft: 0, published: 1 }
   has_many :favorites
   has_many :users, through: :favorites
-  validates :status, inclusion: { in: Diary.statuses.keys } 
+  validates :status, inclusion: { in: Diary.statuses.keys }
   has_many :notifications, dependent: :destroy
 
   def create_notification_by(current_user)
     notification = current_user.active_notifications.new(
-    diary_id:self.id,
-    visited_id:user_id,
-    action:"like2"
+    diary_id: self.id,
+    visited_id: user_id,
+    action: "like2"
     )
     notification.save if notification.valid?
   end
@@ -31,7 +31,7 @@ class Diary < ApplicationRecord
       save_notification_comment!(current_user, comment_id, hoge_id['user_id'])
     end
     #常に投稿者に通知を送る
-    save_notification_comment!(current_user, comment_id, user_id) 
+    save_notification_comment!(current_user, comment_id, user_id)
   end
 
   def save_notification_comment!(current_user, comment_id, visited_id)
@@ -46,8 +46,8 @@ class Diary < ApplicationRecord
     if notification.visiter_id == notification.visited_id
       notification.checked = true
     end
-      notification.save if notification.valid?
+    notification.save if notification.valid?
     end
 
-    
+
 end

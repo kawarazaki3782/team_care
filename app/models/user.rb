@@ -35,9 +35,9 @@ class User < ApplicationRecord
   has_many :rooms, through: :entries, source: :room
   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
-  has_many :blocking_blocks,foreign_key: "blocker_id", class_name: "Block",  dependent: :destroy
+  has_many :blocking_blocks, foreign_key: "blocker_id", class_name: "Block",  dependent: :destroy
   has_many :blocking, through: :blocking_blocks, source: :blocked
-  has_many :blocker_blocks,foreign_key: "blocked_id", class_name: "Block", dependent: :destroy
+  has_many :blocker_blocks, foreign_key: "blocked_id", class_name: "Block", dependent: :destroy
   has_many :blockers, through: :blockers_blocks, source: :blocker
 
   # 渡された文字列のハッシュ値を返す
@@ -100,9 +100,9 @@ class User < ApplicationRecord
   def already_liked_diary?(diary)
     self.likes.exists?(diary_id: diary.id)
   end
-  
+
   def create_notification_follow!(current_user)
-    temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ", current_user.id, id, 'follow'])
     if temp.blank?
       notification = current_user.active_notifications.new(
       visited_id: id,
@@ -125,5 +125,5 @@ class User < ApplicationRecord
   #ユーザーのブロックを解除する
   def unblock(other_user)
     self.blocking_blocks.find_by(blocked_id: other_user.id).destroy
-  end 
+  end
 end

@@ -13,12 +13,12 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     @category.user_id = current_user.id
-      if @category.save
-        flash[:success] = "カテゴリー登録が完了しました"
-        redirect_to categories_path
-      else
-        render :new
-      end
+    if @category.save
+      flash[:success] = "カテゴリー登録が完了しました"
+      redirect_to categories_path
+    else
+      render :new
+    end
   end
 
   def index
@@ -29,11 +29,11 @@ class CategoriesController < ApplicationController
     if @category.destroy
       flash[:danger] = "カテゴリーを削除しました"
       redirect_to categories_path
-    else 
+    else
       flash[:danger] = "カテゴリーを削除できませんでした"
     end
   end
-  
+
   private
   def category_params
     params.require(:category).permit(:name, :user_id)

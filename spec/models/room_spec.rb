@@ -8,7 +8,7 @@ RSpec.describe Room, type: :model do
 
     context 'messages' do
       let(:target) { :messages }
-      it { expect(association.macro).to eq :has_many } 
+      it { expect(association.macro).to eq :has_many }
       it { expect(association.class_name).to eq 'Message' }
     end
 
