@@ -52,4 +52,34 @@ RSpec.describe 'コメント', type: :system, js: true do
       expect(page).to have_css '.section-title_diary', visible: false
     end.to change { Comment.count }.by(-1)
   end
+
+  describe '例外処理', type: :system, js: true do
+    let!(:user) { FactoryBot.create(:user) }
+    let!(:other_user) { FactoryBot.create(:user, name: 'その他ユーザー', email: 'sample@gmail.com') }
+    let!(:other_micropost) { FactoryBot.create(:micropost, user_id: other_user.id, content: 'つぶやきサンプル2') }
+    let!(:other_diary) { FactoryBot.create(:diary, user_id: other_user.id, title: 'タイトルサンプル') }
+
+    it 'つぶやきにコメントする直前でユーザーが削除' do
+      find('a.btn_base_users', match: :first).click
+      click_on 'その他ユーザー'
+      click_on 'つぶやきサンプル2'
+      fill_in 'comment[content]', with: 'サンプル'
+      find('.section-title_post', match: :first)
+      expect(page).to have_text 'つぶやきサンプル2'
+      User.find_by(name: 'その他ユーザー').destroy
+      click_on 'コメントする'
+      expect(page).to have_text 'コメントを投稿できませんでした'
+    end
+
+    it '日記にコメントする直前でユーザーが削除' do
+      find('a.btn_base_users', match: :first).click
+      click_on 'その他ユーザー'
+      click_on 'タイトルサンプル'
+      fill_in 'comment[content]', with: 'サンプル'
+      expect(page).to have_text 'タイトルサンプル'
+      User.find_by(name: 'その他ユーザー').destroy
+      click_on 'コメントする'
+      expect(page).to have_text 'コメントを投稿できませんでした'
+    end
+  end
 end

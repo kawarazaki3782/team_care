@@ -12,14 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def blocking_user
-    begin
-      @user = User.find(params[:id])
-    rescue ActiveRecord::RecordNotFound => e
-      logger.error e
-      logger.error e.backtrace.join("\n")
-      flash[:danger] = 'ユーザーが削除されたためブロックできません'
-      redirect_to root_url
-    end
+    @user = User.find(params[:id])
     blocker_blocks = current_user.blocker_blocks
     blocker_blocks.each do |b|
       if b.blocker_id == @user.id

@@ -28,12 +28,23 @@ RSpec.describe 'ブロック機能', type: :system, js: true do
       end.to change { Block.count }.by(-1)
     end
 
-    it 'ブロックできない場合' do
+    it 'ブロックをする途中でユーザーが削除された場合' do
       find('a.btn_base_users', match: :first).click
       click_on 'その他ユーザー'
+      find("div.user_name_users", text: "その他ユーザーさん")
       other_user.delete
       find('.follow_block_item', match: :first, visible: false).click
-      expect(flash[:alert]).to eq 'ユーザーが削除されたためブロックできません'
+      expect(page).to have_text 'ユーザーが削除されました'
+    end
+
+    it 'ブロックを解除する途中でユーザーが削除された場合' do
+      find('a.btn_base_users', match: :first).click
+      click_on 'その他ユーザー'
+      find('.follow_block_item', match: :first, visible: false).click
+      find("div.user_name_users", text: "その他ユーザーさん")
+      User.find_by(email: 'sample@gmail.com').destroy
+      find('.follow_block_item', match: :first, visible: false).click
+      expect(page).to have_text 'ユーザーが削除されました'
     end
   end
 end

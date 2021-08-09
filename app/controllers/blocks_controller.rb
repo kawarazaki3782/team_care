@@ -10,20 +10,20 @@ class BlocksController < ApplicationController
   end
 
   def destroy
-    if current_user.unblock(@user)
+     current_user.unblock(@user)
       respond_to do |format|
         format.html { redirect_back(fallback_location: root_url) }
         format.js
       end
-    else
-      flash[:danger] = 'ブロックを解除できません'
-      redirect_back(fallback_location: root_path)
-    end
   end
 
   private
 
   def set_block
-    @user = User.find(params[:block][:blocked_id])
+    @user = User.find_by(id: params[:block][:blocked_id])
+    unless @user
+      flash[:danger] = 'ユーザーが削除されました'
+      redirect_to root_path
+    end
   end
 end
