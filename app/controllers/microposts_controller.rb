@@ -40,7 +40,7 @@ class MicropostsController < ApplicationController
   end
 
   def destroy
-    flash[:danger] = @micropost.destroy? 'つぶやきを削除しました':'つぶやきの削除に失敗しました'
+    flash[:danger] = @micropost.destroy ? "つぶやきを削除しました":"つぶやきの削除に失敗しました"
       redirect_to microposts_path
   end
 

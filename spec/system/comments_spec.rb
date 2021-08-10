@@ -65,7 +65,6 @@ RSpec.describe 'コメント', type: :system, js: true do
       click_on 'つぶやきサンプル2'
       fill_in 'comment[content]', with: 'サンプル'
       find('.section-title_post', match: :first)
-      expect(page).to have_text 'つぶやきサンプル2'
       User.find_by(name: 'その他ユーザー').destroy
       click_on 'コメントする'
       expect(page).to have_text 'コメントを投稿できませんでした'
@@ -76,7 +75,6 @@ RSpec.describe 'コメント', type: :system, js: true do
       click_on 'その他ユーザー'
       click_on 'タイトルサンプル'
       fill_in 'comment[content]', with: 'サンプル'
-      expect(page).to have_text 'タイトルサンプル'
       User.find_by(name: 'その他ユーザー').destroy
       click_on 'コメントする'
       expect(page).to have_text 'コメントを投稿できませんでした'

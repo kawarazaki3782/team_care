@@ -30,6 +30,7 @@ class Diary < ApplicationRecord
     hoge_ids.each do |hoge_id|
       save_notification_comment!(current_user, comment_id, hoge_id['user_id'])
     end
+    save_notification_comment!(current_user, comment_id, user_id) if hoge_ids.blank?
   end
 
   def save_notification_comment!(current_user, comment_id, visited_id)

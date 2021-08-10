@@ -24,10 +24,14 @@ class Micropost < ApplicationRecord
 
   def create_notification_comment!(current_user, comment_id)
     # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
+    
+    
+    
     hoge_ids = Comment.select(:user_id).where(micropost_id: id).where.not(user_id: current_user.id).distinct
     hoge_ids.each do |hoge_id|
       save_notification_comment!(current_user, comment_id, hoge_id['user_id'])
     end
+    save_notification_comment!(current_user, comment_id, user_id) if hoge_ids.blank?
   end
 
   def save_notification_comment!(current_user, comment_id, visited_id)

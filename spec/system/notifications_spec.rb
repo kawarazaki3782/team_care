@@ -34,6 +34,7 @@ RSpec.describe '通知機能', type: :system, js: true do
     find('a.btn_base_users', match: :first).click
     click_on 'サンプル太郎'
     click_on 'つぶやきサンプル'
+    find('.section-title_post', match: :first)
     fill_in 'comment[content]', with: 'サンプル'
     click_on 'コメントする'
     click_on 'ログアウト', match: :first
