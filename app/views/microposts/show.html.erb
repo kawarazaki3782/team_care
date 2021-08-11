@@ -9,7 +9,7 @@
             <p class="post_time_show"><%= @micropost.created_at.strftime('%m月%d日%H:%M')%></p><br>
           </div>
             <div class="timeline_post_detail">
-              <p class="post-detail"><%= @micropost.content %></p> 
+              <span class="post-detail"><%= @micropost.content %></span> 
                 <div class="post_detail_show">
                   <p><i class="far fa-smile unlike-btn"></i><%= @micropost.likes.count %></p>
                     <% if current_user.already_liked?(@micropost) %>

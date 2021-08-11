@@ -102,6 +102,7 @@ class UsersController < ApplicationController
     if params[:save]
       @user.profile_image.retrieve_from_cache! params[:cache][:profile_image]
       if @user.update(user_params)
+        flash[:success] = "プロフィールの編集が完了しました"
         redirect_to action: 'update'
       else
         flash[:danger] = 'ユーザーを編集できませんでした'

@@ -23,14 +23,14 @@ RSpec.describe Category, type: :model do
         expect(category.save).to be_falsey
       end
 
-      it '20文字以内なら有効' do
-        category.name = 'a' * 20
+      it '10文字以内なら有効' do
+        category.name = 'a' * 10
         expect(category).to be_valid
         category.save
       end
 
-      it '21文字以上だと無効' do
-        category.name = 'a' * 21
+      it '11文字以上だと無効' do
+        category.name = 'a' * 11
         expect(category).to be_invalid
         expect(category.save).to be_falsey
       end
