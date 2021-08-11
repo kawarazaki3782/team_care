@@ -79,5 +79,33 @@ RSpec.describe 'コメント', type: :system, js: true do
       click_on 'コメントする'
       expect(page).to have_text 'コメントを投稿できませんでした'
     end
+
+    it 'つぶやきを削除する直前でユーザーが削除' do
+      find('a.btn_base_users', match: :first).click
+      click_on 'その他ユーザー'
+      click_on 'つぶやきサンプル2'
+      fill_in 'comment[content]', with: 'サンプル'
+      click_on 'コメントする'
+      find(".section-title_post", text: "つぶやき詳細")
+      User.find_by(name: 'その他ユーザー').destroy
+      find('.comment_delete').click
+      page.driver.browser.switch_to.alert.text == 'コメントを削除しますか?'
+      page.driver.browser.switch_to.alert.accept
+      expect(page).to have_text 'コメントが削除できませんでした'
+    end
+
+    it '日記を削除する直前でユーザーが削除' do
+      find('a.btn_base_users', match: :first).click
+      click_on 'その他ユーザー'
+      click_on 'タイトルサンプル'
+      fill_in 'comment[content]', with: 'サンプル'
+      click_on 'コメントする'
+      find(".section-title_diary", text: "日記詳細")
+      User.find_by(name: 'その他ユーザー').destroy
+      find('.diary_comment_delete').click
+      page.driver.browser.switch_to.alert.text == '本当に削除してもよろしいですか?'
+      page.driver.browser.switch_to.alert.accept
+      expect(page).to have_text 'コメントが削除できませんでした'
+    end
   end
 end

@@ -76,6 +76,11 @@ class DiariesController < ApplicationController
   end
 
   def set_diary
-    @diary = Diary.find(params[:id])
+    begin
+      @diary = Diary.find(params[:id])
+    rescue
+      flash[:danger] = '日記が削除されました'
+      redirect_to root_path
+    end
   end
 end

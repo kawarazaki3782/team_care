@@ -17,10 +17,15 @@ class MicropostsController < ApplicationController
       redirect_to root_path
       flash[:danger] = '再度検索をかけてください'
     else
-      @micropost = Micropost.find(params[:id])
-      @comments = @micropost.comments
-      @comment = Comment.new
-      @like = Like.new
+      begin
+        @micropost = Micropost.find(params[:id])
+        @comments = @micropost.comments
+        @comment = Comment.new
+        @like = Like.new
+      rescue
+        redirect_to root_path
+        flash[:danger] = 'つぶやきが削除されました'
+      end
     end
   end
 

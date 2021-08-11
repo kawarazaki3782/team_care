@@ -13,11 +13,11 @@
                 <div class="post_detail_show">
                   <p><i class="far fa-smile unlike-btn"></i><%= @micropost.likes.count %></p>
                     <% if current_user.already_liked?(@micropost) %>
-                      <%= link_to micropost_like_path(@micropost), method: :delete do %>
+                      <%= link_to micropost_like_path(@micropost),class: "likes_liked",method: :delete do %>
                         <i class="far fa-smile like-btn"></i>
                       <% end %>
                     <% else %>
-                      <%= link_to micropost_likes_path(@micropost), method: :post do %>
+                      <%= link_to micropost_likes_path(@micropost),class: "likes_unliked", method: :post do %>
                         <i class="far fa-smile unlike-btn"></i>
                       <% end %>
                     <% end %>

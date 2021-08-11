@@ -18,15 +18,24 @@ class FavoritesController < ApplicationController
 
   def create
     if params[:diary_id].present? && params[:micropost_id].nil?
-      @diary = Diary.find(params[:diary_id])
-      @favorite = current_user.favorites.create!(diary_id: @diary.id)
+      begin
+        @diary = Diary.find(params[:diary_id])
+        @favorite = current_user.favorites.create!(diary_id: @diary.id)
+      rescue
+        flash[:danger] = '日記が削除されました'
+        redirect_to root_path
+      end
     elsif params[:micropost_id].present? && params[:diary_id].nil?
-      @micropost = Micropost.find(params[:micropost_id])
-      @favorite = current_user.favorites.create!(micropost_id: @micropost.id)
+      begin
+        @micropost = Micropost.find(params[:micropost_id])
+        @favorite = current_user.favorites.create!(micropost_id: @micropost.id)
+      rescue
+        flash[:danger] = 'つぶやきが削除されました'
+        redirect_to root_path
+      end
     else
       flash[:danger] = 'お気に入りに登録できません'
     end
-    redirect_back(fallback_location: root_path)
   end
 
   def destroy

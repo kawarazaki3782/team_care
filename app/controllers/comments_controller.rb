@@ -24,18 +24,17 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    if params[:diary_id].nil?
-      redirect_back(fallback_location: root_path)
+    if params[:micropost_id].nil? && params[:diary_id].nil?
+      flash[:danger] = 'コメントが削除できませんでした'
+      redirect_to root_path
     else
-      Comment.find(params[:id]).destroy
-      flash[:danger] = 'コメントが削除されました'
-    end
-
-    if params[:micropost_id].nil?
-      redirect_back(fallback_location: root_path)
-    else
-      Comment.find(params[:id]).destroy
-      flash[:danger] = 'コメントが削除できません'
+      begin
+        Comment.find(params[:id]).destroy
+        flash[:danger] = 'コメントが削除されました'
+      rescue
+        flash[:danger] = 'コメントが削除できませんでした'
+        redirect_to root_path
+      end
     end
   end
 

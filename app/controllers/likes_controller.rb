@@ -7,10 +7,14 @@ class LikesController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
     unless params[:micropost_id].nil?
-      @micropost = Micropost.find(params[:micropost_id])
-      @like = current_user.likes.create!(micropost_id: @micropost.id)
-      @micropost.create_notification_by(current_user)
-      redirect_back(fallback_location: root_path)
+      begin 
+        @micropost = Micropost.find(params[:micropost_id])
+        @like = current_user.likes.create!(micropost_id: @micropost.id)
+        @micropost.create_notification_by(current_user)
+        redirect_back(fallback_location: root_path)
+      rescue
+        flash[:danger] = "つぶやきが削除されました"
+      end
     end
     flash[:danger] = 'いいねできませんでした' if params[:micropost_id].nil? && params[:diary_id].nil?
   end

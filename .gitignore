@@ -10,7 +10,7 @@ capybara-*.html
 *.orig
 rerun.txt
 pickle-email-*.html
-
+/sqlite-autoconf-3290000/*
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
@@ -18,7 +18,7 @@ pickle-email-*.html
 !/tmp/.keep
 
 # Ignore the default SQLite database.
-/db/*.sqlite3
+
 # TODO Comment out this rule if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
 config/master.key
