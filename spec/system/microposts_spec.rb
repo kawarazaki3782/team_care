@@ -71,4 +71,23 @@ describe 'つぶやき投稿', type: :system, js: true do
       expect(page).to have_content 'つぶやき一覧'
     end
   end
+
+  describe "例外処理" do
+    let!(:other_micropost) { FactoryBot.create(:micropost, user_id: other_user.id, content: 'つぶやきサンプル2') }
+
+    before do
+      sign_in_as user
+    end
+
+    it 'つぶやき詳細を開く直前でユーザーが削除された場合' do
+      find('a.btn_base_users', match: :first).click
+      click_on 'その他ユーザー'
+      find("div.user_name_users", text: "その他ユーザーさん")
+      User.find_by(name: 'その他ユーザー').destroy
+      click_on 'つぶやきサンプル2'
+      expect(page).to have_text 'つぶやきが削除されました'
+    end
+  end
 end
+  
+

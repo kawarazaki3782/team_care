@@ -32,4 +32,17 @@ RSpec.describe 'DM機能', type: :system, js: true do
       expect(page).to have_content 'またメッセージはありません'
     end
   end
+
+    describe "例外処理" do
+      it 'メッセージを送る直前でユーザーが削除' do
+        find('a.btn_base_users', match: :first).click
+        click_on 'その他ユーザー'
+        click_on 'お手紙を送る'
+        fill_in 'message[content]', with: 'こんにちは'
+        find(".dm_entry", text: "参加者")
+        Entry.find_by(user_id: user.id).destroy
+        click_on '投稿する'
+        expect(page).to have_text 'ユーザーが削除されました'
+      end
+    end
 end

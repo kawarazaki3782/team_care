@@ -54,20 +54,40 @@ RSpec.describe 'いいね', type: :system, js: true do
       click_on 'つぶやきサンプル2'
       find(".section-title_post", text: "つぶやき詳細")
       User.find_by(name: 'その他ユーザー').destroy
-      find('.likes_unliked', match: :first, visible: false).click
+      find('.likes_unliked').click
       expect(page).to have_text 'つぶやきが削除されました'
     end
 
     it 'つぶやきのいいねを取り消す直前でユーザーが削除' do
-
+      find('a.btn_base_users', match: :first).click
+      click_on 'その他ユーザー'
+      click_on 'つぶやきサンプル2'
+      find(".section-title_post", text: "つぶやき詳細")
+      find('.likes_unliked', match: :first, visible: false).click
+      User.find_by(name: 'その他ユーザー').destroy
+      find('.likes_liked', match: :first, visible: false).click
+      expect(page).to have_text 'つぶやきが削除されました'
     end
 
     it '日記にいいねする直前でユーザーが削除' do
-
+      find('a.btn_base_users', match: :first).click
+      click_on 'その他ユーザー'
+      click_on 'タイトルサンプル'
+      find(".section-title_diary", text: "日記詳細")
+      User.find_by(name: 'その他ユーザー').destroy
+      find('.likes_unliked_diary').click
+      expect(page).to have_text '日記が削除されました'
     end
 
     it '日記のいいねを取り消す直前でユーザーが削除' do
-
+      find('a.btn_base_users', match: :first).click
+      click_on 'その他ユーザー'
+      click_on 'タイトルサンプル'
+      find(".section-title_diary", text: "日記詳細")
+      find('.likes_unliked_diary').click
+      User.find_by(name: 'その他ユーザー').destroy
+      find('.likes_liked_diary').click
+      expect(page).to have_text '日記が削除されました'
     end
   end
 end
