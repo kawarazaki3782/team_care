@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.3'
+ruby '2.7.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'bcrypt',         '3.1.13'
@@ -37,7 +37,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'rspec-rails'
-  gem 'spring-commands-rspec'
+  # gem 'spring-commands-rspec'
 end
 
 group :development do
@@ -52,7 +52,7 @@ group :development do
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec'
-  gem 'spring'
+  # gem 'spring'
 end
 
 group :test do
@@ -61,6 +61,10 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+end
+
+group :production do
+  gem 'mysql2', '~> 0.5'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

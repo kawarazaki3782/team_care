@@ -29,4 +29,5 @@ test:
 
 production:
   <<: *default
+  database: team_care
   #database: db/production.sqlite3
