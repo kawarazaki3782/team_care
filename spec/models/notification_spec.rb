@@ -13,16 +13,30 @@ RSpec.describe Notification, type: :model do
     end
 
     describe '正常に保存できる場合' do
-      describe 'likeに関するテスト' do
+      describe 'micropost_likeに関するテスト' do
         it 'likeを正常に保存できること' do
-          notification.action = 'like'
+          notification.action = 'micropost_like'
           expect(notification).to be_valid
         end
       end
 
-      describe 'commentに関するテスト' do
+      describe 'micropost_commentに関するテスト' do
         it 'commentを正常に保存できること' do
-          notification.action = 'comment'
+          notification.action = 'micropost_comment'
+          expect(notification).to be_valid
+        end
+      end
+
+      describe 'diary_likeに関するテスト' do
+        it 'likeを正常に保存できること' do
+          notification.action = 'diary_like'
+          expect(notification).to be_valid
+        end
+      end
+
+      describe 'diary_commentに関するテスト' do
+        it 'commentを正常に保存できること' do
+          notification.action = 'diary_comment'
           expect(notification).to be_valid
         end
       end

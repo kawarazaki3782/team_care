@@ -47,7 +47,7 @@ RSpec.describe '通知機能', type: :system, js: true do
     let!(:like) { FactoryBot.create(:like, user_id: other_user.id, micropost_id: micropost.id) }
     let!(:notification) do
       FactoryBot.create(:notification, visiter_id: other_user.id, visited_id: user.id, micropost_id: micropost.id,
-                                       action: 'like')
+                                       action: 'micropost_like')
     end
     it '通知を削除' do
       click_on '通知', match: :first

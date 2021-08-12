@@ -3,7 +3,7 @@
   <div class="micropost__inner inner">
     <h2 class="section-title_post">つぶやき投稿画面</h2>
       <div class="post_textarea">
-        <%= form_for(@micropost) do |f| %>
+        <%= form_with(model:@micropost) do |f| %>
           <%= render 'shared/error_messages', object: f.object %>
             <div class="field_post text-center">
               <%= f.text_area :content, placeholder: "140文字以内",class:'microposts_textarea'%>

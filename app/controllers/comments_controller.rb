@@ -9,15 +9,14 @@ class CommentsController < ApplicationController
       redirect_to root_path
     else
       @comment.save
+      redirect_back(fallback_location: root_path)
       flash[:success] = 'コメントが投稿されました'
     end
 
     if @diary.present? && @micropost.nil?
       @diary.create_notification_comment!(current_user, @comment.id)
-      redirect_back(fallback_location: root_path)
     elsif  @micropost.present? && @diary.nil?
       @micropost.create_notification_comment!(current_user, @comment.id)
-      redirect_back(fallback_location: root_path)
     else
       flash[:danger] = 'コメントを投稿できませんでした'
     end
@@ -30,6 +29,7 @@ class CommentsController < ApplicationController
     else
       begin
         Comment.find(params[:id]).destroy
+        redirect_back(fallback_location: root_path)
         flash[:danger] = 'コメントが削除されました'
       rescue
         flash[:danger] = 'コメントが削除できませんでした'

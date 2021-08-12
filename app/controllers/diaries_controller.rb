@@ -20,11 +20,11 @@ class DiariesController < ApplicationController
   def create
     @diary = Diary.new(diary_params)
     @diary.user_id = current_user.id
-    if @diary.save!
+    if @diary.save
       flash[:success] = '日記を投稿しました'
       redirect_to diaries_path
     else
-      flash[:danger] = '日記が投稿できません'
+      flash[:danger] = '未入力の項目があるため、日記が投稿できません'
       redirect_back(fallback_location: root_path)
     end
   end

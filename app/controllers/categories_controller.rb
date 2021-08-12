@@ -13,9 +13,12 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     @category.user_id = current_user.id
-    @category.save
-    flash[:success] = 'カテゴリー登録が完了しました'
-    redirect_to categories_path
+    if @category.save
+      flash[:success] = 'カテゴリー登録が完了しました'
+      redirect_to categories_path
+    else
+      render 'new'
+    end
   end
 
   def index

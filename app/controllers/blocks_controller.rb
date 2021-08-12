@@ -2,11 +2,15 @@ class BlocksController < ApplicationController
   before_action :set_block, only: %i[create destroy]
 
   def create
-    current_user.block(@user)
+    if current_user.block(@user)
       respond_to do |format|
         format.html { redirect_to @user, flash: { success: 'ブロックしました' } }
         format.js
       end
+    else
+      flash[:danger] = "ブロックできませんでした"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def destroy

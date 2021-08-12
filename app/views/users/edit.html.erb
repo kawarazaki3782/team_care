@@ -12,7 +12,7 @@
                  <%= image_tag(@user.profile_image_url, width: 50, class:'icon_mini') if @user.profile_image? %>
                </dt>
                <dd>
-                 <%= f.file_field :profile_image, accept: 'profile_image/jpeg,profile_image/gif,profile_image/png' %>
+                 <%= f.file_field :profile_image %>
                </dd>
              </div>
              <div class="signup_control">

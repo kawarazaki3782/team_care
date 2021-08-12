@@ -19,7 +19,7 @@ class Diary < ApplicationRecord
     notification = current_user.active_notifications.new(
       diary_id: id,
       visited_id: user_id,
-      action: 'like2'
+      action: 'diary_like'
     )
     notification.save if notification.valid?
   end
@@ -39,7 +39,7 @@ class Diary < ApplicationRecord
       diary_id: id,
       comment_id: comment_id,
       visited_id: visited_id,
-      action: 'comment2'
+      action: 'diary_comment'
     )
     # 自分の投稿に対するコメントの場合は、通知済みとする
     notification.checked = true if notification.visiter_id == notification.visited_id

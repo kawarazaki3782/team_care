@@ -17,7 +17,7 @@ class Micropost < ApplicationRecord
     notification = current_user.active_notifications.new(
       micropost_id: id,
       visited_id: user_id,
-      action: 'like'
+      action: 'micropost_like'
     )
     notification.save if notification.valid?
   end
@@ -37,7 +37,7 @@ class Micropost < ApplicationRecord
       micropost_id: id,
       comment_id: comment_id,
       visited_id: visited_id,
-      action: 'comment'
+      action: 'micropost_comment'
     )
     # 自分の投稿に対するコメントの場合は、通知済みとする
     notification.checked = true if notification.visiter_id == notification.visited_id

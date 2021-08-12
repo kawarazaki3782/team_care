@@ -32,12 +32,14 @@ class MicropostsController < ApplicationController
   def create
     @micropost = Micropost.new(micropost_params)
     @micropost.user_id = current_user.id
-    if @micropost.save!
+    # if @micropost.content.present? 
+    if @micropost.save
       flash[:success] = 'つぶやきを投稿しました'
+      redirect_to microposts_path
     else
-      flash[:danger] = 'つぶやきの投稿に失敗しました'
+      flash[:danger] = 'つぶやきが未入力です'
+      redirect_back(fallback_location: root_path)
     end
-    redirect_to microposts_path
   end
 
   def search
