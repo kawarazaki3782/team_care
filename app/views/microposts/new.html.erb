@@ -13,7 +13,7 @@
               <%= f.collection_select :category_id, Category.all, :id, :name,:include_blank => "カテゴリ-を選択してください"%>
             </div>
             <div class="picture text-center">
-              <%= f.file_field :post_image, accept: 'image/jpeg,image/gif,image/png',class:'post_form' %>
+              <%= f.file_field :post_image, class:'post_form' %>
             </div>                                                          
             <div class="text-center">
               <%= f.submit "投稿する", class: "btn_base_post text-center" %>
