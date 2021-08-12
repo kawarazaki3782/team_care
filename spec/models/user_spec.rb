@@ -70,7 +70,7 @@ RSpec.describe User, type: :model do
         user.password = 'password_A'
         user.password_confirmation = 'password_B'
         expect(user).to be_invalid
-        expect(user.errors[:password_confirmation]).to include('とPasswordの入力が一致しません')
+        expect(user.errors[:password_confirmation]).to include('とパスワードの入力が一致しません')
         expect(user.save).to be_falsey
       end
 

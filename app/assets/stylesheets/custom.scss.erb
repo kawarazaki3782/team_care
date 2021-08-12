@@ -14,8 +14,8 @@ $layout-width-inner: 1200px;
 
 // ブレークポイント
 $breakpoints: (
-  "sm": "(max-width: 399px)",
-  "sp": "(min-width: 400px) and (max-width: 767px)",
+  "sm": "(max-width: 375px)",
+  "sp": "(min-width: 376px) and (max-width: 767px)",
   "tab": "(min-width: 768px) and (max-width: #{$layout-width-inner})",
   "pc": "(min-width: #{$layout-width-inner})"
 );
@@ -50,7 +50,7 @@ body{
   }
 
 img {
-	max-width: 65%;
+	max-width: 100%;
 	height: auto;
 	border: none;
 }
@@ -258,19 +258,18 @@ h6 {
 
 
 .header＿logo {
-	width: 205px;
+	width: 10%;
+
   @include mq(sm) {
-	width: 40%;
-	margin: 0px -20px 0px -20px;
+	width: 28%;
 }
 
   @include mq(sp) {
-	width: 150px;
-	margin: 0px -20px 0px -17px;
+	width: 28%;
 }
 
   @include mq(tab) {
-	width: 150px;
+	width: 13%;
 	margin: 0px -20px 0px -20px;
  }
 }
@@ -289,30 +288,31 @@ img {
 }
 
   @include mq(sp) {
-	margin-left:10px;
+	margin-left:1px;
 }
 
   @include mq(tab) {
-	margin-left:10px;
+	margin-left:100px;
 }
+
 li {
 	color: #fff;
 
   @include mq(sm) {
 	margin: 2px 30px;
-    font-size: 10px;
+    font-size: 11px;
 	color: #fff;
 }
 
   @include mq(sp) {
 	margin: 0px -95px 0px 40px;
-    font-size: 10px;
+    font-size: 11px;
 	color: #fff;
 }
 
   @include mq(tab) {
 	margin: 0px -5px;
-    font-size: 10px;
+    font-size: 11px;
 	color: #fff;
 }
 &:not(:first-child) {
@@ -351,7 +351,7 @@ a {
 	align-items: center;
 
   @include mq(sm) {
-	margin-left:-30px;
+	margin-left:-20px;
 }
 
   @include mq(sp) {
@@ -692,9 +692,20 @@ span.important {
 	padding-bottom: 0px;
 }
 
-@include mq('sm') {
+  @include mq('sm') {
 	padding-top: 0px;
 	padding-bottom: 20px;
+ }
+}
+
+.footer__logo {
+    width: 150%;
+
+  @include mq('sp') {
+	display: none;
+}
+  @include mq('sm') {
+	display: none;
  }
 }
 
@@ -719,10 +730,15 @@ img {
   @include mq('sm') {
 	margin: 10px -100px -10px 0px;
   }
+
+  @include mq('tab') {
+	width: 110px;
+  }
  }
 }
 
 .footer__info {
+
 	margin-top: 22px;
 	color: #fff;
 	font-size: 14px;
@@ -1154,6 +1170,15 @@ h2.section-title_signup {
  }
 }
 
+.lead {
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.4;
+    margin-right: 0px;
+    padding-left: 10px;
+}
+
 ///////////////プロフィール編集////////////////
 
 .btn_base_profileedit {
@@ -1317,7 +1342,7 @@ h2.section-title_confirm {
 }
 
   @include mq('sm') {
-	font-size: 5px;
+	font-size: 64%;
 	width: 105px;
 	padding:0;
 }
@@ -1691,8 +1716,8 @@ li.profile_list {
 .login_border {
     border-width: 1px;
     border-style: solid;
-    width: 500px;
-    height: 310px;
+    width: 42%;
+	padding-bottom: 30px;
     padding-top: 25px;
     border-radius: 10px;
 	margin: 0 auto;
@@ -1703,6 +1728,10 @@ li.profile_list {
 
   @include mq('sp') {
 	width: 100%
+}
+
+  @include mq('tab') {
+	width: 66%;
  }
 }
 
@@ -1735,7 +1764,7 @@ li.profile_list {
 	text-align: center;
 	background: $color-main2;
 	color: #fff;
-	font-size: 24px;
+	font-size: 150%;
 	font-weight: 700;
 	border-radius: 8px;
 	cursor: pointer;
@@ -2475,7 +2504,7 @@ input#diary_diary_image {
 }
 
 .form_diary_image {
-	width: 30%;
+	width: 20%;
 	margin: 0 auto;
 }
 
@@ -2545,7 +2574,7 @@ input#diary_diary_image {
     font-size: 16px;
     height: 1200px;
 	margin: 0 auto;
-	margin-bottom: 20px;
+	margin-bottom: 200px;
 }
 
 .btn_diary_draft {
@@ -3149,10 +3178,10 @@ p.rank_title {
 input#search {
 
   @include mq('sp') {
-    width: 32%;
+    width: 35%;
  }
   @include mq('sm') {
-    width: 32%;
+    width: 35%;
  }
 }
 
@@ -3175,8 +3204,8 @@ input#search {
 }
 
 .home_text {
-	width: 70%;
-    padding-left: 30px;
+	width: 100%;
+    padding-left: 120px;
     font-size: 20px;
 
   @include mq('tab') {
