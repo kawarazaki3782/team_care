@@ -13,8 +13,8 @@ RSpec.describe 'お気に入り', type: :system, js: true do
     click_on '自分のつぶやき'
     click_on 'つぶやきサンプル'
     expect do
-      find('.btn_base_favorites').click
-      expect(page).to have_css '.btn_base_favorites', visible: false
+      find('.btn_post_favorites').click
+      expect(page).to have_css '.btn_post_favorites', visible: false
     end.to change { Favorite.count }.by(1)
   end
 
@@ -24,8 +24,8 @@ RSpec.describe 'お気に入り', type: :system, js: true do
       click_on '自分のつぶやき'
       click_on 'つぶやきサンプル'
       expect do
-        find('.btn_base_favorites').click
-        expect(page).to have_css '.btn_base_favorites', visible: false
+        find('.btn_post_favorites').click
+        expect(page).to have_css '.btn_post_favorites', visible: false
       end.to change { Favorite.count }.by(-1)
     end
   end
@@ -42,7 +42,7 @@ RSpec.describe 'お気に入り', type: :system, js: true do
   describe '日記のお気に入りを解除する' do
     let!(:favorite) { FactoryBot.create(:favorite, user_id: user.id, diary_id: diary.id) }
     
-    it 'つぶやきのお気に入りを解除する' do
+    it '日記のお気に入りを解除する' do
       click_on '自分の日記'
       click_on 'タイトル'
       expect do
@@ -63,7 +63,7 @@ RSpec.describe 'お気に入り', type: :system, js: true do
       click_on 'つぶやきサンプル2'
       find(".section-title_post", text: "つぶやき詳細")
       User.find_by(name: 'その他ユーザー').destroy
-      find('.btn_base_favorites').click
+      find('.btn_post_favorites').click
       expect(page).to have_text 'つぶやきが削除されました'
     end
 
@@ -72,9 +72,9 @@ RSpec.describe 'お気に入り', type: :system, js: true do
       click_on 'その他ユーザー'
       click_on 'つぶやきサンプル2'
       find(".section-title_post", text: "つぶやき詳細")
-      find('.btn_base_favorites').click
+      find('.btn_post_favorites').click
       User.find_by(name: 'その他ユーザー').destroy
-      find('.btn_base_favorites').click
+      find('.btn_post_favorites').click
       expect(page).to have_text 'つぶやきが削除されました'
     end
 

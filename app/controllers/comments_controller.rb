@@ -8,9 +8,13 @@ class CommentsController < ApplicationController
       flash[:danger] = 'コメントを投稿できませんでした'
       redirect_to root_path
     else
-      @comment.save
-      redirect_back(fallback_location: root_path)
-      flash[:success] = 'コメントが投稿されました'
+      if @comment.save
+        redirect_back(fallback_location: root_path)
+        flash[:success] = 'コメントが投稿されました'
+      else
+        redirect_back(fallback_location: root_path)
+        flash[:danger] = 'コメントを入力してください'
+      end
     end
 
     if @diary.present? && @micropost.nil?

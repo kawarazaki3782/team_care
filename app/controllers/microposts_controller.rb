@@ -32,7 +32,6 @@ class MicropostsController < ApplicationController
   def create
     @micropost = Micropost.new(micropost_params)
     @micropost.user_id = current_user.id
-    # if @micropost.content.present? 
     if @micropost.save
       flash[:success] = 'つぶやきを投稿しました'
       redirect_to microposts_path

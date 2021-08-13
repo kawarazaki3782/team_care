@@ -68,6 +68,7 @@
 </div>
 <h2 class="section-title_diary">コメント一覧<p><i class="far fa-comment comment_count"></i><%= @diary.comments.count %></p></h2>
 <%= form_for [@diary, @comment] do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
   <div class="diary_comment_catalog"><%= f.text_field :content %>
     <%= f.hidden_field :diary_id, value:@diary.id %>
   </div>

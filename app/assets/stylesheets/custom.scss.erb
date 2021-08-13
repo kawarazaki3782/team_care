@@ -265,7 +265,7 @@ h6 {
 }
 
   @include mq(sp) {
-	width: 28%;
+	width: 20%;
 }
 
   @include mq(tab) {
@@ -1769,7 +1769,7 @@ li.profile_list {
 	border-radius: 8px;
 	cursor: pointer;
 	outline: none;
-	padding: 0rem 2rem;
+	padding: 0rem 0rem;
     box-shadow: 2px 2px 4px gray;
     border: 1px solid #ccc;
 
@@ -1977,7 +1977,7 @@ h2.section-title_post {
 }
 
 .post-text{
-    width: 100%;
+    width: 80%;
     padding-left: 30px;
 	font-size: 20px;
 
@@ -2073,24 +2073,19 @@ i.far.fa-comment.comment_count {
 }
 
 .icon_post_image {
-    width: 100%;
     object-fit: cover;
     border-radius: 20%;
+	margin: 0 auto;
 }
 
 .timeline_posts_detail {
 	background-color: #fff;
-    padding-top: 5px;
     padding-bottom: 15px;
     width: 100%;
     min-height: 50px;
     height: auto !important;
-    height: 90px;
-    display: -ms-flexbox;
     border-bottom: 1px solid #efe7d7;
     border-top: 1px solid #efe7d7;
-    display: flex;
-    flex-direction: inherit;
     align-items: center;
 	padding-top: 60px;
 
@@ -2107,6 +2102,7 @@ i.far.fa-comment.comment_count {
     font-weight: bold;
     font-size: 30px;
     padding-left: 10px;
+	text-align: center;
 
   @include mq('sp') {
 	font-size: 15px;
@@ -2119,33 +2115,27 @@ i.far.fa-comment.comment_count {
 
 .post-detail {
 	width: 100%;
-    padding-left: 80px;
     font-size: 20px;
-	padding-top: 40px;
-	font-weight: 600;
 
   @include mq('tab') {
 	width: 90%;
-	font-size: 40px;
+	font-size: 30px;
 	font-weight: 100;
 }
 
   @include mq('sp') {
 	width: 30%;
 	font-size: 20px;
-	padding: 16px;
 }
 
   @include mq('sm') {
 	width: 30%;
 	font-size: 20px;
-	padding: 16px;
  }
 }
 
 .post_detail_show {
-    margin: 0px 100px;
-
+    
   @include mq('tab') {
 	margin: 45px -15px;
 }
@@ -2171,6 +2161,7 @@ i.far.fa-comment.comment_count {
 .post_time_show {
 	padding-left: 10px;
     font-size: 30px;
+	text-align: center;
 
   @include mq('sp') {
 	font-size: 15px;
@@ -2200,16 +2191,14 @@ i.far.fa-comment.comment_count {
     padding-right: 30px;
     padding-top: 10px;
     font-size: 20px;
-	margin-left: -75px;
+	margin-left: 10px;
 
   @include mq('sp') {
 	font-size: 	12px;
- 	margin-left: -70px;
   }	
 
   @include mq('sm') {
 	font-size: 	12px;
- 	margin-left: -70px;
   }	
  }
 
@@ -2304,18 +2293,11 @@ form#new_comment {
 
 .post_image_url {
     margin: 0 auto;
+	width: 40%;
 }
 
 .timeline_post_detail {
-	padding: 20px 24px 0px 0px;
-	display: -webkit-box;
-
-  @include mq('sp') {
-	padding: 20px 60px 30px 0px;
-}
-  @include mq('sm') {
-	padding: 20px 60px 30px 0px;
- }
+	text-align: center;
 }
 
 .timeline_post_name {
@@ -2331,11 +2313,9 @@ form#new_comment {
   }
  }
 
-////////////diary post共通 /////////////
-.btn_base_favorites {
+.btn_post_favorites {
     display: inline-block;
     line-height: 72px;
-    margin: 0 auto;
     background: #eebeb4;
     color: #fff;
     font-size: 24px;
@@ -2343,12 +2323,26 @@ form#new_comment {
     border-radius: 8px;
     outline: none;
     box-shadow: 2px 2px 4px grey;
+	margin-bottom: 30px;
+	margin-top: 15px;
 
   @include mq('sp') {
 	line-height: 50px;
 	font-size: 20px;
+	margin-top: 0px;
+ }
+
+  @include mq('sm') {
+	line-height: 50px;
+	font-size: 20px;
+	margin-top: 0px;
  }
 }
+
+.post_comment_btn {
+    margin-bottom: 30px;
+}
+
 //////////////////////diary 投稿///////////////////////////
 
 .diary__inner inner{
@@ -2483,6 +2477,24 @@ input#diary_diary_image {
 .diary_edit_title {
     text-align: center;
     margin: 0 auto;
+}
+
+.btn_base_favorites {
+    display: inline-block;
+    line-height: 72px;
+    margin: 0 auto;
+    background: #eebeb4;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    border-radius: 8px;
+    outline: none;
+    box-shadow: 2px 2px 4px grey;
+
+  @include mq('sp') {
+	line-height: 50px;
+	font-size: 20px;
+ }
 }
 
 .diary_edit_text {
@@ -2690,6 +2702,7 @@ h2.section-title_diary {
 
 .diary_comment_btn {
     text-align: center;
+	margin-bottom: 30px;
 }
 
 .diary_comment_catalog {
@@ -2754,6 +2767,7 @@ h2.section-title_diary {
 
 .diary_image_url {
 	margin: 0 auto;
+	width: 40%;
 }
 
 .diary_comment_delete {

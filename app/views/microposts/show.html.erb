@@ -21,12 +21,12 @@
                         <i class="far fa-smile unlike-btn"></i>
                       <% end %>
                     <% end %>
-                    <% if !Favorite.exists?(user_id:current_user.id,micropost_id:@micropost.id) %>
-                      <%= link_to "お気に入り",micropost_add_path(@micropost), class:"btn_base_favorites", method: :post %>
-                    <% else %>
-                      <%= link_to "お気に入り解除",micropost_add_path(@micropost), class:"btn_base_favorites", method: :delete %>
-                    <% end %>
                 </div>
+                    <% if !Favorite.exists?(user_id:current_user.id,micropost_id:@micropost.id) %>
+                      <%= link_to "お気に入り",micropost_add_path(@micropost), class:"btn_post_favorites", method: :post %>
+                    <% else %>
+                      <%= link_to "お気に入り解除",micropost_add_path(@micropost), class:"btn_post_favorites", method: :delete %>
+                    <% end %>
                   <span class="post_delete_show"><% if current_user?(@micropost.user) %>
                     <%= link_to "つぶやき削除", @micropost, method: :delete,class:"post-detail-delete",
                                                     data: { confirm: "つぶやきを削除しますか?" } %></p>    
@@ -64,6 +64,7 @@
 </div>
 <h2 class="section-title_post">コメント一覧<p><i class="far fa-comment comment_count"></i><%= @micropost.comments.count %></p></h2>
   <%= form_for [@micropost, @comment] do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
     <div class="post_comment_catalog"><%= f.text_field :content %>
       <%= f.hidden_field :micropost_id, value: @micropost.id %>
     </div>
