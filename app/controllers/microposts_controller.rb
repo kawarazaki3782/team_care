@@ -36,7 +36,7 @@ class MicropostsController < ApplicationController
       flash[:success] = 'つぶやきを投稿しました'
       redirect_to microposts_path
     else
-      flash[:danger] = 'つぶやきが未入力です'
+      flash[:danger] = 'つぶやきの入力に不備があります'
       redirect_back(fallback_location: root_path)
     end
   end

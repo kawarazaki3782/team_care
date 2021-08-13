@@ -1977,9 +1977,9 @@ h2.section-title_post {
 }
 
 .post-text{
-    width: 80%;
     padding-left: 30px;
 	font-size: 20px;
+	overflow-wrap: anywhere;
 
   @include mq('sm') {
 	padding-left:0;
@@ -2116,6 +2116,7 @@ i.far.fa-comment.comment_count {
 .post-detail {
 	width: 100%;
     font-size: 20px;
+	overflow-wrap: anywhere;
 
   @include mq('tab') {
 	width: 90%;
@@ -2636,6 +2637,7 @@ select#diary_category_id {
 .diary-text {
     font-size: 20px;
 	text-align: center;
+	overflow-wrap: anywhere;
 }
 
 .diary_delete_show {
@@ -2728,8 +2730,18 @@ h2.section-title_diary {
     font-size: 30px;
 }
 
+
+.diary_favorite_delte {
+    text-align: center;
+}
+
 .diary_show_delete {
     text-align: center;
+	display: contents;
+	padding-right: 30px;
+    padding-top: 10px;
+    font-size: 20px;
+    margin-left: 10px;
 }
 
 .diary_like_show {
@@ -2761,8 +2773,6 @@ h2.section-title_diary {
   @include mq('sm') {
 	width: 30%;
  }
-
-
 }
 
 .diary_image_url {
@@ -3219,8 +3229,9 @@ input#search {
 
 .home_text {
 	width: 100%;
-    padding-left: 120px;
+    padding-left: 90px;
     font-size: 20px;
+	overflow-wrap: anywhere;
 
   @include mq('tab') {
     padding-left: 120px;
