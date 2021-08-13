@@ -1,4 +1,12 @@
 class DiaryImageUploader < CarrierWave::Uploader::Base
+  if Rails.env.development?
+    storage :file
+  elsif Rails.env.test?
+    storage :file
+  else
+    storage :fog
+  end
+
   include CarrierWave::MiniMagick
   process resize_to_limit: [400, 400]
   # Include RMagick or MiniMagick support:
