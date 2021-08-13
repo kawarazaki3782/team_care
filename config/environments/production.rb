@@ -103,7 +103,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   host = "#{ENV['HEROKU_APPNAME']}.herokuapp.com"
   config.action_mailer.default_url_options = { host: host, protocol: 'https' }
-  ActionMailer::Base.smtp_settings = {
+  config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     port: 587,
     domain: 'gmail.com',
