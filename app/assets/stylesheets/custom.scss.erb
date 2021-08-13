@@ -1202,6 +1202,12 @@ h2.section-title_signup {
 
 ///////////////新規登録確認画面////////////////
 
+.dd_birthday {
+	@include mq('sm') {
+	font-size: 13px;
+ }
+}
+
 h2.section-title_confirm {
     text-align: center;
     padding-top: 50px;
@@ -1336,14 +1342,14 @@ h2.section-title_confirm {
 }
 
   @include mq('sp') {
-	font-size: 5px;
-	width: 105px;
+	font-size: 90%;
+	width: 186px;
 	padding:0;
 }
 
   @include mq('sm') {
-	font-size: 64%;
-	width: 105px;
+	font-size: 90%;
+	width: 186px;
 	padding:0;
 }
 
@@ -1353,7 +1359,7 @@ h2.section-title_confirm {
 }
 .users_tab {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-evenly;;
 	border-bottom: 1px solid #707070;
 }
 

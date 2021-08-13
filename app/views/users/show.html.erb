@@ -5,8 +5,7 @@
     <h2 class="section-title_users">マイページ</h2>
       <div class="users_tab">
         <div class="users_tab-item"><%= link_to "利用者一覧", users_path, class: "btn_base_users" %></div>
-        <div class="users_tab-item"><%= link_to "お気に入りのつぶやき", favorites_path(micropost_id: @user.micropost_ids), class: "btn_base_users" %></div>
-        <div class="users_tab-item"><%= link_to "お気に入りの日記", favorites_path(diary_id: @user.diary_ids), class: "btn_base_users" %></div>
+        <div class="users_tab-item"><%= link_to "お気に入り", favorites_path, class: "btn_base_users" %></div>
       </div>
       <div class="notifications_button">
         <%= link_to "通知",  notifications_path, class: "btn_base_notifications" %>

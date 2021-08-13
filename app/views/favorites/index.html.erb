@@ -1,13 +1,3 @@
-<% unless @diary == nil %> 
-<section id="" class="favorite_catalog section">
-  <div class="favorite__inner inner">
-    <h2 class="section-title_favorite">お気に入りの日記一覧</h2>
-      <div class="timeline_area">
-       <%= render partial: 'shared/diary_index', collection: @diaries, as: :diary %>
-      </div>
-   </div>
-</section>
-<% else %>
 <section id="" class="favorite_catalog section">
   <div class="favorite__inner inner">
     <h2 class="section-title_favorite">お気に入りのつぶやき一覧</h2>
@@ -16,4 +6,14 @@
       </div>
   </div>
 </section>
-<% end %>
+<%= paginate @microposts %>
+
+<section id="" class="favorite_catalog section">
+  <div class="favorite__inner inner">
+    <h2 class="section-title_favorite">お気に入りの日記一覧</h2>
+      <div class="timeline_area">
+       <%= render partial: 'shared/diary_index', collection: @diaries, as: :diary %>
+      </div>
+   </div>
+</section>
+<%= paginate @diaries %>
