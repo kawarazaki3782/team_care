@@ -2,18 +2,12 @@ class FavoritesController < ApplicationController
   before_action :current_user_set, only: %i[show index]
 
   def index
-    if params[:micropost_id].present? && params[:diary_id].nil?
       @micropost = @user.micropost_ids
       microposts = Favorite.micropost_favorites(current_user.id)
-      @microposts = Micropost.where(id: microposts)
-    elsif params[:diary_id].present? && params[:micropost_id].nil?
+      @microposts = Micropost.where(id: microposts).page(params[:page]).per(5)
       @diary = @user.diary_ids
       diaries = Favorite.diary_favorites(current_user.id)
-      @diaries = Diary.where(id: diaries)
-    else
-      flash[:danger] = 'お気に入りに登録されていません'
-      redirect_back(fallback_location: root_path)
-    end
+      @diaries = Diary.where(id: diaries).page(params[:page]).per(5)
   end
 
   def create

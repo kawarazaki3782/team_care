@@ -28,7 +28,7 @@ describe 'つぶやき投稿', type: :system, js: true do
 
     it 'お気に入りのつぶやき一覧が表示されること' do
       visit user_path(user)
-      click_on 'お気に入りのつぶやき'
+      click_on 'お気に入り'
       expect(page).to have_content 'お気に入りのつぶやき'
     end
 
