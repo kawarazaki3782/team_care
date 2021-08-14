@@ -9,20 +9,20 @@ module NotificationsHelper
     case notification.action
     when 'follow'
       tag.a(notification.visiter.name, style: 'font-weight: bold;') + 'があなたをフォローしました'
-    when 'like'
+    when 'micropost_like'
       tag.a(notification.visiter.name,
             style: 'font-weight: bold;') + 'が' + tag.a('あなたの投稿', href: micropost_path(notification.micropost_id),
                                                                  style: 'font-weight: bold;') + 'にいいねしました'
-    when 'like2'
+    when 'diary_like'
       tag.a(notification.visiter.name,
             style: 'font-weight: bold;') + 'が' + tag.a('あなたの日記', href: diary_path(notification.diary_id),
                                                                  style: 'font-weight: bold;') + 'にいいねしました'
-    when 'comment'
+    when 'micropost_comment'
       @comment = Comment.find_by(id: @visiter_comment)&.content
       tag.a(@visiter.name,
             style: 'font-weight: bold;') + 'が' + tag.a('あなたの投稿', href: micropost_path(notification.micropost_id),
                                                                  style: 'font-weight: bold;') + 'にコメントしました'
-    when 'comment2'
+    when 'diary_comment'
       @comment = Comment.find_by(id: @visiter_comment)&.content
       tag.a(@visiter.name,
             style: 'font-weight: bold;') + 'が' + tag.a('あなたの投稿', href: diary_path(notification.diary_id),

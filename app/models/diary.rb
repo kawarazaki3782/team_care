@@ -29,17 +29,19 @@ class Diary < ApplicationRecord
     hoge_ids = Comment.select(:user_id).where(diary_id: id).where.not(user_id: current_user.id).distinct
     hoge_ids.each do |hoge_id|
       save_notification_comment!(current_user, comment_id, hoge_id['user_id'])
+      
+    
     end
     save_notification_comment!(current_user, comment_id, user_id) if hoge_ids.blank?
   end
 
   def save_notification_comment!(current_user, comment_id, visited_id)
-    # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
+    # コメントは複数回することが考えられるため、１つの投稿に複数回通知するexi
     notification = current_user.active_notifications.new(
       diary_id: id,
       comment_id: comment_id,
       visited_id: visited_id,
-      action: 'diary_comment'
+      action: 'diary_comment',
     )
     # 自分の投稿に対するコメントの場合は、通知済みとする
     notification.checked = true if notification.visiter_id == notification.visited_id
