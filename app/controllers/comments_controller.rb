@@ -17,10 +17,10 @@ class CommentsController < ApplicationController
       end
     end
 
-    if @diary.present? && @micropost.nil?
+    if @diary.present? && @micropost.nil?  
       @diary.create_notification_comment!(current_user, @comment.id, @diary)
     elsif  @micropost.present? && @diary.nil?
-      @micropost.create_notification_comment!(current_user, @comment.id)
+      @micropost.create_notification_comment!(current_user, @comment.id, @micropost)
     else
       flash[:danger] = 'コメントを投稿できませんでした'
     end
