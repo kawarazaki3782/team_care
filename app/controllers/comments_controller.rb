@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
     end
 
     if @diary.present? && @micropost.nil?
-      @diary.create_notification_comment!(current_user, @comment.id)
+      @diary.create_notification_comment!(current_user, @comment.id, @diary)
     elsif  @micropost.present? && @diary.nil?
       @micropost.create_notification_comment!(current_user, @comment.id)
     else
