@@ -1,8 +1,7 @@
 class InquiryMailer < ApplicationMailer
-  default from: 'kawa@example.com'   # 送信元アドレス
-
+  
   def received_email(inquiry)
     @inquiry = inquiry
-    mail(to: inquiry.email, subject: 'お問い合わせを承りました')
+    mail to: ENV['SEND_MAIL'], subject: 'お問い合わせ'
   end
 end
