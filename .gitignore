@@ -24,10 +24,7 @@ config/initializers/secret_token.rb
 config/master.key
 
 
-/config/*
-!/config/initializers/
-/config/initializers*
-!/config/initializers/carrierwave.rb
+/config/initializers/carrierwave.rb
 
 
 # Only include if you have production secrets in this file, which is no longer a Rails default
