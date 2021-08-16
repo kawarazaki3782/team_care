@@ -24,13 +24,10 @@ class ApplicationController < ActionController::Base
 
   def guest_user
     @user = User.find_by(email: 'guest@example.com')
-    
-    binding.pry
-    
-      if @user.id == current_user.id       
+    if @user.id == current_user.id       
         flash[:danger] = 'ゲストユーザーは編集・投稿が出来ません'
         redirect_to root_url
-      end
+    end
   end
 
   private
