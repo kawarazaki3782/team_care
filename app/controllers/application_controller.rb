@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
 
   def guest_user
     if User.find_by(email: 'guest@example.com') ==  current_user
-      flash[:danger] = 'ゲストユーザーは編集・投稿が出来ません'
+      flash[:danger] = 'ゲストユーザーはプロフィールを編集できません'
       redirect_to root_url
     end
   end
