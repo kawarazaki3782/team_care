@@ -8,6 +8,7 @@
             <div class="field_post text-center">
               <%= f.text_area :content, placeholder: "140文字以内",class:'microposts_textarea'%>
             </div>
+            <p class="micropost_emoji">※絵文字が使えます</p>
             <div class="post_category">
               <%= f.label :category_id %>
               <%= f.collection_select :category_id, Category.all, :id, :name,:include_blank => "カテゴリ-を選択してください"%>

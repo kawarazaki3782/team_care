@@ -10,6 +10,7 @@
                 <%= f.text_area :title, placeholder: "タイトルを入力してください",class:'diary_title'%>
                 <%= f.text_area :content, placeholder: "本文を入力してください",class:'diary_content'%>
               </div> 
+              <p class="diary_emoji">※絵文字が使えます</p>
               <div class="diary_category">
                 <%= f.label :category_id %>
                 <%= f.collection_select :category_id, Category.all, :id, :name,:include_blank => "カテゴリ-を選択してください"%>

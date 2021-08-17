@@ -29,7 +29,7 @@ RSpec.describe 'DM機能', type: :system, js: true do
       find('.btn-sm.btn-danger.dm_delete', match: :first).click
       page.driver.browser.switch_to.alert.text == 'コメントを削除しますか?'
       page.driver.browser.switch_to.alert.accept
-      expect(page).to have_content 'またメッセージはありません'
+      expect(page).to have_content 'メッセージはありません'
     end
   end
 

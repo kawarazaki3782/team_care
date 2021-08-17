@@ -1205,6 +1205,10 @@ h2.section-title_signup {
  }
 }
 
+.user_emoji {
+	text-align: right;
+}
+
 h2.section-title_confirm {
     text-align: center;
     padding-top: 50px;
@@ -1842,6 +1846,11 @@ input[type="checkbox"] {
 
 //////////////////////micropost 投稿//////////////////////////
 
+.micropost_emoji {
+	text-align: left;
+	font-weight: bold;
+}
+
 .micropost.section {
 	padding-bottom: 250px;
 }
@@ -2351,6 +2360,16 @@ form#new_comment {
 
 .diary__inner inner{
 	padding-bottom: 280px;	
+}
+
+.diary_emoji {
+	text-align: left;
+	margin-left: 50px;
+	font-weight: bold;
+
+	@include mq('sp') {
+	margin-left: 20px;
+ }
 }
 
 
@@ -2912,6 +2931,10 @@ li.users_list {
     font-size: 15px;
 }
 
+.message_emoji {
+	font-weight: bold;
+}
+
 .message_image {
 	margin-right: 10px;
 }
@@ -3028,6 +3051,8 @@ input#message_content {
 	width: 100%;
  }
 }
+
+
 
 //////////////////////通知///////////////////////////
 

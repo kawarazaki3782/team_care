@@ -36,16 +36,16 @@
         <div class="users_content-item"><%= link_to "自分の日記", diaries_path, class: "btn_base_contents" %></div>
      </div>
      <div class="blocked_user">
-       <%= link_to "ブロックした利用者", blocking_user_url(@user), class: "btn_base_profile" %>
+       <%= link_to "ブロックした人", blocking_user_url(@user), class: "btn_base_profile" %>
      </div>
      <div class="profile_edit_users">
        <%= link_to "プロフィール編集", edit_user_path, class: "btn_base_profile" %>
      </div> 
     <ul class="profile_ul">
       <li class="profile_list">性別:<%= @user.gender %></li>
-      <li class="profile_list">誕生日:<%= @user.birthday %></li>
+      <li class="profile_list">生年月日:<%= @user.birthday %></li>
       <li class="profile_list">住所:<%= @user.address %><li>
-      <li class="profile_list">介護の形態:<%= @user.long_teamcare %></li>
+      <li class="profile_list">介護の状況:<%= @user.long_teamcare %></li>
     </ul>
     <div class="self-introduction">
       <p class="profile_title">自己紹介</p>
@@ -89,9 +89,9 @@
         <%= render "show" %>
         <ul class="profile_ul">
           <li class="profile_list">性別:<%= @user.gender %></li>
-          <li class="profile_list">誕生日:<%= @user.birthday %></li>
+          <li class="profile_list">生年月日:<%= @user.birthday %></li>
           <li class="profile_list">住所:<%= @user.address %><li>
-          <li class="profile_list">介護の形態:<%= @user.long_teamcare %></li>
+          <li class="profile_list">介護の状況:<%= @user.long_teamcare %></li>
         </ul>
         <% if current_user.admin? && !current_user?(@user) %>
     |     <%= link_to "delete", @user, method: :delete,class: 'other_user_delete',

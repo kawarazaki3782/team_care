@@ -35,7 +35,7 @@ RSpec.describe '日記投稿', type: :system, js: true do
 
     it 'フォローした利用者の日記一覧が表示されること' do
       visit root_path
-      expect(page).to have_content 'フォローしている利用者の日記'
+      expect(page).to have_content 'フォローしている人の日記'
     end
 
     it 'みんなの日記一覧が表示されること' do

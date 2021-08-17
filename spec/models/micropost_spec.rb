@@ -29,6 +29,12 @@ RSpec.describe Micropost, type: :model do
         micropost.save
       end
 
+      it 'contentが絵文字でも投稿できる' do
+        micropost.content = '😃'
+        expect(micropost).to be_valid
+        micropost.save
+      end
+
       it 'contentが140文字以上だと無効' do
         micropost.content = 'a' * 141
         expect(micropost).to be_invalid

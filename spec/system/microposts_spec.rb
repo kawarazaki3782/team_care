@@ -34,7 +34,7 @@ describe 'つぶやき投稿', type: :system, js: true do
 
     it 'フォローした利用者のつぶやき一覧が表示されること' do
       visit root_path
-      expect(page).to have_content 'フォローしている利用者のつぶやき'
+      expect(page).to have_content 'フォローしている人のつぶやき'
     end
 
     it 'みんなのつぶやき一覧が表示されること' do

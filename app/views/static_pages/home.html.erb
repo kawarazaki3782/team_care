@@ -8,10 +8,10 @@
       <h2 class="section-title_users">みんなの最新の日記</h2>
         <%= render partial: 'shared/diary_index', collection: @diaries, as: :diary %>
         <%= paginate @diaries %>
-      <h2 class="section-title_users">フォローしている利用者のつぶやき</h2>
+      <h2 class="section-title_users">フォローしている人のつぶやき</h2>
        <%= render partial: 'shared/micropost_index', collection: @following_microposts, as: :micropost %>
         <%= paginate @microposts %>
-      <h2 class="section-title_users">フォローしている利用者の日記</h2>
+      <h2 class="section-title_users">フォローしている人の日記</h2>
         <%= render partial: 'shared/diary_index', collection: @following_diaries, as: :diary %>
         <%= paginate @diaries %>
     </main>          

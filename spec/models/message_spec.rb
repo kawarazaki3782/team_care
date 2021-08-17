@@ -9,6 +9,12 @@ RSpec.describe Message, type: :model do
         expect(message).to be_valid
       end
 
+      it 'contentに絵文字が使えること' do
+        message.content = '😃'
+        expect(message).to be_valid
+        message.save
+      end
+
       it 'user_idが違えばroom_idが同じでも保存できること' do
         another_user = create(:user)
         another_message = build(:message,

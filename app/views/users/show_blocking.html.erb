@@ -1,8 +1,8 @@
-<% provide(:title, 'ブロックした利用者') %>
+<% provide(:title, 'ブロックした人') %>
 <% if @users.exists? %>
 <section id="" class="users_section">
   <div class="users__inner inner">
-    <h2 class="section-title_users">ブロックした利用者</h2>
+    <h2 class="section-title_users">ブロックした人</h2>
       <ul class="users_ul">
         <% @users.each do |user| %>
           <li class="users_list">
@@ -17,7 +17,7 @@
 <% else %>
 <section id="" class="users_section">
 	 <div class="users__inner inner">
-     <h2 class="section-title_users">ブロックしている利用者</h2>
+     <h2 class="section-title_users">ブロックしている人</h2>
      <p>ブロックしているユーザーはいません</p>
    </div>
 </section>

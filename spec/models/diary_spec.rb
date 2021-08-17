@@ -22,6 +22,12 @@ RSpec.describe Diary, type: :model do
       expect(diary.save).to be_falsey
     end
 
+    it 'titleに絵文字があっても投稿できる' do
+      diary.title = '😃'
+      expect(diary).to be_valid
+      diary.save
+    end
+
     context 'content' do
       it 'contentがないと無効' do
         diary.content = nil
@@ -31,6 +37,12 @@ RSpec.describe Diary, type: :model do
 
       it 'contentが5000文字以内なら投稿できる' do
         diary.content = 'a' * 5000
+        expect(diary).to be_valid
+        diary.save
+      end
+
+      it 'contentに絵文字があっても投稿できる' do
+        diary.content = '😃'
         expect(diary).to be_valid
         diary.save
       end
