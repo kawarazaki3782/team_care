@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20_210_711_154_652) do
-  create_table 'blocks', charset: 'utf8mb3', force: :cascade do |t|
+  create_table 'blocks', charset: 'utf8mb4', force: :cascade do |t|
     t.bigint 'blocker_id'
     t.bigint 'blocked_id'
     t.datetime 'created_at', precision: 6, null: false
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20_210_711_154_652) do
     t.index ['blocker_id'], name: 'index_blocks_on_blocker_id'
   end
 
-  create_table 'categories', charset: 'utf8mb3', force: :cascade do |t|
+  create_table 'categories', charset: 'utf8mb4', force: :cascade do |t|
     t.string 'name'
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20_210_711_154_652) do
     t.index ['user_id'], name: 'index_categories_on_user_id'
   end
 
-  create_table 'comments', charset: 'utf8mb3', force: :cascade do |t|
+  create_table 'comments', charset: 'utf8mb4', force: :cascade do |t|
     t.string 'content'
     t.bigint 'user_id', null: false
     t.datetime 'created_at', precision: 6, null: false
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20_210_711_154_652) do
     t.index ['user_id'], name: 'index_comments_on_user_id'
   end
 
-  create_table 'diaries', charset: 'utf8mb3', force: :cascade do |t|
+  create_table 'diaries', charset: 'utf8mb4', force: :cascade do |t|
     t.string 'title'
     t.text 'content'
     t.string 'diary_image'
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20_210_711_154_652) do
     t.index ['user_id'], name: 'index_diaries_on_user_id'
   end
 
-  create_table 'entries', charset: 'utf8mb3', force: :cascade do |t|
+  create_table 'entries', charset: 'utf8mb4', force: :cascade do |t|
     t.bigint 'user_id', null: false
     t.bigint 'room_id', null: false
     t.datetime 'created_at', precision: 6, null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20_210_711_154_652) do
     t.index ['user_id'], name: 'index_entries_on_user_id'
   end
 
-  create_table 'favorites', charset: 'utf8mb3', force: :cascade do |t|
+  create_table 'favorites', charset: 'utf8mb4', force: :cascade do |t|
     t.bigint 'user_id', null: false
     t.bigint 'micropost_id'
     t.bigint 'diary_id'
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20_210_711_154_652) do
     t.index ['user_id'], name: 'index_favorites_on_user_id'
   end
 
-  create_table 'likes', charset: 'utf8mb3', force: :cascade do |t|
+  create_table 'likes', charset: 'utf8mb4', force: :cascade do |t|
     t.bigint 'user_id', null: false
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20_210_711_154_652) do
     t.index ['user_id'], name: 'index_likes_on_user_id'
   end
 
-  create_table 'messages', charset: 'utf8mb3', force: :cascade do |t|
+  create_table 'messages', charset: 'utf8mb4', force: :cascade do |t|
     t.bigint 'user_id', null: false
     t.bigint 'room_id', null: false
     t.text 'content'
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 20_210_711_154_652) do
     t.index ['user_id'], name: 'index_messages_on_user_id'
   end
 
-  create_table 'microposts', charset: 'utf8mb3', force: :cascade do |t|
+  create_table 'microposts', charset: 'utf8mb4', force: :cascade do |t|
     t.text 'content'
     t.bigint 'user_id', null: false
     t.datetime 'created_at', precision: 6, null: false
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 20_210_711_154_652) do
     t.index ['user_id'], name: 'index_microposts_on_user_id'
   end
 
-  create_table 'notifications', charset: 'utf8mb3', force: :cascade do |t|
+  create_table 'notifications', charset: 'utf8mb4', force: :cascade do |t|
     t.integer 'visiter_id'
     t.integer 'visited_id'
     t.integer 'diary_id'
@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 20_210_711_154_652) do
     t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table 'relationships', charset: 'utf8mb3', force: :cascade do |t|
+  create_table 'relationships', charset: 'utf8mb4', force: :cascade do |t|
     t.integer 'follower_id'
     t.integer 'followed_id'
     t.datetime 'created_at', precision: 6, null: false
@@ -128,13 +128,13 @@ ActiveRecord::Schema.define(version: 20_210_711_154_652) do
     t.index ['follower_id'], name: 'index_relationships_on_follower_id'
   end
 
-  create_table 'rooms', charset: 'utf8mb3', force: :cascade do |t|
+  create_table 'rooms', charset: 'utf8mb4', force: :cascade do |t|
     t.string 'name'
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table 'users', charset: 'utf8mb3', force: :cascade do |t|
+  create_table 'users', charset: 'utf8mb4', force: :cascade do |t|
     t.string 'name'
     t.string 'email'
     t.string 'password_digest'
