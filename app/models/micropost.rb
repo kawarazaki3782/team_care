@@ -23,12 +23,12 @@ class Micropost < ApplicationRecord
   end
 
   def create_notification_comment!(current_user, comment_id, micropost)
-    micropost_user = micropost
     comment_users = Comment.select(:user_id).where(micropost_id: id).where.not(user_id: current_user.id).distinct
+    comment_users = comment_users.select {|user| user['user_id'] != micropost.user_id}
     users = [micropost,comment_users]
     users = users.flatten
       users.each do |user|
-        save_notification_comment!(current_user, comment_id, user['user_id'])
+        save_notification_comment!(current_user, comment_id, user['user_id'])     
       end
         save_notification_comment!(current_user, comment_id, user_id) if users.blank?
   end

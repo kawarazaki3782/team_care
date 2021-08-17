@@ -25,8 +25,8 @@ class Diary < ApplicationRecord
   end
 
   def create_notification_comment!(current_user, comment_id, diary)
-    diary_user = diary
     comment_users = Comment.select(:user_id).where(diary_id: id).where.not(user_id: current_user.id).distinct 
+    comment_users = comment_users.select {|user| user['user_id'] != diary.user_id}
     users = [diary,comment_users]
     users = users.flatten
       users.each do |user|
