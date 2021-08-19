@@ -84,4 +84,6 @@ Rails.application.routes.draw do
     end
   end
   resources :blocks, only: %i[create destroy]
+  resources :templates
+  get  'microposts/new'  => 'templates#new'
 end

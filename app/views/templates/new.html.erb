@@ -1,0 +1,15 @@
+<section id="" class="favorite_catalog section">
+  <div class="category__inner inner">
+    <h2 class="section-title_category">テンプレートの追加</h2>
+      <%= form_with model: @template, local: true do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+          <div class="form_categoy_input">
+            <%= f.label :テンプレート %>
+            <%= f.text_field :content, class:"form-category" %>
+          </div>
+          <div class="category_btn_area">
+            <%= f.submit "登録する", class: "btn_base_category" %>
+          </div>
+      <% end %>
+  </div>
+</section>

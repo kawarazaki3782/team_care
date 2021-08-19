@@ -40,6 +40,7 @@ class User < ApplicationRecord
   has_many :blocking, through: :blocking_blocks, source: :blocked
   has_many :blocker_blocks, foreign_key: 'blocked_id', class_name: 'Block', dependent: :destroy
   has_many :blockers, through: :blockers_blocks, source: :blocker
+  has_many :templates, dependent: :destroy
 
   # 渡された文字列のハッシュ値を返す
   def self.digest(string)

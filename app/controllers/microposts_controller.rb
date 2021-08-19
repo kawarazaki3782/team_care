@@ -10,6 +10,9 @@ class MicropostsController < ApplicationController
 
   def new
     @micropost = Micropost.new
+    if params[:template_id]
+      @micropost.content = Template.find(params[:template_id]).content  
+    end
   end
 
   def show

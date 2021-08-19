@@ -1,0 +1,18 @@
+<section id="" class="category_catalog section">
+  <div class="category__inner inner">
+    <h2 class="section-title_category">テンプレート 一覧</h2>
+      <%= link_to "テンプレートを追加する", "/templates/new", class: "diary_draft_btn" %>
+        <div class="category_items">
+          <% @templates.each do |template| %>
+            <div class="category_item">
+              <%= link_to template.content, new_micropost_path(template_id:template.id), class: "btn_template_micropos" %>
+              <span class="category_delete">
+               <% if current_user.id == template.user_id %>
+                 <%= link_to '削除', template, method: :delete, class:"categories_delete",
+                                    data: { confirm: "テンプレートを削除しますか?" } %><% end %>
+                </span>
+            </div>
+          <% end %>
+        </div>
+  </div>
+</section>

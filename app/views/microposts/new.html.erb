@@ -2,6 +2,10 @@
 <section id="" class="micropost section">
   <div class="micropost__inner inner">
     <h2 class="section-title_post">つぶやき投稿画面</h2>
+      <div class="micropost_template">
+        <%= link_to "テンプレートを作成する", new_template_url, class:"btn_post_favorites"%>
+        <%= link_to "テンプレートを使う", templates_path, class:"btn_post_favorites"%>
+      </div>
       <div class="post_textarea">
         <%= form_with(model:@micropost) do |f| %>
           <%= render 'shared/error_messages', object: f.object %>
@@ -32,8 +36,8 @@
   });
 </script>
 <%else%>
-  <%= link_to "ユーザー登録", signup_path, class: "btn btn-lg btn-primary" %>
-  <%= link_to "ログイン", login_path, class: "btn btn-lg btn-primary"%>
+  <%= link_to "ユーザー登録", signup_path, class: "btn_post_favorites" %>
+  <%= link_to "ログイン", login_path, class: "btn_post_favorites"%>
 <%end%>
 
 
