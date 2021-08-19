@@ -1846,6 +1846,39 @@ input[type="checkbox"] {
 
 //////////////////////micropost 投稿//////////////////////////
 
+.btn_post_templates {
+    display: inline-block;
+    line-height: 72px;
+    background: #8ea4c6;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    border-radius: 8px;
+    outline: none;
+    box-shadow: 2px 2px 4px grey;
+	margin-bottom: 30px;
+	margin-top: 15px;
+
+  @include mq('sp') {
+	line-height: 50px;
+    font-size: 15px;
+    margin-top: 0px;
+    width: 100%;
+ }
+
+  @include mq('sm') {
+	line-height: 50px;
+    font-size: 15px;
+    margin-top: 0px;
+    width: 100%;
+ }
+}
+
+ul.template_items {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .micropost_emoji {
 	text-align: left;
 	font-weight: bold;
@@ -2076,6 +2109,88 @@ i.far.fa-comment.comment_count {
  }
 }
 
+//////////////////////テンプレート 作成///////////////////////////
+
+h2.section-title_template {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+  @include mq('sp') {
+	font-size: 25px;
+}
+  @include mq('sm') {
+	font-size: 25px;
+ }
+}
+
+.form_template_input {
+    text-align: center;
+}
+
+.template_btn_area {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn_base_template {
+    display: inline-block;
+    width: 150px;
+    max-width: 100%;
+    line-height: 51px;
+    height: 50px;
+    text-align: center;
+    background: #8ea4c6;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    outline: none;
+    padding: 0rem 2rem;
+    box-shadow: 2px 2px 4px grey;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+input#template_content {
+    width: 50%;
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+//////////////////////template 一覧///////////////////////////
+
+
+a.btn_template_micropos {
+    display: inline-block;
+    max-width: 100%;
+    line-height: 51px;
+    background: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 2px 2px 4px grey;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+	width: 50%;
+
+	@include mq('sp') {
+	width: 70%;
+ }
+
+  @include mq('sm') {
+	width: 70%;
+ }
+}
+
+.template_item {
+    text-align: center;
+}
+
+p.templates_delete {
+    text-align: center;
+}
 
 //////////////////////micropost 詳細///////////////////////////
 
@@ -3290,10 +3405,10 @@ h2.section-title_category {
     padding-bottom: 50px;
 
   @include mq('sp') {
-	font-size: 15px;
+	font-size: 25px;
 }
   @include mq('sm') {
-	font-size: 15px;
+	font-size: 25px;
  }
 }
 

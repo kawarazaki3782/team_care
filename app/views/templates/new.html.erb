@@ -1,14 +1,14 @@
-<section id="" class="favorite_catalog section">
-  <div class="category__inner inner">
-    <h2 class="section-title_category">テンプレートの追加</h2>
+<section id="" class="micropost_template section">
+  <div class="template__inner inner">
+    <h2 class="section-title_template">テンプレートの作成</h2>
       <%= form_with model: @template, local: true do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
-          <div class="form_categoy_input">
+          <div class="form_template_input">
             <%= f.label :テンプレート %>
-            <%= f.text_field :content, class:"form-category" %>
+            <%= f.text_field :content, class:"form-template" %>
           </div>
-          <div class="category_btn_area">
-            <%= f.submit "登録する", class: "btn_base_category" %>
+          <div class="template_btn_area">
+            <%= f.submit "登録する", class: "btn_base_template" %>
           </div>
       <% end %>
   </div>
