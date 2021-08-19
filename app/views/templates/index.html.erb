@@ -9,8 +9,9 @@
             </div>
             <% if current_user.id == template.user_id %>
                  <p class="templates_delete"><%= link_to '削除', template, method: :delete, class:"template_delete",
-                                    data: { confirm: "テンプレートを削除しますか?" } %><% end %></p>
+                                    data: { confirm: "テンプレートを削除しますか?" } %></p>
+            <% end %>
           <% end %>
-        </div>
+       </div>
   </div>
 </section>

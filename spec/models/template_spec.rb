@@ -7,7 +7,6 @@ RSpec.describe Template, type: :model do
 
     it '正常に投稿できる' do
       expect(template).to be_valid
-      template.save
     end
 
     it 'user_idがなければ無効' do
@@ -26,7 +25,6 @@ RSpec.describe Template, type: :model do
       it '140文字以内なら有効' do
         template.content = 'a' * 140
         expect(template).to be_valid
-        template.save
       end
 
       it '141文字以上だと無効' do
@@ -38,7 +36,6 @@ RSpec.describe Template, type: :model do
       it '絵文字を投稿できること' do
         template.content = '😃' 
         expect(template).to be_valid
-        template.save
       end
     end
   end

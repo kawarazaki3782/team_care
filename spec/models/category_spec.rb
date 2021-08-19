@@ -7,7 +7,6 @@ RSpec.describe Category, type: :model do
 
     it '正常に投稿できる' do
       expect(category).to be_valid
-      category.save
     end
 
     it 'user_idがなければ無効' do
@@ -26,7 +25,6 @@ RSpec.describe Category, type: :model do
       it '10文字以内なら有効' do
         category.name = 'a' * 10
         expect(category).to be_valid
-        category.save
       end
 
       it '11文字以上だと無効' do

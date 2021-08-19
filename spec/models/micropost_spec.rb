@@ -7,7 +7,6 @@ RSpec.describe Micropost, type: :model do
 
     it '正常に投稿できる' do
       expect(micropost).to be_valid
-      micropost.save
     end
 
     it 'user_idがなければ無効' do
@@ -26,13 +25,11 @@ RSpec.describe Micropost, type: :model do
       it 'contentが140文字以内なら投稿できる' do
         micropost.content = 'a' * 140
         expect(micropost).to be_valid
-        micropost.save
       end
 
       it 'contentが絵文字でも投稿できる' do
         micropost.content = '😃'
         expect(micropost).to be_valid
-        micropost.save
       end
 
       it 'contentが140文字以上だと無効' do
@@ -44,7 +41,6 @@ RSpec.describe Micropost, type: :model do
       it '画像がなくても投稿できる' do
         micropost.post_image = nil
         expect(micropost).to be_valid
-        micropost.save
       end
     end
   end

@@ -89,7 +89,6 @@ RSpec.describe User, type: :model do
         user.password = 'a' * 6
         user.password_confirmation = 'a' * 6
         expect(user).to be_valid
-        user.save
       end
     end
 
@@ -102,7 +101,6 @@ RSpec.describe User, type: :model do
     it 'プロフィールに絵文字が使えること' do
       user = FactoryBot.build(:user, profile: '😃' )
       expect(user).to be_valid
-      user.save
     end
 
     it 'メールフォーマットが無効な場合' do

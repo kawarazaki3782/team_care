@@ -6,7 +6,6 @@ RSpec.describe Comment, type: :model do
 
     it '正常に投稿できる' do
       expect(comment).to be_valid
-      comment.save
     end
 
     context 'content' do
@@ -19,7 +18,6 @@ RSpec.describe Comment, type: :model do
       it '140文字以内なら有効' do
         comment.content = 'a' * 140
         expect(comment).to be_valid
-        comment.save
       end
 
       it '141文字以上だと無効' do

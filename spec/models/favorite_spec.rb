@@ -6,7 +6,6 @@ RSpec.describe Favorite, type: :model do
       let(:favorite) { create(:favorite) }
       it '正常に保存できること' do
         expect(favorite).to be_valid
-        favorite.save
       end
     end
 

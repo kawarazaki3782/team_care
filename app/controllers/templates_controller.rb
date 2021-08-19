@@ -10,7 +10,7 @@ class TemplatesController < ApplicationController
   def  create
     @template = Template.new(template_params)
     @template.user_id = current_user.id
-    if @template.save!
+    if @template.save
         flash[:success] = "テンプレートが作成されました"
         redirect_to templates_path
     else
@@ -20,13 +20,18 @@ class TemplatesController < ApplicationController
 
   def  destroy
     @template = Template.find(params[:id])
-    @template.destroy
-    flash[:danger] = "テンプレートが削除されました"
-    redirect_to templates_path
+    if @template.user == current_user 
+      @template.destroy!
+      flash[:danger] = "テンプレートが削除されました"
+      redirect_to templates_path
+    else
+      flash[:danger] = "テンプレートが削除できません"
+      redirect_to templates_path
+    end
   end
 
   private
   def template_params
-    params.require(:template).permit(:content, :usr_id)
+    params.require(:template).permit(:content)
   end
 end
