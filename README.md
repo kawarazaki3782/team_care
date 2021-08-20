@@ -6,6 +6,8 @@
 <br>
 このアプリの目的は介護者を孤立させないことです。<br>
 ひとりで悩まず、まずは誰かに相談しましょう。<br>
+![README](https://user-images.githubusercontent.com/79620911/130163579-77c19193-1100-45d0-81a6-cfd4c2e1bfe9.jpeg)
+
 
 ## URL
 
