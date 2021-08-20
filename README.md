@@ -19,17 +19,16 @@ https://teamcare.herokuapp.com/
 ●フロントエンド<br>
 ・HTML/CSS<br>
 ・Javascript<br>
-・Vue.js 2.6.12<br>
+・(未)Vue.js 2.6.12<br>
 ●バックエンド<br>
-・Ruby 2.6.5<br>
-・Ruby on Rails 6.1.3 (一部APIモード)<br>
+・Ruby 2.7.3<br>
+・Ruby on Rails 6.1.1<br>
 ・Rubocop（コード解析ツール)<br>
 ・Rspec（テスト)<br>
 ●インフラ<br>
-D・ocker / Docker-compose<br>
-・AWS (EC2 / RDS(MySQL) / S3 / VPC / IAM / Route53 / ACM / ALB / Cloudfront)<br>
-・CircleCI (CI/CD)<br>
-・MySQL 8.0.21 / Puma / Nginx<br>
+・(未)AWS (EC2 / RDS(MySQL) / S3 / VPC / IAM / Route53 / ACM / ALB / Cloudfront)<br>
+・(未)CircleCI (CI/CD)<br>
+・(未)MySQL 8.0.25 / Puma / Nginx<br>
 
 ## ER図
 
