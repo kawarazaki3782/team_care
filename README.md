@@ -13,17 +13,25 @@ https://teamcare.herokuapp.com/
 
 ## 使用技術
 
-●フロントエンド
-・HTML/CSS
-・Javascript
-・Vue.js 2.6.12
-●バックエンド
-・Ruby 2.6.5
-・Ruby on Rails 6.1.3 (一部APIモード)
-・Rubocop（コード解析ツール)
-・Rspec（テスト)
-●インフラ
-D・ocker / Docker-compose
-・AWS (EC2 / RDS(MySQL) / S3 / VPC / IAM / Route53 / ACM / ALB / Cloudfront)
-・CircleCI (CI/CD)
-・MySQL 8.0.21 / Puma / Nginx
+●フロントエンド<br>
+・HTML/CSS<br>
+・Javascript<br>
+・Vue.js 2.6.12<br>
+●バックエンド<br>
+・Ruby 2.6.5<br>
+・Ruby on Rails 6.1.3 (一部APIモード)<br>
+・Rubocop（コード解析ツール)<br>
+・Rspec（テスト)<br>
+●インフラ<br>
+D・ocker / Docker-compose<br>
+・AWS (EC2 / RDS(MySQL) / S3 / VPC / IAM / Route53 / ACM / ALB / Cloudfront)<br>
+・CircleCI (CI/CD)<br>
+・MySQL 8.0.21 / Puma / Nginx<br>
+
+## ER図
+
+
+## AWS構成図
+
+
+## 機能一覧
