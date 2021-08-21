@@ -31,8 +31,7 @@ https://teamcare.herokuapp.com/
 ・(未)MySQL 8.0.25 / Puma / Nginx<br>
 
 ## ER図
-
-
+![チームケアER図](https://user-images.githubusercontent.com/79620911/130318202-99329257-b443-4e8e-b9b5-794e308bb155.png)
 ## AWS構成図
 
 
