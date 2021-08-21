@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: %i[index edit destroy following followers]
-  # before_action :guest_user, only: :edit
+  before_action :guest_user, only: :edit
   before_action :correct_user, only: :edit
   before_action :admin_user, only: :destroy
   before_action :blocking_user, only: :show
@@ -136,11 +136,9 @@ class UsersController < ApplicationController
 
   def help
     @user = current_user
-    @users = User.all
-    @user.create_notification_help!(@user,@users)
+    current_user.create_notification_help!
     flash[:success] = '全利用者に通知を送りました'
     render 'show'
-
   end
 
   private

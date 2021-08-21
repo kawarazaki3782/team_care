@@ -27,13 +27,11 @@ module NotificationsHelper
       tag.a(@visiter.name,
             style: 'font-weight: bold;') + 'が' + tag.a('あなたの投稿', href: diary_path(notification.diary_id),
                                                                  style: 'font-weight: bold;') + 'にコメントしました'
-    
     when 'help'
       tag.a(notification.visiter.name, style: 'font-weight: bold;') + 'が助けを呼んでいます、声をかけましょう'         
     
     when 'dm'
       tag.a(notification.visiter.name, style: 'font-weight: bold;') + 'からメッセージが届きました'         
- 
     end
   end
 

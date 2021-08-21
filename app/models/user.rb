@@ -118,19 +118,18 @@ class User < ApplicationRecord
     end
   end
 
-  def create_notification_help!(current_user, users)
-    users = User.where.not(id: current_user.id).select(:id)
-      users.each do |user|
-        save_notification_help!(current_user,user.id)     
+  def create_notification_help!
+    user_ids = User.where.not(id: id).select(:id)
+      user_ids.each do |user_id|
+        save_notification_help!(user_id)     
       end
   end
 
-  def save_notification_help!(current_user, visited_id)
-    notification = current_user.active_notifications.new(
-      visited_id: visited_id,
+  def save_notification_help!(visited_id)
+    active_notifications.create!(
+      visited_id: visited_id.id,
       action: 'help'
     )
-    notification.save if notification.valid?
   end
 
   # すでにブロック済みであればtrue返す

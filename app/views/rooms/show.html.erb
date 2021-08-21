@@ -27,7 +27,6 @@
     <%= f.text_field :content, :placeholder => "メッセージを入力して下さい" , :size => 70 %>
     <p class="message_emoji">※絵文字が使えます</p>
     <%= f.hidden_field :room_id, :value => @room.id %>
-    <%= f.hidden_field :room_id, :value => @room.id %>
     <br>
     <%= f.submit "投稿する", class: "btn_base_dm" %> 
   <% end %>
