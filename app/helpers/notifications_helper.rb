@@ -30,9 +30,11 @@ module NotificationsHelper
     
     when 'help'
       tag.a(notification.visiter.name, style: 'font-weight: bold;') + 'が助けを呼んでいます、声をかけましょう'         
+    
+    when 'dm'
+      tag.a(notification.visiter.name, style: 'font-weight: bold;') + 'からメッセージが届きました'         
+ 
     end
-    
-    
   end
 
   def unchecked_notifications

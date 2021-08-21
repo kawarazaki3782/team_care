@@ -48,4 +48,12 @@ class ApplicationRecord < ActiveRecord::Base
   def self.diary_index(current_user)
     Diary.where(user_id: current_user, status: :published).order('created_at DESC').all
   end
+
+  def create_notification_dm!(current_user, visited_id)
+    notification = current_user.active_notifications.new(
+      visited_id: visited_id,
+      action: 'dm'
+    )
+    notification.save if notification.valid?
+  end
 end
