@@ -1,24 +1,59 @@
-# README
+# TeamCare
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+「チームケア」は介護者同士や介護者と事業者の交流を目的としたSNSです。<br>
+つぶやきの簡単投稿機能や日記の投稿機能を使って外部に発信することができます。<br>
+またいいね機能やコメント機能で他者と交流ができます。<br>
+<br>
+このアプリの目的は介護者を孤立させないことです。<br>
+ひとりで悩まず、まずは誰かに相談しましょう。<br>
+<br>
+![README](https://user-images.githubusercontent.com/79620911/130163579-77c19193-1100-45d0-81a6-cfd4c2e1bfe9.jpeg)
+<br>
 
-Things you may want to cover:
+## URL
 
-* Ruby version
+https://teamcare.herokuapp.com/
 
-* System dependencies
+## 使用技術
 
-* Configuration
+●フロントエンド<br>
+・HTML/CSS<br>
+・Javascript<br>
+・(未)Vue.js 2.6.12<br>
+●バックエンド<br>
+・Ruby 2.7.3<br>
+・Ruby on Rails 6.1.1<br>
+・Rubocop（コード解析ツール)<br>
+・Rspec（テスト)<br>
+●インフラ<br>
+・(未)AWS (EC2 / RDS(MySQL) / S3 / VPC / IAM / Route53 / ACM / ALB / Cloudfront)<br>
+・(未)CircleCI (CI/CD)<br>
+・(未)MySQL 8.0.25 / Puma / Nginx<br>
 
-* Database creation
+## ER図
 
-* Database initialization
 
-* How to run the test suite
+## AWS構成図
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## 機能一覧
+・ユーザー新規登録/ログイン<br>
+・ユーザー情報編集<br>
+・簡単ログイン<br>
+・投稿(つぶやき、日記)<br>
+・つぶやきの簡単投稿機能<br>
+・写真の投稿(つぶやき、日記)<br>
+・絵文字の投稿(つぶやき、日記)<br>
+・いいね<br>
+・ブックマーク<br>
+・フォロー/フォロー解除<br>
+・ダイレクトメッセージ<br>
+・ブロック<br>
+・カテゴリー<br>
+・つぶやき検索<br>
+・人気表示（つぶやき、日記）<br>
+・新着表示（つぶやき、日記）<br>
+・コメント<br>
+・通知（いいね、フォロー、コメント）<br>
+・問い合わせ機能<br>
 
-* ...
