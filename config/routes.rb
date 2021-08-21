@@ -80,7 +80,7 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      get :blocking, :blockers
+      get :blocking, :blockers, :help
     end
   end
   resources :blocks, only: %i[create destroy]

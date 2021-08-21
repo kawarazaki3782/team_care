@@ -134,6 +134,15 @@ class UsersController < ApplicationController
     render 'show_blocking'
   end
 
+  def help
+    @user = current_user
+    @users = User.all
+    @user.create_notification_help!(@user,@users)
+    flash[:success] = '全利用者に通知を送りました'
+    render 'show'
+
+  end
+
   private
 
   def user_params

@@ -43,6 +43,16 @@ RSpec.describe '通知機能', type: :system, js: true do
     expect(page).to have_css '.notification_image', visible: false
   end
 
+  it '助けを求めた通知を確認する' do
+    find('a.btn_base_users', match: :first).click
+    click_on 'サンプル太郎'
+    click_on '助けを求める'
+    click_on 'ログアウト', match: :first
+    sign_in_as user
+    click_on '通知', match: :first
+    expect(page).to have_css '.notification_image', visible: false
+  end
+
   describe '通知を削除する' do
     let!(:like) { FactoryBot.create(:like, user_id: other_user.id, micropost_id: micropost.id) }
     let!(:notification) do
