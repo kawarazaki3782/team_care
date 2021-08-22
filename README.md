@@ -57,4 +57,11 @@ https://teamcare.herokuapp.com/
 
 ## イチ押し機能
 ・つぶやきの簡単投稿機能<br>
+![簡単投稿機能①](https://user-images.githubusercontent.com/79620911/130345739-c01d4fc3-5b5f-4a6f-8bc2-cf1a103526d4.png)
+![簡単投稿②](https://user-images.githubusercontent.com/79620911/130345755-f85f787f-7a30-4391-a83c-d540550c1984.png)
+![簡単投稿機能③](https://user-images.githubusercontent.com/79620911/130345763-58ecb898-fec1-4acc-a98c-0d1b56ca1f73.png)
+
 ・ヘルプ機能(他のユーザーに助けを求める)<br>
+![助けを求める①](https://user-images.githubusercontent.com/79620911/130345775-a2375c25-347d-4726-b4c7-d45ef778ef5e.png)
+![助けを求める②](https://user-images.githubusercontent.com/79620911/130345783-1e0257fb-6326-49f1-9ec5-8b76ba5d4c08.png)
+
