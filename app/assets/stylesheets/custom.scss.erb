@@ -1283,6 +1283,7 @@ h2.section-title_confirm {
 	object-fit:cover;
 	border-radius:20%;
 	margin: 0 auto;
+	box-shadow: 0 0 0 1px #1a1d21, 0 0 0 2px #e9e9e9;
 
   @include mq('sp') {
 	width: 30%;
@@ -1310,6 +1311,10 @@ h2.section-title_confirm {
 	object-fit:cover;
 	border-radius:20%;
 	margin: 0 auto;
+	box-shadow: 0 0 0 1px #1a1d21, 0 0 0 2px #e9e9e9;
+
+
+
 }
 
 .icon_mini {
@@ -1317,6 +1322,7 @@ h2.section-title_confirm {
 	height:100px;
 	object-fit:cover;
 	border-radius:20%;
+	box-shadow: 0 0 0 1px #1a1d21, 0 0 0 2px #e9e9e9;
 }
 
 .btn_base_users {
@@ -1832,15 +1838,13 @@ a:hover {
 
 .login_form { 
    	padding: 0.8em;
-    outline: none;
     border: 1px solid #DDD;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
     font-size: 16px;
     width: 250px;
-	box-shadow: 0 0 3px #3498db;
-    border: 1px solid #3498db;
+    border: 1px solid #707070;
 }
 
 form dl dt{
@@ -1872,8 +1876,6 @@ form dl dd{
 
 input[type="checkbox"] {
 	transform: scale(2);
-	box-shadow: 0 0 3px #3498db;
-	border: 1px solid #3498db;
 }
 
 //////////////////////micropost 投稿//////////////////////////
@@ -1914,6 +1916,7 @@ ul.template_items {
 .micropost_emoji {
 	text-align: left;
 	font-weight: bold;
+	margin: 0;
 }
 
 .micropost.section {
@@ -1927,17 +1930,15 @@ h2.section-title_post {
 }
 
 .microposts_textarea {
-  	padding: 0.8em;
-    outline: none;
+    width: 90%;
+    height: 200px;
+	padding: 0.8em;
     border: 1px solid #DDD;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
     font-size: 16px;
-    width: 100%;
-    height: 200px;
-	box-shadow: 0 0 3px #3498db;
-    border: 1px solid #3498db;
+	border: 1px solid #707070;    
 }
 
 .btn_base_post{
@@ -1957,6 +1958,7 @@ h2.section-title_post {
 	padding: 0rem 2rem;
     box-shadow: 2px 2px 4px gray;
     border: 1px solid #ccc;
+	margin-top: 20px;
 
   a {
 	text-decoration: none;
@@ -1966,6 +1968,16 @@ h2.section-title_post {
 .post_form {
     bottom: 57%;
     left: 29%;
+
+	@include mq('sp') {
+		font-size: 12px;
+		margin-top: 5px;
+ }
+
+  @include mq('sm') {
+	font-size: 12px;
+	margin-top: 5px;
+ }
 }
 
 .field_post {
@@ -1984,7 +1996,8 @@ h2.section-title_post {
     height: 600px;
     padding-top: 40px;
     border-radius: 10px;
-    margin: 0 auto
+    margin: 0 auto;
+	padding: 20px;
 }
 
 //////////////////////micropost 投稿一覧///////////////////////////
@@ -2235,6 +2248,7 @@ p.templates_delete {
     object-fit: cover;
     border-radius: 20%;
 	margin: 0 auto;
+	box-shadow: 0 0 0 1px #1a1d21, 0 0 0 2px #e9e9e9;
 }
 
 .timeline_posts_detail {
@@ -2538,9 +2552,17 @@ h2.section-title_diary {
     -moz-border-radius: 3px;
     border-radius: 3px;
     font-size: 16px;
-    height: 800px;
+    height: 830px;
 	margin: 0 auto;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
+	width: 80%;
+
+	 @include mq('sp') {
+	 height: 850px;
+   }
+    @include mq('sm') {
+	 height: 850px;
+   }  
 }
 
 .btn_base_diary{
@@ -2560,7 +2582,7 @@ h2.section-title_diary {
 	padding: 0rem 2rem;
     box-shadow: 2px 2px 4px gray;
     border: 1px solid #ccc;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 
   a {
 	text-decoration: none;
@@ -2602,6 +2624,7 @@ h2.section-title_diary {
 
 input#diary_diary_image {
     margin: auto;
+	margin-top: 15px;
 }
 
 .diary_title {
@@ -2611,7 +2634,6 @@ input#diary_diary_image {
     height: 50px;
     padding-top: 10px;
     border-radius: 10px;
-	border: 1px solid #3498db;
 }
 
 .diary_content {
@@ -2621,7 +2643,6 @@ input#diary_diary_image {
     height: 600px;
     padding-top: 40px;
     border-radius: 10px;
-	border: 1px solid #3498db;
 }
 
 .btn_diary {
@@ -2784,6 +2805,7 @@ select#diary_status {
     width: 250px;
     height: 50px;
     font-size: 15px;
+	margin-bottom: 10px;
 }
 
 select#diary_category_id {
@@ -2934,6 +2956,7 @@ h2.section-title_diary {
     object-fit: cover;
     border-radius: 20%;
     margin: 0 auto;
+	box-shadow: 0 0 0 1px #1a1d21, 0 0 0 2px #e9e9e9;
 
   @include mq('sp') {
 	width: 30%
@@ -3068,6 +3091,7 @@ li.users_list {
     height: 100px;
     object-fit: cover;
     border-radius: 20%;
+	box-shadow: 0 0 0 1px #1a1d21, 0 0 0 2px #e9e9e9;
 }
 
 //////////////////////ダイレクトメッセージ///////////////////////////
@@ -3213,6 +3237,7 @@ input#message_content {
     object-fit: cover;
     border-radius: 20%;
     margin-top: 40px;
+	box-shadow: 0 0 0 1px #1a1d21, 0 0 0 2px #e9e9e9;
 }
 
 .user-view.clearfix {
@@ -3271,6 +3296,7 @@ span.rank_item_content {
     object-fit: cover;
     border-radius: 20%;
 	display: unset;
+	box-shadow: 0 0 0 1px #1a1d21, 0 0 0 2px #e9e9e9;
 }
 
 h2.section-title_users {
