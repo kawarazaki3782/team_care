@@ -26,18 +26,21 @@ class Diary < ApplicationRecord
     )
   end
 
-  def create_notification_comment!(current_user, comment_id, diary)
+  def create_notification_comment(current_user, comment_id, diary)
     comment_users = Comment.select(:user_id).where(diary_id: id).where.not(user_id: current_user.id).distinct 
     comment_users = comment_users.select {|user| user['user_id'] != diary.user_id}
     users = [diary,comment_users]
     users = users.flatten
+    if users.blank?
+      save_notification_comment(current_user, comment_id, user_id)
+    else
       users.each do |user|
-        save_notification_comment!(current_user, comment_id, user['user_id'])
+        save_notification_comment(current_user, comment_id, user['user_id'])
       end
-        save_notification_comment!(current_user, comment_id, user_id) if users.blank?
+    end
   end
 
-  def save_notification_comment!(current_user, comment_id, visited_id)
+  def save_notification_comment(current_user, comment_id, visited_id)
     notification = current_user.active_notifications.new(
       diary_id: id,
       comment_id: comment_id,
@@ -45,6 +48,6 @@ class Diary < ApplicationRecord
       action: 'diary_comment',
     )
     notification.checked = true if notification.visiter_id == notification.visited_id
-    notification.save if notification.valid?
+    notification.save
   end
 end
