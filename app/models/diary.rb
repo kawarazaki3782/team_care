@@ -16,12 +16,11 @@ class Diary < ApplicationRecord
   has_many :notifications, dependent: :destroy
 
   def create_notification_by(current_user)
-    notification = current_user.active_notifications.new(
+    current_user.active_notifications.create(
       diary_id: id,
       visited_id: user_id,
       action: 'diary_like'
     )
-    notification.save if notification.valid?
   end
 
   def create_notification_comment!(current_user, comment_id, diary)
