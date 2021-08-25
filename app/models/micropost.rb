@@ -13,6 +13,10 @@ class Micropost < ApplicationRecord
   has_many :users, through: :favorites
   has_many :notifications, dependent: :destroy
 
+  def self.like_top5_ids
+    where(id: Like.group(:micropost_id).order('count(micropost_id) desc').limit(5).pluck(:micropost_id))
+  end
+
   def create_notification_by(current_user)
     notification = current_user.active_notifications.new(
       micropost_id: id,
