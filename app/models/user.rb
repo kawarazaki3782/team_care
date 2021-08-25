@@ -2,17 +2,17 @@ class User < ApplicationRecord
   before_save { email.downcase! }
   attr_accessor :remember_token
 
-  validates :name,  presence: true, length: { maximum: 15 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true
   has_secure_password
+  validates :name,  presence: true, length: { maximum: 15 }
   validates :password, presence: true, length: { minimum: 6 }
   validates :profile, length: { maximum: 1000 }
   validates :gender, presence: true
   validates :long_teamcare, presence: true
-  mount_uploader :profile_image, ImageUploader
+  
   has_many :microposts, dependent: :destroy
   has_many :active_relationships, class_name: 'Relationship',
                                   foreign_key: 'follower_id',
@@ -42,6 +42,8 @@ class User < ApplicationRecord
   has_many :blockers, through: :blockers_blocks, source: :blocker
   has_many :templates, dependent: :destroy
 
+  mount_uploader :profile_image, ImageUploader
+
   # 渡された文字列のハッシュ値を返す
   def self.digest(string)
     cost = if ActiveModel::SecurePassword.min_cost
@@ -65,7 +67,7 @@ class User < ApplicationRecord
 
   # 渡されたトークンがダイジェストと一致したらtrueを返す
   def authenticated?(remember_token)
-    return false if remember_digest.nil?
+    return false unless remember_digest
 
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
@@ -90,7 +92,7 @@ class User < ApplicationRecord
 
   # ユーザーをフォロー解除する
   def unfollow(other_user)
-    active_relationships.find_by(followed_id: other_user.id).destroy
+    active_relationships.find_by(followed_id: other_user.id)&.destroy
   end
 
   # 現在のユーザーがフォローしてたらtrueを返す
@@ -114,7 +116,7 @@ class User < ApplicationRecord
         visited_id: id,
         action: 'follow'
       )
-      notification.save if notification.valid?
+      notification.save 
     end
   end
 
