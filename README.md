@@ -1,25 +1,27 @@
-# TeamCare
+# 制作背景
 
 「チームケア」は介護者同士や介護者と事業者の交流を目的としたSNSです。<br>
+介護者が孤立するという社会問題に対して、介護者同士で悩みを共有できたり、介護で困っている人と介護の負担を軽減するサービスを提供する事業者との橋渡しをしたいと思い、このアプリを作成しました。<br>
 つぶやきの簡単投稿機能や日記の投稿機能を使って外部に発信することができます。<br>
 またいいね機能やコメント機能で他者と交流ができます。<br>
 <br>
 このアプリの目的は介護者を孤立させないことです。<br>
 ひとりで悩まず、まずは誰かに相談しましょう。<br>
 <br>
-![README](https://user-images.githubusercontent.com/79620911/130163579-77c19193-1100-45d0-81a6-cfd4c2e1bfe9.jpeg)
+![ポートフォリオ紹介](https://user-images.githubusercontent.com/79620911/131180896-e42f1649-f4b1-4bf9-b9e8-cde6837dcaf3.gif)
 <br>
 
 ## URL
 
-https://teamcare.herokuapp.com/
-
+・URL:https://teamcare.herokuapp.com/<br>
+・簡単ログインボタンでスムーズにログインできます。
+![簡単ログインgit hub](https://user-images.githubusercontent.com/79620911/131207004-159d4a07-bf26-4286-9f6d-c28ea105dc3a.png)
 ## 使用技術
 
 ●フロントエンド<br>
 ・HTML/CSS<br>
 ・Javascript<br>
-・(未)Vue.js 2.6.12<br>
+・Vue.js 2.6.12<br>
 ●バックエンド<br>
 ・Ruby 2.7.3<br>
 ・Ruby on Rails 6.1.1<br>
@@ -32,7 +34,7 @@ https://teamcare.herokuapp.com/
 
 ## ER図
 ![チームケアER図](https://user-images.githubusercontent.com/79620911/130318202-99329257-b443-4e8e-b9b5-794e308bb155.png)
-## AWS構成図
+## インフラ構成図
 
 
 ## 機能一覧
@@ -54,6 +56,10 @@ https://teamcare.herokuapp.com/
 ・コメント<br>
 ・通知（いいね、フォロー、コメント、ダイレクトメッセージ）<br>
 ・問い合わせ機能<br>
+・レスポンシブ対応(パソコン、タブレット、スマートフォン)<br>
+<div align="center">
+<img src="https://user-images.githubusercontent.com/79620911/131207280-e7fe2722-4fa6-4037-b576-0d7890f7f1f6.gif" />
+</div>
 
 ## イチ押し機能
 ・つぶやきの簡単投稿機能<br>
@@ -64,4 +70,14 @@ https://teamcare.herokuapp.com/
 ・ヘルプ機能(他のユーザーに助けを求める)<br>
 ![助けを求める①](https://user-images.githubusercontent.com/79620911/130345775-a2375c25-347d-4726-b4c7-d45ef778ef5e.png)
 ![助けを求める②](https://user-images.githubusercontent.com/79620911/130345783-1e0257fb-6326-49f1-9ec5-8b76ba5d4c08.png)
+
+## 工夫した点
+・介護者にフィードバックをもらった。<br>
+開発中に介護者数名に設計段階で意見をもらったり、ポートフォリオを実際に使ってもらい、フィードバックを得ました。<br>
+「この画面が見にくい」「この機能が使いにくい」等の意見を取り入れて、ポートフォリオを改善してきました。<br>
+フィードバックを反映させた機能として、つぶやきの簡単投稿機能とヘルプ機能があります。<br>
+その他、ボタンの大きさ等のデザインもフィードバックを反映させました。<br>
+
+・ご年配の方でも使いやすいUI/UXを意識しました。<br>
+Vue.jsを導入して、コメントの投稿とお気に入りの登録を非同期通信で実装しました。<br>
 
