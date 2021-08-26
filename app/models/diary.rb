@@ -25,7 +25,6 @@ class Diary < ApplicationRecord
       visited_id: user_id,
       action: 'diary_like'
     )
-    notification.save 
   end
 
   def create_notification_comment!(current_user, comment_id, diary)

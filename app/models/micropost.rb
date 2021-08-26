@@ -23,7 +23,6 @@ class Micropost < ApplicationRecord
       visited_id: user_id,
       action: 'micropost_like'
     )
-    notification.save 
   end
 
   def create_notification_comment!(current_user, comment_id, micropost)

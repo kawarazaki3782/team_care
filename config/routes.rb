@@ -85,4 +85,9 @@ Rails.application.routes.draw do
   end
   resources :blocks, only: %i[create destroy]
   resources :templates, only: %i[new index create destroy]
+
+  namespace :api, { format: 'json' } do
+    resources :favorites, only: %i[create destroy show]
+  end 
+  resources :favorites, only: %i[index]
 end

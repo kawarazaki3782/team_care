@@ -1,0 +1,12 @@
+<%= javascript_pack_tag "index"%>
+<div id ="Favorite">
+  <% @microposts.each do |micropost| %>
+  
+    <% if micropost == nil %>
+    nilです
+    <%else%>
+    <favorite-button :user-id="<%= current_user.id %>" :micropost-id="<%= micropost.id %>"></favorite-button>
+    <%= micropost.content%>
+    <%end%>
+  <%end%>
+</div>
