@@ -1,18 +1,28 @@
 class Api::Micropost::FavoritesController < ActionController::API
   
   def  show
-    @favorite =  Favorite.find(params[:favorite_id])
+    args = { user_id: params[:user_id], micropost_id: params[:micropost_id] }
+
+    if Favorite.exists?(args)
+      render json: { id: Favorite.find_by!(args).id}
+    else
+      render json: { id: nil }
+    end
   end
 
   def  create
-    @micropost = Micropost.find(params[:micropost_id])
-    @favorite = current_user.favorites.create!(micropost_id: @micropost.id)
-    head :created
+    favorite = Favorite.create!(favorite_params)
+    render status: 201, json: { id: favorite.id }
   end
 
   def  destroy
-    @favorite = Favorite.find_by(micropost_id: params[:micropost_id], user_id: current_user.id)
-    @favorite.destroy
+    Favorite.find(params[:id]).destroy!
     head :ok 
+  end
+
+  private 
+
+  def favorite_params
+    params.require(:favorite).permit(:user_id, :micropost_id)
   end
 end

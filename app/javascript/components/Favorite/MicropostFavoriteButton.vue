@@ -1,75 +1,66 @@
 <template>
-  <div>
-    <div v-if="isFavorited" @click="deleteFavorite()">
-      お気に入り解除 {{ count }}
-    </div>
-    <div v-else @click="registerFavorite()">
-      お気に入り {{ count }}
-    </div>
+  <div v-if="favoriteId" @click="destroyMicropostFavorite">
+    お気に入り解除
+  </div>
+  <div v-else @click="createMicropostFavorite">
+    お気に入り
   </div>
 </template>
 
 <script>
-// axios と rails-ujsのメソッドインポート
 import axios from 'axios'
-import { csrfToken } from 'rails-ujs'
-// CSRFトークンの取得とリクエストヘッダへの設定をしてくれます
-axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken()
-
 export default {
-  // propsでrailsのviewからデータを受け取る
-  props: ['userId', 'micropostId'],
+  props: ["userId", "micropostId"],
   data() {
     return {
-      favoriteList: []  // お気に入り一覧を格納するための変数　{ id: 1, user_id: 1, micropost_id: 1 } がArrayで入る
+      favoriteId: null
     }
   },
-  
-  // 算出プロパティ ここではfavoriteListが変更される度に、count、isFavoritedが再構築される (watchで監視するようにしても良いかも)
-  computed: {
-//お気に入りの数のを返す
-　count() {
-      return this.favoriteList.length
-    },
-    // ログインユーザが既にお気に入り登録しているかを判定する
-    isFavorited() {
-      if (this.favoriteList.length === 0) { return false }
-      return Boolean(this.findFavorited())
-    }
-  },
-  // Vueインスタンスの作成・初期化直後に実行される
   created: function() {
-    this.fetchFavoriteByMicropostId().then(result => {
-      this.favoriteList = result
-    })
+    this.fetchApiMicropostFavorite()
   },
   methods: {
-     // rails側のcreateアクションにリクエストするメソッド
-    registerFavorite: async function() {
-      const res = await axios.micropost('/api/favorites', { micropost_id: this.micropostId })
-      if (res.status !== 201) {
-        // エラー処理
-      }
-      this.fetchFavoriteByMicropostId().then(result => {
-        this.favoriteList = result
-      })
-    },
-    // rails側のdestroyアクションにリクエストするメソッド
-    deleteFavorite: async function() {
-      const favoriteId = this.findFavoriteId()
-      const res = await axios.delete(`/api/favorites/${favoriteId}`)
+    fetchApiMicropostFavorite: async function() {
+      const res = await axios.get(`/api/micropost/favorite?user_id=${this.userId}&micropost_id=${this.micropostId}`)  
       if (res.status !== 200) {
-        // エラー処理
+        alert("お気入りの取得に失敗しました")
+      } else {
+        this.favoriteId = res.data.id
       }
-      this.favoriteList = this.favoriteList.filter(n => n.id !== favoriteId)
     },
-    // ログインユーザがお気に入りしているfavoriteモデルのidを返す
-    findFavoriteId: function() {
-      const favorite = this.favoriteList.find((favorite) => {
-        return (favorite.user_id === this.userId)
-      })
-      if (favorite) { return favorite.id }
+    createMicropostFavorite: async function() {
+      const res = await axios.post('/api/micropost/favorite', { user_id: this.userId, micropost_id: this.micropostId })
+      if (res.status !== 201) {
+        alert("お気入りの登録に失敗しました")
+      } else {
+        this.favoriteId = res.data.id
+      }
+    },
+    destroyMicropostFavorite: async function() {
+      const res = await axios.delete('/api/micropost/favorite', { data: { id: this.favoriteId }})
+      if (res.status !== 200) {
+        alert("お気入りの削除に失敗しました")　
+      } else {
+        this.favoriteId = null
+      }
     }
   }
 }
 </script>
+
+<style scoped>
+div {
+  display: inline-block;
+  line-height: 72px;
+  background: #eebeb4;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  border-radius: 8px;
+  outline: none;
+  box-shadow: 2px 2px 4px grey;
+  margin-bottom: 30px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+</style>

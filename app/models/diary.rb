@@ -62,10 +62,10 @@ class Diary < ApplicationRecord
   end
 
   def self.draft_index(current_user)
-    Diary.where(user_id: current_user, status: :draft).order('created_at DESC').all
+    Diary.where(user_id: current_user, status: :draft).order('created_at DESC')
   end
 
   def self.diary_index(current_user)
-    Diary.where(user_id: current_user, status: :published).order('created_at DESC').all
+    Diary.where(user_id: current_user, status: :published).order('created_at DESC')
   end
 end

@@ -1,6 +1,6 @@
 class Favorite < ApplicationRecord
-  validates :user_id, presence: true
-
+  validate :user_id
+  
   belongs_to :user
   belongs_to :micropost, optional: true
   belongs_to :diary, optional: true

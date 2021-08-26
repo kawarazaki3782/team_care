@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'favorites/index'
   get 'inquiry/index'
   get 'inquiry/confirm'
   get 'inquiry/thanks'
@@ -72,7 +71,6 @@ Rails.application.routes.draw do
     delete '/add' => 'favorites#destroy'
   end
 
-  resources :favorites
   resources :messages, only: %i[create destroy]
   resources :rooms, only: %i[create show index]
   resources :notifications, only: %i[index destroy]
@@ -85,9 +83,11 @@ Rails.application.routes.draw do
   end
   resources :blocks, only: %i[create destroy]
   resources :templates, only: %i[new index create destroy]
-
+  
   namespace :api, { format: 'json' } do
-    resources :favorites, only: %i[create destroy show]
-  end 
+    namespace :micropost do
+      resource :favorite, only: %i[create destroy show]
+    end
+  end
   resources :favorites, only: %i[index]
 end

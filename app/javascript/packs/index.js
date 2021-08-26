@@ -1,4 +1,4 @@
-import 'babel-polyfill'
+// import 'babel-polyfill'
 import Vue from 'vue'
 
 // 作成したコンポーネントファイルをimportします
@@ -6,7 +6,7 @@ import MicropostFavoriteButton from '../components/Favorite/MicropostFavoriteBut
 
 document.addEventListener('DOMContentLoaded', () => {
   new Vue({
-    el: '#Favorite',
+    el: '#micropost_favorite_button',
     components: { MicropostFavoriteButton }
   })
 })

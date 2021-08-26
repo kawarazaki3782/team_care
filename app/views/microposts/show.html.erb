@@ -1,3 +1,4 @@
+<%= javascript_pack_tag "index" %>
 <section id="" class="micropost_show section">
   <div class="micropost__inner inner">
     <h2 class="section-title_post">つぶやき詳細</h2>
@@ -22,15 +23,13 @@
                       <% end %>
                     <% end %>
                 </div>
-                    <% if !Favorite.exists?(user_id:current_user.id,micropost_id:@micropost.id) %>
-                      <%= link_to "お気に入り",micropost_add_path(@micropost), class:"btn_post_favorites", method: :post %>
-                    <% else %>
-                      <%= link_to "お気に入り解除",micropost_add_path(@micropost), class:"btn_post_favorites", method: :delete %>
-                    <% end %>
                   <span class="post_delete_show"><% if current_user?(@micropost.user) %>
                     <%= link_to "つぶやき削除", @micropost, method: :delete,class:"post-detail-delete",
                                                     data: { confirm: "つぶやきを削除しますか?" } %></p>    
-                   <% end %>   
+                   <% end %>
+                  <div id ="micropost_favorite_button">
+                    <micropost-favorite-button :user-id="<%= current_user.id %>" :micropost-id="<%= @micropost.id %>"></micropost-favorite-button>
+                  </div>
             </div>
         </div>
       </div>  
