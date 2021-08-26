@@ -1,3 +1,4 @@
+<%= javascript_pack_tag "diary_favorite" %>
 <section id="" class="diary_show section">
   <div class="diary__inner inner">
   <h2 class="section-title_diary">日記詳細</h2>
@@ -24,11 +25,9 @@
                   <% end %>
                </div>
                <div class= "diary_favorite_delte" >
-                 <% if !Favorite.exists?(user_id:current_user.id,diary_id:@diary.id) %>
-                   <%= link_to "お気に入り",diary_add_path(@diary), class:"btn_base_favorites", method: :post %>
-                 <% else %>
-                   <%= link_to "お気に入り解除",diary_add_path(@diary), class:"btn_base_favorites", method: :delete %>
-                 <% end %>  
+                 <div id ="diary_favorite_button">
+                   <diary-favorite-button :user-id="<%= current_user.id %>" :diary-id="<%= @diary.id %>"></diary-favorite-button>
+                 </div>
                    <% if current_user.id == @diary.user.id %>
                      <p class="diary_show_delete"><%= link_to "日記を削除", @diary, method: :delete,
                                               data: { confirm: "日記を削除しますか?" } %></p><% end %>    

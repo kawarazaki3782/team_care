@@ -90,4 +90,9 @@ Rails.application.routes.draw do
     end
   end
   resources :favorites, only: %i[index]
+  namespace :api, { format: 'json' } do
+    namespace :diary do
+      resource :favorite, only: %i[create destroy show]
+    end
+  end
 end
