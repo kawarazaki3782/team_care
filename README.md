@@ -7,7 +7,7 @@
 このアプリの目的は介護者を孤立させないことです。<br>
 ひとりで悩まず、まずは誰かに相談しましょう。<br>
 <br>
-![README](https://user-images.githubusercontent.com/79620911/130163579-77c19193-1100-45d0-81a6-cfd4c2e1bfe9.jpeg)
+![ポートフォリオ紹介](https://user-images.githubusercontent.com/79620911/131180896-e42f1649-f4b1-4bf9-b9e8-cde6837dcaf3.gif)
 <br>
 
 ## URL
