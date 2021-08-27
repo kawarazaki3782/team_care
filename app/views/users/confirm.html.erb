@@ -5,9 +5,16 @@
      <div class="confirm_textarea">
         <%= form_for @user do |f| %>
           <div class="confirm_image">
-            <%= image_tag @user.profile_image.url, class:'confirm_icon' %>
-            <%= f.hidden_field :profile_image %>
-            <%= f.hidden_field :profile_image_cache %>
+            <% if @user.profile_image.nil? %>
+              <%= @user.profile_image = "default.jpg"%>
+              <%= @user.profile_image_cache = "default.jpg"%>
+              <%= f.hidden_field :profile_image %>
+              <%= f.hidden_field :profile_image_cache %>
+            <% else %>
+              <%= image_tag @user.profile_image.url, class:'confirm_icon' %>
+              <%= f.hidden_field :profile_image %>
+              <%= f.hidden_field :profile_image_cache %>
+            <% end %>
           </div>
           <div class="confirm_item"> 
             氏名:<%= @user.name %>

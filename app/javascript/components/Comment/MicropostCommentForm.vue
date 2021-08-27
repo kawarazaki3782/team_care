@@ -1,27 +1,34 @@
 <template>
   <div>
-    <input type='textarea' v-model='content'>
-    <button @click="createMicropostComment">コメントする</button>
+    <div class="comment_form">
+      <input type='textarea' v-model='content'>
+      <button @click="createMicropostComment">コメントする</button>
+    </div>
     <div v-for="comment in comments" :key="comment.id">
-      <ul>
-        <li>{{ comment.user_name }}</li>
-        <li>{{ comment.created_at }}</li>
-        <li>{{ comment.content }}</li>
-        <li>{{ comment.user_profile_image }}</li>
-      </ul>
       <hr>
-      <button @click="destroyMicropostComment">削除</button>
+      <ul>
+        <li><a v-bind:href="comment.user_id"><img class="user_image" v-bind:src="comment.user_profile_image"></a></li>
+        <li>{{ comment.user_name }}</li>
+        <li>{{ comment.created_at | moment }}</li>
+        <li class="comment_content">{{ comment.content }}</li>
+      </ul>
+      <button v-if="comment.user_id === userId" @click="destroyMicropostComment(comment.id)">削除</button>
     </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import moment from "moment";
 export default {
+  filters: {
+    moment: function(date) {
+      return moment(date).format('YYYY年MM月DD日 HH:mm');
+    }
+  },
   props: ["userId", "micropostId"],
   data() {
     return {
-      commentId: null,
       content: '',
       comments: []
     }
@@ -46,8 +53,8 @@ export default {
         this.commentId = res.data.id
       }
     },
-    destroyMicropostComment: async function() {
-      const res = await axios.delete('/api/micropost/comments', { data: { id: this.commentId }})
+    destroyMicropostComment: async function(commentId) {
+      const res = await axios.delete(`/api/micropost/comments/${commentId}`)
       if (res.status != 200) {
         alert("コメントの削除に失敗しました")
       } else {
@@ -59,4 +66,21 @@ export default {
 </script>
 
 <style>
+.user_image {
+  max-width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 20%;
+  box-shadow: 0 0 0 1px #1a1d21, 0 0 0 2px #e9e9e9;
+}
+
+.comment_form {
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.comment_content {
+  overflow-wrap: anywhere;
+}
 </style>
