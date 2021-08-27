@@ -1,6 +1,6 @@
 class Api::Micropost::FavoritesController < ActionController::API
   
-  def  show
+  def show
     args = { user_id: params[:user_id], micropost_id: params[:micropost_id] }
 
     if Favorite.exists?(args)
@@ -10,12 +10,12 @@ class Api::Micropost::FavoritesController < ActionController::API
     end
   end
 
-  def  create
+  def create
     favorite = Favorite.create!(favorite_params)
     render status: 201, json: { id: favorite.id }
   end
 
-  def  destroy
+  def destroy
     Favorite.find(params[:id]).destroy!
     head :ok 
   end

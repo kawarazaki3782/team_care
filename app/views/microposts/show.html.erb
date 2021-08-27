@@ -1,4 +1,6 @@
+<%= javascript_pack_tag "micropost_comment" %>
 <%= javascript_pack_tag "index" %>
+
 <section id="" class="micropost_show section">
   <div class="micropost__inner inner">
     <h2 class="section-title_post">つぶやき詳細</h2>
@@ -61,16 +63,19 @@
       <% end %>
     </div>
 </div>
+<div id ="micropost_comment_button"> 
+  <micropost-comment-button :user-id="<%= current_user.id %>" :micropost-id="<%= @micropost.id %>"></micropost-comment-button>
+</div>
 <h2 class="section-title_post">コメント一覧<p><i class="far fa-comment comment_count"></i><%= @micropost.comments.count %></p></h2>
-  <%= form_for [@micropost, @comment] do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-    <div class="post_comment_catalog"><%= f.text_field :content %>
-      <%= f.hidden_field :micropost_id, value: @micropost.id %>
-    </div>
-    <div class="post_comment_btn">
-      <%= f.submit 'コメントする' %>
-    </div>
-  <% end %>
+  <%# <%= form_for [@micropost, @comment] do |f| %>
+  <%# <%= render 'shared/error_messages', object: f.object %>
+    <%# <div class="post_comment_catalog"><%= f.text_field :content %> 
+      <%# <%= f.hidden_field :micropost_id, value: @micropost.id %>
+    <%# </div> %>
+    <%# <div class="post_comment_btn"> %>
+      <%# <%= f.submit 'コメントする' %>
+    <%# </div>  %>
+  <%# <% end %>
     <% @comments.each do |c| %>
       <div class="timeline_area">
         <div class="timeline_posts_show">
