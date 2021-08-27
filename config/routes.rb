@@ -99,7 +99,7 @@ Rails.application.routes.draw do
   
   namespace :api, {format: 'json' } do
     namespace :micropost do
-      resource :comment, only: %i[create destory]
+      resources :comment, only: %i[create destory]
     end
   end
 end

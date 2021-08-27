@@ -2,11 +2,11 @@
 import Vue from 'vue'
 
 // 作成したコンポーネントファイルをimportします
-import MicropostCommentButton from '../components/Comment/MicropostCommentButton.vue'
+import MicropostCommentForm from '../components/Comment/MicropostCommentForm.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
   new Vue({
-    el: '#micropost_comment_button',
-    components: { MicropostCommentButton }
+    el: '#micropost_comment_form',
+    components: { MicropostCommentForm }
   })
 })

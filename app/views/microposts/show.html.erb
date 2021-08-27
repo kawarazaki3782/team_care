@@ -63,8 +63,8 @@
       <% end %>
     </div>
 </div>
-<div id ="micropost_comment_button"> 
-  <micropost-comment-button :user-id="<%= current_user.id %>" :micropost-id="<%= @micropost.id %>"></micropost-comment-button>
+<div id ="micropost_comment_form"> 
+  <micropost-comment-form :user-id="<%= current_user.id %>" :micropost-id="<%= @micropost.id %>"></micropost-comment-form>
 </div>
 <h2 class="section-title_post">コメント一覧<p><i class="far fa-comment comment_count"></i><%= @micropost.comments.count %></p></h2>
   <%# <%= form_for [@micropost, @comment] do |f| %>

@@ -1,7 +1,7 @@
 class Api::Micropost::CommentsController < ActionController::API
   
   def create
-    comment = Comment.create(comment_params)
+    comment = Comment.create!(comment_params)
     render status: 201, json: { id: comment.id }
   end
 
