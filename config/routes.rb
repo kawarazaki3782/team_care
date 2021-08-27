@@ -87,6 +87,7 @@ Rails.application.routes.draw do
   namespace :api, { format: 'json' } do
     namespace :micropost do
       resource :favorite, only: %i[create destroy show]
+      resources :comments, only: %i[index create destroy]
     end
   end
 
@@ -94,12 +95,6 @@ Rails.application.routes.draw do
   namespace :api, { format: 'json' } do
     namespace :diary do
       resource :favorite, only: %i[create destroy show]
-    end
-  end
-  
-  namespace :api, {format: 'json' } do
-    namespace :micropost do
-      resources :comment, only: %i[create destory]
     end
   end
 end

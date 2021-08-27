@@ -2,6 +2,9 @@
   <div>
     <input type='textarea' v-model='content'>
     <button @click="createMicropostComment">コメントする</button>
+    <div v-for="comment in comments" :key="comment.id">
+      {{comment.user.name}}
+    </div>
   </div>
 </template>
 
@@ -20,7 +23,7 @@ export default {
   },
   methods: {
     fetchApiMicropostComment: async function() {
-        const res = await axios.get(`/api/micropost/comment?user_id=${this.userId}&micropost_id=${this.micropostId}`)
+        const res = await axios.get(`/api/micropost/comments?micropost_id=${this.micropostId}`)
         if (res.status !== 200) {
           alert("コメントの取得に失敗しました")
         } else {
