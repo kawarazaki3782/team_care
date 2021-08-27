@@ -18,7 +18,6 @@ class Api::Micropost::CommentsController < ActionController::API
     micropost = comment.micropost
     micropost.create_notification_comment!(comment.user, comment.id, micropost)
     render status: 201, json: { id: comment.id }
-  
   end
 
   def destroy

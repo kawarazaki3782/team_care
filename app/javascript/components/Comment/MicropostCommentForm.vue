@@ -7,8 +7,8 @@
     <div v-for="comment in comments" :key="comment.id">
       <hr>
       <ul>
-        <li><a v-bind:href="comment.user_id"><img class="user_image" v-bind:src="comment.user_profile_image"></a></li>
-        <li>{{ comment.user_name }}</li>
+        <li><a v-bind:href="'/users/'+comment.user_id"><img class="user_image" v-bind:src="comment.user_profile_image"></a></li>
+        <li><a v-bind:href="'/users/'+comment.user_id">{{ comment.user_name }}</a></li>
         <li>{{ comment.created_at | moment }}</li>
         <li class="comment_content">{{ comment.content }}</li>
       </ul>
