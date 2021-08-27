@@ -1,9 +1,15 @@
 class Api::Micropost::CommentsController < ActionController::API
   
   def index 
-    @micropost = Micropost.find(params[:micropost_id])
-    comments = Comment.where(micropost_id: @micropost.id)
-    render json: { id: comments.ids }
+    comments = Micropost.find(params[:micropost_id]).comments.map do |comment|
+      {
+        content: comment.content,
+        created_at: comment.created_at,
+        user_name: comment.user.name,
+        user_profile_image: comment.user.profile_image.url
+      }
+    end
+    render status: 200, json: comments
   end
   
   def create
