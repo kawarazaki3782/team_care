@@ -1,11 +1,13 @@
 import Vue from 'vue'
 
 // 作成したコンポーネントファイルをimportします
-import DiaryFavoriteButton from '../components/Favorite/DiaryFavoriteButton.vue'
+import DiaryCommentForm from '../components/Comment/DiaryCommentForm.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
   new Vue({
-    el: '#diary_favorite_button',
-    components: { DiaryFavoriteButton }
+    el: '#diary_comment_form',
+    components: { DiaryCommentForm }
   })
 })
+
+

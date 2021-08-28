@@ -1,9 +1,11 @@
 <template>
-  <div v-if="favoriteId" @click="destroyMicropostFavorite">
-    お気に入り解除
-  </div>
-  <div v-else @click="createMicropostFavorite">
-    お気に入り
+  <div>
+    <button v-if="favoriteId" @click="destroyMicropostFavorite">
+      お気に入り解除
+    </button>
+    <button v-else @click="createMicropostFavorite">
+      お気に入り
+    </button>
   </div>
 </template>
 
@@ -29,7 +31,9 @@ export default {
       }
     },
     createMicropostFavorite: async function() {
-      const res = await axios.post('/api/micropost/favorite', { user_id: this.userId, micropost_id: this.micropostId })
+      const res = await axios.post('/api/micropost/favorite', { user_id: this.userId, micropost_id: this.micropostId }).catch(err => {
+        return err.response
+      })
       if (res.status !== 201) {
         alert("お気入りの登録に失敗しました")
       } else {
@@ -49,7 +53,7 @@ export default {
 </script>
 
 <style scoped>
-div {
+button {
   display: inline-block;
   line-height: 72px;
   background: #eebeb4;

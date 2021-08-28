@@ -1,3 +1,4 @@
+<%= javascript_pack_tag "diary_comment" %>
 <%= javascript_pack_tag "diary_favorite" %>
 <section id="" class="diary_show section">
   <div class="diary__inner inner">
@@ -62,32 +63,7 @@
       <% end %>
     </div>
 </div>
-<h2 class="section-title_diary">コメント一覧<p><i class="far fa-comment comment_count"></i><%= @diary.comments.count %></p></h2>
-<%= form_for [@diary, @comment] do |f| %>
-<%= render 'shared/error_messages', object: f.object %>
-  <div class="diary_comment_catalog"><%= f.text_field :content %>
-    <%= f.hidden_field :diary_id, value:@diary.id %>
-  </div>
-  <div class="diary_comment_btn">
-    <%= f.submit 'コメントする' %>
-  </div>
-<% end %>
-<% @comments.each do |c| %>
-  <div class="timeline_area">
-    <div class="timeline_diaries">
-      <div class="timeline_diary_name">
-        <%= link_to image_tag(c.user.profile_image.url, class:'icon2 user_image'), "/users/#{c.user.id}" %>
-          <a href="/users/<%= c.user.id %>"><%= c.user.name %></a>
-          <%= localize c.created_at %>
-      </div>
-      <div class="timeline_content">
-        <p class="diary-text"><%= c.content %></p>   
-          <p class="diary_delete_show"><% if current_user?(c.user) %>
-          <%= link_to "削除", diary_comment_path(c.diary.id,c.id), method: :delete,class:'diary_comment_delete',
-                                                    data: { confirm: "コメントを削除しますか?" } %></p>    
-           </div>
-      </div>
-          <% end %>
-  </div>
-<% end %>
-
+<h2 class="section-title_diary">コメント一覧</h2>
+<div id ="diary_comment_form"> 
+  <diary-comment-form :user-id="<%= current_user.id %>" :diary-id="<%= @diary.id %>"></diary-comment-form>
+</div>

@@ -2,18 +2,18 @@
 <section id="" class="confirm_section">
   <div class="confirm__inner inner">
     <h2 class="section-title_confirm">登録内容の確認</h2>
-     <div class="confirm_textarea">
+      <div class="confirm_textarea">
         <%= form_for @user do |f| %>
           <div class="confirm_image">
             <%= image_tag @user.profile_image.url, class:'confirm_icon' %>
             <%= f.hidden_field :profile_image %>
             <%= f.hidden_field :profile_image_cache %>
           </div>
-          <div class="confirm_item"> 
+            <div class="confirm_item"> 
             氏名:<%= @user.name %>
             <%= f.hidden_field :name %>
           </div>
-          <div class="confirm_item">
+          <div class="confirm_item">ß
            メールアドレス:<%= @user.email %>
            <%= f.hidden_field :email %>
           </div>

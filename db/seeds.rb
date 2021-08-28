@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # メインのサンプルユーザーを1人作成する
 User.create!(name: 'Example User',
-             email: 'example@railstutorial.org',
-             password: 'foobar',
-             password_confirmation: 'foobar',
+             email: 'kawarazaki3782@gmail.com',
+             password: 'Qfkfdt4tgfggsf',
+             password_confirmation: 'Qfkfdt4tgfggsf',
              gender: '男性', 
              long_teamcare: '介護者',
              admin: true)
