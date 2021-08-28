@@ -10,6 +10,6 @@ class GuestSessionsController < ApplicationController
     else
       flash[:danger] = 'ログインに失敗しました'
     end
-      redirect_to root_path
+    redirect_to root_path
   end
 end

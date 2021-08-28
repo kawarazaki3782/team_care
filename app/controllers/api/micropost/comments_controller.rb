@@ -29,8 +29,8 @@ class Api::Micropost::CommentsController < ActionController::API
   end
 
   def destroy
-      Comment.find(params[:id]).destroy!
-      head :ok
+    Comment.find(params[:id]).destroy!
+    head :ok
   end
   
   private

@@ -70,7 +70,7 @@ RSpec.describe 'コメント', type: :system, js: true do
       end
       expect(page).not_to have_text('サンプルコメント')
     end
-    
+  
     it '日記にコメントする直前でユーザーが削除' do
       find('a.btn_base_users', match: :first).click
       click_on 'その他ユーザー'

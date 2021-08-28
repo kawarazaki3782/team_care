@@ -1,4 +1,3 @@
-// import 'babel-polyfill'
 import Vue from 'vue'
 
 // 作成したコンポーネントファイルをimportします
