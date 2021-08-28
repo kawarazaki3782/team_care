@@ -13,7 +13,7 @@ RSpec.describe '通知機能', type: :system, js: true do
 
     it 'フォローされた通知を確認する' do
       find('a.btn_base_users', match: :first).click
-      click_on 'サンプル太郎'
+      click_on 'サンプル太郎', match: :first
       find('.follow_item_btn', match: :first).click
       click_on 'ログアウト', match: :first
       sign_in_as user
@@ -23,7 +23,7 @@ RSpec.describe '通知機能', type: :system, js: true do
 
     it 'いいねされた通知を確認する' do
       find('a.btn_base_users', match: :first).click
-      click_on 'サンプル太郎'
+      click_on 'サンプル太郎', match: :first
       find('.likes_unliked', match: :first, visible: false).click
       click_on 'ログアウト', match: :first
       sign_in_as user
@@ -33,7 +33,7 @@ RSpec.describe '通知機能', type: :system, js: true do
 
     it 'コメントされた通知を確認する' do
       find('a.btn_base_users', match: :first).click
-      click_on 'サンプル太郎'
+      click_on 'サンプル太郎', match: :first
       click_on 'つぶやきサンプル'
       find('.section-title_post', match: :first)
       find('input[type="textarea"]').set('サンプル')
@@ -47,7 +47,7 @@ RSpec.describe '通知機能', type: :system, js: true do
       
     it 'DM通知を確認する' do
       find('a.btn_base_users', match: :first).click
-      click_on 'サンプル太郎'
+      click_on 'サンプル太郎', match: :first
       click_on 'お手紙を送る'
       fill_in 'message[content]', with: 'サンプル'
       click_on '投稿する'
@@ -61,7 +61,7 @@ RSpec.describe '通知機能', type: :system, js: true do
   it '助けを求めた通知を確認する' do
     sign_in_as user
     find('a.btn_base_users', match: :first).click
-    click_on 'サンプル太郎'
+    click_on 'サンプル太郎', match: :first
     click_on '助けを求める'
     page.driver.browser.switch_to.alert.text == '全利用者に通知を送付しますか？'
     page.driver.browser.switch_to.alert.accept

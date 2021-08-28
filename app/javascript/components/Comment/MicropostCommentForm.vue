@@ -38,7 +38,9 @@ export default {
   },
   methods: {
     fetchApiMicropostComment: async function() {
-        const res = await axios.get(`/api/micropost/comments?micropost_id=${this.micropostId}`)
+        const res = await axios.get(`/api/micropost/comments?micropost_id=${this.micropostId}`).catch(err => {
+        return err.response  
+      })
         if (res.status !== 200) {
           alert("コメントの取得に失敗しました")
         } else {

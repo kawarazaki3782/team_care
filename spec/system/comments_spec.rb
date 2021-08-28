@@ -14,7 +14,7 @@ RSpec.describe 'コメント', type: :system, js: true do
   it 'つぶやきにコメントする' do
     click_on '自分のつぶやき'
     click_on 'つぶやきサンプル'
-    find('input[type="textarea"]').set('サンプル')
+    find('input[type="textarea"]').set('サンプルコメント')
     expect do
       click_on 'コメントする'
       page.accept_confirm
@@ -35,7 +35,7 @@ RSpec.describe 'コメント', type: :system, js: true do
   it '日記にコメントする' do
     click_on '自分の日記'
     click_on 'タイトル'
-    find('input[type="textarea"]').set('サンプル')
+    find('input[type="textarea"]').set('サンプルコメント')
     expect do
       click_on 'コメントする'
       page.accept_confirm
@@ -63,52 +63,24 @@ RSpec.describe 'コメント', type: :system, js: true do
       find('a.btn_base_users', match: :first).click
       click_on 'その他ユーザー'
       click_on 'つぶやきサンプル2'
-      find('input[type="textarea"]').set('サンプル')
+      find('input[type="textarea"]').set('サンプルコメント')
       User.find_by(name: 'その他ユーザー').destroy
-      click_on 'コメントする'
-      page.accept_confirm
-      expect(page.driver.browser.switch_to.alert.text).to eq "コメントの投稿に失敗しました"
-      page.driver.browser.switch_to.alert.dismiss 
+      accept_alert("コメントの投稿に失敗しました")do
+        click_on'コメントする'
+      end
+      expect(page).not_to have_text('サンプルコメント')
     end
     
-    # テストの数を減らすために一旦コメントアウする
-    
-    # it '日記にコメントする直前でユーザーが削除' do
-    #   find('a.btn_base_users', match: :first).click
-    #   click_on 'その他ユーザー'
-    #   click_on 'タイトルサンプル'
-    #   fill_in 'comment[content]', with: 'サンプル'
-    #   User.find_by(name: 'その他ユーザー').destroy
-    #   click_on 'コメントする'
-    #   expect(page).to have_text 'コメントを投稿できませんでした'
-    # end
-
-    # it 'つぶやきを削除する直前でユーザーが削除' do
-    #   find('a.btn_base_users', match: :first).click
-    #   click_on 'その他ユーザー'
-    #   click_on 'つぶやきサンプル2'
-    #   fill_in 'comment[content]', with: 'サンプル'
-    #   click_on 'コメントする'
-    #   find(".section-title_post", text: "つぶやき詳細")
-    #   User.find_by(name: 'その他ユーザー').destroy
-    #   find('.comment_delete').click
-    #   page.driver.browser.switch_to.alert.text == 'コメントを削除しますか?'
-    #   page.driver.browser.switch_to.alert.accept
-    #   expect(page).to have_text 'コメントが削除できませんでした'
-    # end
-
-    # it '日記を削除する直前でユーザーが削除' do
-    #   find('a.btn_base_users', match: :first).click
-    #   click_on 'その他ユーザー'
-    #   click_on 'タイトルサンプル'
-    #   fill_in 'comment[content]', with: 'サンプル'
-    #   click_on 'コメントする'
-    #   find(".section-title_diary", text: "日記詳細")
-    #   User.find_by(name: 'その他ユーザー').destroy
-    #   find('.diary_comment_delete').click
-    #   page.driver.browser.switch_to.alert.text == '本当に削除してもよろしいですか?'
-    #   page.driver.browser.switch_to.alert.accept
-    #   expect(page).to have_text 'コメントが削除できませんでした'
-    # end
+    it '日記にコメントする直前でユーザーが削除' do
+      find('a.btn_base_users', match: :first).click
+      click_on 'その他ユーザー'
+      click_on 'タイトルサンプル'
+      find('input[type="textarea"]').set('サンプルコメント')
+      User.find_by(name: 'その他ユーザー').destroy
+      accept_alert("コメントの投稿に失敗しました")do
+        click_on'コメントする'
+      end
+      expect(page).not_to have_text('サンプルコメント')
+    end
   end
 end

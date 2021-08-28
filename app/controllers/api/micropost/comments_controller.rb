@@ -1,16 +1,20 @@
 class Api::Micropost::CommentsController < ActionController::API
   def index 
-    comments = Micropost.find(params[:micropost_id]).comments.map do |comment|
-      {
-        content: comment.content,
-        created_at: comment.created_at,
-        user_name: comment.user.name,
-        user_profile_image: comment.user.profile_image.url,
-        id: comment.id,
-        user_id: comment.user_id
-      }
+    if Micropost.exists?(params[:micropost_id])
+      comments = Micropost.find(params[:micropost_id]).comments.map do |comment|
+        {
+          content: comment.content,
+          created_at: comment.created_at,
+          user_name: comment.user.name,
+          user_profile_image: comment.user.profile_image.url,
+          id: comment.id,
+          user_id: comment.user_id
+        }
+      end
+      render status: 200, json: comments
+    else
+      head :not_found
     end
-    render status: 200, json: comments
   end
   
   def create
@@ -20,13 +24,13 @@ class Api::Micropost::CommentsController < ActionController::API
       micropost.create_notification_comment!(comment.user, comment.id, micropost)
       render status: 201, json: { id: comment.id }
     else
-      render status: 404
+      head :not_found
     end
   end
 
   def destroy
-    Comment.find(params[:id]).destroy!
-    head :ok
+      Comment.find(params[:id]).destroy!
+      head :ok
   end
   
   private

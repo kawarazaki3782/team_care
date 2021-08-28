@@ -11,8 +11,12 @@ class Api::Diary::FavoritesController < ActionController::API
   end
 
   def create
-    favorite = Favorite.create!(favorite_params)
-    render status: 201, json: { id: favorite.id }
+    if Diary.exists?(params[:diary_id])
+      favorite = Favorite.create!(favorite_params)
+      render status: 201, json: { id: favorite.id }
+    else
+      head :not_found
+    end
   end
 
   def destroy

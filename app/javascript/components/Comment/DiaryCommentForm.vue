@@ -38,7 +38,9 @@ export default {
   },
   methods: {
     fetchApiDiaryComment: async function() {
-        const res = await axios.get(`/api/diary/comments?diary_id=${this.diaryId}`)
+        const res = await axios.get(`/api/diary/comments?diary_id=${this.diaryId}`).catch(err => {
+        return err.response  
+      })
         if (res.status !== 200) {
           alert("コメントの取得に失敗しました")
         } else {
@@ -46,7 +48,9 @@ export default {
         }
       },
      createDiaryComment: async function() {
-      const res = await axios.post('/api/diary/comments', { user_id: this.userId, diary_id: this.diaryId, content: this.content })
+      const res = await axios.post('/api/diary/comments', { user_id: this.userId, diary_id: this.diaryId, content: this.content }).catch(err => {
+        return err.response  
+      })
       if (res.status !== 201) {
         alert("コメントの投稿に失敗しました")
       } else {

@@ -31,7 +31,9 @@ export default {
       }
     },
     createDiaryFavorite: async function() {
-      const res = await axios.post('/api/diary/favorite', { user_id: this.userId, diary_id: this.diaryId })
+      const res = await axios.post('/api/diary/favorite', { user_id: this.userId, diary_id: this.diaryId }).catch(err => {
+        return err.response
+      })
       if (res.status !== 201) {
         alert("お気入りの登録に失敗しました")
       } else {
