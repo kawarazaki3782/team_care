@@ -2,7 +2,7 @@
   <div>
     <div class="comment_form">
       <input type='textarea' v-model='content'>
-      <button @click="createMicropostComment">コメントする</button>
+      <button @click="createDiaryComment">コメントする</button>
     </div>
     <div v-for="comment in comments" :key="comment.id">
       <hr>
@@ -12,7 +12,7 @@
         <li>{{ comment.created_at | moment }}</li>
         <li class="comment_content">{{ comment.content }}</li>
       </ul>
-      <button v-if="comment.user_id === userId" @click="destroyMicropostComment(comment.id)">削除</button>
+      <button v-if="comment.user_id === userId" @click="destroyDiaryComment(comment.id)">削除</button>
     </div>
   </div>
 </template>
@@ -26,7 +26,7 @@ export default {
       return moment(date).format('YYYY年MM月DD日 HH:mm');
     }
   },
-  props: ["userId", "micropostId"],
+  props: ["userId", "diaryId"],
   data() {
     return {
       content: '',
@@ -34,35 +34,33 @@ export default {
     }
   },
   created: function() {
-    this.fetchApiMicropostComment()
+    this.fetchApiDiaryComment()
   },
   methods: {
-    fetchApiMicropostComment: async function() {
-        const res = await axios.get(`/api/micropost/comments?micropost_id=${this.micropostId}`)
+    fetchApiDiaryComment: async function() {
+        const res = await axios.get(`/api/diary/comments?diary_id=${this.diaryId}`)
         if (res.status !== 200) {
           alert("コメントの取得に失敗しました")
         } else {
           this.comments = res.data
         }
       },
-     createMicropostComment: async function() {
-      const res = await axios.post('/api/micropost/comments', { user_id: this.userId, micropost_id: this.micropostId, content: this.content }).catch(err => {
-        return err.response  
-      })
+     createDiaryComment: async function() {
+      const res = await axios.post('/api/diary/comments', { user_id: this.userId, diary_id: this.diaryId, content: this.content })
       if (res.status !== 201) {
         alert("コメントの投稿に失敗しました")
       } else {
-        this.fetchApiMicropostComment()
+        this.fetchApiDiaryComment()
         this.content = ""
         alert("コメントを投稿しました")
       }
     },
-    destroyMicropostComment: async function(commentId) {
-      const res = await axios.delete(`/api/micropost/comments/${commentId}`)
+    destroyDiaryComment: async function(commentId) {
+      const res = await axios.delete(`/api/diary/comments/${commentId}`)
       if (res.status != 200) {
         alert("コメントの削除に失敗しました")
       } else {
-        this.fetchApiMicropostComment()
+        this.fetchApiDiaryComment()
         alert("コメントを削除しました")
       }
     }

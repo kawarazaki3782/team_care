@@ -36,8 +36,9 @@ RSpec.describe '通知機能', type: :system, js: true do
       click_on 'サンプル太郎'
       click_on 'つぶやきサンプル'
       find('.section-title_post', match: :first)
-      fill_in 'comment[content]', with: 'サンプル'
+      find('input[type="textarea"]').set('サンプル')
       click_on 'コメントする'
+      page.accept_confirm
       click_on 'ログアウト', match: :first
       sign_in_as user
       click_on '通知', match: :first

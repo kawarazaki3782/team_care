@@ -1,9 +1,11 @@
 <template>
-  <div v-if="favoriteId" @click="destroyDiaryFavorite">
-    お気に入り解除
-  </div>
-  <div v-else @click="createDiaryFavorite">
-    お気に入り
+  <div>
+    <button v-if="favoriteId" @click="destroyDiaryFavorite">
+      お気に入り解除
+    </button>
+    <button v-else @click="createDiaryFavorite">
+      お気に入り
+    </button>
   </div>
 </template>
 
@@ -49,7 +51,7 @@ export default {
 </script>
 
 <style scoped>
-div {
+button {
   display: inline-block;
   line-height: 72px;
   background: #eebeb4;

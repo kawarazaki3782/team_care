@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  before_action :current_user_set, only: %i[show index]
+  before_action :current_user_set, only: %i[index]
 
   def index
       @micropost = @user.micropost_ids

@@ -14,10 +14,14 @@ class Api::Micropost::CommentsController < ActionController::API
   end
   
   def create
-    comment = Comment.create!(comment_params)
-    micropost = comment.micropost
-    micropost.create_notification_comment!(comment.user, comment.id, micropost)
-    render status: 201, json: { id: comment.id }
+    if Micropost.exists?(params[:micropost_id])
+      comment = Comment.create!(comment_params)
+      micropost = comment.micropost
+      micropost.create_notification_comment!(comment.user, comment.id, micropost)
+      render status: 201, json: { id: comment.id }
+    else
+      render status: 404
+    end
   end
 
   def destroy
