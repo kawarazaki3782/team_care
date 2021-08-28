@@ -12,10 +12,10 @@ class UsersController < ApplicationController
       @micropost = @user.micropost_ids
       @diary = @user.diary_ids
       @rooms = @user.rooms
-      @currentUserEntry = Entry.where(user_id: current_user.id)
-      @userEntry = Entry.where(user_id: @user.id)
-      @currentUserEntry.each do |cu|
-        @userEntry.each do |u|
+      @current_user_entry = Entry.where(user_id: current_user.id)
+      @user_entry = Entry.where(user_id: @user.id)
+      @current_user_entry.each do |cu|
+        @user_entry.each do |u|
           if cu.room_id == u.room_id
             @isRoom = true
             @roomId = cu.room_id
@@ -33,10 +33,10 @@ class UsersController < ApplicationController
       begin
         @microposts = @user.microposts.order(created_at: :desc).page(params[:page]).per(3)
         @diaries = @user.diaries.order(created_at: :desc).page(params[:page]).per(3)
-        @currentUserEntry = Entry.where(user_id: current_user.id)
-        @userEntry = Entry.where(user_id: @user.id)
-        @currentUserEntry.each do |cu|
-          @userEntry.each do |u|
+        @current_user_entry = Entry.where(user_id: current_user.id)
+        @user_entry = Entry.where(user_id: @user.id)
+        @current_user_entry.each do |cu|
+          @user_entry.each do |u|
             if cu.room_id == u.room_id
               @isRoom = true
               @roomId = cu.room_id

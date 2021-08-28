@@ -7,10 +7,9 @@ class NotificationsController < ApplicationController
   end
 
   def destroy
-    if @notifications = current_user.passive_notifications.destroy_all
-    else
+    unless @notifications = current_user.passive_notifications.destroy_all
       flash[:danger] = '通知を削除できません'
+      redirect_back(fallback_location: root_path)
     end
-    redirect_back(fallback_location: root_path)
   end
 end
