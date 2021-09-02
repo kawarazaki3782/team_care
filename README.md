@@ -28,9 +28,8 @@
 ・Rubocop（コード解析ツール)<br>
 ・Rspec（テスト)<br>
 ●インフラ<br>
-・(未)AWS (EC2 / RDS(MySQL) / S3 / VPC / IAM / Route53 / ACM / ALB / Cloudfront)<br>
-・(未)CircleCI (CI/CD)<br>
-・(未)MySQL 8.0.25 / Puma / Nginx<br>
+・AWS (EC2 / RDS(MySQL) / S3 / VPC / IAM / Route53 / ACM / ALB / Cloudfront)<br>
+・MySQL 8.0.25 / Puma / Nginx<br>
 
 ## ER図
 ![チームケアER図](https://user-images.githubusercontent.com/79620911/130318202-99329257-b443-4e8e-b9b5-794e308bb155.png)
@@ -79,5 +78,11 @@
 その他、ボタンの大きさ等のデザインもフィードバックを反映させました。<br>
 
 ・ご年配の方でも使いやすいUI/UXを意識しました。<br>
-Vue.jsを導入して、コメントの投稿とお気に入りの登録を非同期通信で実装しました。<br>
-また絵文字の投稿を可能にし、視覚的にわかりやすいコミュニケーションが取れるようにした。<br>
+Vue.jsを導入して、お気に入り機能とコメント機能を非同期処理で実装しました。<br>
+また絵文字の投稿を可能にし、視覚的にわかりやすいコミュニケーションが取れるようにしました。<br>
+
+お気に入り機能(Vue.js)<br>
+![Vueお気に入り](https://user-images.githubusercontent.com/79620911/131789204-956afc66-cf31-45f7-954c-f2876a042d0f.gif)
+コメント機能(Vue.js)<br>
+![Vueコメント](https://user-images.githubusercontent.com/79620911/131789212-272f8877-9671-4592-a6c4-1ad02734f2f5.gif)
+
