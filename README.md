@@ -26,7 +26,7 @@
 ・Ruby 2.7.3<br>
 ・Ruby on Rails 6.1.1<br>
 ・Rubocop（コード解析ツール)<br>
-・Rspec（テスト)<br>
+・Rspec（単体、結合、例外処理テスト)<br>
 ●インフラ<br>
 ・AWS (EC2 / RDS(MySQL) / S3 / VPC / IAM / Route53 / ACM / ALB / Cloudfront)<br>
 ・MySQL 8.0.25 / Puma / Nginx<br>
