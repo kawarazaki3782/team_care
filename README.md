@@ -21,7 +21,7 @@
 ●フロントエンド<br>
 ・HTML/CSS<br>
 ・Javascript<br>
-・Vue.js 2.6.12<br>
+・Vue.js 2.6.14<br>
 ●バックエンド<br>
 ・Ruby 2.7.3<br>
 ・Ruby on Rails 6.1.1<br>
