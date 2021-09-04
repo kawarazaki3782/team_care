@@ -5,41 +5,38 @@ class UsersController < ApplicationController
   before_action :admin_user, only: :destroy
   before_action :blocking_user, only: :show
   before_action :set_user, only: %i[show verification destroy update following followers blocking]
-  
 
   def show
     if logged_in? && current_user.id.to_s == params[:id]
       @micropost = @user.micropost_ids
       @diary = @user.diary_ids
       @rooms = @user.rooms
-      @currentUserEntry = Entry.where(user_id: current_user.id)
-      @userEntry = Entry.where(user_id: @user.id)
-      @currentUserEntry.each do |cu|
-        @userEntry.each do |u|
+      @current_user_entry = Entry.where(user_id: current_user.id)
+      @user_entry = Entry.where(user_id: @user.id)
+      @current_user_entry.each do |cu|
+        @user_entry.each do |u|
           if cu.room_id == u.room_id
-            @isRoom = true
-            @roomId = cu.room_id
+            @is_room = true
+            @room_id = cu.room_id
           end
         end
       end
-      if @isRoom
-      else
+      unless @is_room
         @room = Room.new
         @entry = Entry.new
       end
-
     end
     if logged_in? && current_user.id.to_s != params[:id]
       begin
         @microposts = @user.microposts.order(created_at: :desc).page(params[:page]).per(3)
         @diaries = @user.diaries.order(created_at: :desc).page(params[:page]).per(3)
-        @currentUserEntry = Entry.where(user_id: current_user.id)
-        @userEntry = Entry.where(user_id: @user.id)
-        @currentUserEntry.each do |cu|
-          @userEntry.each do |u|
+        @current_user_entry = Entry.where(user_id: current_user.id)
+        @user_entry = Entry.where(user_id: @user.id)
+        @current_user_entry.each do |cu|
+          @user_entry.each do |u|
             if cu.room_id == u.room_id
-              @isRoom = true
-              @roomId = cu.room_id
+              @is_room = true
+              @room_id = cu.room_id
             end
           end
         end
@@ -97,7 +94,7 @@ class UsersController < ApplicationController
       render 'edit'
       return
     end
-    unless @user.valid?
+    if @user.invalid?
       render 'edit'
       return
     end

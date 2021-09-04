@@ -14,6 +14,7 @@ class FavoritesController < ApplicationController
     @microposts = Favorite.micropost_favorites(current_user.id)
   end
 
+  # コメントアウトには理由も併記するのをおすすめします
   # def create
   #   if params[:diary_id].present? && params[:micropost_id].nil?
   #     begin

@@ -11,8 +11,8 @@ class TemplatesController < ApplicationController
     @template = Template.new(template_params)
     @template.user_id = current_user.id
     if @template.save
-        flash[:success] = "テンプレートが作成されました"
-        redirect_to templates_path
+      flash[:success] = "テンプレートが作成されました"
+      redirect_to templates_path
     else
       render 'new'
     end
