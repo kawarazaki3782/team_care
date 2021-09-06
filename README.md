@@ -1,7 +1,7 @@
 # 開発した背景
 
 「チームケア」は介護者同士や介護者と事業者の交流を目的としたSNSです。<br>
-介護者が孤立するという社会問題に対して、介護者同士で悩みを共有できたり、介護で困っている人と介護の負担を軽減するサービスを提供する事業者との橋渡しをしたいと思い、このアプリを作成しました。<br>
+介護者が孤立するという社会問題に対して、介護者同士で悩みを共有したり、介護で困っている人と介護の負担を軽減するサービスを結びつけたいと思いました。<br>
 つぶやきの簡単投稿機能や日記の投稿機能を使って外部に発信することができます。<br>
 またいいね機能やコメント機能で他者と交流ができます。<br>
 <br>
@@ -14,7 +14,7 @@
 
 ## URL
 
-・URL:https://teamcare.herokuapp.com/<br>
+・URL:https://www.teamcare-app.com/<br>
 ・簡単ログインボタンでスムーズにログインできます。
 ![簡単ログインgit hub](https://user-images.githubusercontent.com/79620911/131207004-159d4a07-bf26-4286-9f6d-c28ea105dc3a.png)
 ## 使用技術
@@ -29,13 +29,13 @@
 ・Rubocop（コード解析ツール)<br>
 ・Rspec（単体、結合、例外処理テスト)<br>
 ●インフラ<br>
-・AWS (EC2 / RDS(MySQL) / S3 / VPC / IAM / Route53 / ACM / ALB / Cloudfront)<br>
-・MySQL 8.0.25 / Puma / Nginx<br>
+・AWS (EC2 / RDS(MySQL) / S3 / VPC / IAM / Route53 / ACM / ALB)<br>
+・MySQL 8.0.25 / Unicorn / Nginx<br>
 
 ## ER図
 ![チームケアER図](https://user-images.githubusercontent.com/79620911/130318202-99329257-b443-4e8e-b9b5-794e308bb155.png)
 ## インフラ構成図
-![インフラ構成図](https://user-images.githubusercontent.com/79620911/131878470-6bd24543-b8d3-4b3a-9502-78b1b6a128f9.png)
+![インフラ構成図 drawio](https://user-images.githubusercontent.com/79620911/132795196-469e6eba-663a-4e09-9e6c-66ef0278aa1c.png)
 
 ## 機能一覧
 ・ユーザー新規登録/ログイン<br>

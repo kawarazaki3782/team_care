@@ -7,8 +7,7 @@ import Rails from "@rails/ujs"
 import * as ActiveStorage from "@rails/activestorage"
 
 Rails.start()
-Turbolinks.start()
 ActiveStorage.start()
-require ('../header.js')
 require("jquery")
+require ("../header.js")
 import "bootstrap"

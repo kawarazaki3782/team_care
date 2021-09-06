@@ -1,98 +1,102 @@
-<% provide(:title, 'プロフィール編集') %>
-<section id="" class="signup_section">
-  <div class="signup__inner inner">
-    <h2 class="section-title_signup">プロフィール編集</h2>
-      <div class="signup_item">
-			  <div class="signup_controls">
-          <%= form_with(model:@user, local: true, url: {action: 'verification'}, method: :patch) do |f| %>
-            <%= render 'shared/error_messages', object: f.object %>  
-             <div class="signup_control">
-               <dt>
-                 <%= f.label :プロフィール写真 , {class: 'signup_label signup__label '} %>
-                 <%= image_tag(@user.profile_image_url, width: 50, class:'icon_profile_image') if @user.profile_image? %>
-               </dt>
-               <dd>
-                 <%= f.file_field :profile_image %>
-               </dd>
-             </div>
-             <div class="signup_control">
-               <dt>
-                 <%= f.label :ニックネーム, {class: 'signup_label signup__label signup__label--required'} %>
-              </dt>
-              <dd>
-                <%= f.text_field :name, class:'form-input', placeholder:"山田太郎" %>
-              </dd>
-             </div>
-             <div class="signup_control">
-               <dt>
-                 <%= f.label :メールアドレス, {class: 'signup_label signup__label signup__label--required'} %>
-               </dt>
-               <dd>
-                 <%= f.email_field :email,class: 'form-input', placeholder:"text@example.com" %>
-              </dd>
-             </div>
-             <div class="signup_control">
-               <dt>
-                  <%= f.label :パスワード, {class: 'signup_label signup__label signup__label--required'} %>
-               </dt>
-               <dd>
-                 <%= f.password_field :password,class: 'form-input' %>
-              </dd>
-             </div>
-             <div class="signup_control">
-               <dt>
-                 <%= f.label :password_confirmation, "パスワード確認用", {class: 'signup_label signup__label signup__label--required'} %>
-              </dt>
-              <dd>
-                <%= f.password_field :password_confirmation,class: 'form-input' %>
-              </dd>
-             </div>
-             <div class="signup_control">
-               <dt>
-                 <%= f.label :性別, {class: 'signup_label signup__label signup__label--required'} %>
-               </dt>
-               <dd>
-                 <%= f.select :gender, [ ["男性","男性"],["女性","女性"] ], prompt: "性別を選択",class: 'form-input'%>
-               </dd>
-             </div>
-             <div class="signup_control">
-               <dt>
-                 <%= f.label :生年月日, {class: 'signup_label signup__label'} %>
-               </dt>
-               <dd>
-                 <%= raw sprintf(f.date_select(:birthday,use_month_numbers: true,start_year: 1930,end_year: (Time.now.year - 18),default: Date.new(1989, 1, 1),date_separator: '%s'),'年 ', '月 ') + '日'%>
-              </dd> 
-             </div>
-             <div class="signup_control">
-               <dt>  
-                 <%= f.label :都道府県, {class: 'signup_label signup__label'} %>
-               </dt>
-               <dd> 
-                 <%= f.select :address, [ ["静岡県","静岡県"], ["東京都","東京都"], ["北海道","北海道"], ["青森県","青森県"], ["岩手県","岩手県"], ["宮城県","宮城県"], ["秋田県","秋田県"], ["山形県","山形県"], ["福島県","福島県"], ["茨城県","茨城県"], ["栃木県","栃木県"], ["群馬県","群馬県"], ["埼玉県","埼玉県"], ["千葉県","千葉県"], ["神奈川県","神奈川県"], ["新潟県","新潟県"], ["富山県","富山県"], ["石川県","石川県"], ["福井県","福井県"], ["山梨県","山梨県"], ["長野県","長野県"], ["岐阜県","岐阜県"], ["愛知県","愛知県"], ["三重県","三重県"], ["滋賀県","滋賀県"], ["京都府","京都府"], ["大阪府","大阪府"], ["兵庫県","兵庫県"], ["奈良県","奈良県"], ["和歌山県","和歌山県"], ["鳥取県","鳥取県"], ["島根県","島根県"], ["広島県","広島県"], ["山口県","山口県"], ["徳島県","徳島県"], ["香川県","香川県"], ["愛媛県","愛媛県"], ["高知県","高知県"], ["福岡県","福岡県"], ["佐賀県","佐賀県"], ["長崎県","長崎県"], ["熊本県","熊本県"], ["大分県","大分県"], ["宮崎県","宮崎県"], ["鹿児島県","鹿児島県"], ["沖縄県","沖縄県"] ], prompt: "お住まいの都道府県を選択" ,class: 'form-input'%>
-               </dd>
-             </div>  
-             <div class="signup_control">
-               <dt>
-                 <%= f.label :介護の状況, {class: 'signup_label signup__label signup__label--required'} %>
-              </dt>
-              <dd>
-                <%= f.select :long_teamcare, [ ["介護者","介護者"], ["事業者","事業者"] ], prompt: "介護者か事業者か選択", class: 'form-input'%>
-              </dd>
-             </div>
-             <div class="signup_control">
+<% if current_user.id == @user.id %>
+  <% provide(:title, 'プロフィール編集') %>
+  <section class="signup_section">
+    <div class="signup__inner inner">
+      <h2 class="section-title_signup">プロフィール編集</h2>
+        <div class="signup_item">
+          <div class="signup_controls">
+            <%= form_with(model:@user, local: true, url: {action: 'verification'}, method: :patch) do |f| %>
+              <%= render 'shared/error_messages', object: f.object %>  
+              <div class="signup_control">
                 <dt>
-                  <%= f.label :自己紹介, {class: 'signup_label signup__label signup__label--required'}%><p class="user_emoji">※絵文字が使えます</p>
+                  <%= f.label :プロフィール写真 , {class: 'signup_label signup__label '} %>
+                  <%= image_tag(@user.profile_image_url, width: 50, class:'icon_profile_image') if @user.profile_image? %>
                 </dt>
                 <dd>
-                  <%= f.text_area :profile, class:"form-textarea" %>
-              </dd>
-             </div>
-             <div class="contact__submit">
-               <%= link_to "中止してマイページへ", user_path(@user), class: "btn_base_history" %>
-               <%= f.submit "確認画面へ", class: "btn_base_profileedit" %>
-            </div>
-           <% end %>
-		  	</div> 
-     </div>
-   </div>
-</section>
+                  <%= f.file_field :profile_image %>
+                </dd>
+              </div>
+              <div class="signup_control">
+                <dt>
+                  <%= f.label :ニックネーム, {class: 'signup_label signup__label signup__label--required'} %>
+                </dt>
+                <dd>
+                  <%= f.text_field :name, class:'form-input', placeholder:"山田太郎" %>
+                </dd>
+              </div>
+              <div class="signup_control">
+                <dt>
+                  <%= f.label :メールアドレス, {class: 'signup_label signup__label signup__label--required'} %>
+                </dt>
+                <dd>
+                  <%= f.email_field :email,class: 'form-input', placeholder:"text@example.com" %>
+                </dd>
+              </div>
+              <div class="signup_control">
+                <dt>
+                    <%= f.label :パスワード, {class: 'signup_label signup__label signup__label--required'} %>
+                </dt>
+                <dd>
+                  <%= f.password_field :password,class: 'form-input' %>
+                </dd>
+              </div>
+              <div class="signup_control">
+                <dt>
+                  <%= f.label :password_confirmation, "パスワード確認用", {class: 'signup_label signup__label signup__label--required'} %>
+                </dt>
+                <dd>
+                  <%= f.password_field :password_confirmation,class: 'form-input' %>
+                </dd>
+              </div>
+              <div class="signup_control">
+                <dt>
+                  <%= f.label :性別, {class: 'signup_label signup__label signup__label--required'} %>
+                </dt>
+                <dd>
+                  <%= f.select :gender, [ ["男性","男性"],["女性","女性"] ], prompt: "性別を選択",class: 'form-input'%>
+                </dd>
+              </div>
+              <div class="signup_control">
+                <dt>
+                  <%= f.label :生年月日, {class: 'signup_label signup__label'} %>
+                </dt>
+                <dd>
+                  <%= raw sprintf(f.date_select(:birthday,use_month_numbers: true,start_year: 1930,end_year: (Time.now.year - 18),default: Date.new(1989, 1, 1),date_separator: '%s'),'年 ', '月 ') + '日'%>
+                </dd> 
+              </div>
+              <div class="signup_control">
+                <dt>  
+                  <%= f.label :都道府県, {class: 'signup_label signup__label'} %>
+                </dt>
+                <dd> 
+                  <%= f.select :address, [ ["静岡県","静岡県"], ["東京都","東京都"], ["北海道","北海道"], ["青森県","青森県"], ["岩手県","岩手県"], ["宮城県","宮城県"], ["秋田県","秋田県"], ["山形県","山形県"], ["福島県","福島県"], ["茨城県","茨城県"], ["栃木県","栃木県"], ["群馬県","群馬県"], ["埼玉県","埼玉県"], ["千葉県","千葉県"], ["神奈川県","神奈川県"], ["新潟県","新潟県"], ["富山県","富山県"], ["石川県","石川県"], ["福井県","福井県"], ["山梨県","山梨県"], ["長野県","長野県"], ["岐阜県","岐阜県"], ["愛知県","愛知県"], ["三重県","三重県"], ["滋賀県","滋賀県"], ["京都府","京都府"], ["大阪府","大阪府"], ["兵庫県","兵庫県"], ["奈良県","奈良県"], ["和歌山県","和歌山県"], ["鳥取県","鳥取県"], ["島根県","島根県"], ["広島県","広島県"], ["山口県","山口県"], ["徳島県","徳島県"], ["香川県","香川県"], ["愛媛県","愛媛県"], ["高知県","高知県"], ["福岡県","福岡県"], ["佐賀県","佐賀県"], ["長崎県","長崎県"], ["熊本県","熊本県"], ["大分県","大分県"], ["宮崎県","宮崎県"], ["鹿児島県","鹿児島県"], ["沖縄県","沖縄県"] ], prompt: "お住まいの都道府県を選択" ,class: 'form-input'%>
+                </dd>
+              </div>  
+              <div class="signup_control">
+                <dt>
+                  <%= f.label :介護の状況, {class: 'signup_label signup__label signup__label--required'} %>
+                </dt>
+                <dd>
+                  <%= f.select :long_teamcare, [ ["介護者","介護者"], ["事業者","事業者"] ], prompt: "介護者か事業者か選択", class: 'form-input'%>
+                </dd>
+              </div>
+              <div class="signup_control">
+                  <dt>
+                    <%= f.label :自己紹介, {class: 'signup_label signup__label signup__label--required'}%><p class="user_emoji">※絵文字が使えます</p>
+                  </dt>
+                  <dd>
+                    <%= f.text_area :profile, class:"form-textarea" %>
+                </dd>
+              </div>
+              <div class="contact__submit">
+                <%= link_to "中止してマイページへ", user_path(@user), class: "btn_base_history" %>
+                <%= f.submit "確認画面へ", class: "btn_base_profileedit" %>
+              </div>
+            <% end %>
+          </div> 
+      </div>
+    </div>
+  </section>
+<% else %>
+  <p>他人のプロフィールは編集できません</p>
+<% end %>

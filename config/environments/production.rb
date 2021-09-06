@@ -11,6 +11,7 @@ Rails.application.configure do
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
+  config.require_master_key = true
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
@@ -96,19 +97,18 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.assets.compile = true
-  config.assets.initialize_on_precompile=false
+  config.assets.initialize_on_precompile = false
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = "#{ENV['HEROKU_APPNAME']}.herokuapp.com"
+  host = 'http://35.76.70.238'
   config.action_mailer.default_url_options = { host: host }
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     port: 587,
     domain: 'gmail.com',
-    user_name: ENV['GMAIL_USERNAME'],
-    password: ENV['GMAIL_PASSWORD'],
+    user_name: Rails.application.credentials.config[:google_email_address],
+    password: Rails.application.credentials.config[:google_password],
     authentication: 'plain',
     enable_starttls_auto: true
   }

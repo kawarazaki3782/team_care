@@ -1,7 +1,9 @@
 <%= javascript_pack_tag "micropost_comment" %>
 <%= javascript_pack_tag "index" %>
+<%= stylesheet_pack_tag "micropost_comment" %>
+<%= stylesheet_pack_tag "index" %>
 
-<section id="" class="micropost_show section">
+<section class="micropost_show section">
   <div class="micropost__inner inner">
     <h2 class="section-title_post">つぶやき詳細</h2>
       <div class="post_timeline_area">
@@ -27,7 +29,8 @@
                 </div>
                   <span class="post_delete_show"><% if current_user?(@micropost.user) %>
                     <%= link_to "つぶやき削除", @micropost, method: :delete,class:"post-detail-delete",
-                                                    data: { confirm: "つぶやきを削除しますか?" } %></p>    
+                                                    data: { confirm: "つぶやきを削除しますか?" } %>
+                  </span>
                    <% end %>
                   <div id ="micropost_favorite_button">
                     <micropost-favorite-button :user-id="<%= current_user.id %>" :micropost-id="<%= @micropost.id %>"></micropost-favorite-button>

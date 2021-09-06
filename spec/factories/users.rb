@@ -9,5 +9,6 @@ FactoryBot.define do
     address { '東京都' }
     long_teamcare { '介護者' }
     admin { false }
+    profile_image { File.open("#{Rails.root}/public/images/default.jpg") }
   end
 end

@@ -1,9 +1,9 @@
-<section id="" class="diary_catalog section">
+<section class="diary_catalog section">
   <div class="diary__inner inner">
     <h2 class="section-title_diary">下書きフォルダ</h2>
       <div class="timeline_area">
         <%= render partial: 'shared/diary_index', collection: @diaries, as: :diary %>
       </div>
-   </div>
+  </div>
 </section>
 <%= paginate @diaries %>

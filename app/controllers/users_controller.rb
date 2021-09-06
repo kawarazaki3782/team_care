@@ -76,7 +76,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     unless @user.profile_image.file
-      @user.profile_image = Pathname.new(Rails.root.join("app/assets/images/default.jpg")).open
+      @user.profile_image = Pathname.new(Rails.root.join("images/default.jpg")).open
     end
     if params[:back]
       render 'new'

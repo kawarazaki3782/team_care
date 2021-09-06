@@ -62,7 +62,7 @@ node_modules/
 # Ignore precompiled javascript packs
 /public/packs
 /public/packs-test
-/public/assets
+/public/assets 
 
 # Ignore yarn files
 /yarn-error.log
@@ -73,3 +73,8 @@ yarn-debug.log*
 /storage/*
 !/storage/.keep
 /public/uploads
+
+/config/credentials/production.key
+db/seeds.rb
+.DS_Store
+.vscode

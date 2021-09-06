@@ -1,4 +1,4 @@
-<section id="" class="micropost_catalog section">
+<section class="micropost_catalog section">
   <div class="micropost__inner inner">
     <h2 class="section-title_post">つぶやき一覧(<%= @category.name%>)</h2>
       <div class="timeline_area">
@@ -6,7 +6,7 @@
       </div>
       <%= paginate @microposts %>
       <h2 class="section-title_post">日記一覧(<%= @category.name%>)</h2>
-        <div class="timeline_area">
+      <div class="timeline_area">
          <%= render partial: 'shared/diary_index', collection: @diaries, as: :diary %>
       </div>
    </div>

@@ -12,6 +12,7 @@ RSpec.describe '通知機能', type: :system, js: true do
     end
 
     it 'フォローされた通知を確認する' do
+      click_on 'マイページ', match: :first
       find('a.btn_base_users', match: :first).click
       click_on 'サンプル太郎', match: :first
       find('.follow_item_btn', match: :first).click
@@ -22,6 +23,7 @@ RSpec.describe '通知機能', type: :system, js: true do
     end
 
     it 'いいねされた通知を確認する' do
+      click_on 'マイページ', match: :first
       find('a.btn_base_users', match: :first).click
       click_on 'サンプル太郎', match: :first
       find('.likes_unliked', match: :first, visible: false).click
@@ -32,6 +34,7 @@ RSpec.describe '通知機能', type: :system, js: true do
     end
 
     it 'コメントされた通知を確認する' do
+      click_on 'マイページ', match: :first
       find('a.btn_base_users', match: :first).click
       click_on 'サンプル太郎', match: :first
       click_on 'つぶやきサンプル'
@@ -46,6 +49,7 @@ RSpec.describe '通知機能', type: :system, js: true do
     end
       
     it 'DM通知を確認する' do
+      click_on 'マイページ', match: :first
       find('a.btn_base_users', match: :first).click
       click_on 'サンプル太郎', match: :first
       click_on 'お手紙を送る'
@@ -57,18 +61,22 @@ RSpec.describe '通知機能', type: :system, js: true do
       expect(page).to have_css '.notification_image', visible: false
     end
   end
+    
+  describe '助けを求めた通知の確認'do
+    before do
+      sign_in_as user
+    end
 
-  it '助けを求めた通知を確認する' do
-    sign_in_as user
-    find('a.btn_base_users', match: :first).click
-    click_on 'サンプル太郎', match: :first
-    click_on '助けを求める'
-    page.driver.browser.switch_to.alert.text == '全利用者に通知を送付しますか？'
-    page.driver.browser.switch_to.alert.accept
-    click_on 'ログアウト', match: :first
-    sign_in_as other_user
-    click_on '通知', match: :first
-    expect(page).to have_css '.notification_image', visible: false
+    it '助けを求めた通知の確認' do
+      click_on 'マイページ', match: :first
+      click_on '助けを求める'
+      page.driver.browser.switch_to.alert.text == '全利用者に通知を送付しますか？'
+      page.driver.browser.switch_to.alert.accept
+      click_on 'ログアウト', match: :first
+      sign_in_as other_user
+      click_on '通知', match: :first
+      expect(page).to have_css '.notification_image', visible: false
+    end
   end
 
   describe '通知を削除する' do

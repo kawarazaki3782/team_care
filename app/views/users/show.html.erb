@@ -1,6 +1,6 @@
 <% if logged_in? && current_user.id.to_s == params[:id] %>
 <% provide(:title, @user.name) %>
-<section id="" class="users_section">
+<section class="users_section">
   <div class="users__inner inner">
     <h2 class="section-title_users">マイページ</h2>
       <div class="users_tab">
@@ -67,7 +67,7 @@
 <!--他の人のページ(編集や削除はできない)-->
 <!--投稿されたイベントをクリックしてそこから他の人のページに飛んだ場合-->
 <% provide(:title, @user.name) %>
-<section id="" class="users_section">
+<section class="users_section">
   <div class="users__inner inner">
     <h2 class="section-title_users">利用者詳細</h2>
       <div class="profile_image_users">
