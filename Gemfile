@@ -37,6 +37,10 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'rspec-rails'
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
   # gem 'spring-commands-rspec'
 end
 
@@ -65,6 +69,10 @@ end
 
 group :production do
   gem 'mysql2', '~> 0.5'
+end
+
+group :production, :staging do
+  gem 'unicorn'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
