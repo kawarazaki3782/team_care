@@ -9,10 +9,10 @@
 
 
 # EC2サーバーのIP、EC2サーバーにログインするユーザー名、サーバーのロールを記述
-server '18.181.70.114', user: 'kawara', roles: %w{app db web} 
+server '35.76.70.238', user: 'kawara', roles: %w{app db web} 
 
 #デプロイするサーバーにsshログインする鍵の情報を記述
-set :ssh_options, keys: '~/.ssh/first_aws_rsa' 
+set :ssh_options, keys: '~/.ssh/team-care_key_rsa' 
 
 
 # role-based syntax

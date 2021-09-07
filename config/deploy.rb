@@ -5,7 +5,7 @@ lock '3.4.0'
 set :application, 'teamcare'
 
 # cloneするgitのレポジトリ
-set :repo_url, 'git@github.com:kawarazaki3782/team_care.git'
+set :repo_url, 'git@github.com:kawarazaki3782/teamcare.git'
 
 # deployするブランチ。デフォルトはmasterなのでなくても可。
 set :branch, 'master'
