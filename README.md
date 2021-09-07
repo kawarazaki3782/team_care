@@ -35,7 +35,7 @@
 ## ER図
 ![チームケアER図](https://user-images.githubusercontent.com/79620911/130318202-99329257-b443-4e8e-b9b5-794e308bb155.png)
 ## インフラ構成図
-![インフラ構成図](https://user-images.githubusercontent.com/79620911/131878470-6bd24543-b8d3-4b3a-9502-78b1b6a128f9.png)
+![インフラ構成図 drawio](https://user-images.githubusercontent.com/79620911/132795196-469e6eba-663a-4e09-9e6c-66ef0278aa1c.png)
 
 ## 機能一覧
 ・ユーザー新規登録/ログイン<br>

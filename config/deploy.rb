@@ -28,6 +28,8 @@ set :rbenv_ruby, '2.7.3'
 #出力するログのレベル。
 set :log_level, :debug
 
+append :linked_files, 'config/credentials/production.key'
+
 namespace :deploy do
   desc 'Restart application'
   task :restart do
