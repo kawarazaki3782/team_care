@@ -31,7 +31,7 @@
                  </div>
                    <% if current_user.id == @diary.user.id %>
                      <p class="diary_show_delete"><%= link_to "日記を削除", @diary, method: :delete,
-                                              data: { confirm: "日記を削除しますか?" } %></p><% end %>    
+                                              data: { confirm: "日記を削除しますか?" } %></p><% end %></p>
                 </div>
                <div>
        </div>  
