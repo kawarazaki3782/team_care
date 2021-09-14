@@ -8,6 +8,6 @@ import * as ActiveStorage from "@rails/activestorage"
 
 Rails.start()
 ActiveStorage.start()
-require ('../header.js')
 require("jquery")
+require ("../header.js")
 import "bootstrap"
