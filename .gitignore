@@ -62,7 +62,7 @@ node_modules/
 # Ignore precompiled javascript packs
 /public/packs
 /public/packs-test
-/public/assets
+# /public/assets 一旦コメントアウトする
 
 # Ignore yarn files
 /yarn-error.log
@@ -75,3 +75,4 @@ yarn-debug.log*
 /public/uploads
 
 /config/credentials/production.key
+/db/seeds.rb
