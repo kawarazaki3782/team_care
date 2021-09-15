@@ -3,6 +3,7 @@ class DiariesController < ApplicationController
   before_action :ensure_correct_user_diary, only: :destroy
   before_action :set_diary, only: %i[show edit update]
   before_action :current_user_set, only: %i[draft index]
+  before_action :diary_user_confirm, only: :edit
 
   def draft
     @diaries = Diary.draft_index(current_user.id).page(params[:page]).per(5)
@@ -81,6 +82,13 @@ class DiariesController < ApplicationController
     rescue
       flash[:danger] = '日記が削除されました'
       redirect_to root_path
+    end
+  end
+
+  def diary_user_confirm
+    if Diary.find(params[:id]).user_id != current_user.id
+      flash[:danger] = '他人の日記は編集できません'
+      redirect_to root_url      
     end
   end
 end
