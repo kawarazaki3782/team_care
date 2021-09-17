@@ -4,7 +4,7 @@ $worker  = 2
   $timeout = 30
 #自分のアプリケーション名、currentがつくことに注意。
   $app_dir = "/var/www/teamcare/current"
-#リクエストを受け取るポート番号を指定。後述
+#リクエストを受け取るポート番号を指定
   $listen  = File.expand_path 'tmp/sockets/.unicorn.sock', $app_dir
 #PIDの管理ファイルディレクトリ
   $pid     = File.expand_path 'tmp/pids/unicorn.pid', $app_dir
@@ -23,7 +23,7 @@ $worker  = 2
 #ホットデプロイをするかしないかを設定
   preload_app true
 
-#fork前に行うことを定義。後述
+#fork前に行うことを定義
   before_fork do |server, worker|
     defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
     old_pid = "#{server.config[:pid]}.oldbin"
@@ -35,7 +35,7 @@ $worker  = 2
     end
   end
 
-#fork後に行うことを定義。後述
+#fork後に行うことを定義
   after_fork do |server, worker|
     defined?(ActiveRecord::Base) and ActiveRecord::Base.establish_connection
   end
