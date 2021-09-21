@@ -8,7 +8,8 @@
 このアプリの目的は介護者を孤立させないことです。<br>
 ひとりで悩まず、まずは誰かに相談しましょう。<br>
 ポートフォリオ説明動画もあります→https://youtu.be/0nSR5Mi8kP0<br>
-<br>
+Qiitaポートフォリオ紹介記事→https://qiita.com/kawara3782/items/12a7ec102bbefa416966<br>
+
 ![ホーム画面](https://user-images.githubusercontent.com/79620911/131229065-49e5a33d-97d0-406d-889e-165a185cd2e7.gif)
 <br>
 
